@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/MeghnaW19/capgemini-w1-godeliver.svg?style=svg)](https://circleci.com/gh/MeghnaW19/capgemini-w1-godeliver)
+
 # Java Maven CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
