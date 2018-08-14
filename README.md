@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/stackroute/capgemini-w1-godeliver.svg?style=svg)](https://circleci.com/gh/stackroute/capgemini-w1-godeliver)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a00da8809a034f3fa8259cf2991e1fb2)](https://www.codacy.com/app/MeghnaW19/capgemini-w1-godeliver?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/capgemini-w1-godeliver&amp;utm_campaign=Badge_Grade)
+
 # Java Maven CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
