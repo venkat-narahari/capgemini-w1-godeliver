@@ -1,36 +1,41 @@
-[![CircleCI](https://circleci.com/gh/stackroute/boeing-w1-matchmaker/tree/v1.0.0.svg?style=svg)](https://circleci.com/gh/stackroute/boeing-w1-matchmaker/tree/v1.0.0)
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:8-jdk
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d63cf4c677164a1b96bf6a146a6c1573)](https://www.codacy.com/app/abdulrahemansyed/boeing-w1-matchmaker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/boeing-w1-matchmaker&amp;utm_campaign=Badge_Grade)
+    working_directory: ~/repo
 
-**Spring Boot Cloud Native Microservices Architecture**
-[![N|Solid](https://spring.io/img/homepage/icon-spring-cloud-data-flow.svg)](https://spring.io/img/homepage/icon-spring-cloud-data-flow.svg)
-***Modules***
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+    
+    steps:
+      - checkout
 
-- Centralised spring cloud config-server
-- Zuul api-gateway 
-- Eureka server for service discovery ***
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pom.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
-****Running the System****
+      - run: mvn dependency:go-offline
 
-Run ```mvn clean compile package``` on all the services
-
- Start eureka-server 
-	--hit localhost:port in the browser to confirm server is up 
-     Ex: http://localhost:9090/
-
--Start config-service 
-	--hit localhost:post/.propertiesFileName/default to confirm the server is able to fetch from repo
-		--ex: https://localhost:8091/application/default
-			--here application is  the name in which the .properties/.yml contents are stored
-			-- default is the profile 
-
--Start restuarant-springboot-service
-
--Start user-springboot-service
-
--Start zuul-gatewayproxy
-	-- hit localhost:port/applicationName/followed by endpoint mentioned in the controller
-		--ex: http://localhost:8092/application/home
-		-- applicationName is mentioned in the application.properties
-
--check the eureka server dashboard to find all the services running
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+        
+      # run tests!
+      - run: mvn integration-test
