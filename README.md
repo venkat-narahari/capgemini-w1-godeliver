@@ -1,4 +1,3 @@
-
 [![CircleCI](https://circleci.com/gh/stackroute/capgemini-w1-godeliver.svg?style=svg)](https://circleci.com/gh/stackroute/capgemini-w1-godeliver)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d7e8141b1ef24d05b50df2877566b21f)](https://www.codacy.com/app/MeghnaW19/capgemini-w1-godeliver_2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/capgemini-w1-godeliver&amp;utm_campaign=Badge_Grade)
