@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/stackroute/boeing-w1-matchmaker/tree/v1.0.0.svg?style=svg)](https://circleci.com/gh/stackroute/boeing-w1-matchmaker/tree/v1.0.0)
+[![CircleCI](https://circleci.com/gh/stackroute/capgemini-w1-godeliver.svg?style=svg)](https://circleci.com/gh/stackroute/capgemini-w1-godeliver)
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d63cf4c677164a1b96bf6a146a6c1573)](https://www.codacy.com/app/abdulrahemansyed/boeing-w1-matchmaker?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/boeing-w1-matchmaker&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a00da8809a034f3fa8259cf2991e1fb2)](https://www.codacy.com/app/MeghnaW19/capgemini-w1-godeliver?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/capgemini-w1-godeliver&amp;utm_campaign=Badge_Grade)
 
 **Spring Boot Cloud Native Microservices Architecture**
 [![N|Solid](https://spring.io/img/homepage/icon-spring-cloud-data-flow.svg)](https://spring.io/img/homepage/icon-spring-cloud-data-flow.svg)
