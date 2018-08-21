@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <h2 class="text-center">User Login Page</h2>
+  <div class="container">
+    <div class="row ">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="Name">Name</label>
+          <input type="text" class="form-control" (ngModel)="model.Name" #Name="ngModel" [ngClass]="{'is-invalid':f.submitted && Name.invalid}"
+            name="Name" placeholder="Full Name" required />
+          <div class="invalid-feedback">
+            <div>Name is required</div>
+          </div>
+        </div>
+        <!--form-group-->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" (ngModel)="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}"
+            name="password" required minlength="6" />
+          <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Password Name is required</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </div>
+        <!--form-group-->
+        <!--form-group-->
+        <div class="form-group">
+          <button class="btn btn-primary">Login</button>
+        </div>
+        <div>
+          <a routerLink="/register">New to GoDeliver? Sign up</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
