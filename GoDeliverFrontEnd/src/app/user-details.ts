@@ -4,6 +4,7 @@ export class UserDetails {
         public userName:string,
         public userPassword:string,
         public userDob:string,
-        public userEmail:string
+        public userEmail:string,
+	public userPreferences:string []
     ){}
 }

@@ -12,6 +12,7 @@ import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
 import { LoginComponent } from "./login/login.component";
 import { RoutingModule } from "./routing/routing.module";
+import { MultipleCheckboxesModule } from 'multiple-checkboxes';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { RoutingModule } from "./routing/routing.module";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RoutingModule
+    RoutingModule, MultipleCheckboxesModule
   ],
   providers: [UserDetailsService],
   bootstrap: [AppComponent]

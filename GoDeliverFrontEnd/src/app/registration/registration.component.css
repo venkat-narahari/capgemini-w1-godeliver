@@ -226,3 +226,9 @@ label{
 [type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
+.bg-primary{
+  background-color: #2cb5b5 !important   /*background color of title*/
+}
+.card-box{
+  height: 150px;  /*div size of list //overflow scroll */
+} 

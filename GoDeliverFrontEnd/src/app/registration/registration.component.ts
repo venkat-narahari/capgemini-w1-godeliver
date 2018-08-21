@@ -11,7 +11,11 @@ export class RegistrationComponent implements OnInit {
   model: any = {};
 
   //userDetails fields
-  user = new UserDetails("", "", "", "");
+  user = new UserDetails("", "", "", "", []);
+  preferences=[{id:1,name:"Action"},{id:2,name:"Drama"},{id:3,name:"Fantasy"},
+  {id:4,name:"Education"},{id:5,name:"Sci-Fi"},{id:6,name:"Horror"},
+  {id:7,name:"Thriller"},{id:8,name:"History"},{id:9,name:"Romance"}];
+
 
   //creating userDetailService
   constructor(private userDetailService: UserDetailsService) {}
@@ -28,4 +32,12 @@ export class RegistrationComponent implements OnInit {
       .addUser(this.user)
       .subscribe(res => console.log("Done"));
   }
+
+  selectedPreferenceList(list){
+    console.log(list)
+     //if Pune and Goa is selected
+     //output will be ["Pune","Goa"]   if updatedlist event used
+     //output will be [{id:1,name:"Pune"},{id:4,name:"Goa"}] if updatedListWithFulldata event used
+    }
+  
 }
