@@ -8,14 +8,29 @@ import { UserDetailsService } from "../user-details.service";
   styleUrls: ["./registration.component.css"]
 })
 export class RegistrationComponent implements OnInit {
+  //model to store data and send to backend
   model: any = {};
 
   //userDetails fields
   user = new UserDetails("", "", "", "", []);
-  preferences=[{id:1,name:"Action"},{id:2,name:"Drama"},{id:3,name:"Fantasy"},
-  {id:4,name:"Education"},{id:5,name:"Sci-Fi"},{id:6,name:"Horror"},
-  {id:7,name:"Thriller"},{id:8,name:"History"},{id:9,name:"Romance"}];
 
+  //master preferences
+  preferences = [
+    { id: 1, name: "Trave," },
+    { id: 2, name: "Horror" },
+    { id: 3, name: "Programming" },
+    { id: 4, name: "Philosophy" },
+    { id: 5, name: "Thriller" },
+    { id: 6, name: "Sci-Fi" },
+    { id: 7, name: "Comic" },
+    { id: 8, name: "Fiction" },
+    { id: 9, name: "Romance" },
+    { id: 10, name: "History" },
+    { id: 11, name: "Aptitude" },
+    { id: 12, name: "Education" },
+    { id: 13, name: "Religion" },
+    { id: 14, name: "Biography" }
+  ];
 
   //creating userDetailService
   constructor(private userDetailService: UserDetailsService) {}
@@ -33,11 +48,8 @@ export class RegistrationComponent implements OnInit {
       .subscribe(res => console.log("Done"));
   }
 
-  selectedPreferenceList(list){
-    console.log(list)
-     //if Pune and Goa is selected
-     //output will be ["Pune","Goa"]   if updatedlist event used
-     //output will be [{id:1,name:"Pune"},{id:4,name:"Goa"}] if updatedListWithFulldata event used
-    }
-  
+  //selectedPreferenceList is coming from the front end in a list and stored in userPreference in form of array
+  selectedPreferenceList(list) {
+    this.user.userPreferences = list;
+  }
 }

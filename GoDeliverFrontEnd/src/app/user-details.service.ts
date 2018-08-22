@@ -10,7 +10,7 @@ export class UserDetailsService {
   constructor(public http: HttpClient) {}
 
   //Backend saveuser url
-  private post_url = "http://localhost:8080/api/v1/save/user";
+  private post_url = "http://localhost:8080/api/v1/user";
 
   addUser(user: UserDetails): Observable<UserDetails> {
     // To store the details through microservice into the database
