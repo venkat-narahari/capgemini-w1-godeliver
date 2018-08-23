@@ -3,16 +3,7 @@ package com.stackroute.bookservice.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Document
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder
 public class Book {
 	@Id
 	private int id;
@@ -28,9 +19,6 @@ public class Book {
 	private String publishedYear;
 	
 
-	public Book() {
-	
-	}
 	
 	public Book(int id, String bookISBN_13, String title, String poster, String rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear) {

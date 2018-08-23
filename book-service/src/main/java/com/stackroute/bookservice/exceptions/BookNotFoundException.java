@@ -7,15 +7,15 @@ public class BookNotFoundException extends Exception {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	int bookId;
+	int id;
 	String bname;
 	
 	public BookNotFoundException() {
 		
 	}
 	
-	public BookNotFoundException(int bookId) {
-		this.bookId=bookId;
+	public BookNotFoundException(int id) {
+		this.id=id;
 	}
 	
 	public BookNotFoundException(String bname) {

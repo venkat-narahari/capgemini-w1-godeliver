@@ -63,7 +63,7 @@ public class BookServicesImpl implements BookServices{
 			return null;
 		}
 		else {
-			book.setBookId(bookId);
+			book.setId(bookId);
 			Book updatedbook = bookRepository.save(book);
 			return updatedbook;
 		}
