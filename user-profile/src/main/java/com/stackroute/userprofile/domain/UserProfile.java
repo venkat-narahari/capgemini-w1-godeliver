@@ -1,30 +1,83 @@
 package com.stackroute.userprofile.domain;
 
-import java.util.Date;
-import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Data
+@Document
 public class UserProfile {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int userId;
 	private String userName;
 	private String userEmail;
-	private Date userDob;
-	private String userPassword;	
-	
+	private String userDob;
+	private String userPassword;
+	private String[] userPreferences;
+	private String userGender;
+	private double userMobile;
+
+	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
+			String userGender, double userMobile) {
+		super();
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userDob = userDob;
+		this.userPassword = userPassword;
+		this.userPreferences = userPreferences;
+		this.userGender = userGender;
+		this.userMobile = userMobile;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserDob() {
+		return userDob;
+	}
+
+	public void setUserDob(String userDob) {
+		this.userDob = userDob;
+	}
+
+	public String getUserPassword() {
+		return userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+
+	public String[] getUserPreferences() {
+		return userPreferences;
+	}
+
+	public void setUserPreferences(String[] userPreferences) {
+		this.userPreferences = userPreferences;
+	}
+
+	public String getUserGender() {
+		return userGender;
+	}
+
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
+	}
+
+	public double getUserMobile() {
+		return userMobile;
+	}
+
+	public void setUserMobile(double userMobile) {
+		this.userMobile = userMobile;
+	}
+
 }
