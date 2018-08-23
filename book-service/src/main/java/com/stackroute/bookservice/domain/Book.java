@@ -15,43 +15,44 @@ import lombok.NoArgsConstructor;
 //@Builder
 public class Book {
 	@Id
-	private int bookId;
+	private int id;
 	private String bookISBN_13;
-	private String bookTitle;
-	private String bookPoster;
-	private String bookRating;
-	private String bookVolume;
-	private String bookWriter;
-	private String bookPublisher;
-	private String bookGenre;
-	private String bookCost;
+	private String title;
+	private String poster;
+	private String rating;
+	private String volume;
+	private String author;
+	private String publisher;
+	private String genre;
+	private String cost;
+	private String publishedYear;
 	
-	public Book(int bookId, String bookISBN_13, String bookTitle, String bookPoster, String bookRating,
-			String bookVolume, String bookWriter, String bookPublisher, String bookGenre, String bookCost) {
-	
-		this.bookId = bookId;
-		this.bookISBN_13 = bookISBN_13;
-		this.bookTitle = bookTitle;
-		this.bookPoster = bookPoster;
-		this.bookRating = bookRating;
-		this.bookVolume = bookVolume;
-		this.bookWriter = bookWriter;
-		this.bookPublisher = bookPublisher;
-		this.bookGenre = bookGenre;
-		this.bookCost = bookCost;
-	}
-	
-	
+
 	public Book() {
 	
 	}
-
-
-	public int getBookId() {
-		return bookId;
+	
+	public Book(int id, String bookISBN_13, String title, String poster, String rating, String volume, String author,
+			String publisher, String genre, String cost, String publishedYear) {
+		
+		this.id = id;
+		this.bookISBN_13 = bookISBN_13;
+		this.title = title;
+		this.poster = poster;
+		this.rating = rating;
+		this.volume = volume;
+		this.author = author;
+		this.publisher = publisher;
+		this.genre = genre;
+		this.cost = cost;
+		this.publishedYear = publishedYear;
 	}
-	public void setBookId(int bookId) {
-		this.bookId = bookId;
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getBookISBN_13() {
 		return bookISBN_13;
@@ -59,59 +60,63 @@ public class Book {
 	public void setBookISBN_13(String bookISBN_13) {
 		this.bookISBN_13 = bookISBN_13;
 	}
-	public String getBookTitle() {
-		return bookTitle;
+	public String getTitle() {
+		return title;
 	}
-	public void setBookTitle(String bookTitle) {
-		this.bookTitle = bookTitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getBookPoster() {
-		return bookPoster;
+	public String getPoster() {
+		return poster;
 	}
-	public void setBookPoster(String bookPoster) {
-		this.bookPoster = bookPoster;
+	public void setPoster(String poster) {
+		this.poster = poster;
 	}
-	public String getBookRating() {
-		return bookRating;
+	public String getRating() {
+		return rating;
 	}
-	public void setBookRating(String bookRating) {
-		this.bookRating = bookRating;
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
-	public String getBookVolume() {
-		return bookVolume;
+	public String getVolume() {
+		return volume;
 	}
-	public void setBookVolume(String bookVolume) {
-		this.bookVolume = bookVolume;
+	public void setVolume(String volume) {
+		this.volume = volume;
 	}
-	public String getBookWriter() {
-		return bookWriter;
+	public String getAuthor() {
+		return author;
 	}
-	public void setBookWriter(String bookWriter) {
-		this.bookWriter = bookWriter;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	public String getBookPublisher() {
-		return bookPublisher;
+	public String getPublisher() {
+		return publisher;
 	}
-	public void setBookPublisher(String bookPublisher) {
-		this.bookPublisher = bookPublisher;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
-	public String getBookGenre() {
-		return bookGenre;
+	public String getGenre() {
+		return genre;
 	}
-	public void setBookGenre(String bookGenre) {
-		this.bookGenre = bookGenre;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
-	public String getBookCost() {
-		return bookCost;
+	public String getCost() {
+		return cost;
 	}
-	public void setBookCost(String bookCost) {
-		this.bookCost = bookCost;
+	public void setCost(String cost) {
+		this.cost = cost;
+	}
+	public String getPublishedYear() {
+		return publishedYear;
+	}
+	public void setPublishedYear(String publishedYear) {
+		this.publishedYear = publishedYear;
 	}
 	
 	
 	
-	
-
 	
 
 }
