@@ -20,6 +20,9 @@ public class UserProfileServicesImpl implements UserProfileServices {
 		this.userProfileRepository = userProfileRepository;
 	}
 
+	/* 
+	 * method for checking whether the user exists with the email id or not and if not exists, the user will be saved
+	 */
 	@Override
 	public UserProfile saveUser(UserProfile user) {
 		if (userProfileRepository.getByUserEmail(user.getUserEmail()).size() == 0) {
@@ -30,17 +33,23 @@ public class UserProfileServicesImpl implements UserProfileServices {
 			return null;
 	}
 
+	/* 
+	 * method for updating the existing user
+	 */
 	@Override
-	public UserProfile updateUser(UserProfile user,String userEmail) {
-			user.setUserEmail(userEmail);
-			UserProfile updatedUser = userProfileRepository.save(user);
-			return updatedUser;
-		}
+	public UserProfile updateUser(UserProfile user, String userEmail) {
+		user.setUserEmail(userEmail);
+		UserProfile updatedUser = userProfileRepository.save(user);
+		return updatedUser;
+	}
 
+	/* 
+	 * method for viewing the existing user
+	 */
 	@Override
 	public List<UserProfile> viewUser(String userEmail) {
-		List<UserProfile> user=userProfileRepository.getByUserEmail(userEmail);
+		List<UserProfile> user = userProfileRepository.getByUserEmail(userEmail);
 		return user;
 	}
-		
-	}
+
+}
