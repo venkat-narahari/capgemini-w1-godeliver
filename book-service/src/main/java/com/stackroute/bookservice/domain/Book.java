@@ -18,8 +18,6 @@ public class Book {
 	private String cost;
 	private String publishedYear;
 	
-
-	
 	public Book(int id, String bookISBN_13, String title, String poster, String rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear) {
 		
