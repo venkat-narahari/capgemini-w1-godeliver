@@ -25,9 +25,7 @@ export class BookService {
     return this.http.delete(this.delete_url + '/' +id)
     }
 
-  recommendation(book:Books):Observable<Books> {
-    return this.http.post<Books>(this.recommended_url+'/'+user,book);
-  }
+ 
 
 
 }

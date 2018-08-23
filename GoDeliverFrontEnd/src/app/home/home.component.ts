@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import * as $  from 'jquery';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-$:any;
-  constructor(private router: ActivatedRoute) { }
-
-  ngOnInit() { jQuery(function(){})
-  }
-
+  $: any;
+  constructor(private router: ActivatedRoute) {}
+  ngOnInit() {}
 }
