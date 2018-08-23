@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-3" *ngFor="let books of recommended_books; let i = index">
+    <div *ngIf="i < 9">
+      <div class="card mt-3 mb-3">
+        <div class="card-header text-center">
+          {{ books.release_date | date:'mediumDate' }}
+        </div>
+        <div class="card-body">
+          <img class="card-img-top img-fluid" src="{{books.poster_path}}" alt="{{ books.original_title }}" style="height: 460px">
+          <p class="text-center">{{ books.original_title }}</p>
+          <a routerLink="/book/{{ books.isbn }}" class="btn btn-block btn-info">Book Details</a>
+          <a routerLink="/wishlist/{{ books.isbn }}" class="btn btn-block btn-success">Add book to wishlist</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
