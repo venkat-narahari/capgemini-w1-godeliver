@@ -41,7 +41,7 @@
         <div class="form-group">
           <label for="email">Email</label>
           <input type="text" class="form-control" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}"
-            placeholder="john@gmail.com" name="email" required email />
+            placeholder="john@gmail.com" name="email" required [pattern]="emailPattern" email />
           <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
             <div *ngIf="email.errors.required">Email Name is required</div>
             <div *ngIf="email.errors.email">Email must be a valid email Address</div>

@@ -13,7 +13,8 @@ import { FooterComponent } from "./footer/footer.component";
 import { LoginComponent } from "./login/login.component";
 import { RoutingModule } from "./routing/routing.module";
 import { MultipleCheckboxesModule } from 'multiple-checkboxes';
-
+import { RecommendationsComponent } from './recommendations/recommendations.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +22,16 @@ import { MultipleCheckboxesModule } from 'multiple-checkboxes';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    RecommendationsComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RoutingModule, MultipleCheckboxesModule
+    RoutingModule, MultipleCheckboxesModule, 
   ],
   providers: [UserDetailsService],
   bootstrap: [AppComponent]
