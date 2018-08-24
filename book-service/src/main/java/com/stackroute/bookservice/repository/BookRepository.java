@@ -1,19 +1,20 @@
 package com.stackroute.bookservice.repository;
 
-import java.util.List;
-
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.stackroute.bookservice.domain.Book;
 
-
 @Repository
-public interface BookRepository extends CrudRepository<Book, Integer>{
-	
-//	@Query("SELECT b FROM Book b WHERE b.bookName LIKE :bname%")
-//	public List<Book> getByBookName(@Param("bname") String bname);
+public interface BookRepository extends MongoRepository<Book, Integer> {
+
+	@Query("{bookISBN_10 : ?0}")
+	public Book getByBookISBN_10(String bookISBN_10);
+
+	public static Book saveBook(Book book) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

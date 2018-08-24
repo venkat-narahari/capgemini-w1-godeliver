@@ -57,29 +57,16 @@ public class BookServicesImpl implements BookServices{
 	}
 
 	@Override
-	public Book updateBook(int bookId,Book book) {
-		Optional<Book> presentbook = bookRepository.findById(bookId);
-		if(!presentbook.isPresent()) {
+	public Book updateBook(String bookId,Book book) {
+		Book presentbook = bookRepository.getByBookISBN_10(bookId);
+		if(presentbook==null) {
 			return null;
 		}
 		else {
-			book.setId(bookId);
+			book.setBookISBN_10(bookId);
 			Book updatedbook = bookRepository.save(book);
 			return updatedbook;
 		}
 	}
-
-//	@Override
-//	public List<Book> getBookByName(String bname) {
-//		List<Book> bookList = bookRepository.getByBookName(bname);
-//		if(bookList.isEmpty()) {
-//			return null;
-//		}
-//		else {
-//			return bookList;
-//		}
-//	}
-
-
 
 }

@@ -1,13 +1,10 @@
 package com.stackroute.bookservice.domain;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Book {
-	@Id
-	private int id;
-	private String bookISBN_13;
+	private String bookISBN_10;
 	private String title;
 	private String poster;
 	private String rating;
@@ -17,12 +14,19 @@ public class Book {
 	private String genre;
 	private String cost;
 	private String publishedYear;
+	private String pages;
+	private String description;
+	private String language;
 	
-	public Book(int id, String bookISBN_13, String title, String poster, String rating, String volume, String author,
-			String publisher, String genre, String cost, String publishedYear) {
+
+	public Book() {
 		
-		this.id = id;
-		this.bookISBN_13 = bookISBN_13;
+	}
+	public Book(String bookISBN_10, String title, String poster, String rating, String volume, String author,
+			String publisher, String genre, String cost, String publishedYear, String pages, String description,
+			String language) {
+		
+		this.bookISBN_10 = bookISBN_10;
 		this.title = title;
 		this.poster = poster;
 		this.rating = rating;
@@ -32,19 +36,17 @@ public class Book {
 		this.genre = genre;
 		this.cost = cost;
 		this.publishedYear = publishedYear;
+		this.pages = pages;
+		this.description = description;
+		this.language = language;
 	}
-
-	public int getId() {
-		return id;
+	
+	
+	public String getBookISBN_10() {
+		return bookISBN_10;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getBookISBN_13() {
-		return bookISBN_13;
-	}
-	public void setBookISBN_13(String bookISBN_13) {
-		this.bookISBN_13 = bookISBN_13;
+	public void setBookISBN_10(String bookISBN_10) {
+		this.bookISBN_10 = bookISBN_10;
 	}
 	public String getTitle() {
 		return title;
@@ -100,9 +102,22 @@ public class Book {
 	public void setPublishedYear(String publishedYear) {
 		this.publishedYear = publishedYear;
 	}
-	
-	
-	
-	
-
+	public String getPages() {
+		return pages;
+	}
+	public void setPages(String pages) {
+		this.pages = pages;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	} 
 }

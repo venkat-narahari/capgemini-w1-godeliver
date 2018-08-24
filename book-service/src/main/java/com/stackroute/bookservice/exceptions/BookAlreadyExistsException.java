@@ -8,13 +8,16 @@ public class BookAlreadyExistsException extends Exception{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Book book;
+	String message;
 	
-	public BookAlreadyExistsException(Book book) {
-		this.book=book;
+	public BookAlreadyExistsException(String message) {
+		this.message=message;
 	}
-	public String toString(){
-	     return book + " already exists" ;
+
+	@Override
+	public String toString() {
+		return "BookAlreadyExistsException [message=" + message + "]";
 	}
+	
 
 }
