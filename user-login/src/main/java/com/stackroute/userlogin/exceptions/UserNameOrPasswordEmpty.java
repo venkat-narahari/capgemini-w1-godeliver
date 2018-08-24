@@ -1,18 +1,15 @@
 package com.stackroute.userlogin.exceptions;
 
-public class UserNameNotFoundException  extends Exception{
-	
+public class UserNameOrPasswordEmpty extends Exception{
 	private static final long serialVersionUID = 1L;
 
 	String message;
 
-	public UserNameNotFoundException(String message) {
+	public UserNameOrPasswordEmpty(String message) {
 		this.message = message;
 	}
 
 	public String toString() {
 		return message;
 	}
-
-
 }

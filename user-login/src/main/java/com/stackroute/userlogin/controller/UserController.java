@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.userlogin.domain.Token;
 import com.stackroute.userlogin.domain.User;
+import com.stackroute.userlogin.exceptions.PasswordNotMatchException;
+import com.stackroute.userlogin.exceptions.UserNameNotFoundException;
+import com.stackroute.userlogin.exceptions.UserNameOrPasswordEmpty;
 import com.stackroute.userlogin.services.UserService;
 
 import io.jsonwebtoken.Jwts;
@@ -34,36 +37,45 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<?> loginUser(@RequestBody User login)
-			throws ServletException{
+	public ResponseEntity<?> loginUser(@RequestBody User login) throws ServletException {
 
 		String jwtToken = "";
 
-		if (login.getEmail() == null || login.getPassword() == null) {
-			throw new ServletException("Please fill in username and password");
+		try {
+			if (login.getEmail() == null || login.getPassword() == null) {
+				throw new UserNameOrPasswordEmpty("Please fill in username and password");
+			}
+		} catch (UserNameOrPasswordEmpty e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
 
 		String email = login.getEmail();
 		String password = login.getPassword();
 
 		User user = userService.findByEmail(email);
-
-		if (user == null) {
-			throw new ServletException("User email not found.");
+		try {
+			if (user == null) {
+				throw new UserNameNotFoundException("User email not found.");
+			}
+		} catch (UserNameNotFoundException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
-
 		String pwd = user.getPassword();
-
-		if (!password.equals(pwd)) {
-			throw new ServletException("Invalid login. Please check your name and password.");
+		try {
+			if (!password.equals(pwd)) {
+				throw new PasswordNotMatchException("Invalid login. Please check your name and password.");
+			}
+		} catch (PasswordNotMatchException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
 
 		jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
 				.signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-		
+
 		Token token = new Token();
 		token.setToken(jwtToken);
 		token.setEmail(email);
 		return new ResponseEntity<>(token, HttpStatus.CREATED);
+
 	}
 }
