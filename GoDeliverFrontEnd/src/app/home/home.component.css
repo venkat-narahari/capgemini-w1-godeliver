@@ -1,0 +1,24 @@
+.parallax {
+  background: url(../../assets/home) no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 800px;
+}
+
+.goDel {
+  position: relative;
+  top: 20%;
+  left: 70%;
+  font-family: "Poppins";
+  font-size: 3em;
+  color: #ad2929;
+}
+
+.tagline {
+  position: relative;
+  top: 18%;
+  left: 63%;
+  font-family: "Poppins";
+  font-size: 2em;
+  color: #ad2929;
+}

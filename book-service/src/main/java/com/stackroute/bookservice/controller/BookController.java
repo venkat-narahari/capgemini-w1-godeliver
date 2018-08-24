@@ -3,11 +3,13 @@ package com.stackroute.bookservice.controller;
 import java.util.List;
 
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.exceptions.BookAlreadyExistsException;
 import com.stackroute.bookservice.exceptions.BookNotFoundException;
 import com.stackroute.bookservice.services.BookServices;
+
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -30,6 +33,11 @@ public class BookController {
 	public BookController(BookServices bookServiceImpl) {
 		this.bookServiceImpl=bookServiceImpl;
 	}
+	
+	@Autowired
+	private KafkaTemplate<String, Book> kafkaTemplate;
+
+	private static final String TOPIC = "book_details";
 
 	@RequestMapping(value="/books" , method=RequestMethod.GET , produces="application/json")
 	public ResponseEntity<?> getAllBooks(){
@@ -54,9 +62,11 @@ public class BookController {
 	
 	@RequestMapping(value="save/book" , method=RequestMethod.POST , produces="application/json")
 	public ResponseEntity<?> saveBook(@RequestBody Book book) throws BookAlreadyExistsException{
+		
 		try {
 			Book savedBook;
 			if((savedBook = bookServiceImpl.saveBook(book))!=null) {
+				kafkaTemplate.send(TOPIC, book);
 				return new ResponseEntity<Book>(savedBook,HttpStatus.OK);
 			}
 			else {
