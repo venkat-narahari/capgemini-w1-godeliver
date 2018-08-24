@@ -5,11 +5,13 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { RegistrationComponent } from "../registration/registration.component";
+import { WishlistComponent } from "../wishlist/wishlist.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent },
-  { path: "register", component: RegistrationComponent }
+  { path: "register", component: RegistrationComponent },
+  { path: "wishlist", component: WishlistComponent },
 ];
 
 @NgModule({
