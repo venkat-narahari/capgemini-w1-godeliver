@@ -21,12 +21,11 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	}
 
 	/* 
-	 * method for checking whether the user exists with the email id or not and if not exists, the user will be saved
+	 * Checks whether the user exists with the email id or not and if not exists, the user will be saved
 	 */
 	@Override
 	public UserProfile saveUser(UserProfile user) {
 		if (userProfileRepository.getByUserEmail(user.getUserEmail()).size() == 0) {
-			user.setUserPassword(null);
 			UserProfile savedUser = userProfileRepository.save(user);
 			return savedUser;
 		} else
@@ -34,7 +33,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	}
 
 	/* 
-	 * method for updating the existing user
+	 * Updating the existing user
 	 */
 	@Override
 	public UserProfile updateUser(UserProfile user, String userEmail) {
