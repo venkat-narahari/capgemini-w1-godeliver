@@ -1,4 +1,4 @@
-package me.aboullaite;
+package com.stackroute.userlogin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

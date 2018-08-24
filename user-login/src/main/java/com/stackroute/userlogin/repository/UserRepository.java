@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.stackroute.userlogin.domain.User;
 
 @Repository
-public interface UserDao extends CrudRepository<User, Long> {
-	User save(User user);
+public interface UserRepository extends CrudRepository<User, Long> {
+//	 User save(User user);
 
 	User findByEmail(String email);
 }
