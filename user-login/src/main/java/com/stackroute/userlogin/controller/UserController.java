@@ -31,10 +31,10 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public User registerUser(@RequestBody User user) {
-		return userService.save(user);
-	}
+//	@RequestMapping(value = "/register", method = RequestMethod.POST)
+//	public User registerUser(@RequestBody User user) {
+//		return userService.save(user);
+//	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> loginUser(@RequestBody User login) throws ServletException {
