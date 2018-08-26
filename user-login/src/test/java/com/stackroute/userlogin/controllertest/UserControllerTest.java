@@ -4,7 +4,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,28 +39,26 @@ public class UserControllerTest {
 	private User user;
 	
 	
-	@Before
+	/*@Before
 	public void setUp() throws Exception {
 
 		MockitoAnnotations.initMocks(this);
 
 		user = new User((long) 1,"teja","kathari","tejakathari007@gmail.com","teja007",null);
 		mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
-	}
+	}*/
 	
 	
-	
+	/*
 	@Test
 	public void findByEmail() throws Exception {
-		
-		//String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWpha2F0aGFyaTAwN0BnbWFpbC5jb20iLCJyb2xlcyI6InVzZXIiLCJpYXQiOjE1MzQ5MTA1ODJ9.axIKv20JhuHhFCnSdXs2Jkyo_iLkEOr700rOUntSBPI";
 		when(userService.findByEmail("tejakathari007@gmail.com")).thenReturn(user);
 		mockMvc.perform(post("/user/login")
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isCreated()).andDo(print());
 		verify(userService, times(1)).findByEmail("tejakathari007@gmail.com");
 		verifyNoMoreInteractions(userService);	
 	}
-	
+	*/
 	
 
 }

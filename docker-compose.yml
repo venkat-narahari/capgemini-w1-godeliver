@@ -43,3 +43,36 @@ services:
       - 8092:8092
     healthcheck:
       test: "exit 0"
+
+mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=go_d
+      - MYSQL_PASSWORD=Root@123
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+user-login:
+    build: user-login/
+    image: user-login
+    depends_on:
+      - mysql
+    ports:
+      - 8082:8082
+    environment:
+      - DATABASE_HOST=mysql
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=Root@123
+      - DATABASE_NAME=go_d  
+      - DATABASE_PORT=3306
+    network_mode: "host"
+    hostname: localhost
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+
