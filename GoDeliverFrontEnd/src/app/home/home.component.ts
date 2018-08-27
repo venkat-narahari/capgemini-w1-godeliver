@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { BookService } from "../book.service";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -7,10 +8,15 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   $: any;
-  Name:any;
-  constructor(private router: ActivatedRoute) {}
-  ngOnInit() {  
+  Name: any;
+  genre: any;
+  constructor(
+    private router: ActivatedRoute,
+    private bookService: BookService
+  ) {}
+  ngOnInit() {
+    this.bookService
+      .getGenreList()
+      .subscribe(fullList => (this.genre = fullList));
   }
-
-
 }

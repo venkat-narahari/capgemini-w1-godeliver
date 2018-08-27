@@ -22,6 +22,13 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ServicepageComponent } from './servicepage/servicepage.component';
+import { ReturnpolicyComponent } from './returnpolicy/returnpolicy.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OrdersComponent } from './orders/orders.component';
+import { CartComponent } from './cart/cart.component';
+import { BookComponent } from './book/book.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +39,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     LoginComponent,
     RecommendationsComponent,
     WishlistComponent,
+    ServicepageComponent,
+    ReturnpolicyComponent,
+    AboutusComponent,
+    ProfileComponent,
+    OrdersComponent,
+    CartComponent,
+    BookComponent,
   ],
   imports: [
     BrowserModule,

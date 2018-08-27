@@ -1,0 +1,65 @@
+<div class="container">
+
+  <div *ngIf="book">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card mt-5 mb-5">
+          <div class="card-header">
+            {{ book.title }}
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-5">
+                <img src="{{ book.poster }}" class="img-fluid" alt="{{ book.title }}">
+              </div>
+              <div class="col-sm-7">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <strong>Book ISBN 10: </strong> {{ book.bookISBN }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Rating: </strong> {{ book.rating }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Author: </strong> {{ book.author }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Publisher: </strong> {{ book.publisher }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Release Date: </strong> {{ book.publishedYear | date:'dd-MM-yyyy' }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Summary: </strong> {{ book.description }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Pages: </strong> {{ book.pages }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Cost: </strong> {{ book.cost }}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Genre: </strong>
+                    <span *ngFor="let genre of movie.genres" class="badge badge-primary mr-2">
+                      {{ book.genre }}
+                    </span>
+                  </li>
+                  <li class="list-group-item">
+                    <a routerLink='' target="_blank">
+                      Homepage
+                    </a>
+
+                  </li>
+                  
+                  <li *ngIf=curUser>
+                    <a (click)="addBook(book)" class="btn btn-block btn-success">Add Book to Wishlist</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.card -->
+      </div>
+    </div>
+  </div>
+</div>

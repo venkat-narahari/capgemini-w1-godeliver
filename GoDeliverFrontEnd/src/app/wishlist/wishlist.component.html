@@ -6,10 +6,10 @@
           {{ books.releaseYear | date:'mediumDate' }}
         </div>
         <div class="card-body">
-          <img class="card-img-top img-fluid" src="{{books.booksPoster}}" alt="{{ books.booksTitle }}" style="height: 460px">
-          <p class="text-center">{{ books.booksTitle }}</p>
-          <a routerLink="/books/{{ books.booksId }}" href="#" class="btn btn-block btn-info">Books Details</a>
-          <button (click)="delete(books.booksId)">Delete books from wishlist</button>
+          <img class="card-img-top img-fluid" src="{{books.poster}}" alt="{{ books.title }}" style="height: 280px">
+          <p class="text-center">{{ books.title }}</p>
+          <a routerLink="/books/{{ books.id }}" href="#" class="btn btn-block btn-info">Books Details</a>
+          <button (click)="delete(books.id)">Delete books from wishlist</button>
         </div>
       </div>
     </div>
