@@ -2,6 +2,7 @@ package com.stackroute.bookservice.controller;
 
 import java.util.List;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.exceptions.BookAlreadyExistsException;
 import com.stackroute.bookservice.exceptions.BookNotFoundException;
 import com.stackroute.bookservice.services.BookServices;
+
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -73,11 +76,11 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "delete/book/{bookId}", method = RequestMethod.DELETE, produces = "application/json")
-	public ResponseEntity<?> deleteBook(@PathVariable int bookId) throws BookNotFoundException {
+	public ResponseEntity<?> deleteBook(@PathVariable String bookId) throws BookNotFoundException {
 		try {
-			Book book;
-			if ((book = bookServiceImpl.deleteBook(bookId)) != null) {
-				return new ResponseEntity<Book>(book, HttpStatus.OK);
+			
+			if ((bookServiceImpl.deleteBook(bookId)) != null) {
+				return new ResponseEntity<String>("deleted", HttpStatus.OK);
 			} else {
 				throw new BookNotFoundException();
 			}
@@ -100,5 +103,13 @@ public class BookController {
 		} catch (BookNotFoundException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.OK);
 		}
+	}
+	
+	@RequestMapping(value = "/book/{bookTitle}", method = RequestMethod.GET)
+	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) {
+		List<Book> list=bookServiceImpl.getByTitle(bookTitle);
+		
+		return new ResponseEntity<List<Book>>(list,HttpStatus.OK);
+
 	}
 }

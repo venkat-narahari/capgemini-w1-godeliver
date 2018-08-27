@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.repository.BookRepository;
-import com.stackroute.bookservice.services.BookServices;
+
 
 @Service
 public class BookServicesImpl implements BookServices{
@@ -44,14 +44,14 @@ public class BookServicesImpl implements BookServices{
 	}
 
 	@Override
-	public Book deleteBook(int bookId){
-		Optional<Book> book = bookRepository.findById(bookId);
-		if(!book.isPresent()) {
+	public String deleteBook(String bookId){
+		Book book = bookRepository.getByBookISBN_10(bookId);
+		if(book==null) {
 			return null;
 		}
 		else {
-			bookRepository.deleteById(bookId);
-			return book.get();
+			bookRepository.deleteById(Integer.parseInt(bookId));
+			return "deleted";
 		}
 		
 	}
@@ -67,6 +67,12 @@ public class BookServicesImpl implements BookServices{
 			Book updatedbook = bookRepository.save(book);
 			return updatedbook;
 		}
+	}
+
+	@Override
+	public List<Book> getByTitle(String bookTitle) {
+		List<Book> list=bookRepository.getByBookTitle(bookTitle);
+		return list;
 	}
 
 }
