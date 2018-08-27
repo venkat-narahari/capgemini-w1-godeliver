@@ -17,6 +17,8 @@ import com.stackroute.userprofile.domain.UserProfile;
 @Configuration
 public class KafkaConfiguration {
 	
+	static final String TOPIC ="userprofile";
+	
 	 @Bean
 	    public ProducerFactory<String, UserProfile> producerFactory() {
 	        Map<String, Object> config = new HashMap<>();
@@ -32,5 +34,9 @@ public class KafkaConfiguration {
 	    @Bean
 	    public KafkaTemplate<String, UserProfile> kafkaTemplate() {
 	        return new KafkaTemplate<>(producerFactory());
+	    }
+	    
+	    public static String getTopic() {
+	    	return TOPIC;
 	    }
 }

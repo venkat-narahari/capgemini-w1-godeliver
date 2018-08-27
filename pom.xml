@@ -27,5 +27,6 @@
 		<module>config-service</module>
 		<module>eureka-server</module>
 		<module>zuul-apigateway</module>
+		<module>user-profile</module>
 	</modules>
 </project>
