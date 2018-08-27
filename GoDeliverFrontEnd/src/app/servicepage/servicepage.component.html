@@ -1,0 +1,38 @@
+<div class="container mb-2">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="Name">Name</label>
+      <input type="text" class="form-control" (ngModel)="model.Name" #Name="ngModel" [ngClass]="{'is-invalid':f.submitted && Name.invalid}"
+        name="Name" placeholder="Full Name" required />
+      <div class="invalid-feedback">
+        <div>Name is required</div>
+      </div>
+    </div>
+
+
+    <!--form-group-->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" (ngModel)="model.email" #email="ngModel" [ngClass]="{'is-invalid':f.submitted && email.invalid}"
+        placeholder="john@gmail.com" name="email" required [pattern]="emailPattern" email />
+      <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+        <div *ngIf="email.errors.required">Email Name is required</div>
+        <div *ngIf="email.errors.email">Email must be a valid email Address</div>
+      </div>
+    </div>
+    <!--form-group-->
+    <div class="form-group">
+      <label for="exampleTextarea">Concern</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <!--form-group-->
+    <div class="form-group">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+    <!--form-group-->
+
+  </form>
+</div>
+<br>
+<br>
+<br><br><br><br><br>

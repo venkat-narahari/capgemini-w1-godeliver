@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,7 @@ import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.exceptions.BookAlreadyExistsException;
 import com.stackroute.bookservice.exceptions.BookNotFoundException;
 import com.stackroute.bookservice.services.BookServices;
-
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
 public class BookController {

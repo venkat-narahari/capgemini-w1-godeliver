@@ -1,33 +1,61 @@
-<!--header-->
-<header>
+<html>
 
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand ml-5 col-xs-8" href="#">
-      <img src="assets/books.ico" alt="logo" style="width:40px;">
-    </a>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
-    <!-- Links -->
-    <ul class="navbar-nav pull-right col-xs-4">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/wishlist">Wishlist</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/cart">Cart</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
+<body>
+  <!--header-->
+  <header>
+    <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
+      <!-- Brand/logo -->
+      <a class="navbar-brand ml-5 col-xs-8 p-1" routerLink="">
+        <img src="assets/books.ico" alt="logo" style="width:40px;">
+      </a>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/register">Register</a>
-      </li>
-    </ul>
-  </nav>
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <!-- Dropdown -->
+        <div *ngIf=noUser style="padding-top: 10px;">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" href="#">Login Register</a>
+          </li>
+        </div>
+        <div *ngIf=curuser style="padding-top: 10px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              {{curuser[0]}}
+            </a>
+            <div class="dropdown-menu ">
+              <a class="dropdown-item" routerLink="/profile"href="#">User Profile</a>
+              <a class="dropdown-item" routerLink="/wishlist" href="#">Wishlist</a>
+              <a class="dropdown-item" routerLink="/orders">Orders</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
+            </div>
+          </li>
+        </div>
 
-</header>
-<!--header-->
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            More
+          </a>
+          <div class="dropdown-menu navbar-light">
+            <a class="dropdown-item" routerLink="/servicepage">24x7 Customer Care</a>
+            <a class="dropdown-item" routerLink="/return" >Return Policy</a>
+            <a class="dropdown-item" routerLink="/about">About Us</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">Cart</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</body>
+
+</html>
