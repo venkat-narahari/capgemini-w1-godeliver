@@ -42,15 +42,15 @@ public class UserController {
 		String jwtToken = "";
 
 		try {
-			if (login.getEmail() == null || login.getPassword() == null) {
+			if (login.getUserEmail() == null || login.getUserPassword() == null) {
 				throw new UserNameOrPasswordEmpty("Please fill in username and password");
 			}
 		} catch (UserNameOrPasswordEmpty e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
 
-		String email = login.getEmail();
-		String password = login.getPassword();
+		String email = login.getUserEmail();
+		String password = login.getUserPassword();
 
 		User user = userService.findByEmail(email);
 		try {
@@ -60,7 +60,7 @@ public class UserController {
 		} catch (UserNameNotFoundException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
-		String pwd = user.getPassword();
+		String pwd = user.getUserPassword();
 		try {
 			if (!password.equals(pwd)) {
 				throw new PasswordNotMatchException("Invalid login. Please check your name and password.");
