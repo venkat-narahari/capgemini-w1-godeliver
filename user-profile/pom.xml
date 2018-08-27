@@ -7,7 +7,7 @@
 	<groupId>com.stackroute</groupId>
 	<artifactId>user-profile</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
 	<name>user-profile</name>
 	<description>user profile deatils</description>

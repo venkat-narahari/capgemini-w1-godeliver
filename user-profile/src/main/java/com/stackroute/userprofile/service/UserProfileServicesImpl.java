@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.userprofile.config.KafkaConfiguration;
 import com.stackroute.userprofile.domain.UserProfile;
 import com.stackroute.userprofile.repository.UserProfileRepository;
 
@@ -14,11 +16,19 @@ import com.stackroute.userprofile.repository.UserProfileRepository;
 public class UserProfileServicesImpl implements UserProfileServices {
 
 	private UserProfileRepository userProfileRepository;
+	private KafkaConfiguration kafkaConfig;
 
 	@Autowired
-	public UserProfileServicesImpl(UserProfileRepository userProfileRepository) {
+	public UserProfileServicesImpl(UserProfileRepository userProfileRepository, KafkaConfiguration kafkaConfig) {
 		this.userProfileRepository = userProfileRepository;
+		this.kafkaConfig=kafkaConfig;
 	}
+	
+	  String topic = kafkaConfig.getTopic();
+
+	    // Kafka template from configuration and topic
+	    @Autowired
+	    private KafkaTemplate<String, UserProfile> kafkaTemplate;
 
 	/* 
 	 * Checks whether the user exists with the email id or not and if not exists, the user will be saved
@@ -26,6 +36,8 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	@Override
 	public UserProfile saveUser(UserProfile user) {
 		if (userProfileRepository.getByUserEmail(user.getUserEmail()).size() == 0) {
+			kafkaTemplate.send(topic, user);
+			user.setUserPassword(null);
 			UserProfile savedUser = userProfileRepository.save(user);
 			return savedUser;
 		} else
