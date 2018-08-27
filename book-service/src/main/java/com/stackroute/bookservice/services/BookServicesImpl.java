@@ -1,6 +1,7 @@
 package com.stackroute.bookservice.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.bookservice.config.KafkaConfiguration;
 import com.stackroute.bookservice.domain.Book;
+import com.stackroute.bookservice.exceptions.BookNotFoundException;
 import com.stackroute.bookservice.repository.BookRepository;
 
 
@@ -59,7 +61,7 @@ public class BookServicesImpl implements BookServices{
 			return null;
 		}
 		else {
-			bookRepository.deleteById(Integer.parseInt(bookId));
+			bookRepository.deleteById(bookId);
 			return "deleted";
 		}
 		
@@ -83,5 +85,8 @@ public class BookServicesImpl implements BookServices{
 		List<Book> list=bookRepository.getByBookTitle(bookTitle);
 		return list;
 	}
+	
+
+	
 
 }

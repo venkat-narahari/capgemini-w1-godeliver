@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.exceptions.BookAlreadyExistsException;
+import com.stackroute.bookservice.exceptions.BookNotFoundException;
 
-public interface BookServices {
+public Stringerface BookServices {
 
 	public Book saveBook(Book book) throws BookAlreadyExistsException;
 

@@ -16,7 +16,7 @@ curUser:any;
 bookdetails=new Books("","","","","","","","","","","","","");
   ngOnInit() {
     this.router.params.subscribe((params) => {
-      const id = params['bookISBN'];
+      const id = params['book.bookISBN'];
       this.bookService.getBook(id).subscribe(data => {
         this.book = data;
         if(localStorage.getItem('userCurrentEmail')!=null) {
