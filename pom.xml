@@ -27,10 +27,6 @@
 		<module>config-service</module>
 		<module>eureka-server</module>
 		<module>zuul-apigateway</module>
-		<module>user-profile</module>
-		<module>user-login</module>
-		<module>book-service</module>
-		<module>recommendation</module>
 
 
 	</modules>
