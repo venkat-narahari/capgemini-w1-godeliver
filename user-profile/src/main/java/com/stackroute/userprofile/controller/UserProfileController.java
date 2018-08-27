@@ -36,12 +36,6 @@ public class UserProfileController {
 	 */
 	@RequestMapping(value = "user/save", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<?> saveUser(@RequestBody UserProfile user) {
-<<<<<<< HEAD
-		kafkaTemplate.send(TOPIC, user);
-		user.setUserPassword(null);
-		try {
-			if ((userProfileServicesImpl.saveUser(user)) != null) {	
-=======
 		try {
 			if ((userProfileServicesImpl.saveUser(user)) != null) {	
 				logger.debug("debug");
@@ -49,7 +43,6 @@ public class UserProfileController {
                 logger.warn("warm");
                 logger.info("info");
                 logger.trace("trace");
->>>>>>> 26cdb66dd9caf4bac9a4469c8a2ea8707c138357
 				return new ResponseEntity<String>("User added", HttpStatus.CREATED);
 			} else {
 				throw new EmailAlreadyExistsException("User already exists with this email!");
