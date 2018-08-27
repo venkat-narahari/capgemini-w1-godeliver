@@ -22,6 +22,16 @@ public class User {
 	@CreationTimestamp
 	private Date created;
 
+	/*public User(Long userId, String firstName, String lastName, String email, String password, Date created) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.created = created;
+	}*/
+
 	public Long getUserId() {
 		return userId;
 	}

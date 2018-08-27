@@ -1,9 +1,12 @@
 package com.stackroute.bookservice.domain;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Book {
+	
+	@Id
 	private String bookISBN_10;
 	private String title;
 	private String poster;
