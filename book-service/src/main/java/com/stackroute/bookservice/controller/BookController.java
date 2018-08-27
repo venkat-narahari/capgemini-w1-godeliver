@@ -34,11 +34,6 @@ public class BookController {
 		this.bookServiceImpl = bookServiceImpl;
 	}
 
-	@Autowired
-	private KafkaTemplate<String, Book> kafkaTemplate;
-
-	private static final String TOPIC = "book_details";
-
 	@RequestMapping(value = "/books", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<?> getAllBooks() {
 		try {
@@ -64,7 +59,7 @@ public class BookController {
 		try {
 			Book savedBook;
 			if ((savedBook = bookServiceImpl.saveBook(book)) != null) {
-				kafkaTemplate.send(TOPIC, book);
+				
 				return new ResponseEntity<Book>(savedBook, HttpStatus.OK);
 			} else {
 				throw new BookAlreadyExistsException("book already exists");

@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.bookservice.config.KafkaConfiguration;
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.repository.BookRepository;
 
@@ -14,11 +16,18 @@ import com.stackroute.bookservice.repository.BookRepository;
 public class BookServicesImpl implements BookServices{
 	
 	private BookRepository bookRepository;
+	private KafkaConfiguration kafkaConfig;
 
 	@Autowired
-	public BookServicesImpl(BookRepository bookRepository) {
+	public BookServicesImpl(BookRepository bookRepository, KafkaConfiguration kafkaConfig) {
 		this.bookRepository=bookRepository;
+		this.kafkaConfig=kafkaConfig;
 	}
+	
+	String topic=kafkaConfig.getTopic();
+	
+	@Autowired
+	private KafkaTemplate<String, Book> kafkaTemplate;
 
 	@Override
 	public Book saveBook(Book book) {
@@ -28,6 +37,7 @@ public class BookServicesImpl implements BookServices{
 		}
 		else {
 			Book savebook = bookRepository.save(book);
+			kafkaTemplate.send(topic, book);
 			return savebook;
 		}
 	}

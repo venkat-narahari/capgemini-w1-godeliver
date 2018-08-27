@@ -3,11 +3,7 @@ Implementation-Title: configuration-service
 Implementation-Version: 1.0.0
 Built-By: user
 Implementation-Vendor-Id: com.stackroute
-<<<<<<< HEAD
 Build-Jdk: 1.8.0_171
-=======
-Build-Jdk: 1.8.0_181
->>>>>>> 19bb728b2ee46299323967e71604dbcea6ec0a84
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/boeing-w1-test/configuration-service
 Created-By: Maven Integration for Eclipse
