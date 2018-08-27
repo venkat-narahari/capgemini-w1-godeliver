@@ -30,10 +30,10 @@
               {{curuser[0]}}
             </a>
             <div class="dropdown-menu ">
-              <a class="dropdown-item" href="#">User Profile</a>
+              <a class="dropdown-item" routerLink="/profile"href="#">User Profile</a>
               <a class="dropdown-item" routerLink="/wishlist" href="#">Wishlist</a>
-              <a class="dropdown-item" href="#">Orders</a>
-              <a class="dropdown-item" (click)="logout()" href="#">Logout</a>
+              <a class="dropdown-item" routerLink="/orders">Orders</a>
+              <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
           </li>
         </div>
@@ -44,14 +44,14 @@
             More
           </a>
           <div class="dropdown-menu navbar-light">
-            <a class="dropdown-item" href="#">24x7 Customer Care</a>
-            <a class="dropdown-item" href="#">Return Policy</a>
-            <a class="dropdown-item" href="#">About Us</a>
+            <a class="dropdown-item" routerLink="/servicepage">24x7 Customer Care</a>
+            <a class="dropdown-item" routerLink="/return" >Return Policy</a>
+            <a class="dropdown-item" routerLink="/about">About Us</a>
           </div>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Cart</a>
+          <a class="nav-link" routerLink="/cart">Cart</a>
         </li>
       </ul>
     </nav>

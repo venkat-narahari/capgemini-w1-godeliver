@@ -1,121 +1,37 @@
-<div class="row">
-  <div class="col-sm-3" *ngFor="let books of recommended_books; let i = index">
+<div *ngIf="recommended_books">
+  <div class="col-sm-4" *ngFor="let book of recommended_books; let i = index">
     <div *ngIf="i < 9">
-      <div class="card mt-3 mb-3">
-        <div class="card-header text-center">
-          {{ books.release_date | date:'mediumDate' }}
-        </div>
-        <div class="card-body">
-          <img class="card-img-top img-fluid" src="{{books.poster_path}}" alt="{{ books.original_title }}" style="height: 460px">
-          <p class="text-center">{{ books.original_title }}</p>
-          <a routerLink="/book/{{ books.isbn }}" class="btn btn-block btn-info">Book Details</a>
-          <a routerLink="/wishlist/{{ books.isbn }}" class="btn btn-block btn-success">Add book to wishlist</a>
-        </div>
+      <div *ngIf='i<3'>
+        <mat-card class="book-card">
+          <mat-card-header>
+            <div mat-card-avatar class="book-header-image"></div>
+            <mat-card-title>{{ book.title }}</mat-card-title>
+            <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{ book.poster }}" height="200px" alt="Photo of a {{book.title}}">
+          <mat-card-actions>
+            <button routerLink="/wishlist" mat-button>LIKE</button>
+            <button routerLink="book/{{ book.bookISBN }}" mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+
       </div>
+      <!--/.Carousel Wrapper-->
     </div>
   </div>
 </div>
-<!--Carousel Wrapper-->
-<div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-
-  <!--Controls-->
-  <div class="controls-top">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-  </div>
-  <!--/.Controls-->
-
-  <!--Indicators-->
-  <ol class="carousel-indicators">
-    <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-    <li data-target="#multi-item-example" data-slide-to="1"></li>
-    <li data-target="#multi-item-example" data-slide-to="2"></li>
-  </ol>
-  <!--/.Indicators-->
-
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-
-    <!--First slide-->
-    <div class="carousel-item active">
-
-      <div class="col-md-4">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
+<div *ngIf="genres">
+  <div class="col-sm-4" *ngFor="let gen of genres; let i = index">
+    <div *ngIf="i < 3">
+      <mat-card class="example-card">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-content>{{ gen.genre }}</mat-card-content>
+          <mat-card-actions>
+            <button routerLink="/wishlist" mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+      </mat-card>
     </div>
-    <!--/.First slide-->
-
-    <!--Second slide-->
-    <div class="carousel-item">
-
-      <div class="col-md-4">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!--/.Second slide-->
-
   </div>
-  <!--/.Slides-->
-
 </div>
-<!--/.Carousel Wrapper-->
