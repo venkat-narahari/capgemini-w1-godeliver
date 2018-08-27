@@ -4,12 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute.userlogin</groupId>
-	<artifactId>spring_boot_jwt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>user-login</name>
-	<description>Demo project for Spring Boot and JWT</description>
+	<description>User authentication service</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -63,4 +62,5 @@
 	</build>
 
 
+	<artifactId>user-login</artifactId>
 </project>

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import com.stackroute.userlogin.config.JwtFilter;
 
 @SpringBootApplication
-public class SpringBootJwtApplication {
+public class UserLoginApplication {
 
 	@Bean
 	public FilterRegistrationBean jwtFilter() {
@@ -20,6 +20,6 @@ public class SpringBootJwtApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootJwtApplication.class, args);
+		SpringApplication.run(UserLoginApplication.class, args);
 	}
 }
