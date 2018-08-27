@@ -19,10 +19,6 @@ import com.stackroute.userprofile.domain.UserProfile;
 import com.stackroute.userprofile.exceptions.EmailAlreadyExistsException;
 import com.stackroute.userprofile.service.UserProfileServices;
 
-/**
- * @author user
- *
- */
 @CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
