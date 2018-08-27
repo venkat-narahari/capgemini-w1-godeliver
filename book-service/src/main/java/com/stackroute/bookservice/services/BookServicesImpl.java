@@ -4,21 +4,30 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.bookservice.config.KafkaConfiguration;
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.repository.BookRepository;
-import com.stackroute.bookservice.services.BookServices;
+
 
 @Service
 public class BookServicesImpl implements BookServices{
 	
 	private BookRepository bookRepository;
+	private KafkaConfiguration kafkaConfig;
 
 	@Autowired
-	public BookServicesImpl(BookRepository bookRepository) {
+	public BookServicesImpl(BookRepository bookRepository, KafkaConfiguration kafkaConfig) {
 		this.bookRepository=bookRepository;
+		this.kafkaConfig=kafkaConfig;
 	}
+	
+	String topic=kafkaConfig.getTopic();
+	
+	@Autowired
+	private KafkaTemplate<String, Book> kafkaTemplate;
 
 	@Override
 	public Book saveBook(Book book) {
@@ -28,6 +37,7 @@ public class BookServicesImpl implements BookServices{
 		}
 		else {
 			Book savebook = bookRepository.save(book);
+			kafkaTemplate.send(topic, book);
 			return savebook;
 		}
 	}
@@ -44,14 +54,14 @@ public class BookServicesImpl implements BookServices{
 	}
 
 	@Override
-	public Book deleteBook(int bookId){
-		Optional<Book> book = bookRepository.findById(bookId);
-		if(!book.isPresent()) {
+	public String deleteBook(String bookId){
+		Book book = bookRepository.getByBookISBN_10(bookId);
+		if(book==null) {
 			return null;
 		}
 		else {
-			bookRepository.deleteById(bookId);
-			return book.get();
+			bookRepository.deleteById(Integer.parseInt(bookId));
+			return "deleted";
 		}
 		
 	}
@@ -67,6 +77,12 @@ public class BookServicesImpl implements BookServices{
 			Book updatedbook = bookRepository.save(book);
 			return updatedbook;
 		}
+	}
+
+	@Override
+	public List<Book> getByTitle(String bookTitle) {
+		List<Book> list=bookRepository.getByBookTitle(bookTitle);
+		return list;
 	}
 
 }
