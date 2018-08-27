@@ -6,3 +6,7 @@
     background-image: url('../../assets/books.ico');
     background-size: cover;
   }
+  .spacer {
+    flex: 1 1 auto;
+  }
+  

@@ -18,7 +18,7 @@ import {AuthenticationService} from './services/authentication.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { MaterialModule } from './material';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatIconModule} from '@angular/material';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -29,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CartComponent } from './cart/cart.component';
 import { BookComponent } from './book/book.component';
+import { CardsComponent } from './cards/cards.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,13 +47,14 @@ import { BookComponent } from './book/book.component';
     OrdersComponent,
     CartComponent,
     BookComponent,
+    CardsComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RoutingModule, MultipleCheckboxesModule,MatDividerModule, MatListModule,ReactiveFormsModule, MaterialModule, MatButtonModule, MatCheckboxModule
+    RoutingModule, MultipleCheckboxesModule,MatDividerModule, MatListModule,ReactiveFormsModule, MaterialModule, MatButtonModule, MatCheckboxModule, MatIconModule
   ],
   providers: [
     AuthenticationService,
