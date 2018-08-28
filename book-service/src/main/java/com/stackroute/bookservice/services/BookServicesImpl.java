@@ -1,6 +1,7 @@
 package com.stackroute.bookservice.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -69,12 +70,13 @@ public class BookServicesImpl implements BookServices {
 		}
 		return findBook.get();
 	}
-
+	
 	@Override
-	public Book updateBook(Book book) {
-
-		Book bookUpdated = bookRepository.save(book);
-		return bookUpdated;
+	public List<Book> findBookByRegexpTitle(String searchTerm) {
+	List<Book> list=bookRepository.findBookByRegexpTitle(searchTerm);
+		return list;
 	}
+
+
 
 }

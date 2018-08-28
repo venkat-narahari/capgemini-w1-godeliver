@@ -16,9 +16,8 @@ public interface BookServices {
 
 	public List<Book> getByTitle(String bookTitle);
 
-
 	public Book getBookById(int bookId) throws BookNotFoundException;
 
-	public Book updateBook(Book book);
+	List<Book> findBookByRegexpTitle(String searchTerm);
 
 }

@@ -65,41 +65,42 @@ public class BookController {
 		} catch (BookAlreadyExistsException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CREATED);
 		}
-
 	}
 
-	@RequestMapping(value = "delete/book/{bookId}", method = RequestMethod.DELETE, produces = "application/json")
+	@RequestMapping(value = "delete/{bookId}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<?> deleteBook(@PathVariable int bookId) throws BookNotFoundException {
 		Book bookobj = bookServiceImpl.deleteBook(bookId);
 		return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "update/book/{bookId}", method = RequestMethod.PUT, produces = "application/json")
-	public ResponseEntity<?> updateBook(@PathVariable int bookId, @RequestBody Book book) {
-
-		Book bookobj = bookServiceImpl.updateBook(book);
-
-		return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "get/book/{bookId}", method = RequestMethod.GET)
-	public ResponseEntity<?> getMovieById(@PathVariable int bookId) throws BookNotFoundException {
+	@RequestMapping(value = "get/{bookId}", method = RequestMethod.GET)
+	public ResponseEntity<?> getBookById(@PathVariable int bookId) throws BookNotFoundException {
 		Book bookobj = null;
 		try {
 			bookobj = bookServiceImpl.getBookById(bookId);
+			return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
 
 		} catch (BookNotFoundException m) {
 			String result = m.getMessage();
 			return new ResponseEntity<String>(result, HttpStatus.OK);
 		}
-		return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
+		
 	}
 
-	@RequestMapping(value = "/book/{bookTitle}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET)
 	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) {
 		List<Book> list = bookServiceImpl.getByTitle(bookTitle);
 
 		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
 
 	}
+	
+	
+	 @RequestMapping(value = "/search/{term}", method = RequestMethod.GET,
+		 produces = { "application/json" })
+		 public ResponseEntity<?> getAlphaHandler(@PathVariable("term") String searchTerm) {
+		 List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
+		 return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.OK);
+
+}
 }
