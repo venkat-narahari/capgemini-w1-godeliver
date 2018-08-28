@@ -1,20 +1,14 @@
 package com.stackroute.recommendation.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.bookservice.domain.Book;
-import com.stackroute.bookservice.domain.Person;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.repository.PersonRepository;
 import com.stackroute.recommendation.service.BookService;
@@ -62,15 +56,16 @@ public class PersonController {
 
 	@RequestMapping(value = "/getbooksfromdatabase", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllBooksFromDatabase() {
-
+		
 		return new ResponseEntity<Iterable<Book>>(bookService.getAllBooksFromDb(), HttpStatus.OK);
 
 	}
-	@RequestMapping(value = "/save", method = RequestMethod.GET)
-	public ResponseEntity<?> saveBook(){
 	
-		return new ResponseEntity<>(bookService.saveBooks(),HttpStatus.OK);
-	}
+//	@RequestMapping(value = "/save", method = RequestMethod.GET)
+//	public ResponseEntity<?> saveBook(){
+//	
+//		return new ResponseEntity<>(bookService.saveBooks(),HttpStatus.OK);
+//	}
 
 	// @RequestMapping(value = "/save", method = RequestMethod.POST)
 	// public ResponseEntity<?> saveBook(@RequestBody Book book) {

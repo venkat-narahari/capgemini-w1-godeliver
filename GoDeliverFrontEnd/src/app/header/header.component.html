@@ -14,6 +14,17 @@
       <a class="navbar-brand ml-5 col-xs-8 p-1" routerLink="">
         <img src="assets/books.ico" alt="logo" style="width:40px;">
       </a>
+
+<div class="searchbar">
+        <input [(ngModel)]="title" placeholder="Search here" class="form-control"/>
+       </div>
+        <div class="searchbutton">
+       <button (click)="getBooks()" class="btn btn-info">Search</button>
+       </div>
+       <ul class="list-group">
+         <li *ngFor="let book of books">{{books.Title}}</li>
+       </ul>
+
       <ul class="navbar-nav" style="padding-left: 150px">
         <div *ngIf=noUser style="padding-top: 10px;">
           <li class="nav-item">

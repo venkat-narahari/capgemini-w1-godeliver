@@ -9,7 +9,13 @@ export class HeaderComponent implements OnInit {
   curUser:any;
   noUser:any;
   curuser:any;
-  constructor() { }
+book:any;
+  title:any;
+  constructor(private bookService: BookService) { }
+getBooks() {
+    this.bookService.getBookByName(this.title).subscribe((data) => {this.book=data})
+  }
+
 
   ngOnInit() { 
     if(localStorage.getItem('currentUserEmail')!==null) {

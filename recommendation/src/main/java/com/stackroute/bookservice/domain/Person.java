@@ -7,6 +7,8 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.stackroute.recommendation.domain.BookListener;
+
 @NodeEntity
 public class Person {
 	@Id
@@ -20,20 +22,20 @@ public class Person {
 	private String gender;
 
 	@Relationship(type = "likes", direction = Relationship.OUTGOING)
-	List<Book> books;
+	List<BookListener> books;
 
 	@Relationship(type = "likes", direction = Relationship.OUTGOING)
 	List<Genre> genres;
 
 	@Relationship(type = "rated", direction = Relationship.OUTGOING)
-	List<Book> book;
+	List<BookListener> book;
 
 	public Person() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Person(int id, String name, int age, String gender, List<Book> books, List<Genre> genres, List<Book> book) {
+	public Person(int id, String name, int age, String gender, List<BookListener> books, List<Genre> genres, List<BookListener> book) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -76,18 +78,18 @@ public class Person {
 		this.gender = gender;
 	}
 
-	public List<Book> getBooks() {
+	public List<BookListener> getBooks() {
 		return books;
 	}
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(List<BookListener> books) {
 		this.books = books;
 	}
-	public List<Book> getBook() {
+	public List<BookListener> getBook() {
 		return books;
 	}
 
-	public void setBook(List<Book> book) {
+	public void setBook(List<BookListener> book) {
 		this.books = book;
 	}
 

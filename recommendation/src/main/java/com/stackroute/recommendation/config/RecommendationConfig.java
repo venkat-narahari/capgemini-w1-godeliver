@@ -14,6 +14,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import com.stackroute.bookservice.domain.Book;
+import com.stackroute.recommendation.domain.BookListener;
 
 @Configuration
 @EnableKafka
@@ -29,7 +30,8 @@ public class RecommendationConfig {
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 		return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Book.class));
 	}
-
+	
+	
 	@Bean
 	public ConcurrentKafkaListenerContainerFactory<String, Book> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, Book> factory = new ConcurrentKafkaListenerContainerFactory<>();
