@@ -1,13 +1,12 @@
 package com.stackroute.bookservice.domain;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Book {
 	
-	@Id
-	private String bookISBN_10;
+
+	private int bookISBN_10;
 	private String title;
 	private String poster;
 	private String rating;
@@ -25,7 +24,7 @@ public class Book {
 	public Book() {
 		
 	}
-	public Book(String bookISBN_10, String title, String poster, String rating, String volume, String author,
+	public Book(int bookISBN_10, String title, String poster, String rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear, String pages, String description,
 			String language) {
 		
@@ -45,10 +44,10 @@ public class Book {
 	}
 	
 	
-	public String getBookISBN_10() {
+	public int getBookISBN_10() {
 		return bookISBN_10;
 	}
-	public void setBookISBN_10(String bookISBN_10) {
+	public void setBookISBN_10(int bookISBN_10) {
 		this.bookISBN_10 = bookISBN_10;
 	}
 	public String getTitle() {

@@ -14,8 +14,8 @@ public class BookNotFoundException extends Exception {
 		
 	}
 
-	public BookNotFoundException(String bookId) {
-		this.bookISBN_10=bookId;
+	public BookNotFoundException(String bookISBN_10) {
+		this.bookISBN_10=bookISBN_10;
 	}
 	
 	public String toString(){
