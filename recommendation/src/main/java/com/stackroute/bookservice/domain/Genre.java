@@ -1,4 +1,4 @@
-package com.stackroute.recommendation.domain;
+package com.stackroute.bookservice.domain;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;

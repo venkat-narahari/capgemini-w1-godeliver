@@ -1,4 +1,4 @@
-package com.stackroute.recommendation.domain;
+package com.stackroute.bookservice.domain;
 
 import java.util.List;
 
