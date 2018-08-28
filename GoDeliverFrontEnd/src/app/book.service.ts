@@ -14,8 +14,12 @@ export class BookService {
   private getTopSelling_url = "http://localhost:8888/api/v1/books";
   private getGenre_url = "http://localhost:8075/api/v1/genre";
   private getBookById_url = "http://localhost:8070/api/v1/book";
+private getBookByName_url = 'http://localhosyt:8888/api/v1/book';
 
   constructor(private http: HttpClient) {}
+getBookByName(book) {
+    return this.http.get(this.getBookByName_url,book );
+  }
 
   getWishList(): Observable<Books[]> {
     return this.http.get<Books[]>(this.get_url);
