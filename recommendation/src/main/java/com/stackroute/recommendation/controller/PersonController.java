@@ -42,14 +42,7 @@ public class PersonController {
 		return "Hi App is under development";
 	}
 
-	// @RequestMapping(value = "/persons", method = RequestMethod.GET)
-	// public List<Person> getAllPersons() {
-	// List<Person> getAllpersons = new ArrayList<Person>();
-	// getAllpersons = (List<Person>) personService.getAllPersons();
-	//
-	// return getAllpersons;
-	// }
-
+	
 	// @RequestMapping(value = "/books", method = RequestMethod.GET)
 	// public List<Book> getAllBooks() {
 	// List<Book> getAllbooks = new ArrayList<Book>();
@@ -65,20 +58,7 @@ public class PersonController {
 
 	}
 	
-//	@RequestMapping(value = "/save", method = RequestMethod.GET)
-//	public ResponseEntity<?> saveBook(){
-//	
-//		return new ResponseEntity<>(bookService.saveBooks(),HttpStatus.OK);
-//	}
 
-	// @RequestMapping(value = "/save", method = RequestMethod.POST)
-	// public ResponseEntity<?> saveBook(@RequestBody Book book) {
-	//
-	// Book bookobj = bookService.saveBooks(book);
-	//
-	// return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
-	// }
-	//
 	 @RequestMapping(value = "/booksbyrating", method = RequestMethod.GET)
 	 public List<BookListener> getAllBooksByRating() {
 	 List<BookListener> getAllBooksByRating = new ArrayList<BookListener>();

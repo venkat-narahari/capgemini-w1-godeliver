@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.repository.PersonRepository;
-import com.stackroute.userprofile.domain.UserProfile;
 
 @Service("personimpl")
 public class PersonServiceImpl implements PersonService {
@@ -19,18 +18,20 @@ public class PersonServiceImpl implements PersonService {
 		this.personRepository = personRepository;
 	}
 
-	@Override
-	public List<UserProfile> getAllPersons() {
-		List<UserProfile> getAllpersons = (List<UserProfile>) personRepository.getAllPersons();
-		return getAllpersons;
-	}
+	
 
-	@Override
-	public List<BookListener> getAllBooks() {
-		List<BookListener> getAllBooks = (List<BookListener>) personRepository.getAllBooks();
-		return getAllBooks;
-	}
-
+//	@Override
+//	public List<UserProfile> getAllPersons() {
+//		List<UserProfile> getAllpersons = (List<UserProfile>) personRepository.getAllPersons();
+//		return getAllpersons;
+//	}
+//
+//	@Override
+//	public List<BookListener> getAllBooks() {
+//		List<BookListener> getAllBooks = (List<BookListener>) personRepository.getAllBooks();
+//		return getAllBooks;
+//	}
+//
 	@Override
 	public List<BookListener> getAllBooksByRating() {
 		List<BookListener> getAllBooksByRating = (List<BookListener>) personRepository.getAllBooksByRating();

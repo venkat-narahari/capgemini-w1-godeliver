@@ -16,6 +16,7 @@ import com.stackroute.recommendation.repository.PersonRepository;
 @Service
 public class BookService {
 	List<Book> bookFromTopic = new ArrayList<>();
+	List<Book> booksByRating = new ArrayList<>();
 	PersonRepository personRepository;
 	BookRepository bookRepository;
 
@@ -39,12 +40,14 @@ public class BookService {
 	}
 
 	public List<Book> getAllBooksFromDb() {
-		// return bookRepository.findAll();
 		return bookFromTopic;
 	}
 	
-	public List<BookListener> getAllBooksByRating() {
-		List<BookListener> getAllBooksByRating = (List<BookListener>) bookRepository.getAllBooksByRating();
+	public List<Book> getAllBooksByRating() {
+		System.out.println("hhhhhhhhh");
+		List<Book> getAllBooksByRating = (List<Book>) bookRepository.getAllBooksByRating();
+		System.out.println("hhhhhhhh"+getAllBooksByRating);
+		
 		return getAllBooksByRating;
 	}
 
