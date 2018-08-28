@@ -1,7 +1,6 @@
 package com.stackroute.bookservice.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.bookservice.config.KafkaConfiguration;
 import com.stackroute.bookservice.domain.Book;
-import com.stackroute.bookservice.exceptions.BookNotFoundException;
 import com.stackroute.bookservice.repository.BookRepository;
 
 @Service
@@ -54,22 +52,13 @@ public class BookServicesImpl implements BookServices {
 	}
 
 	@Override
-	public Book deleteBook(int bookId) {
+	public List<Book> deleteBook(String bookTitle) {
 
-		Optional<Book> findBook = bookRepository.findById(bookId);
-		bookRepository.deleteById(bookId);
-		return findBook.get();
+		List<Book> findBook = bookRepository.getByBookTitle(bookTitle);
+		bookRepository.deleteAll(findBook);
+		return findBook;
 	}
 
-	@Override
-	public Book getBookById(int bookId) throws BookNotFoundException {
-		Optional<Book> findBook = bookRepository.findById(bookId);
-		if (!findBook.isPresent()) {
-			throw new BookNotFoundException("book not found");
-
-		}
-		return findBook.get();
-	}
 	
 	@Override
 	public List<Book> findBookByRegexpTitle(String searchTerm) {

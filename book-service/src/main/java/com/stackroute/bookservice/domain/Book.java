@@ -1,12 +1,14 @@
 package com.stackroute.bookservice.domain;
 
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Book {
 	
-
+	@Id ObjectId databaseId;
 	private int bookISBN_10;
 	private String title;
 	private String poster;
@@ -48,8 +50,8 @@ public class Book {
 	public int getBookISBN_10() {
 		return bookISBN_10;
 	}
-	public void setBookISBN_10(int bookISBN_10) {
-		this.bookISBN_10 = bookISBN_10;
+	public void setBookISBN_10(int id) {
+		this.bookISBN_10 = id;
 	}
 	public String getTitle() {
 		return title;

@@ -68,25 +68,13 @@ public class BookController {
 
 	}
 
-	@RequestMapping(value = "delete/{bookId}", method = RequestMethod.DELETE, produces = "application/json")
-	public ResponseEntity<?> deleteBook(@PathVariable int bookId) throws BookNotFoundException {
-		Book bookobj = bookServiceImpl.deleteBook(bookId);
-		return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
+	@RequestMapping(value = "delete/{bookTitle}", method = RequestMethod.DELETE, produces = "application/json")
+	public ResponseEntity<?> deleteBook(@PathVariable String bookTitle) throws BookNotFoundException {
+		List<Book> bookobj = bookServiceImpl.deleteBook(bookTitle);
+		return new ResponseEntity<List<Book>>(bookobj, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "get/{bookId}", method = RequestMethod.GET)
-	public ResponseEntity<?> getBookById(@PathVariable int bookId) throws BookNotFoundException {
-		Book bookobj = null;
-		try {
-			bookobj = bookServiceImpl.getBookById(bookId);
-			return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
-
-		} catch (BookNotFoundException m) {
-			String result = m.getMessage();
-			return new ResponseEntity<String>(result, HttpStatus.ACCEPTED);
-		}
-		return new ResponseEntity<Book>(bookobj, HttpStatus.BAD_REQUEST);
-	}
+	
 
 	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET)
 	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) {
