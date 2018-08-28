@@ -43,6 +43,10 @@ public class BookService {
 		return bookFromTopic;
 	}
 	
+	public List<BookListener> getAllBooksByRating() {
+		List<BookListener> getAllBooksByRating = (List<BookListener>) bookRepository.getAllBooksByRating();
+		return getAllBooksByRating;
+	}
 
 
 }

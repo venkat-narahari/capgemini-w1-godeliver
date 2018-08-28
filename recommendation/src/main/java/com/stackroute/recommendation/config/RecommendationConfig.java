@@ -14,7 +14,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import com.stackroute.bookservice.domain.Book;
-import com.stackroute.recommendation.domain.BookListener;
+import com.stackroute.userprofile.domain.UserProfile;
 
 @Configuration
 @EnableKafka
@@ -39,4 +39,26 @@ public class RecommendationConfig {
 		return factory;
 	}
 
+	
+	@Bean
+    public ConsumerFactory<String, UserProfile> userConsumerFactory() {
+        Map<String, Object> config = new HashMap<>();
+
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
+        config.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.userservice");
+        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+                new JsonDeserializer<>(UserProfile.class));
+    }
+    
+    @Bean
+    public ConcurrentKafkaListenerContainerFactory<String, UserProfile> userKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, UserProfile> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        factory.setConsumerFactory(userConsumerFactory());
+        return factory;
+}
+	
+	
 }

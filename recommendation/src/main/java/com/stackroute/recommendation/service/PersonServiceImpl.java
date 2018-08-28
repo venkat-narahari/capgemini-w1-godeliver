@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stackroute.bookservice.domain.Person;
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.repository.PersonRepository;
+import com.stackroute.userprofile.domain.UserProfile;
 
 @Service("personimpl")
 public class PersonServiceImpl implements PersonService {
@@ -20,8 +20,8 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public List<Person> getAllPersons() {
-		List<Person> getAllpersons = (List<Person>) personRepository.getAllPersons();
+	public List<UserProfile> getAllPersons() {
+		List<UserProfile> getAllpersons = (List<UserProfile>) personRepository.getAllPersons();
 		return getAllpersons;
 	}
 

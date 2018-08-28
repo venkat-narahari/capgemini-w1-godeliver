@@ -1,5 +1,8 @@
 package com.stackroute.recommendation.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.bookservice.domain.Book;
+import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.repository.PersonRepository;
 import com.stackroute.recommendation.service.BookService;
@@ -75,12 +79,12 @@ public class PersonController {
 	// return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
 	// }
 	//
-	// @RequestMapping(value = "/booksbyrating", method = RequestMethod.GET)
-	// public List<Book> getAllBooksByRating() {
-	// List<Book> getAllBooksByRating = new ArrayList<Book>();
-	// getAllBooksByRating = (List<Book>) personService.getAllBooksByRating();
-	//
-	// return getAllBooksByRating;
-	// }
+	 @RequestMapping(value = "/booksbyrating", method = RequestMethod.GET)
+	 public List<BookListener> getAllBooksByRating() {
+	 List<BookListener> getAllBooksByRating = new ArrayList<BookListener>();
+	 getAllBooksByRating = (List<BookListener>) personService.getAllBooksByRating();
+	
+	 return getAllBooksByRating;
+	 }
 
 }
