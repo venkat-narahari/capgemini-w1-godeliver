@@ -1,10 +1,13 @@
-package com.stackroute.bookservice.domain;
+package com.stackroute.recommendation.domain;
 
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
 
-public class Book {
+
+@NodeEntity
+public class BookListener {
+	
 	@Id
-	private Long nodeId;	
 	private String bookISBN_10;
 	private String title;
 	private String poster;
@@ -19,17 +22,14 @@ public class Book {
 	private String description;
 	private String language;
 
-	public Book() {
+	public BookListener() {
 
 	}
 
-	
+	public BookListener(String bookISBN_10, String title, String poster, String rating, String volume, String author,
+			String publisher, String genre, String cost, String publishedYear, String pages, String description,
+			String language) {
 
-	public Book(Long nodeId, String bookISBN_10, String title, String poster, String rating, String volume,
-			String author, String publisher, String genre, String cost, String publishedYear, String pages,
-			String description, String language) {
-		super();
-		this.nodeId = nodeId;
 		this.bookISBN_10 = bookISBN_10;
 		this.title = title;
 		this.poster = poster;
@@ -45,30 +45,13 @@ public class Book {
 		this.language = language;
 	}
 
-
-
-	
-	
-
-
 	@Override
 	public String toString() {
-		return "Book [nodeId=" + nodeId + ", bookISBN_10=" + bookISBN_10 + ", title=" + title + ", poster=" + poster
-				+ ", rating=" + rating + ", volume=" + volume + ", author=" + author + ", publisher=" + publisher
-				+ ", genre=" + genre + ", cost=" + cost + ", publishedYear=" + publishedYear + ", pages=" + pages
-				+ ", description=" + description + ", language=" + language + "]";
+		return "Book [bookISBN_10=" + bookISBN_10 + ", title=" + title + ", poster=" + poster + ", rating=" + rating
+				+ ", volume=" + volume + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre
+				+ ", cost=" + cost + ", publishedYear=" + publishedYear + ", pages=" + pages + ", description="
+				+ description + ", language=" + language + "]";
 	}
-
-	public Long getNodeId() {
-		return nodeId;
-	}
-
-
-
-	public void setNodeId(Long nodeId) {
-		this.nodeId = nodeId;
-	}
-
 
 	public String getBookISBN_10() {
 		return bookISBN_10;
