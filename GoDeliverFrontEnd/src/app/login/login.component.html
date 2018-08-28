@@ -3,11 +3,11 @@
   <div class="row ">
     <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="loginSubmit()">
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" formControlName="email" class="form-control" placeholder="john@gmail.com" name="email" required [pattern]="emailPattern"
+        <label for="userEmail">Email</label>
+        <input type="text" formControlName="userEmail" class="form-control" placeholder="john@gmail.com" name="email" required [pattern]="emailPattern"
         />
-        <div *ngIf="email.dirty && email.errors" class="error">
-          <div *ngIf="email.errors.required" class="validation_message">
+        <div *ngIf="userEmail.dirty && userEmail.errors" class="error">
+          <div *ngIf="userEmail.errors.required" class="validation_message">
             User Email required.
           </div>
         </div>
@@ -15,10 +15,10 @@
 
       <!--form-group-->
       <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" formControlName="password" name="password" required minlength="8" />
-        <div *ngIf="password.dirty && password.errors" class="error">
-          <div *ngIf="password.errors.required" class="validation_message">
+        <label for="userPassword">Password</label>
+        <input type="password" class="form-control" formControlName="userPassword" name="userPassword" required minlength="8" />
+        <div *ngIf="userPassword.dirty && userPassword.errors" class="error">
+          <div *ngIf="userPassword.errors.required" class="validation_message">
             Password required.
           </div>
         </div>

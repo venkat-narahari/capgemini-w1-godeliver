@@ -20,18 +20,18 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
       this.userForm = this.formBuilder.group({
-        email: [
+        userEmail: [
           '',
           [Validators.required]
         ],
-        password: ['', [Validators.required]]
+        userPassword: ['', [Validators.required]]
       });
       this.authenticationService.logout();
     }
 
     loginSubmit() {
 
-      this.authenticationService.login(this.email.value, this.password.value)
+      this.authenticationService.login(this.userEmail.value, this.userPassword.value)
       .subscribe(
           data => {
               this.router.navigate(['']);
@@ -44,12 +44,12 @@ export class LoginComponent implements OnInit {
     }
 
 
-    get email() {
-      return this.userForm.get('email');
+    get userEmail() {
+      return this.userForm.get('userEmail');
     }
 
-    get password() {
-      return this.userForm.get('password');
+    get userPassword() {
+      return this.userForm.get('userPassword');
     }
 
 }
