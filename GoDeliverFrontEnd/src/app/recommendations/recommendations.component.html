@@ -4,40 +4,21 @@
     <div *ngIf='i<3'>
       <app-cards [book]=book></app-cards>
     </div>
-
   </div>
 </div>
 <h2>Top Selling</h2>
-<div class="col-sm-4" *ngFor="let book of top_selling; let i = index">
-  <div *ngIf="i < 3">
-    <app-cards [book]=book></app-cards>
+<div class="row">
+  <div class="col-sm-4" *ngFor="let book of topselling; let i = index">
+    <div *ngIf='i < 3'>
+      <app-cards [book]=book></app-cards>
+    </div>
   </div>
 </div>
-
-<div *ngIf="genres">
-  <div class="col-sm-4" *ngFor="let gen of genres; let i = index">
-    <div *ngIf='i<3'>
-      <mat-card class="book-card" style="height:350">
-
-        <img mat-card-image src="{{ book.poster }}" style="height: 200px; background-size: cover;" alt="Photo of a {{book.title}}">
-        <mat-card-header>
-          <span class="spacer"></span>
-          <div *ngIf=email>
-            <mat-icon class="example-icon"><a (click)="addToWishlist(book)">favorite</a></mat-icon>
-          </div>
-          <mat-card-title>{{ book.title }}</mat-card-title>
-          <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
-        </mat-card-header>
-
-        <mat-card-actions>
-          <span class="spacer"></span>
-          <button routerLink="/cart" mat-button>Add to cart</button>
-          <button routerLink="book/{{ book.bookISBN }}" mat-button>Details</button>
-        </mat-card-actions>
-      </mat-card>
-
-
-      <!--/.Carousel Wrapper-->
+<h2 >Genres</h2>
+<div class="row">
+  <div class="col-sm-3" *ngFor="let book of topselling; let i=index">
+    <div *ngIf='i<4'>
+      <mat-card class="text-center" style="background-color:#f9f7f7">Action</mat-card>
     </div>
   </div>
 </div>

@@ -1,5 +1,4 @@
-<mat-card class="book-card" style="height:350">
-
+<mat-card class="book-card mt-3 mb-3">
   <img mat-card-image src="{{ book.poster }}" style="height: 200px; background-size: cover;" alt="Photo of a {{book.title}}">
   <mat-card-header>
     <span class="spacer"></span>
@@ -10,10 +9,9 @@
     <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
     <mat-card-subtitle>Rs {{book.cost}}</mat-card-subtitle>
   </mat-card-header>
-
   <mat-card-actions>
     <span class="spacer"></span>
     <button (click)="addToCart(book)" mat-button>Add to cart</button>
-    <button routerLink="/book/{{book.bookISBN_10}}" mat-button>Details</button>
+    <button routerLink="book/{{ book.bookISBN }}" mat-button>Details</button>
   </mat-card-actions>
 </mat-card>

@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
     private bookService: BookService
   ) {}
   ngOnInit() {
-    this.bookService
-      .getGenreList()
-      .subscribe(fullList => (this.genre = fullList));
+    
   }
 }

@@ -42,12 +42,12 @@ public class BookController {
 				logger.warn("warm");
 				logger.info("info");
 				logger.trace("trace");
-				return new ResponseEntity<List<Book>>(bookList, HttpStatus.FOUND);
+				return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
 			} else {
 				throw new BookNotFoundException();
 			}
 		} catch (BookNotFoundException e) {
-			return new ResponseEntity<String>(e.toString(), HttpStatus.FOUND);
+			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -58,12 +58,12 @@ public class BookController {
 			Book savedBook;
 			if ((savedBook = bookServiceImpl.saveBook(book)) != null) {
 
-				return new ResponseEntity<Book>(savedBook, HttpStatus.CREATED);
+				return new ResponseEntity<Book>(savedBook, HttpStatus.ACCEPTED);
 			} else {
 				throw new BookAlreadyExistsException("book already exists");
 			}
 		} catch (BookAlreadyExistsException e) {
-			return new ResponseEntity<String>(e.toString(), HttpStatus.CREATED);
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
 
 	}
@@ -90,9 +90,9 @@ public class BookController {
 
 		} catch (BookNotFoundException m) {
 			String result = m.getMessage();
-			return new ResponseEntity<String>(result, HttpStatus.OK);
+			return new ResponseEntity<String>(result, HttpStatus.ACCEPTED);
 		}
-		return new ResponseEntity<Book>(bookobj, HttpStatus.OK);
+		return new ResponseEntity<Book>(bookobj, HttpStatus.BAD_REQUEST);
 	}
 
 	@RequestMapping(value = "/book/{bookTitle}", method = RequestMethod.GET)

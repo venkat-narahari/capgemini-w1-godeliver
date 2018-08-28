@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserDetails } from "../user-details";
 import { UserDetailsService } from "../user-details.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-registration",
@@ -35,7 +36,7 @@ export class RegistrationComponent implements OnInit {
   ];
 
   //creating userDetailService
-  constructor(private userDetailService: UserDetailsService) {}
+  constructor( private router: Router, private userDetailService: UserDetailsService) {}
 
   ngOnInit() {}
 
@@ -48,6 +49,9 @@ export class RegistrationComponent implements OnInit {
     this.userDetailService
       .addUser(this.user)
       .subscribe(res => console.log("Done"));
+
+      this.router.navigate(['/login']);
+      location.reload();
   }
 
   //selectedPreferenceList is coming from the front end in a list and stored in userPreference in form of array
@@ -55,4 +59,5 @@ export class RegistrationComponent implements OnInit {
     console.log(list);
     this.user.userPreferences = list;
   }
+
 }
