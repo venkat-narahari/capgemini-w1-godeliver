@@ -5,19 +5,19 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute</groupId>
-    <artifactId>user-profile</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+	<artifactId>user-profile</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-    <name>user-profile</name>
-    <description></description>
+	<name>user-profile</name>
+	<description></description>
 
-    <parent>
-       <groupId>com.stackroute</groupId>
-       <artifactId>capgemini-w1-godeliver-test</artifactId>
-       <version>1.0.0</version>
-       <!-- <relativePath/> lookup parent from repository -->
-   </parent>
+	<parent>
+		<groupId>com.stackroute</groupId>
+		<artifactId>capgemini-w1-godeliver-test</artifactId>
+		<version>1.0.0</version>
+		<!-- <relativePath/> lookup parent from repository -->
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,8 +34,6 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-		
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -46,7 +44,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -65,6 +62,7 @@
 			<version>2.0.9.RELEASE</version>
 		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -85,6 +83,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

@@ -47,7 +47,7 @@ public class UserProfileController {
 	/**
 	 * controller for mapping to update the user
 	 */
-	@RequestMapping(value = "user/{userEmail}", method = RequestMethod.PUT, produces = "application/json")
+	@RequestMapping(value = "/user/{userEmail}", method = RequestMethod.PUT, produces = "application/json")
 	public ResponseEntity<?> updateUser(@RequestBody UserProfile user, @PathVariable String userEmail) {
 		userProfileServicesImpl.updateUser(user, userEmail);
 		return new ResponseEntity<String>("User updated", HttpStatus.OK);
@@ -57,7 +57,7 @@ public class UserProfileController {
 	/**
 	 * controller for mapping to view the user
 	 */
-	@RequestMapping(value = "user/{userEmail}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/user/{userEmail}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<?> viewUser(@PathVariable String userEmail) {
 		List<UserProfile> user = userProfileServicesImpl.viewUser(userEmail);
 		return new ResponseEntity<List<UserProfile>>(user, HttpStatus.FOUND);

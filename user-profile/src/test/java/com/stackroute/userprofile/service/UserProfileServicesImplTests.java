@@ -1,16 +1,31 @@
 package com.stackroute.userprofile.service;
 
-import org.junit.Test;
+import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+import com.stackroute.userprofile.domain.UserProfile;
+import com.stackroute.userprofile.repository.UserProfileRepository;
+
+@SuppressWarnings("deprecation")
+@RunWith(MockitoJUnitRunner.class)
 public class UserProfileServicesImplTests {
 
-	@Test
-	public void contextLoads() {
-	}
+	@Mock
+	private UserProfileRepository userProfileRepo;
 
+	@Mock
+	private UserProfileServices userProfileServices;
+
+	@InjectMocks
+	private UserProfileServicesImpl userProfileServicesImpl;
+
+	private UserProfile userProfile;
+
+	@Before
+	public void setupMock() {
+
+	}
 }
