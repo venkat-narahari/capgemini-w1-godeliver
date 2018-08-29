@@ -9,13 +9,19 @@ import { Books } from "../book-details";
   styleUrls: ["./book.component.css"]
 })
 export class BookComponent implements OnInit {
+  //To store book details for wishlist
+  book: any;
+
+  //To store currentUser email for wishlist button
+  curUser: any;
+
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService
   ) {}
-  book: any;
-  curUser: any;
+
   // bookdetails=new Books("","","","","","","","","","","","","");
+
   ngOnInit() {
     this.router.params.subscribe(params => {
       const id = params["book.title"];

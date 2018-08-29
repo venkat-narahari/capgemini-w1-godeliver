@@ -85,4 +85,12 @@ public class BookController {
 		List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
 		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.ACCEPTED);
 	}
+	
+	@RequestMapping(value = "bookById/{id}", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> getById(@PathVariable("id") String bookId) throws BookNotFoundException {
+		Book booklistalpha = bookServiceImpl.findBookById(bookId);
+		return new ResponseEntity<Book>(booklistalpha, HttpStatus.ACCEPTED);
+	}
+	
+	
 }

@@ -30,7 +30,7 @@ export class BookService {
   }
 
   getBookByName(book) {
-    return this.http.get(this.getBookByName_url+'/'+ book);
+    return this.http.get(this.getBookByName_url + "/" + book);
   }
 
   getRecommendationList(id): Observable<Books[]> {

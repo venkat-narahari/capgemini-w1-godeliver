@@ -68,6 +68,14 @@ public class BookServicesImpl implements BookServices {
 		return list;
 	}
 
+	@Override
+	public Book findBookById(String bookId) {
+		System.out.println(bookId);
+		Book book = bookRepository.findByTheBooksBookISBN_10(bookId);
+		System.out.println("a"+book.getBookISBN_10());
+		return book;
+	}
+
 	
 
 }
