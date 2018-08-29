@@ -1,7 +1,5 @@
 package com.stackroute.bookservice.exceptions;
 
-import com.stackroute.bookservice.domain.Book;
-
 public class BookAlreadyExistsException extends Exception{
 	
 	/**
