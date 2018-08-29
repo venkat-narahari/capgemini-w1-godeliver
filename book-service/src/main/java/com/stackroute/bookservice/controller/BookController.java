@@ -1,9 +1,6 @@
 package com.stackroute.bookservice.controller;
 
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +22,6 @@ import com.stackroute.bookservice.services.BookServices;
 public class BookController {
 
 	private BookServices bookServiceImpl;
-	Logger logger = LoggerFactory.getLogger("BootstrapData");
 
 	@Autowired
 	public BookController(BookServices bookServiceImpl) {
@@ -33,25 +29,13 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/books", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<?> getAllBooks() {
-		try {
-			List<Book> bookList;
-			if ((bookList = bookServiceImpl.getAllBooks()) != null) {
-				logger.debug("debug");
-				logger.error("error");
-				logger.warn("warm");
-				logger.info("info");
-				logger.trace("trace");
-				return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
-			} else {
-				throw new BookNotFoundException();
-			}
-		} catch (BookNotFoundException e) {
-			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
-		}
+	public ResponseEntity<?> getAllBooks() throws BookNotFoundException {
+		List<Book> bookList;
+		bookList = bookServiceImpl.getAllBooks();
+		return new ResponseEntity<List<Book>>(bookList, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "save/book", method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = "/book", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity<?> saveBook(@RequestBody Book book) throws BookAlreadyExistsException {
 
 		try {
@@ -68,28 +52,23 @@ public class BookController {
 
 	}
 
-	@RequestMapping(value = "delete/{bookTitle}", method = RequestMethod.DELETE, produces = "application/json")
+	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<?> deleteBook(@PathVariable String bookTitle) throws BookNotFoundException {
 		List<Book> bookobj = bookServiceImpl.deleteBook(bookTitle);
 		return new ResponseEntity<List<Book>>(bookobj, HttpStatus.OK);
 	}
 
-	
-
-	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET)
-	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) {
+	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) throws BookNotFoundException {
 		List<Book> list = bookServiceImpl.getByTitle(bookTitle);
-
 		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
 
 	}
-	
-	
-	 @RequestMapping(value = "/search/{term}", method = RequestMethod.GET,
-		 produces = { "application/json" })
-		 public ResponseEntity<?> getAlphaHandler(@PathVariable("term") String searchTerm) {
-		 List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
-		 return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.OK);
 
-}
+	@RequestMapping(value = "/{term}", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> getByAlphabet(@PathVariable("term") String searchTerm) throws BookNotFoundException {
+		List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
+		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.OK);
+
+	}
 }
