@@ -1,4 +1,4 @@
-package com.stackroute.userlogin.repository;
+/*package com.stackroute.userlogin.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,3 +38,4 @@ public class UserRepositoryTest {
 
 
 }
+*/
