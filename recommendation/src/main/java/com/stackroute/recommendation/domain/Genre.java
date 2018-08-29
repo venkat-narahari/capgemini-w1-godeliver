@@ -1,6 +1,5 @@
-package com.stackroute.bookservice.domain;
+package com.stackroute.recommendation.domain;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
@@ -8,17 +7,16 @@ import org.neo4j.ogm.annotation.NodeEntity;
 @NodeEntity
 public class Genre {
 	@Id
-    @GeneratedValue
 	private Long nodeID;
 	private String name;
 
 	public Genre() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Genre(String name) {
-		super();
+	
 		this.name = name;
 	}
 

@@ -8,7 +8,7 @@ public interface PersonService {
 
 //	public List<UserProfile> getAllPersons();
 //
-//	public List<BookListener> getAllBooks();
+	public List<BookListener> getBooksByGenre();
 //
 	public List<BookListener> getAllBooksByRating();
 

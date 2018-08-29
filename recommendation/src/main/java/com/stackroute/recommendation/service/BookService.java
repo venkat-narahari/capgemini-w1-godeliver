@@ -43,13 +43,9 @@ public class BookService {
 		return bookFromTopic;
 	}
 	
-	public List<Book> getAllBooksByRating() {
-		System.out.println("hhhhhhhhh");
-		List<Book> getAllBooksByRating = (List<Book>) bookRepository.getAllBooksByRating();
-		System.out.println("hhhhhhhh"+getAllBooksByRating);
-		
-		return getAllBooksByRating;
-	}
-
+//	public List<BookListener> getAllBooksByRating() {
+//		List<BookListener> getAllBooksByRating = (List<BookListener>) personRepository.getAllBooksByRating();
+//		return getAllBooksByRating;
+//	}
 
 }

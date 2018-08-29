@@ -38,4 +38,12 @@ public class PersonServiceImpl implements PersonService {
 		return getAllBooksByRating;
 	}
 
+
+
+	@Override
+	public List<BookListener> getBooksByGenre() {
+		List<BookListener> getAllBooks = (List<BookListener>) personRepository.getBooksByGenre();
+		return getAllBooks;
+	}
+
 }

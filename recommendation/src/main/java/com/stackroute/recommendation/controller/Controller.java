@@ -20,15 +20,15 @@ import com.stackroute.recommendation.service.PersonService;
 
 @RestController
 @RequestMapping(value = "/api/v1")
-public class PersonController {
+public class Controller {
 
 	PersonRepository personRepository;
 	PersonService personService;
 	BookService bookService;
-	BookRepository bookRepository; 
+	BookRepository bookRepository;
 
 	@Autowired
-	public PersonController(PersonRepository personRepository, PersonService personService, BookService bookService,
+	public Controller(PersonRepository personRepository, PersonService personService, BookService bookService,
 			BookRepository bookRepository) {
 		super();
 		this.personRepository = personRepository;
@@ -42,29 +42,29 @@ public class PersonController {
 		return "Hi App is under development";
 	}
 
-	
-	// @RequestMapping(value = "/books", method = RequestMethod.GET)
-	// public List<Book> getAllBooks() {
-	// List<Book> getAllbooks = new ArrayList<Book>();
-	// getAllbooks = (List<Book>) personService.getAllBooks();
-	//
-	// return getAllbooks;
-	// }
-
 	@RequestMapping(value = "/getbooksfromdatabase", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllBooksFromDatabase() {
-		
+
 		return new ResponseEntity<Iterable<Book>>(bookService.getAllBooksFromDb(), HttpStatus.OK);
 
 	}
-	
 
-	 @RequestMapping(value = "/booksbyrating", method = RequestMethod.GET)
-	 public List<BookListener> getAllBooksByRating() {
-	 List<BookListener> getAllBooksByRating = new ArrayList<BookListener>();
-	 getAllBooksByRating = (List<BookListener>) personService.getAllBooksByRating();
+	@RequestMapping(value = "/booksbyrating", method = RequestMethod.GET)
+	public List<BookListener> getAllBooksByRating() {
+		List<BookListener> getAllBooksByRating = new ArrayList<BookListener>();
+		getAllBooksByRating = (List<BookListener>) personService.getAllBooksByRating();
+
+		return getAllBooksByRating;
+	}
 	
-	 return getAllBooksByRating;
-	 }
+	@RequestMapping(value = "/booksbygenre", method = RequestMethod.GET)
+	public List<BookListener> getBooksByGenre() {
+		List<BookListener> getAllBooksByGenre = new ArrayList<BookListener>();
+		getAllBooksByGenre = (List<BookListener>) personService.getBooksByGenre();
+
+		return getAllBooksByGenre;
+	}
+	
+	
 
 }

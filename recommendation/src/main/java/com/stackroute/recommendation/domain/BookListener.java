@@ -1,17 +1,19 @@
 package com.stackroute.recommendation.domain;
 
+import java.util.List;
+
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-
+import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 public class BookListener {
-	
+
 	@Id
 	private String bookISBN_10;
 	private String title;
 	private String poster;
-	private String rating;
+	private float rating;
 	private String volume;
 	private String author;
 	private String publisher;
@@ -22,11 +24,16 @@ public class BookListener {
 	private String description;
 	private String language;
 
+	@Relationship(type = "ofType", direction = Relationship.OUTGOING)
+	private List<Genre> genres;
+
 	public BookListener() {
 
 	}
 
-	public BookListener(String bookISBN_10, String title, String poster, String rating, String volume, String author,
+	
+
+	public BookListener(String bookISBN_10, String title, String poster, float rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear, String pages, String description,
 			String language) {
 
@@ -45,14 +52,24 @@ public class BookListener {
 		this.language = language;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "Book [bookISBN_10=" + bookISBN_10 + ", title=" + title + ", poster=" + poster + ", rating=" + rating
-				+ ", volume=" + volume + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre
+		return "BookListener [bookISBN_10=" + bookISBN_10 + ", title=" + title + ", poster=" + poster + ", rating="
+				+ rating + ", volume=" + volume + ", author=" + author + ", publisher=" + publisher + ", genre=" + genre
 				+ ", cost=" + cost + ", publishedYear=" + publishedYear + ", pages=" + pages + ", description="
-				+ description + ", language=" + language + "]";
+				+ description + ", language=" + language + ", genres=" + genres + "]";
 	}
 
+
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
 	public String getBookISBN_10() {
 		return bookISBN_10;
 	}
@@ -77,11 +94,11 @@ public class BookListener {
 		this.poster = poster;
 	}
 
-	public String getRating() {
+	public float getRating() {
 		return rating;
 	}
 
-	public void setRating(String rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
 

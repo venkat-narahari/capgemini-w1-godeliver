@@ -8,7 +8,7 @@ public class Book {
 	private String bookISBN_10;
 	private String title;
 	private String poster;
-	private String rating;
+	private float rating;
 	private String volume;
 	private String author;
 	private String publisher;
@@ -25,7 +25,7 @@ public class Book {
 
 	
 
-	public Book(Long nodeId, String bookISBN_10, String title, String poster, String rating, String volume,
+	public Book(Long nodeId, String bookISBN_10, String title, String poster, float rating, String volume,
 			String author, String publisher, String genre, String cost, String publishedYear, String pages,
 			String description, String language) {
 		super();
@@ -94,11 +94,11 @@ public class Book {
 		this.poster = poster;
 	}
 
-	public String getRating() {
+	public float getRating() {
 		return rating;
 	}
 
-	public void setRating(String rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
 
