@@ -1,7 +1,11 @@
 package com.stackroute.userprofile.controller;
 
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -58,7 +63,9 @@ public class UserProfileControllerTests {
 	public void userSave() throws Exception {
 		when(userProfileServices.saveUser(userProfile)).thenReturn(userProfile);
 		
-		userProfileMockMvc.perform(post("api/v1/user/save").contentType(MediaType.APPLICATION_JSON).content(asJsonString(userProfile)));
+		userProfileMockMvc.perform(post("/api/v1/user").contentType(MediaType.APPLICATION_JSON).content(asJsonString(userProfile)))
+		.andExpect(status().isCreated()).andDo(print());
+		verify(userProfileServices, times(1)).saveUser(Mockito.any(UserProfile.class));
 	}
 	
 	

@@ -1,9 +1,40 @@
-<div class="container">
-    <div class="parallax">
-        <p class="goDel">Go Deliver</p>
-        <p class="tagline">Delivering happiness to home</p>
+<div id="demo" class="carousel slide mb-4" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a routerLink="/login"><img src="../../assets/topselling.jpeg" alt="Los Angeles">
+                <div class="carousel-caption">
+                    <h3>Top Selling</h3>
+                    <p>Trending books of the decade!</p>
+                </div></a>
+        </div>
+        <div class="carousel-item">
+            <a routerLink="/cart">
+                <img src="../../assets/topselling.jpeg" alt="Chicago">
+                <div class="carousel-caption">
+                    <h3>High Rating</h3>
+                    <p>Best books of the year</p>
+                </div>
+            </a>
+        </div>
+        <div class="carousel-item">
+            <a routerLink="/register">
+                <img src="../../assets/topselling.jpeg" alt="New York">
+                <div class="carousel-caption">
+                    <h3>Best Authors</h3>
+                    <p>Top authors of the decade</p>
+                </div>
+            </a>
+        </div>
     </div>
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
 
+<div class="container">
     <app-recommendations></app-recommendations>
 
 </div>

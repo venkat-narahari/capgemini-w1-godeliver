@@ -2,13 +2,14 @@ package com.stackroute.userlogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import com.stackroute.userlogin.config.JwtFilter;
-
+//@EnableDiscoveryClient
 @SpringBootApplication
-public class SpringBootJwtApplication {
+public class UserLoginApplication {
 
 	@Bean
 	public FilterRegistrationBean jwtFilter() {
@@ -20,6 +21,6 @@ public class SpringBootJwtApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootJwtApplication.class, args);
+		SpringApplication.run(UserLoginApplication.class, args);
 	}
 }

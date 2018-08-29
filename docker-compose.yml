@@ -11,7 +11,7 @@ services:
     image: demo-eureka-service
     hostname: localhost
     ports:
-      - 9090:9090
+      - 8761:8761
     healthcheck:
       test: "exit 0"
 
@@ -40,7 +40,7 @@ services:
     image: demo-zuul-service
     hostname: localhost
     ports:
-      - 8092:8092
+      - 8080:8080
     healthcheck:
       test: "exit 0"
 
@@ -75,4 +75,17 @@ user-login:
     healthcheck:
       test: "exit 0"
 
+#user-profile:
+#   image: 14052831/userprofile:1.0
+#   restart: always
+#   network_mode: host
+#   container_name: spring-docker
+#   depends_on:
+#       - mongo
+#   ports:
+#      - 8070:8070
+      
+      
+
+       
 

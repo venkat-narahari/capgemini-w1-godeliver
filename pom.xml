@@ -7,7 +7,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute</groupId>
-	<artifactId>boeing-w1-test</artifactId>
+	<artifactId>capgemini-w1-godeliver-test</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -29,8 +29,8 @@
 		<module>zuul-apigateway</module>
 		<module>user-profile</module>
 		<module>user-login</module>
-		<module>book-service</module>
 		<module>recommendation</module>
+		<module>book-service</module>
 
 
 	</modules>

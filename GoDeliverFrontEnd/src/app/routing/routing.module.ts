@@ -22,10 +22,11 @@ const appRoutes: Routes = [
   { path: "orders", component: OrdersComponent },
   { path: "profile", component: ProfileComponent },
   { path: "about", component: AboutusComponent },
-    { path: "return", component: ReturnpolicyComponent },
-    { path: "servicepage", component: ServicepageComponent },
-    { path: "cart", component: CartComponent },
-    { path: 'book/:bookISBN', component: BookComponent }
+  { path: "return", component: ReturnpolicyComponent },
+  { path: "servicepage", component: ServicepageComponent },
+  { path: "cart", component: CartComponent },
+  { path: "book/:bookISBN", component: BookComponent },
+  { path: "book", component: BookComponent },
 ];
 
 @NgModule({

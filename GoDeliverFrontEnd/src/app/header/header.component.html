@@ -8,17 +8,17 @@
 </head>
 
 <body>
-  <!--header-->
-  <header>
+
+   <header>
     <nav class="navbar navbar-expand-sm bg-dark  navbar-dark">
-      <!-- Brand/logo -->
+
       <a class="navbar-brand ml-5 col-xs-8 p-1" routerLink="">
         <img src="assets/books.ico" alt="logo" style="width:40px;">
       </a>
 
-      <!-- Links -->
+
       <ul class="navbar-nav">
-        <!-- Dropdown -->
+
         <div *ngIf=noUser style="padding-top: 10px;">
           <li class="nav-item">
             <a class="nav-link" routerLink="/login" href="#">Login Register</a>
@@ -38,7 +38,7 @@
           </li>
         </div>
 
-        <!-- Dropdown -->
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             More
@@ -54,8 +54,60 @@
           <a class="nav-link" routerLink="/cart">Cart</a>
         </li>
       </ul>
-    </nav>
-  </header>
+    </nav> 
+  
+<!-- <div style="height: 100vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Responsive Navigation</span>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+          <!-- <a href="#" mat-button>
+          <mat-icon>notifications</mat-icon>
+          Notifications
+        </a>
+        <a href="#" mat-button>
+          <mat-icon>message</mat-icon>
+          Messages
+        </a>
+        <a href="#" mat-button>
+          <mat-icon>account_box</mat-icon>
+          My Account
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a href="#" mat-list-item>
+          <mat-icon>notifications</mat-icon>
+          Notifications
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>message</mat-icon>
+          Messages</a>
+        <a href="#" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          My Account
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>lock</mat-icon>
+          My Account
+        </a>
+        <a (click)="sidenav.toggle()" mat-list-item>
+          <mat-icon>close</mat-icon> Close
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</div>   -->
+</header>
 </body>
 
 </html>
