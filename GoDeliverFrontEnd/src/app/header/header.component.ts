@@ -10,9 +10,9 @@ export class HeaderComponent implements OnInit {
   curUser: any;
   noUser: any;
   curuser: any;
-  search:string="shivam";
-  title:any;
-  
+  search: string = "shivam";
+  title: any;
+
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
@@ -24,9 +24,6 @@ export class HeaderComponent implements OnInit {
       this.noUser = "NoUser";
     }
   }
-  // getBooks() {
-  //   this.search=this.title;
-  //   }
 
   //logout function to remove the user details from local storage
   logout() {
