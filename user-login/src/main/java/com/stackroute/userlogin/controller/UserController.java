@@ -23,18 +23,13 @@ import com.stackroute.userlogin.services.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins ="*")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
-
-//	@RequestMapping(value = "/register", method = RequestMethod.POST)
-//	public User registerUser(@RequestBody User user) {
-//		return userService.save(user);
-//	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> loginUser(@RequestBody User login) throws ServletException {
@@ -51,8 +46,8 @@ public class UserController {
 
 		String email = login.getUserEmail();
 		String password = login.getUserPassword();
-
 		User user = userService.findByEmail(email);
+		
 		try {
 			if (user == null) {
 				throw new UserNameNotFoundException("User email not found.");
@@ -60,7 +55,9 @@ public class UserController {
 		} catch (UserNameNotFoundException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
+		
 		String pwd = user.getUserPassword();
+		
 		try {
 			if (!password.equals(pwd)) {
 				throw new PasswordNotMatchException("Invalid login. Please check your name and password.");
@@ -71,10 +68,9 @@ public class UserController {
 
 		jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
 				.signWith(SignatureAlgorithm.HS256, "secretkey").compact();
-
 		Token token = new Token();
-		token.setToken(jwtToken);
 		token.setEmail(email);
+		token.setToken(jwtToken);
 		return new ResponseEntity<>(token, HttpStatus.CREATED);
 
 	}
