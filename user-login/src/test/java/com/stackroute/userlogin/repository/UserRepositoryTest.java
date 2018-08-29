@@ -17,7 +17,6 @@ import com.stackroute.userlogin.domain.User;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @SpringBootTest
-@AutoConfigureTestDatabase(replace = Replace.NONE)
 public class UserRepositoryTest {
 
 	@Autowired
@@ -27,7 +26,7 @@ public class UserRepositoryTest {
 	}
 
 	@Test
-	public void findByUserEmail() throws Exception {
+	public void userEmail() throws Exception {
 		repo.save(new User((long) 1,"tejakathari007","teja007",null));
 		final User user = repo.findByUserEmail("tejakathari007");
 		assertThat(user.getUserPassword()).isEqualTo("teja007");
