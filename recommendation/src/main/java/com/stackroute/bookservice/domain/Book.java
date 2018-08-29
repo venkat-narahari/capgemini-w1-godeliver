@@ -1,10 +1,13 @@
 package com.stackroute.bookservice.domain;
 
+import java.util.List;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.Relationship;
+import com.stackroute.recommendation.domain.Genre;
 
 public class Book {
 	@Id
-	private Long nodeId;	
+	private Long nodeId;
 	private String bookISBN_10;
 	private String title;
 	private String poster;
@@ -19,11 +22,11 @@ public class Book {
 	private String description;
 	private String language;
 
+	
+
 	public Book() {
 
 	}
-
-	
 
 	public Book(Long nodeId, String bookISBN_10, String title, String poster, float rating, String volume,
 			String author, String publisher, String genre, String cost, String publishedYear, String pages,
@@ -43,13 +46,8 @@ public class Book {
 		this.pages = pages;
 		this.description = description;
 		this.language = language;
+
 	}
-
-
-
-	
-	
-
 
 	@Override
 	public String toString() {
@@ -63,12 +61,9 @@ public class Book {
 		return nodeId;
 	}
 
-
-
 	public void setNodeId(Long nodeId) {
 		this.nodeId = nodeId;
 	}
-
 
 	public String getBookISBN_10() {
 		return bookISBN_10;
@@ -173,4 +168,5 @@ public class Book {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
+
 }

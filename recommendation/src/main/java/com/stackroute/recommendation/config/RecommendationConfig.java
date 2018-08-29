@@ -2,7 +2,6 @@ package com.stackroute.recommendation.config;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +11,6 @@ import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
-
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.userprofile.domain.UserProfile;
 
@@ -30,8 +28,7 @@ public class RecommendationConfig {
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 		return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Book.class));
 	}
-	
-	
+
 	@Bean
 	public ConcurrentKafkaListenerContainerFactory<String, Book> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, Book> factory = new ConcurrentKafkaListenerContainerFactory<>();
@@ -39,26 +36,23 @@ public class RecommendationConfig {
 		return factory;
 	}
 
-	
 	@Bean
-    public ConsumerFactory<String, UserProfile> userConsumerFactory() {
-        Map<String, Object> config = new HashMap<>();
+	public ConsumerFactory<String, UserProfile> userConsumerFactory() {
+		Map<String, Object> config = new HashMap<>();
 
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
-        config.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.userservice");
-        config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
-                new JsonDeserializer<>(UserProfile.class));
-    }
-    
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, UserProfile> userKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, UserProfile> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(userConsumerFactory());
-        return factory;
-}
-	
-	
+		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+		config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
+		config.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.userservice");
+		config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+		return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
+				new JsonDeserializer<>(UserProfile.class));
+	}
+
+	@Bean
+	public ConcurrentKafkaListenerContainerFactory<String, UserProfile> userKafkaListenerContainerFactory() {
+		ConcurrentKafkaListenerContainerFactory<String, UserProfile> factory = new ConcurrentKafkaListenerContainerFactory<>();
+		factory.setConsumerFactory(userConsumerFactory());
+		return factory;
+	}
 }
