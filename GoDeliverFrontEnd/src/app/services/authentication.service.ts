@@ -9,7 +9,7 @@ import { Login } from '../login';
 export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
-    login(email: String, password: String): Observable<any> {
+    login(userEmail: String, userPassword: String): Observable<any> {
         const httpHeaders = new HttpHeaders({
             'Content-Type': 'application/json',
             'Cache-Control': 'no-cache'
@@ -17,7 +17,7 @@ export class AuthenticationService {
           const options = {
             headers: httpHeaders
           };
-        return this.http.post<Login>(`http://localhost:8082/user/login`, {email , password}, options)
+        return this.http.post<Login>(`http://localhost:8082/user/login`, {userEmail , userPassword}, options)
             .pipe(
                 map(
                     user => {

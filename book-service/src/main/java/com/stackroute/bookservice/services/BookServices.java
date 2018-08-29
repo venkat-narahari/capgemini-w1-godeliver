@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.bookservice.exceptions.BookAlreadyExistsException;
-import com.stackroute.bookservice.exceptions.BookNotFoundException;
 
 public interface BookServices {
 
@@ -12,13 +11,11 @@ public interface BookServices {
 
 	public List<Book> getAllBooks();
 
-	public Book deleteBook(int bookId);
+	public String deleteBook(String bookId);
+
+	public Book updateBook(String bookId, Book book);
 
 	public List<Book> getByTitle(String bookTitle);
 
-
-	public Book getBookById(int bookId) throws BookNotFoundException;
-
-	public Book updateBook(Book book);
 
 }

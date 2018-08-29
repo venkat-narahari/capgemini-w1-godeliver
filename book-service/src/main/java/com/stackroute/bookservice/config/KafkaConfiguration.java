@@ -18,7 +18,7 @@ import com.stackroute.bookservice.domain.Book;
 public class KafkaConfiguration {
 
 	private static final String TOPIC = "book_details";
-	
+
 	@Bean
 	public ProducerFactory<String, Book> producerFactory() {
 		Map<String, Object> config = new HashMap<>();
@@ -32,7 +32,7 @@ public class KafkaConfiguration {
 
 	@Bean
 	public KafkaTemplate<String, Book> kafkaTemplate() {
-		return new KafkaTemplate<>(producerFactory());
+		return new KafkaTemplate<String, Book>(producerFactory());
 	}
 
 	public static String getTopic() {

@@ -1,9 +1,19 @@
-package com.stackroute.userprofile.domain;
+package com.stackroute.recommendation.domain;
 
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
-public class UserProfile {
+import java.util.Arrays;
+
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+
+@NodeEntity
+public class User {
+
+
+	@Id @GeneratedValue
+	private Long nodeId;
+
 	private String userName;
 	private String userEmail;
 	private String userDob;
@@ -11,14 +21,36 @@ public class UserProfile {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
-
-	public UserProfile() {
-
+	
+	public User() {
+		
 	}
 
-	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, double userMobile) {
+	
+	@Override
+	public String toString() {
+		return "User [nodeId=" + nodeId + ", userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob
+				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
+				+ ", userGender=" + userGender + ", userMobile=" + userMobile + "]";
+	}
+
+
+	public Long getNodeId() {
+		return nodeId;
+	}
+
+
+	public void setNodeId(Long nodeId) {
+		this.nodeId = nodeId;
+	}
+
+
+	
+
+	public User(String userName, String userEmail, String userDob, String userPassword,
+			String[] userPreferences, String userGender, double userMobile) {
 		super();
+		
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.userDob = userDob;
@@ -27,6 +59,7 @@ public class UserProfile {
 		this.userGender = userGender;
 		this.userMobile = userMobile;
 	}
+
 
 	public String getUserName() {
 		return userName;

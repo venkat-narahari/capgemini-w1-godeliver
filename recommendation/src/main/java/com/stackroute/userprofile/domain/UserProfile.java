@@ -1,9 +1,11 @@
 package com.stackroute.userprofile.domain;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Arrays;
 
-@Document
+
+
 public class UserProfile {
+	
 	private String userName;
 	private String userEmail;
 	private String userDob;
@@ -11,9 +13,16 @@ public class UserProfile {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
-
+	
 	public UserProfile() {
+		
+	}
 
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob + ", userPassword="
+				+ userPassword + ", userPreferences=" + Arrays.toString(userPreferences) + ", userGender=" + userGender
+				+ ", userMobile=" + userMobile + "]";
 	}
 
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
@@ -87,5 +96,5 @@ public class UserProfile {
 	
 
 	
-
+	
 }

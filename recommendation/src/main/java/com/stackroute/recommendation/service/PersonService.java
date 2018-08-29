@@ -2,18 +2,15 @@ package com.stackroute.recommendation.service;
 
 import java.util.List;
 
-import com.stackroute.recommendation.domain.Person;
-
+import com.stackroute.recommendation.domain.BookListener;
 
 public interface PersonService {
 
-//	public Person savePerson(Person person) ;
-
-
-
-	 public List<Person> getAllPersonnodes();
+//	public List<UserProfile> getAllPersons();
 //
-//	public Person saveProducts(Person person);
+	public List<BookListener> getBooksByGenre();
+//
+	public List<BookListener> getAllBooksByRating();
 
-
+	// public List<Book> getAllBooksByRating();
 }
