@@ -1,18 +1,16 @@
 package com.stackroute.bookservice.domain;
 
-
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Book {
 	
-	@Id ObjectId databaseId;
-	private int bookISBN_10;
+	@Id
+	private String bookISBN_10;
 	private String title;
 	private String poster;
-	private String rating;
+	private float rating;
 	private String volume;
 	private String author;
 	private String publisher;
@@ -27,7 +25,7 @@ public class Book {
 	public Book() {
 		
 	}
-	public Book(int bookISBN_10, String title, String poster, String rating, String volume, String author,
+	public Book(String bookISBN_10, String title, String poster, float rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear, String pages, String description,
 			String language) {
 		
@@ -47,11 +45,11 @@ public class Book {
 	}
 	
 	
-	public int getBookISBN_10() {
+	public String getBookISBN_10() {
 		return bookISBN_10;
 	}
-	public void setBookISBN_10(int id) {
-		this.bookISBN_10 = id;
+	public void setBookISBN_10(String bookISBN_10) {
+		this.bookISBN_10 = bookISBN_10;
 	}
 	public String getTitle() {
 		return title;
@@ -65,10 +63,10 @@ public class Book {
 	public void setPoster(String poster) {
 		this.poster = poster;
 	}
-	public String getRating() {
+	public float getRating() {
 		return rating;
 	}
-	public void setRating(String rating) {
+	public void setRating(float rating) {
 		this.rating = rating;
 	}
 	public String getVolume() {

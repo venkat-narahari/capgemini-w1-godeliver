@@ -15,10 +15,10 @@ public interface BookRepository extends MongoRepository<Book, Integer> {
 	@Query("{title : ?0}")
 	public List<Book> getByBookTitle(String title);
 	
-	@Query("{'bookISBN_10' : {$bookISBN_10: ?0}}")
-	public Book findByBookISBN_10(int bookISBN_10);
+	@Query("{bookISBN_10 : ?0}")
+	public Book getByBookISBN_10(String bookISBN_10);
+
 	
-	@Query("{'title':{$regex : ?0, $options:'i'}}")
-	public List<Book> findBookByRegexpTitle(String regexp);
+
 
 }

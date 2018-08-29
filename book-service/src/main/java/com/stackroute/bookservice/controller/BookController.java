@@ -1,6 +1,9 @@
 package com.stackroute.bookservice.controller;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +25,7 @@ import com.stackroute.bookservice.services.BookServices;
 public class BookController {
 
 	private BookServices bookServiceImpl;
+	Logger logger = LoggerFactory.getLogger("BootstrapData");
 
 	@Autowired
 	public BookController(BookServices bookServiceImpl) {
@@ -61,6 +65,7 @@ public class BookController {
 	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) throws BookNotFoundException {
 		List<Book> list = bookServiceImpl.getByTitle(bookTitle);
+
 		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
 
 	}
