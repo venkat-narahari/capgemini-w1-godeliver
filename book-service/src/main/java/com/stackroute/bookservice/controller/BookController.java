@@ -47,7 +47,7 @@ public class BookController {
 				throw new BookNotFoundException();
 			}
 		} catch (BookNotFoundException e) {
-			return new ResponseEntity<String>(e.toString(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>(e.toString(), HttpStatus.OK);
 		}
 	}
 
@@ -58,38 +58,51 @@ public class BookController {
 			Book savedBook;
 			if ((savedBook = bookServiceImpl.saveBook(book)) != null) {
 
-				return new ResponseEntity<Book>(savedBook, HttpStatus.ACCEPTED);
+				return new ResponseEntity<Book>(savedBook, HttpStatus.OK);
 			} else {
 				throw new BookAlreadyExistsException("book already exists");
 			}
 		} catch (BookAlreadyExistsException e) {
-			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
+			return new ResponseEntity<String>(e.toString(), HttpStatus.OK);
 		}
 
 	}
 
-	@RequestMapping(value = "delete/{bookTitle}", method = RequestMethod.DELETE, produces = "application/json")
-	public ResponseEntity<?> deleteBook(@PathVariable String bookTitle) throws BookNotFoundException {
-		List<Book> bookobj = bookServiceImpl.deleteBook(bookTitle);
-		return new ResponseEntity<List<Book>>(bookobj, HttpStatus.OK);
+	@RequestMapping(value = "delete/book/{bookId}", method = RequestMethod.DELETE, produces = "application/json")
+	public ResponseEntity<?> deleteBook(@PathVariable String bookId) throws BookNotFoundException {
+		try {
+
+			if ((bookServiceImpl.deleteBook(bookId)) != null) {
+				return new ResponseEntity<String>("deleted", HttpStatus.OK);
+			} else {
+				throw new BookNotFoundException();
+			}
+		} catch (BookNotFoundException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.OK);
+		}
+
 	}
 
-	
+	@RequestMapping(value = "update/book/{bookId}", method = RequestMethod.PUT, produces = "application/json")
+	public ResponseEntity<?> updateBook(@PathVariable String bookId, @RequestBody Book book)
+			throws BookNotFoundException {
+		try {
+			Book updatedBook;
+			if ((updatedBook = bookServiceImpl.updateBook(bookId, book)) != null) {
+				return new ResponseEntity<Book>(updatedBook, HttpStatus.OK);
+			} else {
+				throw new BookNotFoundException(bookId);
+			}
+		} catch (BookNotFoundException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.OK);
+		}
+	}
 
-	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET)
+	@RequestMapping(value = "/book/{bookTitle}", method = RequestMethod.GET)
 	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) {
 		List<Book> list = bookServiceImpl.getByTitle(bookTitle);
 
 		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
 
 	}
-	
-	
-	 @RequestMapping(value = "/search/{term}", method = RequestMethod.GET,
-		 produces = { "application/json" })
-		 public ResponseEntity<?> getAlphaHandler(@PathVariable("term") String searchTerm) {
-		 List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
-		 return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.OK);
-
-}
 }

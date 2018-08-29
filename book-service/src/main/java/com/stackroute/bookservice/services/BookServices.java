@@ -11,10 +11,11 @@ public interface BookServices {
 
 	public List<Book> getAllBooks();
 
-	public List<Book> deleteBook(String bookTitle);
+	public String deleteBook(String bookId);
+
+	public Book updateBook(String bookId, Book book);
 
 	public List<Book> getByTitle(String bookTitle);
 
-	List<Book> findBookByRegexpTitle(String searchTerm);
 
 }
