@@ -13,8 +13,6 @@ public interface BookServices {
 
 	public List<Book> deleteBook(String bookId);
 
-	public List<Book> getByTitle(String bookTitle);
-
 	List<Book> findBookByRegexpTitle(String searchTerm);
 
 }
