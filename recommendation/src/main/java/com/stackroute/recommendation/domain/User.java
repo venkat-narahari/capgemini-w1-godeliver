@@ -1,8 +1,6 @@
 package com.stackroute.recommendation.domain;
 
-
 import java.util.Arrays;
-
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -10,10 +8,9 @@ import org.neo4j.ogm.annotation.NodeEntity;
 @NodeEntity
 public class User {
 
-
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long nodeId;
-
 	private String userName;
 	private String userEmail;
 	private String userDob;
@@ -21,12 +18,11 @@ public class User {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
-	
+
 	public User() {
-		
+
 	}
 
-	
 	@Override
 	public String toString() {
 		return "User [nodeId=" + nodeId + ", userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob
@@ -34,23 +30,18 @@ public class User {
 				+ ", userGender=" + userGender + ", userMobile=" + userMobile + "]";
 	}
 
-
 	public Long getNodeId() {
 		return nodeId;
 	}
-
 
 	public void setNodeId(Long nodeId) {
 		this.nodeId = nodeId;
 	}
 
-
-	
-
-	public User(String userName, String userEmail, String userDob, String userPassword,
-			String[] userPreferences, String userGender, double userMobile) {
+	public User(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
+			String userGender, double userMobile) {
 		super();
-		
+
 		this.userName = userName;
 		this.userEmail = userEmail;
 		this.userDob = userDob;
@@ -59,7 +50,6 @@ public class User {
 		this.userGender = userGender;
 		this.userMobile = userMobile;
 	}
-
 
 	public String getUserName() {
 		return userName;
@@ -116,9 +106,5 @@ public class User {
 	public void setUserMobile(double userMobile) {
 		this.userMobile = userMobile;
 	}
-
-	
-
-	
 
 }

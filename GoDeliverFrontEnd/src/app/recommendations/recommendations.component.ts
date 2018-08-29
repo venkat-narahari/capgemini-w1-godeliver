@@ -8,10 +8,27 @@ import { Books } from "../book-details";
   styleUrls: ["./recommendations.component.css"]
 })
 export class RecommendationsComponent implements OnInit {
-  recommended_books;
-  topselling;
+  recommended_books: any;
+  top_selling: any;
+  top_rated;
   email;
-  bookdetails = new Books("", "", "", "","", "", "", "", "", "", "", "", "", "");
+  genres = [];
+  bookdetails = new Books(
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  );
 
   constructor(private bookService: BookService) {}
 
@@ -23,9 +40,15 @@ export class RecommendationsComponent implements OnInit {
         console.log("inside ngOnInit getRecommendationList");
       });
     }
+
     this.bookService.getTopSellingList().subscribe(data => {
       console.log("topselling data is 111111111 ", data);
-      this.topselling = data;
+      this.top_selling = data;
+    });
+
+    this.bookService.getTopRated().subscribe(list => {
+      console.log("topselling data is 111 ", list);
+      this.top_rated = list;
     });
   }
 

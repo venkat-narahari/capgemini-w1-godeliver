@@ -15,8 +15,9 @@ export class RegistrationComponent implements OnInit {
   //userDetails fields
   user = new UserDetails("", "", "", "", []);
 
-  //emailPattern 
-  emailPattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
+  //emailPattern
+  emailPattern =
+    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
   //master preferences
   preferences = [
     { id: 1, name: "Trave," },
@@ -36,7 +37,10 @@ export class RegistrationComponent implements OnInit {
   ];
 
   //creating userDetailService
-  constructor( private router: Router, private userDetailService: UserDetailsService) {}
+  constructor(
+    private router: Router,
+    private userDetailService: UserDetailsService
+  ) {}
 
   ngOnInit() {}
 
@@ -50,8 +54,8 @@ export class RegistrationComponent implements OnInit {
       .addUser(this.user)
       .subscribe(res => console.log("Done"));
 
-      this.router.navigate(['/login']);
-      location.reload();
+    this.router.navigate(["/login"]);
+    location.reload();
   }
 
   //selectedPreferenceList is coming from the front end in a list and stored in userPreference in form of array
@@ -59,5 +63,4 @@ export class RegistrationComponent implements OnInit {
     console.log(list);
     this.user.userPreferences = list;
   }
-
 }

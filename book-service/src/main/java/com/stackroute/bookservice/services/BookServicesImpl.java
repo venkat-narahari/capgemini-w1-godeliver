@@ -26,7 +26,7 @@ public class BookServicesImpl implements BookServices {
 
 	@Autowired
 	private KafkaTemplate<String, Book> kafkaTemplate;
-
+	
 	@Override
 	public Book saveBook(Book book) {
 		List<Book> bookList = (List<Book>) bookRepository.findAll();
@@ -58,9 +58,24 @@ public class BookServicesImpl implements BookServices {
 	}
 
 	@Override
+	public List<Book> getByTitle(String bookTitle) {
+		List<Book> list = bookRepository.getByBookTitle(bookTitle);
+		return list;
+	}
+	@Override
 	public List<Book> findBookByRegexpTitle(String searchTerm) {
 		List<Book> list = bookRepository.findBookByRegexpTitle(searchTerm);
 		return list;
 	}
+
+	@Override
+	public Book findBookById(String bookId) {
+		System.out.println(bookId);
+		Book book = bookRepository.findByTheBooksBookISBN_10(bookId);
+		System.out.println("a"+book.getBookISBN_10());
+		return book;
+	}
+
+	
 
 }

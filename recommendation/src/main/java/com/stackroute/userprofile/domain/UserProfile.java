@@ -2,10 +2,8 @@ package com.stackroute.userprofile.domain;
 
 import java.util.Arrays;
 
-
-
 public class UserProfile {
-	
+
 	private String userName;
 	private String userEmail;
 	private String userDob;
@@ -13,9 +11,9 @@ public class UserProfile {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
-	
+
 	public UserProfile() {
-		
+
 	}
 
 	@Override
@@ -92,9 +90,4 @@ public class UserProfile {
 	public void setUserMobile(double userMobile) {
 		this.userMobile = userMobile;
 	}
-
-	
-
-	
-	
 }

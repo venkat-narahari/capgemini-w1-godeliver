@@ -15,7 +15,6 @@
   <!--container-->
   <div class="container">
     <div class="row">
-      <h2>User Registration Page</h2>
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="Name">Name</label>
@@ -56,7 +55,7 @@
             <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
           </div>
         </div>
-        <app-multiple-checkboxes (updatedList)="selectedPreferenceList($event)" [height]="150" [masterList]="preferences" [title]="'Select Genre'"
+        <app-multiple-checkboxes class="btn-primary" (updatedList)="selectedPreferenceList($event)" [height]="150" [masterList]="preferences" [title]="'Select Genre'"
           [DisplayField]="'name'"></app-multiple-checkboxes>
 
         <!--form-group-->
