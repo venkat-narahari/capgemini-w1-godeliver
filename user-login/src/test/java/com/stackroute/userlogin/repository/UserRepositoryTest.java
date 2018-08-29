@@ -15,8 +15,8 @@ import com.stackroute.userlogin.domain.User;
 
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
 @SpringBootTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
 public class UserRepositoryTest {
 
 	@Autowired
