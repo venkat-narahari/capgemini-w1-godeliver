@@ -10,7 +10,7 @@ export class UserDetailsService {
   constructor(public http: HttpClient) {}
 
   //Backend saveuser url
-  private post_url = "http://localhost:8070/api/v1/user/save";
+  private post_url = "http://localhost:8080/api/v1/user/save";
 
   addUser(user: UserDetails): Observable<UserDetails> {
     

@@ -9,7 +9,7 @@
 
 	<parent>
 		<groupId>com.stackroute</groupId>
-		<artifactId>boeing-w1-test</artifactId>
+		<artifactId>capgemini-w1-godeliver-test</artifactId>
 		<version>1.0.0</version>
 		<!-- <relativePath/> lookup parent from repository -->
 	</parent>

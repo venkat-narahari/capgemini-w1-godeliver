@@ -1,12 +1,10 @@
 package com.stackroute.userprofile.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-
 import com.stackroute.userprofile.config.KafkaConfiguration;
 import com.stackroute.userprofile.domain.UserProfile;
 import com.stackroute.userprofile.repository.UserProfileRepository;
@@ -21,17 +19,18 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	@Autowired
 	public UserProfileServicesImpl(UserProfileRepository userProfileRepository, KafkaConfiguration kafkaConfig) {
 		this.userProfileRepository = userProfileRepository;
-		this.kafkaConfig=kafkaConfig;
+		this.kafkaConfig = kafkaConfig;
 	}
-	
-	  String topic = kafkaConfig.getTopic();
 
-	    // Kafka template from configuration and topic
-	    @Autowired
-	    private KafkaTemplate<String, UserProfile> kafkaTemplate;
+	String topic = kafkaConfig.getTopic();
 
-	/* 
-	 * Checks whether the user exists with the email id or not and if not exists, the user will be saved
+	// Kafka template from configuration and topic
+	@Autowired
+	private KafkaTemplate<String, UserProfile> kafkaTemplate;
+
+	/*
+	 * Checks whether the user exists with the email id or not and if not exists,
+	 * the user will be saved
 	 */
 	@Override
 	public UserProfile saveUser(UserProfile user) {
@@ -44,7 +43,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 			return null;
 	}
 
-	/* 
+	/*
 	 * Updating the existing user
 	 */
 	@Override
@@ -54,7 +53,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 		return updatedUser;
 	}
 
-	/* 
+	/*
 	 * method for viewing the existing user
 	 */
 	@Override

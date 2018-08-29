@@ -8,9 +8,8 @@ public interface UserProfileServices {
 
 	public UserProfile saveUser(UserProfile userProfile);
 
-	public UserProfile updateUser(UserProfile userProfile,String userEmail);
+	public UserProfile updateUser(UserProfile userProfile, String userEmail);
 
 	public List<UserProfile> viewUser(String userEmail);
-
 
 }

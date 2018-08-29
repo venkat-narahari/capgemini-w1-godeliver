@@ -11,9 +11,9 @@ public class UserProfile {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
-	
+
 	public UserProfile() {
-		
+
 	}
 
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
