@@ -1,6 +1,7 @@
 package com.stackroute.recommendation.domain;
 
 import java.util.List;
+
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -28,12 +29,13 @@ public class BookListener {
 
 	@Relationship(type = "ofType", direction = Relationship.OUTGOING)
 	private List<Genre> genres;
-
+	@Relationship(type = "writtenBy", direction = Relationship.OUTGOING)
+	List<Author> authors;
+	
+	
 	public BookListener() {
 
 	}
-
-	
 
 	public BookListener(String bookISBN_10, String title, String poster, float rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear, String pages, String description,
@@ -54,7 +56,25 @@ public class BookListener {
 		this.language = language;
 	}
 
-
+	public BookListener(String bookISBN_10, String title, String poster, float rating, String volume, String author,
+			String publisher, String genre, String cost, String publishedYear, String pages, String description,
+			String language, List<Genre> genres) {
+		super();
+		this.bookISBN_10 = bookISBN_10;
+		this.title = title;
+		this.poster = poster;
+		this.rating = rating;
+		this.volume = volume;
+		this.author = author;
+		this.publisher = publisher;
+		this.genre = genre;
+		this.cost = cost;
+		this.publishedYear = publishedYear;
+		this.pages = pages;
+		this.description = description;
+		this.language = language;
+		this.genres = genres;
+	}
 
 	@Override
 	public String toString() {
