@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+# Loco yaml export: Symfony YAML object
+# Project: application.properties conversion
+# Release: Working copy
+# Locale: en-GB, English (UK)
+# Exported by: Unregistered user
+# Exported at: Thu, 30 Aug 2018 17:47:15 +0530
+---
+>>>>>>> 82c9512472440fb9ff965cfc1ce3e73890465682
 server:
   port: "8891"
 spring:
@@ -5,7 +15,11 @@ spring:
     config:
       server:
         git:
+<<<<<<< HEAD
           uri: https://github.com/tejakathari007/go-deliver.properties.git
+=======
+          uri: https://github.com/stackroute/capgemini-w1-godeliver/tree/v1.0.0/config-service/src/main/resources
+>>>>>>> 82c9512472440fb9ff965cfc1ce3e73890465682
   application:
     name: configserver
 eureka:
@@ -14,3 +28,7 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     register-with-eureka: "true"
     fetch-registry: "true"
+<<<<<<< HEAD
+=======
+...
+>>>>>>> 82c9512472440fb9ff965cfc1ce3e73890465682
