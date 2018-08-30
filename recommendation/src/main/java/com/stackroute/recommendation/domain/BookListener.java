@@ -2,6 +2,7 @@ package com.stackroute.recommendation.domain;
 
 import java.util.List;
 
+import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
@@ -10,6 +11,8 @@ import org.neo4j.ogm.annotation.Relationship;
 public class BookListener {
 
 	@Id
+	@GeneratedValue
+	private Long nodeId;
 	private String bookISBN_10;
 	private String title;
 	private String poster;
@@ -26,17 +29,18 @@ public class BookListener {
 
 	@Relationship(type = "ofType", direction = Relationship.OUTGOING)
 	private List<Genre> genres;
-
+	@Relationship(type = "writtenBy", direction = Relationship.OUTGOING)
+	List<Author> authors;
+	
+	
 	public BookListener() {
 
 	}
 
-	
-
 	public BookListener(String bookISBN_10, String title, String poster, float rating, String volume, String author,
 			String publisher, String genre, String cost, String publishedYear, String pages, String description,
 			String language) {
-
+		super();
 		this.bookISBN_10 = bookISBN_10;
 		this.title = title;
 		this.poster = poster;
@@ -52,7 +56,26 @@ public class BookListener {
 		this.language = language;
 	}
 
-	
+	public BookListener(String bookISBN_10, String title, String poster, float rating, String volume, String author,
+			String publisher, String genre, String cost, String publishedYear, String pages, String description,
+			String language, List<Genre> genres) {
+		super();
+		this.bookISBN_10 = bookISBN_10;
+		this.title = title;
+		this.poster = poster;
+		this.rating = rating;
+		this.volume = volume;
+		this.author = author;
+		this.publisher = publisher;
+		this.genre = genre;
+		this.cost = cost;
+		this.publishedYear = publishedYear;
+		this.pages = pages;
+		this.description = description;
+		this.language = language;
+		this.genres = genres;
+	}
+
 	@Override
 	public String toString() {
 		return "BookListener [bookISBN_10=" + bookISBN_10 + ", title=" + title + ", poster=" + poster + ", rating="
@@ -61,7 +84,13 @@ public class BookListener {
 				+ description + ", language=" + language + ", genres=" + genres + "]";
 	}
 
+	public Long getNodeId() {
+		return nodeId;
+	}
 
+	public void setNodeId(Long nodeId) {
+		this.nodeId = nodeId;
+	}
 
 	public List<Genre> getGenres() {
 		return genres;
@@ -70,6 +99,7 @@ public class BookListener {
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
 	}
+
 	public String getBookISBN_10() {
 		return bookISBN_10;
 	}

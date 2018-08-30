@@ -15,7 +15,6 @@
   <!--container-->
   <div class="container">
     <div class="row">
-      <h2>User Registration Page</h2>
       <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
           <label for="Name">Name</label>
@@ -49,7 +48,7 @@
         <!--form-group-->
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}"
+          <input type="password" class="form-control" placeholder="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}"
             name="password" required minlength="6" />
           <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
             <div *ngIf="password.errors.required">Password Name is required</div>
@@ -64,6 +63,9 @@
           <button class="btn btn-primary">Register</button>
         </div>
         <!--form-group-->
+        <br>
+        <br>
+        <br>
       </form>
     </div>
   </div>

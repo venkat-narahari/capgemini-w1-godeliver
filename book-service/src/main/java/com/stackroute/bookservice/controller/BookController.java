@@ -19,10 +19,11 @@ import com.stackroute.bookservice.services.BookServices;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class BookController {
 
 	private BookServices bookServiceImpl;
+	
 
 	@Autowired
 	public BookController(BookServices bookServiceImpl) {
@@ -58,22 +59,16 @@ public class BookController {
 
 	}
 	
-//  Deletes a book by title
+//  Deletes a book by id
 	
-	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.DELETE, produces = "application/json")
-	public ResponseEntity<?> deleteBook(@PathVariable String bookTitle) throws BookNotFoundException {
-		List<Book> bookobj = bookServiceImpl.deleteBook(bookTitle);
-		return new ResponseEntity<List<Book>>(bookobj, HttpStatus.ACCEPTED);
-	}
+	@RequestMapping(value = "/{bookId}", method = RequestMethod.DELETE, produces = "application/json")
+	public ResponseEntity<?> deleteBook(@PathVariable String bookId ){
+		if(bookServiceImpl.deleteBook(bookId)) {
+			return new ResponseEntity<String>("Deleted", HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<String>("Not Deleted", HttpStatus.NOT_FOUND);
 	 
-//  Gets the details of a book by using title
-	
-	@RequestMapping(value = "/{bookTitle}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<?> getByBookTitle(@PathVariable String bookTitle) throws BookNotFoundException {
-		List<Book> list = bookServiceImpl.getByTitle(bookTitle);
-
-		return new ResponseEntity<List<Book>>(list, HttpStatus.ACCEPTED);
-
 	}
 	
 //  Gets the details of book by using alphabet 
@@ -83,4 +78,12 @@ public class BookController {
 		List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
 		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.ACCEPTED);
 	}
+	
+	@RequestMapping(value = "book/{id}", method = RequestMethod.GET, produces = { "application/json" })
+    public ResponseEntity<?> getById(@PathVariable("id") String bookId) throws BookNotFoundException {
+        Book booklistalpha = bookServiceImpl.findBookById(bookId);
+        return new ResponseEntity<Book>(booklistalpha, HttpStatus.ACCEPTED);
+    }
+	
+	
 }

@@ -1,0 +1,11 @@
+
+---
+server:
+  port: "8888"
+spring:
+  application:
+    name: book
+  cloud:
+    config:
+      uri: http://localhost:8891
+...

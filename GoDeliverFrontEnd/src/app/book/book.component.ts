@@ -9,25 +9,32 @@ import { Books } from "../book-details";
   styleUrls: ["./book.component.css"]
 })
 export class BookComponent implements OnInit {
+  //To store book details for wishlist
+  book: any;
+
+  //To store currentUser email for wishlist button
+  curUser: any;
+
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService
   ) {}
-  book: any;
-  curUser: any;
+
   // bookdetails=new Books("","","","","","","","","","","","","");
+
   ngOnInit() {
     this.router.params.subscribe(params => {
-      const id = params["book.bookISBN"];
-      this.bookService.getBook(id).subscribe(data => {
-        this.book = data;
-        if (localStorage.getItem("userCurrentEmail") != null) {
-          this.curUser = JSON.parse(localStorage.getItem("userCurrentEmail"));
-        }
-        // console.log(data);
+      const id = params['bookISBN'];
+      this.bookService.getBook(id).subscribe(list => {
+        this.book = list
+      //  console.log(list);
       });
     });
+    if (localStorage.getItem("currentUserEmail") != null) {
+      this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
+    }
   }
+
   // addBook(book) {
   //   this.bookdetails.title=book.title;
   //   this.bookdetails.bookISBN=book.bookISBN_10;

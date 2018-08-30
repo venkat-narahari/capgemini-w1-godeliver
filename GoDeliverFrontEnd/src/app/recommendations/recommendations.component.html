@@ -8,15 +8,23 @@
 </div>
 <h2>Top Selling</h2>
 <div class="row">
-  <div class="col-sm-4" *ngFor="let book of topselling; let i = index">
+  <div class="col-sm-4" *ngFor="let book of top_selling; let i = index">
+    <div *ngIf='i<3'>
+      <app-cards [book]=book></app-cards>
+    </div>
+  </div>
+</div>
+<h2>Top Rated</h2>
+<div class="row">
+  <div class="col-sm-4" *ngFor="let book of top_rated; let i = index">
     <div *ngIf='i < 3'>
       <app-cards [book]=book></app-cards>
     </div>
   </div>
 </div>
-<h2 >Genres</h2>
+<h2>Genres</h2>
 <div class="row">
-  <div class="col-sm-3" *ngFor="let book of topselling; let i=index">
+  <div class="col-sm-3" *ngFor="let book of top_selling; let i=index">
     <div *ngIf='i<4'>
       <mat-card class="text-center" style="background-color:#f9f7f7">Action</mat-card>
     </div>

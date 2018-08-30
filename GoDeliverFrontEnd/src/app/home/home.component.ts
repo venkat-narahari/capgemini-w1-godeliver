@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BookService } from "../book.service";
 @Component({
   selector: "app-home",
@@ -10,11 +10,26 @@ export class HomeComponent implements OnInit {
   $: any;
   Name: any;
   genre: any;
-  constructor(
-    private router: ActivatedRoute,
-    private bookService: BookService
-  ) {}
-  ngOnInit() {
-    
+  location: any;
+  search: any;
+  books_result: any;
+  check = "hi";
+  constructor(private bookService: BookService, private route: Router) {
+    this.location = route.url;
+  }
+  ngOnInit() {}
+
+  // get search results of movies
+  searchBooks() {
+    console.log(this.search);
+    this.check = "";
+    this.bookService.getBookByName(this.search).subscribe(data => {
+      this.books_result = data;
+    });
+  }
+
+  backToHome() {
+    this.route.navigate(['']);
+    location.reload();
   }
 }

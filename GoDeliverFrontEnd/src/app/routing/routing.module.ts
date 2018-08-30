@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: "servicepage", component: ServicepageComponent },
   { path: "cart", component: CartComponent },
   { path: "book/:bookISBN", component: BookComponent },
-  { path: "book", component: BookComponent },
+  { path: "book", component: BookComponent }
 ];
 
 @NgModule({

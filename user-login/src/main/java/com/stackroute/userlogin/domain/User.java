@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class User {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long userId;
@@ -18,7 +17,18 @@ public class User {
 
 	@CreationTimestamp
 	private Date created;
+	
+	public User() {
+		
+	}
 
+
+	public User(Long userId, String userEmail, String userPassword, Date created) {
+		this.userId = userId;
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+		this.created = created;
+	}
 
 	public Long getUserId() {
 		return userId;

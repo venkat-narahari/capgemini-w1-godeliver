@@ -14,6 +14,7 @@ curuser:any;
     if(localStorage.getItem('currentUserEmail')!=null)
     {
       this.curUser=JSON.parse(localStorage.getItem('currentUserEmail'));
+      this.curUser=this.curUser.toUpperCase();
       this.curuser= this.curUser.split(/@/);
     }
   }

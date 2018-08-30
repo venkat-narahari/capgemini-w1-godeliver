@@ -50,23 +50,25 @@ public class BookServicesImpl implements BookServices {
 	}
 
 	@Override
-	public List<Book> deleteBook(String bookTitle) {
-		List<Book> findBook = bookRepository.getByBookTitle(bookTitle);
-		bookRepository.deleteAll(findBook);
-		return findBook;
-
+	public boolean deleteBook(String bookId) {
+		  if(bookRepository.deleteBy(bookId)==null) {
+			  return true; 
+		  }
+		  return false;
 	}
 
-	@Override
-	public List<Book> getByTitle(String bookTitle) {
-		List<Book> list = bookRepository.getByBookTitle(bookTitle);
-		return list;
-	}
+	
 	@Override
 	public List<Book> findBookByRegexpTitle(String searchTerm) {
 		List<Book> list = bookRepository.findBookByRegexpTitle(searchTerm);
 		return list;
 	}
+
+	@Override
+    public Book findBookById(String bookId) {
+        Book book = bookRepository.findByTheBooksBookISBN_10(bookId);
+        return book;
+    }
 
 	
 
