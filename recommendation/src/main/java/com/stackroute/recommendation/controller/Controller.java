@@ -6,18 +6,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.domain.Genre;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.service.BookService;
-import com.stackroute.recommendation.service.GenreService;
+import com.stackroute.recommendation.service.UserService;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v1")
@@ -25,14 +25,13 @@ public class Controller {
 
 	BookService bookService;
 	BookRepository bookRepository;
-	GenreService genreService;
+	
 	UserService userService;
 
 	@Autowired
-	public Controller(BookService bookService, UserService userService,BookRepository bookRepository,GenreService genreService) {
+	public Controller(BookService bookService, UserService userService,BookRepository bookRepository) {
 		this.bookService = bookService;
 		this.bookRepository = bookRepository;
-		this.genreService=genreService;
 		this.userService=userService;
 	}
 ;
