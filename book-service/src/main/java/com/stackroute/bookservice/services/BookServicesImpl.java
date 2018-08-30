@@ -50,11 +50,11 @@ public class BookServicesImpl implements BookServices {
 	}
 
 	@Override
-	public List<Book> deleteBook(String bookTitle) {
-		List<Book> findBook = bookRepository.getByBookTitle(bookTitle);
-		bookRepository.deleteAll(findBook);
-		return findBook;
-
+	public boolean deleteBook(String bookId) {
+		  if(bookRepository.deleteBy(bookId)==null) {
+			  return true; 
+		  }
+		  return false;
 	}
 
 	

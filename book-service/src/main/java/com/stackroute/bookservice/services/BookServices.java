@@ -11,7 +11,7 @@ public interface BookServices {
 
 	public List<Book> getAllBooks();
 
-	public List<Book> deleteBook(String bookId);
+	public boolean deleteBook(String bookId);
 
 	public List<Book> findBookByRegexpTitle(String searchTerm);
 	

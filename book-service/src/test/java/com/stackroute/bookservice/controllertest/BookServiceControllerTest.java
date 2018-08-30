@@ -81,7 +81,7 @@ public class BookServiceControllerTest {
 	@Test
 	public void testDeleteBooks() throws Exception {
 
-		when(bookService.deleteBook("Harry Potter and the Sorcerer's Stone")).thenReturn(books);
+		when(bookService.deleteBook("Harry Potter and the Sorcerer's Stone")).thenReturn(true);
 		mockMvc.perform(delete("/api/v1/{bookTitle}", book.getTitle()).contentType(MediaType.APPLICATION_JSON).content(asJsonString(books)))
 				.andExpect(status().isAccepted()).andDo(print());
 		verify(bookService, times(1)).deleteBook("Harry Potter and the Sorcerer's Stone");
