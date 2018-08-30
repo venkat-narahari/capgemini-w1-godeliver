@@ -1,13 +1,11 @@
-FROM java:8
+# pull image of jdk
+FROM java:8-jre
 
-RUN mkdir /src
+# copy jar file to docker file system
+ADD ./target/user-login-0.0.1-SNAPSHOT.jar /usr/app/user-login-0.0.1-SNAPSHOT.jar
 
-WORKDIR /src
+Expose 8082
 
-ADD target/login-service-1.0.0.jar /src/user.jar
-
-EXPOSE 8082
-
-RUN sh -c 'touch /src/user.jar'
-
-ENTRYPOINT ["java","-jar","/src/user.jar"]
+# java -jar <jar file name>
+WORKDIR usr/app
+ENTRYPOINT ["java", "-jar", "user-login-0.0.1-SNAPSHOT.jar"]
