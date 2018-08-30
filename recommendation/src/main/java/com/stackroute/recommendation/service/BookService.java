@@ -29,6 +29,7 @@ public class BookService {
 	AuthorRepository authorRepository;
 	OfTypeRepository ofTypeRepository;
 	WrittenByRepository writtenByRepository;
+	UserService userService;
 
 	@Autowired
 	public BookService(BookRepository bookRepository, GenreRepository genreRepository,
@@ -49,18 +50,21 @@ public class BookService {
 	@KafkaListener(groupId = "books", topics = "book_details")
 	public void getBookFromTopic(@Payload Book book) {
 		System.out.println(book.toString());
-
 		BookListener bookObj = new BookListener(book.getBookISBN_10(), book.getTitle(), book.getPoster(),
 				book.getRating(), book.getVolume(), book.getAuthor(), book.getPublisher(), book.getGenre(),
 				book.getCost(), book.getPublishedYear(), book.getPages(), book.getDescription(), book.getLanguage());
 		bookRepository.save(bookObj);
 		this.bookFromTopic.add(book);
+
 		Genre genre = new Genre(book.getGenre());
 		genreRepository.save(genre);
+
 		Author author = new Author(book.getAuthor());
 		authorRepository.save(author);
+
 		OfType ofType = new OfType(bookObj, genre);
 		ofTypeRepository.save(ofType);
+
 		WrittenBy writtenBy = new WrittenBy(bookObj, author);
 		writtenByRepository.save(writtenBy);
 	}
@@ -86,11 +90,11 @@ public class BookService {
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBooksByGenre(name);
 		return getAllBooks;
 	}
+//getBooksByAuthor() method is used to get books written by author
 
 	public List<BookListener> getBooksByAuthor(String name) {
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBookByAuthor(name);
 		System.out.println("hdghge" + getAllBooks);
 		return getAllBooks;
 	}
-
 }

@@ -1,17 +1,26 @@
 package com.stackroute.recommendation.domain;
 
+import java.util.Arrays;
+
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
 public class UserPreferences {
-
+	@Id
+	
+	private String[] userPreferences;
 	public UserPreferences() {
 		
 	}
 
 	public UserPreferences(String[] userPreferences) {
-		super();
 		this.userPreferences = userPreferences;
+	}
+
+	@Override
+	public String toString() {
+		return "UserPreferences [userPreferences=" + Arrays.toString(userPreferences) + "]";
 	}
 
 	public String[] getUserPreferences() {
@@ -22,5 +31,5 @@ public class UserPreferences {
 		this.userPreferences = userPreferences;
 	}
 
-	private String[] userPreferences;
+	
 }
