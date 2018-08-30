@@ -18,8 +18,7 @@ import com.stackroute.recommendation.domain.Genre;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.service.BookService;
 import com.stackroute.recommendation.service.GenreService;
-import com.stackroute.recommendation.service.UserService;
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v1")
 public class Controller {

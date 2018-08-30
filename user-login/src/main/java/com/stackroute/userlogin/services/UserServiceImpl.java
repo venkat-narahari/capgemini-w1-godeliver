@@ -15,13 +15,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userDao;
 
+
 	@KafkaListener(topics = "userprofile", groupId = "group_json")
 	public User save(UserProfile userProfile) {
 		User user = new User();
 		user.setUserEmail(userProfile.getUserEmail());
-		System.out.println(user.getUserEmail());
 		user.setUserPassword(userProfile.getUserPassword());
-		System.out.println(user.getUserPassword());
 		return userDao.save(user);
 	}
 

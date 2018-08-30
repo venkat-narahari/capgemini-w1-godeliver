@@ -1,3 +1,4 @@
+<!-- Display the book data -->
 <div class="container">
 
   <div *ngIf="book">
@@ -10,7 +11,7 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-5">
-                <img src="{{ book.poster }}" class="img-fluid" alt="{{ book.title }}">
+                <img src="{{ book.poster }}" width="350px" height="500px" alt="{{ book.title }}">
               </div>
               <div class="col-sm-7">
                 <ul class="list-group">
@@ -36,13 +37,14 @@
                     <strong>Pages: </strong> {{ book.pages }}
                   </li>
                   <li class="list-group-item">
+                    <strong>Language: </strong> {{ book.language }}
+                  </li>
+                  <li class="list-group-item">
                     <strong>Cost: </strong> {{ book.cost }}
                   </li>
                   <li class="list-group-item">
                     <strong>Genre: </strong>
-                    <span *ngFor="let genre of movie.genres" class="badge badge-primary mr-2">
-                      {{ book.genre }}
-                    </span>
+                    {{ book.genre }}
                   </li>
                   <li class="list-group-item">
                     <a routerLink='' target="_blank">
@@ -50,7 +52,7 @@
                     </a>
 
                   </li>
-                  
+
                   <li *ngIf=curUser>
                     <a (click)="addBook(book)" class="btn btn-block btn-success">Add Book to Wishlist</a>
                   </li>
