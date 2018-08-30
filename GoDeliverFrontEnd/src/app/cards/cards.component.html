@@ -6,13 +6,13 @@
     <div *ngIf=email>
       <mat-icon class="example-icon"><a (click)="addToWishlist(book)">favorite</a></mat-icon>
     </div>
-    <mat-card-title><h6>{{ book.title }}</h6></mat-card-title>
+    <mat-card-title height="10px"><h6>{{ book.title }}</h6></mat-card-title>
     <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
     <mat-card-subtitle>Rs {{book.cost}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>
     <span class="spacer"></span>
     <button (click)="addToCart(book)" mat-button>Add to cart</button>
-    <button routerLink="book/{{ book.title }}" mat-button>Details</button>
+    <button routerLink="book/{{ book.bookISBN_10 }}" mat-button>Details</button>
   </mat-card-actions>
 </mat-card>

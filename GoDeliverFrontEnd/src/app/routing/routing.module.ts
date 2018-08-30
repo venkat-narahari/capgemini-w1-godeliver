@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: "return", component: ReturnpolicyComponent },
   { path: "servicepage", component: ServicepageComponent },
   { path: "cart", component: CartComponent },
-  { path: "book/:title", component: BookComponent },
+  { path: "book/:bookISBN", component: BookComponent },
   { path: "book", component: BookComponent }
 ];
 

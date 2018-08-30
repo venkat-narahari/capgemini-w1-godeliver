@@ -48,14 +48,14 @@
         <!--form-group-->
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}"
+          <input type="password" class="form-control" placeholder="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{'is-invalid':f.submitted && password.invalid}"
             name="password" required minlength="6" />
           <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
             <div *ngIf="password.errors.required">Password Name is required</div>
             <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
           </div>
         </div>
-        <app-multiple-checkboxes class="btn-primary" (updatedList)="selectedPreferenceList($event)" [height]="150" [masterList]="preferences" [title]="'Select Genre'"
+        <app-multiple-checkboxes (updatedList)="selectedPreferenceList($event)" [height]="150" [masterList]="preferences" [title]="'Select Genre'"
           [DisplayField]="'name'"></app-multiple-checkboxes>
 
         <!--form-group-->
@@ -63,6 +63,9 @@
           <button class="btn btn-primary">Register</button>
         </div>
         <!--form-group-->
+        <br>
+        <br>
+        <br>
       </form>
     </div>
   </div>
