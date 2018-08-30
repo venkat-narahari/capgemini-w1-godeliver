@@ -1,23 +1,25 @@
 package com.stackroute.userprofile.domain;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class UserProfile {
 	private String userName;
+	@Id
 	private String userEmail;
 	private String userDob;
 	private String userPassword;
 	private String[] userPreferences;
 	private String userGender;
-	private double userMobile;
+	private long userMobile;
 
 	public UserProfile() {
 
 	}
 
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, double userMobile) {
+			String userGender, long userMobile) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -76,11 +78,11 @@ public class UserProfile {
 		this.userGender = userGender;
 	}
 
-	public double getUserMobile() {
+	public long getUserMobile() {
 		return userMobile;
 	}
 
-	public void setUserMobile(double userMobile) {
+	public void setUserMobile(long userMobile) {
 		this.userMobile = userMobile;
 	}
 
