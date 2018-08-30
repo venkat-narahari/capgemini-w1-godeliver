@@ -1,5 +1,5 @@
-package com.stackroute.userprofile.repository;
-
-public class UserProfileRepositoryTests {
-
-}
+//package com.stackroute.userprofile.repository;
+//
+//public class UserProfileRepositoryTests {
+//
+//}
