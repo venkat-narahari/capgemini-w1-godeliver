@@ -1,9 +1,12 @@
 package com.stackroute.recommendation.domain;
 
 import java.util.Arrays;
+import java.util.List;
+
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 public class User {
@@ -18,7 +21,15 @@ public class User {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
+	
+	@Relationship(type = "likes", direction = Relationship.OUTGOING)
+	List<BookListener> books;
 
+	@Relationship(type = "likes", direction = Relationship.OUTGOING)
+	List<Genre> genres;
+
+//	@Relationship(type = "rated", direction = Relationship.OUTGOING)
+//List<Book> book;
 	public User() {
 
 	}

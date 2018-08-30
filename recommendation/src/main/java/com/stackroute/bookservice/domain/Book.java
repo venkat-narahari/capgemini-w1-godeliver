@@ -1,9 +1,6 @@
 package com.stackroute.bookservice.domain;
 
-import java.util.List;
 import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.Relationship;
-import com.stackroute.recommendation.domain.Genre;
 
 public class Book {
 	@Id

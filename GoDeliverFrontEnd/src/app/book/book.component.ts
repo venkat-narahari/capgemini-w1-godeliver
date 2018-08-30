@@ -24,16 +24,17 @@ export class BookComponent implements OnInit {
 
   ngOnInit() {
     this.router.params.subscribe(params => {
-      const id = params["book.title"];
-      this.bookService.getBook(id).subscribe(data => {
-        this.book = data;
-        if (localStorage.getItem("currentUserEmail") != null) {
-          this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
-        }
-        // console.log(data);
+      const id = params['bookISBN'];
+      this.bookService.getBook(id).subscribe(list => {
+        this.book = list
+      //  console.log(list);
       });
     });
+    if (localStorage.getItem("currentUserEmail") != null) {
+      this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
+    }
   }
+
   // addBook(book) {
   //   this.bookdetails.title=book.title;
   //   this.bookdetails.bookISBN=book.bookISBN_10;
