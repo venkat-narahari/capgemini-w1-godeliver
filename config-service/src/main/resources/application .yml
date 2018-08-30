@@ -1,9 +1,4 @@
-# Loco yaml export: Symfony YAML object
-# Project: application.properties conversion
-# Release: Working copy
-# Locale: en-GB, English (UK)
-# Exported by: Unregistered user
-# Exported at: Thu, 30 Aug 2018 17:47:15 +0530
+
 ---
 server:
   port: "8891"
