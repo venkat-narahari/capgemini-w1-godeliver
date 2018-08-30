@@ -7,7 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/stackroute/capgemini-w1-godeliver/tree/v1.0.0/config-service/src/main/resources
+          uri: https://github.com/tejakathari007/go-deliver.properties.git
   application:
     name: configserver
 eureka:
