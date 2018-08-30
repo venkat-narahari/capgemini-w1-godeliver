@@ -1,4 +1,5 @@
 version: '2.1'
+
 services:
   eureka-server:
     build: eureka-server/
@@ -25,34 +26,54 @@ services:
     healthcheck:
       test: "exit 0"
 
-  mysql:
-    image: mysql:5.5
+  api-gateway:
+    build: zuul-apigateway/
+    depends_on:
+      config-service:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+      user-service:
+        condition: service_healthy
+    restart: always
+    network_mode: "host"
+    image: demo-zuul-service
+    hostname: localhost
     ports:
-      - 3306:3306
+      - 8080:8080
+    healthcheck:
+      test: "exit 0"
+
+mysql:
+    image: mysql:latest
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=go_d
-      - MYSQL_PASSWORD=
+      - MYSQL_PASSWORD=Root@123
     network_mode: "host"
     hostname: localhost
     restart: always
     healthcheck:
       test: "exit 0"
 
-
-  user-login:
+user-login:
     build: user-login/
-    container_name: user-login-docker
+    image: user-login
     depends_on:
       - mysql
-    healthcheck:
-      test: exit 0
-    hostname: localhost
-    image: user-login
-    network_mode: host
     ports:
       - 8082:8082
+    environment:
+      - DATABASE_HOST=mysql
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=Root@123
+      - DATABASE_NAME=go_d  
+      - DATABASE_PORT=3306
+    network_mode: "host"
+    hostname: localhost
     restart: always
+    healthcheck:
+      test: "exit 0"
 
 #user-profile:
 #   image: 14052831/userprofile:1.0
