@@ -1,0 +1,25 @@
+# Loco yaml export: Symfony YAML object
+# Project: book.properties conversion
+# Release: Working copy
+# Locale: en-GB, English (UK)
+# Exported by: Unregistered user
+# Exported at: Thu, 30 Aug 2018 17:48:25 +0530
+---
+spring:
+  application:
+    name: book
+  data:
+    mongodb:
+      database: booksdb
+      host: mongodatabase
+      password: root1234
+      port: "27018"
+      uri: mongodb://mongodatabase/booksdb
+      username: admin
+eureka:
+  client:
+    register-with-eureka: "true"
+    fetch-registry: "true"
+    service-uri:
+      defaultzone: http://8761/eureka
+...
