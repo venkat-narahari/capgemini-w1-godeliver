@@ -18,7 +18,10 @@ public interface BookRepository extends MongoRepository<Book, Integer> {
 	@Query("{'title':{$regex : ?0, $options:'i'}}")
 	public List<Book> findBookByRegexpTitle(String regexp);
 	
-	@Query("{ '_id' : ?0 }")
+	@Query("{'_id' : ?0}")
     public Book findByTheBooksBookISBN_10(String bookISBN_10);
+	
+	@Query(value="{'_id' : ?0}", delete = true)
+	public Book deleteBy(String bookISBN_10);
 
 }
