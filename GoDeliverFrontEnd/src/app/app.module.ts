@@ -4,6 +4,9 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { RegistrationComponent } from "./registration/registration.component";
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { HomeComponent } from "./home/home.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { UserDetailsService } from "./user-details.service";
@@ -21,7 +24,9 @@ import { MaterialModule } from "./material";
 import {
   MatButtonModule,
   MatCheckboxModule,
-  MatIconModule
+  MatIconModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
@@ -36,6 +41,7 @@ import { BookComponent } from "./book/book.component";
 import { CardsComponent } from "./cards/cards.component";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSidenavModule,MatToolbarModule} from '@angular/material';
+import { FirebaseService } from "./firebase.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +60,7 @@ import {MatSidenavModule,MatToolbarModule} from '@angular/material';
     CartComponent,
     BookComponent,
     CardsComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -73,9 +80,13 @@ import {MatSidenavModule,MatToolbarModule} from '@angular/material';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    AngularFireModule.initializeApp(environment.firebase, 'godeliverfrontend'),
+    AngularFirestoreModule
   ],
-  providers: [
+  providers: [FirebaseService,
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

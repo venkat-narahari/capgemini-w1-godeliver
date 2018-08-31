@@ -1,4 +1,4 @@
-*,
+/* *,
 *:before,
 *:after {
   box-sizing: border-box;
@@ -226,3 +226,24 @@ label {
 [type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
+
+
+.password {
+  margin-top: 20px;
+} 
+*/
+.example-form {
+  position: relative;
+  min-width: 100px;
+  max-width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.register {
+  position: relative;
+  top: 2%;
+  left: 20%;
+}
+
