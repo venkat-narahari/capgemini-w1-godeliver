@@ -94,8 +94,6 @@ services:
 
     test: exit 0
 
-   hostname: localhost
-
    image: login
 
    network_mode: host
@@ -119,8 +117,6 @@ services:
     - 3306:3306
 
    network_mode: host
-
-   hostname: localhost
 
    environment:
 
@@ -203,6 +199,49 @@ services:
     - /usr/src/home:/data/db
 
 
+  recommendation:
+  
+   build: recommendation/
+   
+   image: recommendation
+
+   restart: always
+
+   network_mode: host
+
+   container_name: recommendation
+
+   depends_on:
+
+    - neo4j
+
+   ports:
+
+    - 8092:8092
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+  neo4j:
+
+   image: neo4j
+
+   network_mode: host
+
+   container_name: spring-neo4j
+
+   ports:
+
+    - 7474:7474
+    - 7687:7687
+
+   volumes:
+
+    - $HOME/neo4j/data:/data
+
+
 
   zookeeper:
    image: wurstmeister/zookeeper
@@ -214,7 +253,8 @@ services:
    healthcheck:
 
     test: "exit 0"
-   
+    
+       
   
   kafka:
    image: wurstmeister/kafka

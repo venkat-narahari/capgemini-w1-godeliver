@@ -11,6 +11,15 @@ public class UserProfile {
 	private String userDob;
 	private String userPassword;
 	private String[] userPreferences;
+	public String[] getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String[] userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	private String[] userAddress;
 	private String userGender;
 	private long userMobile;
 
@@ -19,7 +28,7 @@ public class UserProfile {
 	}
 
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, long userMobile) {
+			String userGender, long userMobile, String[] userAddress) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -28,6 +37,7 @@ public class UserProfile {
 		this.userPreferences = userPreferences;
 		this.userGender = userGender;
 		this.userMobile = userMobile;
+		this.userAddress= userAddress;
 	}
 
 	public String getUserName() {
