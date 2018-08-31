@@ -4,7 +4,6 @@ services:
 
   eureka-server:
   
-
     depends_on:
 
       config-service:
@@ -136,6 +135,32 @@ services:
 #    test: exit 0
 #
 #
+
+  book-service:
+  
+   build: book-service/
+   
+   image: book-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: bookservice
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8888:8888
+
+   healthcheck:
+
+    test: "exit 0"
+
+
   user-profile:
   
    build: user-profile/
@@ -159,7 +184,6 @@ services:
    healthcheck:
 
     test: "exit 0"
-
 
 
   mongo:
