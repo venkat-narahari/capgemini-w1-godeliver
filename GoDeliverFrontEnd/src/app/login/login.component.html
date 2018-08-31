@@ -23,7 +23,7 @@
 
           <mat-form-field class="example-full-width" style="margin-top:18px">
             <input matInput type="password" placeholder="password" formControlName="userPassword" name="userPassword" required minlength="8">
-           <!--error handling for password-->
+            <!--error handling for password-->
             <div *ngIf="userPassword.dirty && userPassword.errors" class="error">
               <div *ngIf="userPassword.errors.required" class="validation_message">
                 Password required.
@@ -34,8 +34,7 @@
           <button class="loginButton" mat-raised-button style="color:green">Login</button>
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
           <!-- Routing to signup page when the user clicks on the Signup button-->
-          <button class="register" [routerLink]="['/register']" mat-raised-button style="color:green">New to GoDeliver? Sign
-            Up!
+          <button class="register" [routerLink]="['/register']" mat-raised-button style="color:green">New to GoDeliver? Sign Up!
           </button>
         </form>
         <!--  end of form class-->

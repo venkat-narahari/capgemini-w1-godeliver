@@ -8,9 +8,9 @@ describe('WishlistComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WishlistComponent ]
+      declarations: [WishlistComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

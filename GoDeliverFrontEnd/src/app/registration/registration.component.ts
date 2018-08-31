@@ -25,33 +25,13 @@ export class RegistrationComponent implements OnInit {
   user = new UserDetails("", "", "", "", []);
 
   error = "";
-  //   //emailPattern
-  //   emailPattern =
-  //     "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
-  //   //master preferences
-  //   preferences = [
-  //     { id: 1, name: "Trave," },
-  //     { id: 2, name: "Horror" },
-  //     { id: 3, name: "Programming" },
-  //     { id: 4, name: "Philosophy" },
-  //     { id: 5, name: "Thriller" },
-  //     { id: 6, name: "Sci-Fi" },
-  //     { id: 7, name: "Comic" },
-  //     { id: 8, name: "Fiction" },
-  //     { id: 9, name: "Romance" },
-  //     { id: 10, name: "History" },
-  //     { id: 11, name: "Aptitude" },
-  //     { id: 12, name: "Education" },
-  //     { id: 13, name: "Religion" },
-  //     { id: 14, name: "Biography" }
-  //   ];
 
   //creating userDetailService
   constructor(
     private router: Router,
     private userDetailService: UserDetailsService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
@@ -70,7 +50,7 @@ export class RegistrationComponent implements OnInit {
     this.user.userPassword = this.userPassword.value;
     this.user.userPreferences = [];
     this.userDetailService.addUser(this.user).subscribe(
-      data => {},
+      data => { },
       error => {
         this.error = "User already registered with this email";
       }

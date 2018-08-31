@@ -1,10 +1,10 @@
 <div class="container">
   <h2>Cart Items</h2>
-<ul *ngFor="let item of carts" class="collection">
-   {{item.title}}
-  <img src="{{item.poster}}" height="150px" width="150px"/>
-  <li>Rs {{item.cost}}
-  <li>{{item.genre}}</li>
-</ul>
+  <ul *ngFor="let item of carts" class="collection">
+    {{item.title}}
+    <img src="{{item.poster}}" height="150px" width="150px" />
+    <li>Rs {{item.cost}}
+      <li>{{item.genre}}</li>
+  </ul>
 
 </div>
