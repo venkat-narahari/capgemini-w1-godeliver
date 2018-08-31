@@ -3,8 +3,7 @@ version: '2.1'
 services:
 
   eureka-server:
-
-    build: eureka-server/
+  
 
     depends_on:
 
@@ -16,7 +15,7 @@ services:
 
     network_mode: "host"
 
-    image: demo-eureka-service
+    image: shiri277/eurekaserver:1.0
 
     hostname: localhost
 
@@ -32,8 +31,8 @@ services:
 
   config-service:
 
-   build: config-service/
-
+   image: shiri277/config-server:1.0
+   
    restart: always
 
    network_mode: "host"
@@ -52,7 +51,7 @@ services:
 
   api-gateway:
 
-   build: zuul-apigateway/
+   image: shiri277/api-gateway:1.0
 
    depends_on:
 
@@ -137,46 +136,50 @@ services:
 #    test: exit 0
 #
 #
-#  user-profile:
-#
-#   image: user-profile/
-#
-#   restart: always
-#
-#   network_mode: host
-#
-#   container_name: userprofile
-#
-#   depends_on:
-#
-#    - mongo
-#
-#   ports:
-#
-#    - 8070:8070
-#
-#   healthcheck:
-#
-#    test: "exit 0"
-#
-#
-#
-#  mongo:
-#
-#   image: mongo
-#
-#   network_mode: host
-#
-#   container_name: spring-mongo
-#
-#   ports:
-#
-#    - 27017:27017
-#
-#   volumes:
-#
-#    - /usr/src/home:/data/db
-#
+  user-profile:
+  
+   build: user-profile/
+   
+   image: user-profile
+
+   restart: always
+
+   network_mode: host
+
+   container_name: userprofile
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8070:8070
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+
+  mongo:
+
+   image: mongo
+
+   network_mode: host
+
+   container_name: spring-mongo
+
+   ports:
+
+    - 27017:27017
+
+   volumes:
+
+    - /usr/src/home:/data/db
+
+
+
   zookeeper:
    image: wurstmeister/zookeeper
    ports:
