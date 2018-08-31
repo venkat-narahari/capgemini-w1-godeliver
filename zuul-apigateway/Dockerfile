@@ -6,7 +6,7 @@ WORKDIR /src
 
 ADD target/zuul-apigateway-1.0.0.jar /src/zuul.jar
 
-EXPOSE 8092
+EXPOSE 8080
 
 RUN sh -c 'touch /src/zuul.jar'
 
