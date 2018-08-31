@@ -1,12 +1,13 @@
 package com.stackroute.userprofile.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+
 import com.stackroute.userprofile.config.KafkaConfiguration;
 import com.stackroute.userprofile.domain.UserProfile;
+import com.stackroute.userprofile.exceptions.MongoConnectionException;
 import com.stackroute.userprofile.repository.UserProfileRepository;
 
 @Service
@@ -22,6 +23,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 		this.kafkaConfig = kafkaConfig;
 	}
 
+	@SuppressWarnings("static-access")
 	String topic = kafkaConfig.getTopic();
 
 	// Kafka template from configuration and topic
@@ -33,8 +35,8 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	 * the user will be saved
 	 */
 	@Override
-	public UserProfile saveUser(UserProfile user) {
-		if (userProfileRepository.getByUserEmail(user.getUserEmail()).size() == 0) {
+	public UserProfile saveUser(UserProfile user) throws MongoConnectionException{
+		if (userProfileRepository.getByUserEmail(user.getUserEmail()) == null) {
 			kafkaTemplate.send(topic, user);
 			user.setUserPassword(null);
 			UserProfile savedUser = userProfileRepository.save(user);
@@ -47,19 +49,28 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	 * Updating the existing user
 	 */
 	@Override
-	public UserProfile updateUser(UserProfile user, String userEmail) {
-		user.setUserEmail(userEmail);
-		UserProfile updatedUser = userProfileRepository.save(user);
-		return updatedUser;
+	public UserProfile updateUser(UserProfile user) throws MongoConnectionException{
+		if (userProfileRepository.getByUserEmail(user.getUserEmail()) != null) {
+			kafkaTemplate.send(topic, user);
+			user.setUserPassword(null);
+			UserProfile updatedUser = userProfileRepository.save(user);
+			return updatedUser;
+		}
+
+		return null;
 	}
 
 	/*
 	 * method for viewing the existing user
 	 */
 	@Override
-	public List<UserProfile> viewUser(String userEmail) {
-		List<UserProfile> user = userProfileRepository.getByUserEmail(userEmail);
-		return user;
+	public UserProfile viewUser(String userEmail) throws MongoConnectionException{
+		if (userProfileRepository.getByUserEmail(userEmail) != null) {
+			UserProfile user = userProfileRepository.getByUserEmail(userEmail);
+			return user;
+		} else {
+			return null;
+		}
 	}
 
 }
