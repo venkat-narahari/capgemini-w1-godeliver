@@ -26,7 +26,10 @@ public class BookServicesImpl implements BookServices {
 
 	@Autowired
 	private KafkaTemplate<String, Book> kafkaTemplate;
-	
+
+	/**
+	 * Checks whether the book exists and if not exists, the book will be saved
+	 **/
 	@Override
 	public Book saveBook(Book book) {
 		List<Book> bookList = (List<Book>) bookRepository.findAll();
@@ -39,6 +42,8 @@ public class BookServicesImpl implements BookServices {
 		}
 	}
 
+	/** Gets all the list of books **/
+
 	@Override
 	public List<Book> getAllBooks() {
 		List<Book> bookList = (List<Book>) bookRepository.findAll();
@@ -49,27 +54,34 @@ public class BookServicesImpl implements BookServices {
 		}
 	}
 
+	/**
+	 * Checks whether the book exists if exists, the book will be deleted if not
+	 * exists, return book not found
+	 **/
 	@Override
 	public boolean deleteBook(String bookId) {
-		  if(bookRepository.deleteBy(bookId)==null) {
-			  return true; 
-		  }
-		  return false;
+		if (bookRepository.deleteBy(bookId) == null) {
+			return true;
+		}
+		return false;
 	}
 
-	
+	/**
+	 * Returns list of books by matching the search term with title
+	 **/
 	@Override
 	public List<Book> findBookByRegexpTitle(String searchTerm) {
 		List<Book> list = bookRepository.findBookByRegexpTitle(searchTerm);
 		return list;
 	}
 
+	/**
+	 * Returns a book by id
+	 **/
 	@Override
-    public Book findBookById(String bookId) {
-        Book book = bookRepository.findByTheBooksBookISBN_10(bookId);
-        return book;
-    }
-
-	
+	public Book findBookById(String bookId) {
+		Book book = bookRepository.findByTheBooksBookISBN_10(bookId);
+		return book;
+	}
 
 }

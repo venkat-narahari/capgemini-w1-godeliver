@@ -23,7 +23,7 @@ import com.stackroute.userlogin.services.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-@CrossOrigin(origins ="*")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -47,7 +47,7 @@ public class UserController {
 		String email = login.getUserEmail();
 		String password = login.getUserPassword();
 		User user = userService.findByEmail(email);
-		
+
 		try {
 			if (user == null) {
 				throw new UserNameNotFoundException("User email not found.");
@@ -55,9 +55,9 @@ public class UserController {
 		} catch (UserNameNotFoundException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
-		
+
 		String pwd = user.getUserPassword();
-		
+
 		try {
 			if (!password.equals(pwd)) {
 				throw new PasswordNotMatchException("Invalid login. Please check your name and password.");

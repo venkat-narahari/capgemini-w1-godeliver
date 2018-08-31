@@ -67,17 +67,19 @@ public class BookController {
 			return new ResponseEntity<String>("Deleted", HttpStatus.NO_CONTENT);
 		}
 		
-		return new ResponseEntity<String>("Not Deleted", HttpStatus.NOT_FOUND);
+		return new ResponseEntity<String>("Book Not Found", HttpStatus.NOT_FOUND);
 	 
 	}
 	
-//  Gets the details of book by using alphabet 
+//  Gets the list of books by matching search term with the book title 
 	
 	@RequestMapping(value = "/{term}", method = RequestMethod.GET, produces = { "application/json" })
 	public ResponseEntity<?> getByAlphabet(@PathVariable("term") String searchTerm) throws BookNotFoundException {
 		List<Book> booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
 		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.ACCEPTED);
 	}
+	
+//	Gets the details of a book by id
 	
 	@RequestMapping(value = "book/{id}", method = RequestMethod.GET, produces = { "application/json" })
     public ResponseEntity<?> getById(@PathVariable("id") String bookId) throws BookNotFoundException {

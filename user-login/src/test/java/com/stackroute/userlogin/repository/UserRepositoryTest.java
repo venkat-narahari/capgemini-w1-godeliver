@@ -23,6 +23,7 @@ public class UserRepositoryTest {
 
 	@Autowired
 	private transient UserRepository repo;
+	
 	public void setRepo(final UserRepository repo) {
 		this.repo = repo;
 	}
