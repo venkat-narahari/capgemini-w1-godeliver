@@ -30,8 +30,8 @@ export class RecommendationsComponent implements OnInit {
     ""
   );
 
-  constructor(private bookService: BookService) {}
-
+  constructor(private bookService: BookService) { }
+  //Method for displaying the recommendations by considering user email as an input
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") != null) {
       this.email = localStorage.getItem("currentUserEmail");
@@ -40,18 +40,18 @@ export class RecommendationsComponent implements OnInit {
         console.log("inside ngOnInit getRecommendationList");
       });
     }
-
+    //getting top sellingbooks
     this.bookService.getTopSellingList().subscribe(data => {
       console.log("topselling data is 111111111 ", data);
       this.top_selling = data;
     });
-
+    //getting toprated  books
     this.bookService.getTopRated().subscribe(list => {
       console.log("topselling data is 111 ", list);
       this.top_rated = list;
     });
   }
-
+  //This method will be called when user clicks add to wishlist button on the card
   addToWishlist(book) {
     this.bookdetails.title = book.title;
     this.bookdetails.bookISBN_10 = book.bookISBN_10;

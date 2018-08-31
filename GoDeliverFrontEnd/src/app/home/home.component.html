@@ -1,3 +1,8 @@
+<!-- Home paage-->
+
+
+<!--Searchbar for books-->
+
 <div class="row">
     <div class="col-sm-8 mb-4 center-block">
         <form>
@@ -12,6 +17,7 @@
         </form>
     </div>
 </div>
+<!--Div class to display the search result using bookservice-->
 <div class="container">
     <div *ngIf=books_result>
         <h2>Search Result</h2>
@@ -25,16 +31,21 @@
         </div>
     </div>
 </div>
+<!-- Home page Carousel display -->
+<!--carousel image1-->
 <div *ngIf=check>
     <div id="demo" class="carousel slide mb-4" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a routerLink="/login"><img src="../../assets/topselling.jpeg" alt="Los Angeles">
+                <a routerLink="/login">
+                    <img src="../../assets/topselling.jpeg" alt="Los Angeles">
                     <div class="carousel-caption">
                         <h3>Top Selling</h3>
                         <p>Trending books of the decade!</p>
-                    </div></a>
+                    </div>
+                </a>
             </div>
+            <!--carousel image2-->
             <div class="carousel-item">
                 <a routerLink="/cart">
                     <img src="../../assets/topselling.jpeg" alt="Chicago">
@@ -44,6 +55,7 @@
                     </div>
                 </a>
             </div>
+            <!--carousel image3-->
             <div class="carousel-item">
                 <a routerLink="/register">
                     <img src="../../assets/topselling.jpeg" alt="New York">
@@ -54,6 +66,7 @@
                 </a>
             </div>
         </div>
+        <!--left and right Controls for carousel-->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </a>
@@ -62,9 +75,10 @@
         </a>
     </div>
 </div>
+<!-- routing to recommendations-->
 <div class="container">
     <app-recommendations></app-recommendations>
-
+    <!-- back to home button-->
     <div class="col-6 mt-5 center-block">
         <button class="btn-block btn-info form-control" (click)="backToHome()">Back To Home</button>
     </div>

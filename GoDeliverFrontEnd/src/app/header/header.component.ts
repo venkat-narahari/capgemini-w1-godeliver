@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   search: string = "shivam";
   title: any;
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") !== null) {

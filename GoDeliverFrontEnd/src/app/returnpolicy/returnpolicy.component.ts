@@ -6,16 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./returnpolicy.component.css']
 })
 export class ReturnpolicyComponent implements OnInit {
-curUser:any;
-curuser:any;
+  curUser: any;
+  curuser: any;
   constructor() { }
 
   ngOnInit() {
-    if(localStorage.getItem('currentUserEmail')!=null)
-    {
-      this.curUser=JSON.parse(localStorage.getItem('currentUserEmail'));
-      this.curUser=this.curUser.toUpperCase();
-      this.curuser= this.curUser.split(/@/);
+    if (localStorage.getItem('currentUserEmail') != null) {
+      this.curUser = JSON.parse(localStorage.getItem('currentUserEmail'));
+      this.curUser = this.curUser.toUpperCase();
+      this.curuser = this.curUser.split(/@/);
     }
   }
 

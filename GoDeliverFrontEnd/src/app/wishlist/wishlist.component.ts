@@ -14,7 +14,7 @@ export class WishlistComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService
-  ) {}
+  ) { }
   ngOnInit() {
     this.bookService
       .getWishList()

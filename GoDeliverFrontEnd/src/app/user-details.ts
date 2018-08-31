@@ -6,5 +6,5 @@ export class UserDetails {
     public userDob: string,
     public userEmail: string,
     public userPreferences: string[]
-  ) {}
+  ) { }
 }

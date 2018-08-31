@@ -6,7 +6,7 @@ import { Login } from "../login";
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(userEmail: String, userPassword: String): Observable<any> {
     const httpHeaders = new HttpHeaders({

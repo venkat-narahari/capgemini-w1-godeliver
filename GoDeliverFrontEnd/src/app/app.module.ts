@@ -40,7 +40,7 @@ import { CartComponent } from "./cart/cart.component";
 import { BookComponent } from "./book/book.component";
 import { CardsComponent } from "./cards/cards.component";
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatSidenavModule,MatToolbarModule} from '@angular/material';
+import { MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { FirebaseService } from "./firebase.service";
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import { FirebaseService } from "./firebase.service";
     CartComponent,
     BookComponent,
     CardsComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -94,4 +94,4 @@ import { FirebaseService } from "./firebase.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

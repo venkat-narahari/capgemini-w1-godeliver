@@ -10,6 +10,8 @@ import com.stackroute.bookservice.domain.Book;
 import com.stackroute.recommendation.domain.Author;
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.domain.Genre;
+import com.stackroute.recommendation.exceptions.BookNotFoundException;
+import com.stackroute.recommendation.exceptions.NoBooksFoundException;
 import com.stackroute.recommendation.relations.OfType;
 import com.stackroute.recommendation.relations.WrittenBy;
 import com.stackroute.recommendation.repository.AuthorRepository;
@@ -71,30 +73,47 @@ public class BookService {
 
 	// getAllBooksFromDb() method is used to get books from book database
 
-	public List<Book> getAllBooksFromDb() {
+	public List<Book> getAllBooksFromDb() throws NoBooksFoundException{
+
+		if(!(bookFromTopic.isEmpty())) {
 		return bookFromTopic;
+		}
+		else throw new NoBooksFoundException("No Books Found");
 	}
 
 	/*
 	 * getAllBooksByRating() method is used to get books from database based on
 	 * rating
 	 */
-	public List<BookListener> getAllBooksByRating() {
+	public List<BookListener> getAllBooksByRating() throws BookNotFoundException{
 		List<BookListener> getAllBooksByRating = (List<BookListener>) bookRepository.getAllBooksByRating();
-		return getAllBooksByRating;
+		if(!(getAllBooksByRating.isEmpty())) {
+			return getAllBooksByRating;
+			
+		}
+		else throw new BookNotFoundException("No book of that rating found");
+		
 	}
 
 	// getBooksByGenre() method is used to get books from database based on genre
 
-	public List<BookListener> getBooksByGenre(String name) {
+	public List<BookListener> getBooksByGenre(String name) throws BookNotFoundException{
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBooksByGenre(name);
-		return getAllBooks;
+		if(!(getAllBooks.isEmpty())){
+
+			return getAllBooks;
+		}
+		else throw new BookNotFoundException("No book of that genre found");
+
 	}
 //getBooksByAuthor() method is used to get books written by author
 
-	public List<BookListener> getBooksByAuthor(String name) {
+	public List<BookListener> getBooksByAuthor(String name) throws BookNotFoundException{
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBookByAuthor(name);
-		System.out.println("hdghge" + getAllBooks);
-		return getAllBooks;
+		if(!(getAllBooks.isEmpty())) {
+			return getAllBooks;
+		}
+		else throw new BookNotFoundException("Book written by the given author not found");
+
 	}
 }

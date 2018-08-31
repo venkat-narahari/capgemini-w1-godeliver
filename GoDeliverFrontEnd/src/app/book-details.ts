@@ -13,6 +13,6 @@ export class Books {
     public pages: string,
     public description: string,
     public language: string,
-    public userId:string
-  ) {}
+    public userId: string
+  ) { }
 }
