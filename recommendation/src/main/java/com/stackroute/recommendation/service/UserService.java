@@ -7,6 +7,8 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.domain.User;
+import com.stackroute.recommendation.domain.UserPreferences;
+import com.stackroute.recommendation.exceptions.BookNotFoundException;
 import com.stackroute.recommendation.repository.LikesRepository;
 import com.stackroute.recommendation.repository.UserPreferencesRepository;
 import com.stackroute.recommendation.repository.UserRepository;
@@ -33,14 +35,16 @@ public class UserService {
 				userListener.getUserPassword(), userListener.getUserPreferences(), userListener.getUserGender(),
 				userListener.getUserMobile());
 		userRepo.save(userObj);
-//		UserPreferences userPreferences = new UserPreferences(userListener.getUserPreferences());
-//		System.out.println(userPreferencesRepository.save(userPreferences));
-
+		UserPreferences userPreferences = new UserPreferences(userListener.getUserPreferences());
+		userPreferencesRepository.save(userPreferences);
 	}
 
-	public List<BookListener> getBooksByPreferences(String userMail) {
+	public List<BookListener> getBooksByPreferences(String userMail) throws BookNotFoundException{
 		List<BookListener> getAllBooks = (List<BookListener>) userRepo.getBooksByPreferences(userMail);
+		if(!(getAllBooks.isEmpty())) {
 		return getAllBooks;
+		}
+		else throw new BookNotFoundException("No books found");
 	}
 
 }

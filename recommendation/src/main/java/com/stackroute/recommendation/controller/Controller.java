@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.recommendation.domain.BookListener;
+import com.stackroute.recommendation.exceptions.BookNotFoundException;
+import com.stackroute.recommendation.exceptions.NoBooksFoundException;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.service.BookService;
 import com.stackroute.recommendation.service.UserService;
@@ -38,9 +40,16 @@ public class Controller {
 	 */
 
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
-	public ResponseEntity<?> getAllBooksFromDatabase() {
+	public ResponseEntity<?> getAllBooksFromDatabase() throws NoBooksFoundException {
 
-		return new ResponseEntity<Iterable<Book>>(bookService.getAllBooksFromDb(), HttpStatus.OK);
+		List<Book> books;
+		try {
+			books = bookService.getAllBooksFromDb();
+		} catch (NoBooksFoundException e) {
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
 	}
 
 	/*
@@ -49,10 +58,15 @@ public class Controller {
 	 */
 
 	@RequestMapping(value = "/rating", method = RequestMethod.GET)
-	public List<BookListener> getAllBooksByRating() {
-		List<BookListener> getAllBooksByRating = new ArrayList<BookListener>();
-		getAllBooksByRating = (List<BookListener>) bookService.getAllBooksByRating();
-		return getAllBooksByRating;
+	public ResponseEntity<?> getAllBooksByRating() throws BookNotFoundException {
+		List<BookListener> getAllBooksByRating ;
+		try {
+			getAllBooksByRating = (List<BookListener>) bookService.getAllBooksByRating();
+		} catch (BookNotFoundException e) {
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<BookListener>>(getAllBooksByRating, HttpStatus.OK);
 	}
 
 	/*
@@ -61,10 +75,16 @@ public class Controller {
 	 */
 
 	@GetMapping(value = "/genre/{name}")
-	public List<BookListener> getBooksByGenre(@PathVariable String name) {
+	public ResponseEntity<?> getBooksByGenre(@PathVariable String name) throws BookNotFoundException {
 		List<BookListener> getAllBooksByGenre = new ArrayList<BookListener>();
-		getAllBooksByGenre = (List<BookListener>) bookService.getBooksByGenre(name);
-		return getAllBooksByGenre;
+		try {
+			getAllBooksByGenre = (List<BookListener>) bookService.getBooksByGenre(name);
+		} catch (BookNotFoundException e) {
+
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<BookListener>>(getAllBooksByGenre, HttpStatus.OK);
 	}
 
 	/*
@@ -72,10 +92,16 @@ public class Controller {
 	 * point for this method will be "api/v1/author/{name}"
 	 */
 	@GetMapping(value = "/author/{name}")
-	public List<BookListener> getBooksByAuthor(@PathVariable String name) {
-		List<BookListener> getAllBooksByGenre = new ArrayList<BookListener>();
-		getAllBooksByGenre = (List<BookListener>) bookService.getBooksByAuthor(name);
-		return getAllBooksByGenre;
+	public ResponseEntity<?> getBooksByAuthor(@PathVariable String name) throws BookNotFoundException {
+		List<BookListener> getAllBooksByAuthor = new ArrayList<BookListener>();
+		try {
+			getAllBooksByAuthor = (List<BookListener>) bookService.getBooksByAuthor(name);
+		} catch (BookNotFoundException e) {
+
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<BookListener>>(getAllBooksByAuthor, HttpStatus.OK);
 	}
 
 	/*
@@ -83,10 +109,15 @@ public class Controller {
 	 * point for this method will be "api/v1/prefereces/{userMail}"
 	 */
 	@GetMapping(value = "/preferences/{userMail}")
-	public List<BookListener> getBooksByPreferences(@PathVariable String userMail) {
+	public ResponseEntity<?> getBooksByPreferences(@PathVariable String userMail) {
 		List<BookListener> getAllBooksByPreferences = new ArrayList<BookListener>();
-		getAllBooksByPreferences = (List<BookListener>) userService.getBooksByPreferences(userMail);
-		return getAllBooksByPreferences;
+		try {
+			getAllBooksByPreferences = (List<BookListener>) userService.getBooksByPreferences(userMail);
+		} catch (BookNotFoundException e) {
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<BookListener>>(getAllBooksByPreferences, HttpStatus.OK);
 
 	}
 
