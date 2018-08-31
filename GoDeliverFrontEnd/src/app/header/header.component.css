@@ -1,13 +1,18 @@
 .example-icon {
-    padding: 0 14px;
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  .searchbar{
-    margin:0 20px 0 0; 
-  }
-  .searchbutton{
-    padding:0 20px 0 0;
-  }
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.searchbar {
+  margin: 0 20px 0 0;
+}
+.searchbutton {
+  padding: 0 20px 0 0;
+}
+nav .navbar-nav li a {
+  color:black !important;
+  font-weight: 900;
+  padding-left: 15px;
+}

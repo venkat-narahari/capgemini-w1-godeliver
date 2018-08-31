@@ -1,6 +1,6 @@
 package com.stackroute.userprofile.domain;
 
-import java.util.Arrays;
+
 
 public class UserProfile {
 
@@ -9,22 +9,24 @@ public class UserProfile {
 	private String userDob;
 	private String userPassword;
 	private String[] userPreferences;
+	public String[] getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String[] userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	private String[] userAddress;
 	private String userGender;
-	private double userMobile;
+	private long userMobile;
 
 	public UserProfile() {
 
 	}
 
-	@Override
-	public String toString() {
-		return "User [userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob + ", userPassword="
-				+ userPassword + ", userPreferences=" + Arrays.toString(userPreferences) + ", userGender=" + userGender
-				+ ", userMobile=" + userMobile + "]";
-	}
-
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, double userMobile) {
+			String userGender, long userMobile, String[] userAddress) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -33,6 +35,7 @@ public class UserProfile {
 		this.userPreferences = userPreferences;
 		this.userGender = userGender;
 		this.userMobile = userMobile;
+		this.userAddress= userAddress;
 	}
 
 	public String getUserName() {
@@ -83,11 +86,16 @@ public class UserProfile {
 		this.userGender = userGender;
 	}
 
-	public double getUserMobile() {
+	public long getUserMobile() {
 		return userMobile;
 	}
 
-	public void setUserMobile(double userMobile) {
+	public void setUserMobile(long userMobile) {
 		this.userMobile = userMobile;
 	}
+
+	
+
+	
+
 }

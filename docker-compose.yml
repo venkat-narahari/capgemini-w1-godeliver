@@ -4,7 +4,6 @@ services:
 
   eureka-server:
   
-
     depends_on:
 
       config-service:
@@ -83,61 +82,83 @@ services:
 
   
 
-#  user-login:
-#
-#   build: user-login/
-#
-#   container_name: user-login-docker
-#
-#   depends_on:
-#
-#    - mysql
-#
-#   healthcheck:
-#
-#    test: exit 0
-#
-#   hostname: localhost
-#
-#   image: login
-#
-#   network_mode: host
-#
-#   ports:
-#
-#    - 8082:8082
-#
-#   restart: always
-#
-#
-#
-#  mysql:
-#
-#   container_name: mysql-docker
-#
-#   image: mysql:5.5
-#
-#   ports:
-#
-#    - 3306:3306
-#
-#   network_mode: host
-#
-#   hostname: localhost
-#
-#   environment:
-#
-#    MYSQL_ROOT_PASSWORD: root
-#
-#    MYSQL_DATABASE: go_d
-#
-#    MYSQL_PASSWORD: 
-#
-#   healthcheck:
-#
-#    test: exit 0
-#
-#
+  user-login:
+
+   build: user-login/
+
+   container_name: user-login-docker
+
+   depends_on:
+
+    - mysql
+
+   healthcheck:
+
+    test: exit 0
+
+   image: login
+
+   network_mode: host
+
+   ports:
+
+    - 8082:8082
+
+   restart: always
+
+
+
+  mysql:
+
+   container_name: mysql-docker
+
+   image: mysql:5.5
+
+   ports:
+
+    - 3306:3306
+
+   network_mode: host
+
+   environment:
+
+    MYSQL_ROOT_PASSWORD: root
+
+    MYSQL_DATABASE: go_d
+
+    MYSQL_PASSWORD: 
+
+   healthcheck:
+
+    test: exit 0
+
+
+
+  book-service:
+  
+   build: book-service/
+   
+   image: book-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: bookservice
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8888:8888
+
+   healthcheck:
+
+    test: "exit 0"
+
+
   user-profile:
   
    build: user-profile/
@@ -163,7 +184,6 @@ services:
     test: "exit 0"
 
 
-
   mongo:
 
    image: mongo
@@ -181,6 +201,49 @@ services:
     - /usr/src/home:/data/db
 
 
+  recommendation:
+  
+   build: recommendation/
+   
+   image: recommendation
+
+   restart: always
+
+   network_mode: host
+
+   container_name: recommendation
+
+   depends_on:
+
+    - neo4j
+
+   ports:
+
+    - 8092:8092
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+  neo4j:
+
+   image: neo4j
+
+   network_mode: host
+
+   container_name: spring-neo4j
+
+   ports:
+
+    - 7474:7474
+    - 7687:7687
+
+   volumes:
+
+    - $HOME/neo4j/data:/data
+
+
 
   zookeeper:
    image: wurstmeister/zookeeper
@@ -192,7 +255,8 @@ services:
    healthcheck:
 
     test: "exit 0"
-   
+    
+       
   
   kafka:
    image: wurstmeister/kafka

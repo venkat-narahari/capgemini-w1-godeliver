@@ -34,52 +34,64 @@
 <!-- Home page Carousel display -->
 <!--carousel image1-->
 <div *ngIf=check>
-    <div id="demo" class="carousel slide mb-4" data-ride="carousel">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
+
+            <div class="item active">
                 <a routerLink="/login">
-                    <img src="../../assets/topselling.jpeg" alt="Los Angeles">
+                    <img src="assets/images.jpg" alt="Los Angeles" style="width:100%; height:35%;max-height: 400px">
                     <div class="carousel-caption">
                         <h3>Top Selling</h3>
-                        <p>Trending books of the decade!</p>
+                        <p>Best sellers of all time!</p>
                     </div>
                 </a>
             </div>
-            <!--carousel image2-->
-            <div class="carousel-item">
+
+
+            <div class="item">
                 <a routerLink="/cart">
-                    <img src="../../assets/topselling.jpeg" alt="Chicago">
+                    <img src="assets/img.jpg" alt="Chicago"  style="width:100%; height: 35%; max-height: 400px">
                     <div class="carousel-caption">
-                        <h3>High Rating</h3>
-                        <p>Best books of the year</p>
+                        <h3>Top Rated Book</h3>
+                        <p>Best rated books loved by all!</p>
                     </div>
                 </a>
             </div>
-            <!--carousel image3-->
-            <div class="carousel-item">
+
+            <div class="item">
                 <a routerLink="/register">
-                    <img src="../../assets/topselling.jpeg" alt="New York">
+                    <img src="assets/img1.png" alt="New York" style="width:100%;height: 35%; max-height: 400px">
                     <div class="carousel-caption">
-                        <h3>Best Authors</h3>
-                        <p>Top authors of the decade</p>
+                        <h3>New York</h3>
+                        <p>We love the Big Apple!</p>
                     </div>
                 </a>
             </div>
+
         </div>
-        <!--left and right Controls for carousel-->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
         </a>
     </div>
+
 </div>
 <!-- routing to recommendations-->
 <div class="container">
     <app-recommendations></app-recommendations>
-    <!-- back to home button-->
-    <div class="col-6 mt-5 center-block">
-        <button class="btn-block btn-info form-control" (click)="backToHome()">Back To Home</button>
-    </div>
 </div>

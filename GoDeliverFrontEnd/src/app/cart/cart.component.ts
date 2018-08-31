@@ -12,7 +12,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.firebase.getCart().subscribe(carts => {
-      //console.log(carts);
       this.carts=carts; 
     });
   }

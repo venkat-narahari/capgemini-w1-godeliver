@@ -96,4 +96,8 @@ public class UserProfile {
 		this.userMobile = userMobile;
 	}
 
+	
+
+	
+
 }

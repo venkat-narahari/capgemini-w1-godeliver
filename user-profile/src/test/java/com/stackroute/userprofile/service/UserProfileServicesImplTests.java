@@ -42,7 +42,7 @@ public class UserProfileServicesImplTests {
 		String[] userPreferences = new String[] { "action", "adventure", "romance" };
 
 		userProfile = new UserProfile("sumanth", "sumanth@gmail.com", "24-04-1996", "qwerty12", userPreferences, "Male",
-				9876543210L);
+				9876543210L,null);
 
 	}
 
