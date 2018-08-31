@@ -8,6 +8,7 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+//Class for evaluating user Credentials
 export class LoginComponent implements OnInit {
   userForm: FormGroup;
   redirectUrl: string;
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
       });
       this.authenticationService.logout();
     }
-
+// when user clicks login button this method will be called and user input will be evaluated and corresponding error handling
     loginSubmit() {
 
       this.authenticationService.login(this.userEmail.value, this.userPassword.value)
@@ -43,11 +44,11 @@ export class LoginComponent implements OnInit {
         );
     }
 
-
+//method which gets the useremail and returns to login validation form
     get userEmail() {
       return this.userForm.get('userEmail');
     }
-
+//method which gets the password and returns to login validation form
     get userPassword() {
       return this.userForm.get('userPassword');
     }
