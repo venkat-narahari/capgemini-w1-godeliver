@@ -83,6 +83,8 @@ services:
   user-login:
 
    build: user-login/
+   
+   image: user-login
 
    container_name: user-login-docker
 
@@ -93,8 +95,6 @@ services:
    healthcheck:
 
     test: exit 0
-
-   image: login
 
    network_mode: host
 
