@@ -13,6 +13,7 @@ import com.stackroute.userlogin.services.UserService;
 @RequestMapping("/api/v1")
 public class SecureController {
 
+	/*allowed only autunticated users*/
 	@Autowired
 	private UserService userService;
 

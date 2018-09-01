@@ -10,12 +10,12 @@
 
 	<name>user-login</name>
 	<description>User authentication service</description>
-	
+
 	<parent>
 		<groupId>com.stackroute</groupId>
 		<artifactId>capgemini-w1-godeliver-test</artifactId>
 		<version>1.0.0</version>
-	 <!-- lookup parent from repository -->
+		<!-- lookup parent from repository -->
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

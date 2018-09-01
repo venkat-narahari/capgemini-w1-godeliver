@@ -66,8 +66,6 @@ services:
 
    network_mode: "host"
 
-   image: demo-zuul-service
-
    hostname: localhost
 
    ports:

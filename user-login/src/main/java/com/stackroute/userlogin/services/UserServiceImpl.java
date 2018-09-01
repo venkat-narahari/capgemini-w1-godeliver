@@ -8,14 +8,12 @@ import com.stackroute.userlogin.domain.User;
 import com.stackroute.userlogin.repository.UserRepository;
 import com.stackroute.userprofile.domain.UserProfile;
 
-
 @Service
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userDao;
-
-
+/* listening kafka from user-profile*/
 	@KafkaListener(topics = "userprofile", groupId = "group_json")
 	public User save(UserProfile userProfile) {
 		User user = new User();
@@ -23,10 +21,9 @@ public class UserServiceImpl implements UserService {
 		user.setUserPassword(userProfile.getUserPassword());
 		return userDao.save(user);
 	}
-
+  
 	public User findByEmail(String userEmail) {
 		return userDao.findByUserEmail(userEmail);
 	}
-	
-	
+
 }

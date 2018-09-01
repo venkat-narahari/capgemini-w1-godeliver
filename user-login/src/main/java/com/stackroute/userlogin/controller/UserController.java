@@ -17,7 +17,7 @@ import com.stackroute.userlogin.domain.Token;
 import com.stackroute.userlogin.domain.User;
 import com.stackroute.userlogin.exceptions.PasswordNotMatchException;
 import com.stackroute.userlogin.exceptions.UserNameNotFoundException;
-import com.stackroute.userlogin.exceptions.UserNameOrPasswordEmpty;
+import com.stackroute.userlogin.exceptions.UserNameOrPasswordEmptyException;
 import com.stackroute.userlogin.services.UserService;
 
 import io.jsonwebtoken.Jwts;
@@ -30,7 +30,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+ 
+	/* logging the user based on userEmail and userPassword*/
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<?> loginUser(@RequestBody User login) throws ServletException {
 
@@ -38,9 +39,9 @@ public class UserController {
 
 		try {
 			if (login.getUserEmail() == null || login.getUserPassword() == null) {
-				throw new UserNameOrPasswordEmpty("Please fill in username and password");
+				throw new UserNameOrPasswordEmptyException("Please fill in username and password");
 			}
-		} catch (UserNameOrPasswordEmpty e) {
+		} catch (UserNameOrPasswordEmptyException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
 
@@ -66,6 +67,8 @@ public class UserController {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
 
+		/*generating the jwt token*/
+		
 		jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date())
 				.signWith(SignatureAlgorithm.HS256, "secretkey").compact();
 		Token token = new Token();
