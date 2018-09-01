@@ -16,8 +16,8 @@ export class CardsComponent implements OnInit {
     title: '',
     cost: '',
     poster: '',
-    genre: ''
-
+    genre: '',
+    id:''
   };
 
 
