@@ -9,6 +9,7 @@ export class FirebaseService {
 
   cart: AngularFirestoreCollection<Cart>;
   carts: Observable<Cart[]>;
+  cartDoc:AngularFirestoreDocument<Cart>;
 
   constructor(public fs: AngularFirestore) {
 
@@ -18,7 +19,7 @@ export class FirebaseService {
       map(changes => changes.map(a => {
         const data = a.payload.doc.data() as Cart;
         const id = a.payload.doc.id;
-        return data;
+        return {id, ...data};
       })))
   }
 
@@ -30,6 +31,10 @@ export class FirebaseService {
     this.cart.add(carts);
   }
 
+  deleteItem(item:Cart) {
+    this.cartDoc = this.fs.doc(`carts/${item.id}`);
+    this.cartDoc.delete();
+  }
 }
 
 export interface Cart {
@@ -38,5 +43,5 @@ export interface Cart {
   cost?: string;
   genre?: string;
   poster?: string;
-
+  id?:string;
 }

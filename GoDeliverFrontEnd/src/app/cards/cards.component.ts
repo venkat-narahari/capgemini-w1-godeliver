@@ -16,9 +16,8 @@ export class CardsComponent implements OnInit {
     title: '',
     cost: '',
     poster: '',
-    genre: ''
-
-  };
+    genre: '',
+   };
 
 
   //To store current user email for wishlist
