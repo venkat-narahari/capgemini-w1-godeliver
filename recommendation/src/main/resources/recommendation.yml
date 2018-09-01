@@ -1,0 +1,12 @@
+# Loco yaml export: Symfony YAML object
+# Project: application.properties conversion
+# Release: Working copy
+# Locale: en-GB, English (UK)
+# Exported by: Unregistered user
+# Exported at: Sat, 01 Sep 2018 10:50:16 +0530
+---
+spring:
+  application:
+    name: recommendation
+server:
+  port: "8092"

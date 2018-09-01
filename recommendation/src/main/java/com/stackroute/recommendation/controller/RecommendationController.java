@@ -22,14 +22,14 @@ import com.stackroute.recommendation.service.UserService;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v1")
-public class Controller {
+public class RecommendationController {
 
 	BookService bookService;
 	BookRepository bookRepository;
 	UserService userService;
 
 	@Autowired
-	public Controller(BookService bookService, UserService userService, BookRepository bookRepository) {
+	public RecommendationController(BookService bookService, UserService userService, BookRepository bookRepository) {
 		this.bookService = bookService;
 		this.bookRepository = bookRepository;
 		this.userService = userService;
