@@ -6,6 +6,7 @@ public class UserProfile {
 	private String userDob;
 	private String userPassword;
 	private String[] userPreferences;
+
 	public String[] getUserAddress() {
 		return userAddress;
 	}
@@ -32,7 +33,7 @@ public class UserProfile {
 		this.userPreferences = userPreferences;
 		this.userGender = userGender;
 		this.userMobile = userMobile;
-		this.userAddress= userAddress;
+		this.userAddress = userAddress;
 	}
 
 	public String getUserName() {
@@ -90,9 +91,5 @@ public class UserProfile {
 	public void setUserMobile(long userMobile) {
 		this.userMobile = userMobile;
 	}
-
-	
-
-	
 
 }

@@ -22,20 +22,19 @@ import com.stackroute.recommendation.service.UserService;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v1")
-public class Controller {
+public class RecommendationController {
 
 	BookService bookService;
 	BookRepository bookRepository;
 	UserService userService;
 
 	@Autowired
-	public Controller(BookService bookService, UserService userService, BookRepository bookRepository) {
+	public RecommendationController(BookService bookService, UserService userService, BookRepository bookRepository) {
 		this.bookService = bookService;
 		this.bookRepository = bookRepository;
 		this.userService = userService;
 	};
-	/*
-	 * getAllBooksFromDatabase() method is used to get all books from database, Rest
+	/* get all books from database, Rest
 	 * end point for this method will be "api/v1/books"
 	 */
 
@@ -53,7 +52,7 @@ public class Controller {
 	}
 
 	/*
-	 * getAllBooksByRating() method is used to get books based on rating Rest end
+	 * get books based on rating Rest end
 	 * point for this method will be "api/v1/rating"
 	 */
 
@@ -70,7 +69,7 @@ public class Controller {
 	}
 
 	/*
-	 * getBooksByGenre() method is used to get books based on genre Rest end point
+	 * get books based on genre Rest end point
 	 * for this method will be "api/v1/genre/{name}"
 	 */
 
@@ -88,7 +87,7 @@ public class Controller {
 	}
 
 	/*
-	 * getBooksByAuthor() method is used to get books written by author Rest end
+	 * get books written by author Rest end
 	 * point for this method will be "api/v1/author/{name}"
 	 */
 	@GetMapping(value = "/author/{name}")
@@ -105,7 +104,7 @@ public class Controller {
 	}
 
 	/*
-	 * getBooksByAuthor() method is used to get books based on preferences Rest end
+	 * get books based on preferences Rest end
 	 * point for this method will be "api/v1/prefereces/{userMail}"
 	 */
 	@GetMapping(value = "/preferences/{userMail}")

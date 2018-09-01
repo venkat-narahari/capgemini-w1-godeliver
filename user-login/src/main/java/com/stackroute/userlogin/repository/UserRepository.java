@@ -8,6 +8,7 @@ import com.stackroute.userlogin.domain.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
+	/*find user by email*/
 	public User findByUserEmail(String userEmail);
 
 }

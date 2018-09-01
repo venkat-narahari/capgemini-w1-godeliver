@@ -10,18 +10,20 @@ import com.stackroute.userlogin.domain.User;
 import com.stackroute.userlogin.services.UserService;
 
 @RestController
-@RequestMapping("/secure")
+@RequestMapping("/api/v1")
 public class SecureController {
 
+	/*allowed only autunticated users*/
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/user/users")
+	@RequestMapping("secue/user")
 	public String loginSuccess() {
 		return "Login Successful!";
 	}
-
-	@RequestMapping(value = "/user/email", method = RequestMethod.POST)
+    
+	/* find the user by mail */
+	@RequestMapping(value = "secure/email", method = RequestMethod.POST)
 	public User findByEmail(@RequestBody String email) {
 		return userService.findByEmail(email);
 	}

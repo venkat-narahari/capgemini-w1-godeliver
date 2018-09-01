@@ -17,11 +17,10 @@ public class User {
 
 	@CreationTimestamp
 	private Date created;
-	
-	public User() {
-		
-	}
 
+	public User() {
+
+	}
 
 	public User(Long userId, String userEmail, String userPassword, Date created) {
 		this.userId = userId;
@@ -38,7 +37,6 @@ public class User {
 		this.userId = userId;
 	}
 
-	
 	public String getUserEmail() {
 		return userEmail;
 	}

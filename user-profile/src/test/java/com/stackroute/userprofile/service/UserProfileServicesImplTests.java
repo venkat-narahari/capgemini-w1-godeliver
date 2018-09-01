@@ -40,9 +40,10 @@ public class UserProfileServicesImplTests {
 
 		MockitoAnnotations.initMocks(this);
 		String[] userPreferences = new String[] { "action", "adventure", "romance" };
+		String[] userAddress = new String[] { "171,stackroute"};
 
-		userProfile = new UserProfile("sumanth", "sumanth@gmail.com", "24-04-1996", "qwerty12", userPreferences, "Male",
-				9876543210L,null);
+		userProfile = new UserProfile("sumanth", "sumanth@gmail.com", "24-04-1996", "qwerty12", userPreferences, userAddress,  "Male",
+				9876543210L);
 
 	}
 

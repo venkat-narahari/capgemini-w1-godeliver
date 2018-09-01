@@ -18,10 +18,10 @@ import java.util.Map;
 @Configuration
 public class KafkaConfiguration {
 
+	/* kafka consumer factory*/
 	@Bean
 	public ConsumerFactory<String, UserProfile> consumerFactory() {
 		Map<String, Object> config = new HashMap<>();
-
 		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
 		config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
 		config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -30,6 +30,7 @@ public class KafkaConfiguration {
 				new JsonDeserializer<>(UserProfile.class));
 	}
 
+	/* kafka listner */
 	@Bean
 	public ConcurrentKafkaListenerContainerFactory<String, UserProfile> kafkaListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, UserProfile> factory = new ConcurrentKafkaListenerContainerFactory<>();
