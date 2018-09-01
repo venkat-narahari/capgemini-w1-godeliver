@@ -15,8 +15,7 @@ export class BookService {
   private getGenre_url = "http://localhost:8075/api/v1/genre";
   private getBookById_url = "http://localhost:8888/api/v1/book/";
   private getBookByName_url = "http://localhost:8888/api/v1";
-  private getTopRated_url = "http://localhost:8092/api/v1/rating";
-  private getBookFromPreferences_url="http://localhost:8092/api/v1/preferences";
+  private getTopRated_url = "http://localhost:8092/api/v1/booksbyrating";
   constructor(private http: HttpClient) { }
 
   getWishList(): Observable<Books[]> {
@@ -51,9 +50,5 @@ export class BookService {
 
   getTopRated(): Observable<Books[]> {
     return this.http.get<Books[]>(this.getTopRated_url);
-  }
-
-  getBookFromPreferences(userEmail): Observable<Books[]> {
-    return this.http.get<Books[]>(this.getBookFromPreferences_url + '/' + userEmail);
   }
 }

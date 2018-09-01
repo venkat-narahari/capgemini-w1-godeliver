@@ -33,11 +33,6 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select Genre" [formControl]="toppings" multiple>
-          <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-        </mat-select>
-      </mat-form-field>s
 
 
       <button class="register" mat-raised-button style="color:green">Register</button>

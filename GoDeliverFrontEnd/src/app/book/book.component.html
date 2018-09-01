@@ -1,68 +1,117 @@
-<!-- Display the book data -->
-<div class="container">
+<html>
 
-  <div *ngIf="book">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card mt-5 mb-5">
-          <div class="card-header">
-            {{ book.title }}
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-5">
-                <img src="{{ book.poster }}" width="350px" height="500px" alt="{{ book.title }}">
-              </div>
-              <div class="col-sm-7">
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    <strong>Book ISBN 10: </strong> {{ book.bookISBN_10 }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Rating: </strong> {{ book.rating }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Author: </strong> {{ book.author }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Publisher: </strong> {{ book.publisher }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Release Date: </strong> {{ book.publishedYear | date:'dd-MM-yyyy' }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Summary: </strong> {{ book.description }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Pages: </strong> {{ book.pages }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Language: </strong> {{ book.language }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Cost: </strong> {{ book.cost }}
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Genre: </strong>
-                    {{ book.genre }}
-                  </li>
-                  <li class="list-group-item">
-                    <a routerLink='' target="_blank">
-                      Homepage
-                    </a>
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+</head>
 
-                  </li>
-
-                  <li *ngIf=curUser>
-                    <a (click)="addBook(book)" class="btn btn-block btn-success">Add Book to Wishlist</a>
-                  </li>
-                </ul>
+<body>
+  <div class="container" id="product-section">
+    <div *ngIf="book">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="image">
+                <img src="{{ book.poster }}" alt="{{ book.title }}" class="image-responsive" style="width: 50%;height:50%;"/>
               </div>
             </div>
           </div>
+          <br>
+          <div *ngIf="curUser">
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-lg btn-brand btn-block addbutton">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-lg btn-brand btn-block buybutton">
+                Buy Now
+              </button>
+            </div>
+          </div>
         </div>
-        <!-- /.card -->
+          <br>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <h1>{{ book.title }}</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <span class="label label-primary">Book ISBN 10: </span>
+              <span class="monospaced">{{ book.bookISBN_10 }}</span>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-12">
+              <h2 class="product-price">{{ book.cost }}</h2>
+            </div>
+          </div>
+          <!-- end row -->
+          <div class="row add-to-cart">
+            <div class="col-md-12 product-qty">
+              <span class="btn btn-default btn-lg btn-qty">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+              </span>
+              <input class="btn btn-default btn-lg btn-qty" value="0" />
+              <span class="btn btn-default btn-lg btn-qty">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              </span>
+            </div>
+          </div>
+          <br>
+
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a>
+            </li>
+            <li role="presentation">
+              <a href="#features" aria-controls="features" role="tab" data-toggle="tab">Features</a>
+            </li>
+            <li role="presentation">
+              <a href="#services" aria-controls="features" role="tab" data-toggle="tab">Services</a>
+            </li>
+          </ul>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="description">
+              <p>{{ book.description }}</p>
+            </div>
+            <div role="tabpanel" class="tab-pane top-10" id="features">
+              <ul>
+                <li><strong>Language:</strong>{{ book.language }}</li>
+                <li><strong> Year:</strong>{{ book.publishedYear | date:'dd-MM-yyyy' }}</li>
+                <li><strong>Genre:</strong>{{ book.genre }}</li>
+                <li><strong>Pages:</strong>{{ book.pages }}</li>
+              </ul>
+            </div>
+            <div role="tabpanel" class="tab-pane top-10" id="services">
+              <ul>
+                <li>10 Days Replacement Policy</li>
+                <li>Cash on Delivery available</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- end row -->
     </div>
   </div>
-</div>
+
+  <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
