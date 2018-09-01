@@ -21,7 +21,8 @@ public class SecureController {
 	public String loginSuccess() {
 		return "Login Successful!";
 	}
-
+    
+	/* find the user by mail */
 	@RequestMapping(value = "secure/email", method = RequestMethod.POST)
 	public User findByEmail(@RequestBody String email) {
 		return userService.findByEmail(email);
