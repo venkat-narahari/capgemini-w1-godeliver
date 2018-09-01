@@ -28,8 +28,6 @@ public class User {
 	@Relationship(type = "likes", direction = Relationship.OUTGOING)
 	List<Genre> genres;
 
-//	@Relationship(type = "rated", direction = Relationship.OUTGOING)
-//List<Book> book;
 	public User() {
 
 	}

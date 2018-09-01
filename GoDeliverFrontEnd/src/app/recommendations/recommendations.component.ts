@@ -50,6 +50,10 @@ export class RecommendationsComponent implements OnInit {
       console.log("topselling data is 111 ", list);
       this.top_rated = list;
     });
+
+    this.bookService.getBookFromPreferences(this.email).subscribe(bookList=>{
+      console.log("books by preferences", bookList);
+    })
   }
   //This method will be called when user clicks add to wishlist button on the card
   addToWishlist(book) {

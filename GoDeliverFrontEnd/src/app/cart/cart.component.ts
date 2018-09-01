@@ -15,4 +15,7 @@ export class CartComponent implements OnInit {
       this.carts=carts; 
     });
   }
+  deleteItem(item) {
+    this.firebase.deleteItem(item);
+  }
 }

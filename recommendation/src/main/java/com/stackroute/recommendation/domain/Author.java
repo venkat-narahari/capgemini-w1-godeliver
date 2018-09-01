@@ -19,8 +19,7 @@ public class Author {
 		return "Author [ name=" + name + "]";
 	}
 	public Author() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public String getName() {
 		return name;
