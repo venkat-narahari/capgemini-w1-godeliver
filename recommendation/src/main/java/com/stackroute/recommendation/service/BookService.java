@@ -45,8 +45,7 @@ public class BookService {
 	}
 
 	/*
-	 * getBookFromTopic() method is used to get books from book_details topic and it
-	 * saves the books in Neo4j database.
+	 *  get books from book_details topic and it saves the books in Neo4j database.
 	 */
 
 	@KafkaListener(groupId = "books", topics = "book_details")
@@ -71,7 +70,7 @@ public class BookService {
 		writtenByRepository.save(writtenBy);
 	}
 
-	// getAllBooksFromDb() method is used to get books from book database
+	//  get books from book database
 
 	public List<Book> getAllBooksFromDb() throws NoBooksFoundException{
 
@@ -82,8 +81,7 @@ public class BookService {
 	}
 
 	/*
-	 * getAllBooksByRating() method is used to get books from database based on
-	 * rating
+	 *  get books from database based on rating
 	 */
 	public List<BookListener> getAllBooksByRating() throws BookNotFoundException{
 		List<BookListener> getAllBooksByRating = (List<BookListener>) bookRepository.getAllBooksByRating();
@@ -95,7 +93,7 @@ public class BookService {
 		
 	}
 
-	// getBooksByGenre() method is used to get books from database based on genre
+	// get books from database based on genre
 
 	public List<BookListener> getBooksByGenre(String name) throws BookNotFoundException{
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBooksByGenre(name);
@@ -106,7 +104,7 @@ public class BookService {
 		else throw new BookNotFoundException("No book of that genre found");
 
 	}
-//getBooksByAuthor() method is used to get books written by author
+	// get books written by author
 
 	public List<BookListener> getBooksByAuthor(String name) throws BookNotFoundException{
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBookByAuthor(name);
