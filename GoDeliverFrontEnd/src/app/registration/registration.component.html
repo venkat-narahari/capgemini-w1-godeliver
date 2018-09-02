@@ -1,12 +1,14 @@
 <!-- User registration HTML page-->
 <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
 <script src="node_modules/systemjs/dist/system.js"></script>
+<body background="assets/loginbackground.jpg">
 <div class="row mb-4 ml-1">
+   
   <div class="col-sm-7">
     <!-- Godeliver image with registration page -->
     <img class="img-responsive" src="assets/home.jpeg" style="width:800px;height:520px;">
   </div>
-  <div class="col-sm-5">
+  <div class="col-sm-5"> 
     <!-- form class for displaying the Registration page for user  uSing angularmaterial-->
     <form class="example-form " [formGroup]="userForm" (ngSubmit)="loginSubmit()">
       <mat-form-field class="example-full-width">
@@ -14,30 +16,34 @@
         <mat-hint> eg:Harry Potter</mat-hint>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required [pattern]="emailPattern">
-        <div *ngIf="userEmail.dirty && userEmail.errors" class="error">
-          <div *ngIf="userEmail.errors.required" class="validation_message">
-            User Email required.
-          </div>
-        </div>
-        <mat-hint>eg:abc@gmail.com</mat-hint>
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" [formControl]="email"  name="userEmail" required [pattern]="emailPattern">
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-hint> eg:abc@gmail.com</mat-hint>
       </mat-form-field>
-
+      
       <mat-form-field class="password">
-        <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword" />
+        <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword" required/>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage2()}}</mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB">
+        <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage3()}}</mat-error>
       </mat-form-field>
 
+      <mat-form-field>
+        <mat-select placeholder="Select Genre" [formControl]="genre" name="genre" multiple>
+          <mat-option *ngFor="let genre of genreList" [value]="genre">{{genre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <button class="register" mat-raised-button style="color:green">Register</button>
+      <button class="register" mat-raised-button style="color:rgb(240, 232, 232);background-color:grey">Register</button>
       <div *ngIf="error" class="alert alert-danger">{{error}}</div>
 
     </form>
   </div>
 </div>
+</body>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Address} from '../firebase.service';
+import { FirebaseService } from "../firebase.service";
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  addre: Address[];
+  constructor(private firebase:FirebaseService) { }
+  add: Address = {
+   address:''
+   };
 
   ngOnInit() {
+    this.firebase.getAddress().subscribe(address => {
+      this.addre=address; 
+    });
+  }
+
+  addAddress(address) {
+   this.add.address=address;
+    this.firebase.addAddress(this.add);
+  }
+
+  deleteAdd(event, item) {
+    this.firebase.deleteAdd(item);
   }
 
 }

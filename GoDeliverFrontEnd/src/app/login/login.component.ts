@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-
+import {FormControl, Validators} from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,6 +10,9 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 //Class for evaluating user Credentials
 export class LoginComponent implements OnInit {
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password=new FormControl('', [Validators.required]);
+  userDOB=new FormControl('', [Validators.required]);
   userForm: FormGroup;
   redirectUrl: string;
   error = '';
@@ -37,13 +40,15 @@ export class LoginComponent implements OnInit {
           data => {
               this.router.navigate(['']);
               location.reload();
-          },
-          error => {
-              this.error = 'Username or password is incorrect';
-          }
+          
+            }
+            
+          // error => {
+          //     this.error = 'Username or password is required'; 
+          // },
         );
     }
-
+    
 //method which gets the useremail and returns to login validation form
     get userEmail() {
       return this.userForm.get('userEmail');
@@ -52,5 +57,16 @@ export class LoginComponent implements OnInit {
     get userPassword() {
       return this.userForm.get('userPassword');
     }
-
+    getErrorMessage() {
+      return this.email.hasError('required') ? 'You must enter a value' :
+          this.email.hasError('email') ? 'Not a valid email' :
+              '';
+    }
+    getErrorMessage2() {
+      return this.password.hasError('required') ? 'You must enter a value' :
+        
+              '';
+    }
+    
 }
+

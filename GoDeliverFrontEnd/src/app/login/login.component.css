@@ -15,7 +15,8 @@ background {
 
 .loginButton {
   position: relative;
-  left: 20%;
+  left: 50%;
+  background-color:grey;
 }
 
 .register {

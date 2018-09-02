@@ -14,15 +14,15 @@
           <div class="row">
             <div class="col-md-12">
               <div class="image">
-                <img src="{{ book.poster }}" alt="{{ book.title }}" class="image-responsive" style="width: 50%;height:50%;"/>
+                <img src="{{ book.poster }}" alt="{{ book.title }}" class="image-responsive" style="width: 50%;height:50%;" />
               </div>
             </div>
           </div>
           <br>
-          <div *ngIf="curUser">
+
           <div class="row">
             <div class="col-md-12">
-              <button class="btn btn-lg btn-brand btn-block addbutton">
+              <button class="btn btn-lg btn-brand btn-block btn-warning">
                 Add to Cart
               </button>
             </div>
@@ -35,7 +35,6 @@
               </button>
             </div>
           </div>
-        </div>
           <br>
         </div>
         <div class="col-md-6">
@@ -50,7 +49,7 @@
               <span class="monospaced">{{ book.bookISBN_10 }}</span>
             </div>
           </div>
-          
+
           <div class="row">
             <div class="col-md-12">
               <h2 class="product-price">{{ book.cost }}</h2>

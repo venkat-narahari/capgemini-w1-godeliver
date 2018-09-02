@@ -17,6 +17,9 @@ import {
   styleUrls: ["./registration.component.css"]
 })
 export class RegistrationComponent implements OnInit {
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password=new FormControl('', [Validators.required]);
+  
   //model to store data and send to backend
   model: any = {};
 
@@ -38,7 +41,8 @@ export class RegistrationComponent implements OnInit {
       userEmail: ["", [Validators.required]],
       userPassword: ["", [Validators.required]],
       userName: ["", [Validators.required]],
-      userDOB: ["", [Validators.required]]
+      userDOB: ["", [Validators.required]],
+     
     });
   }
 
@@ -48,25 +52,19 @@ export class RegistrationComponent implements OnInit {
     this.user.userEmail = this.userEmail.value;
     this.user.userDob = this.userDOB.value;
     this.user.userPassword = this.userPassword.value;
-    this.user.userPreferences = [];
+    this.user.userPreferences = this.genre.value;
+    console.log(this.genre.value);
     this.userDetailService.addUser(this.user).subscribe(
       data => { },
       error => {
-        this.error = "User already registered with this email";
+        this.error = "Fields are required";
       }
     );
-    this.router.navigate(["/login"]);
-    location.reload();
   }
 
-  //   //selectedPreferenceList is coming from the front end in a list and stored in userPreference in form of array
-  //   selectedPreferenceList(list) {
-  //     console.log(list);
-  //     this.user.userPreferences = list;
-  //   }
-  // }
-  toppings = new FormControl();
-  toppingList: string[] = [
+
+  genre = new FormControl();
+  genreList: string[] = [
     "Thriller",
     "Religion",
     "History",
@@ -76,6 +74,7 @@ export class RegistrationComponent implements OnInit {
     "Horror",
     "Comic"
   ];
+  //console.log(toppingList[0]);
 
   emailFormControl = new FormControl("", [
     Validators.required,
@@ -102,7 +101,7 @@ export class RegistrationComponent implements OnInit {
     return this.userForm.get("userPassword");
   }
   get userPreferences() {
-    return this.userForm.get("userPreferences");
+    return this.userForm.get("genre");
   }
 
   get userDOB() {
@@ -111,4 +110,27 @@ export class RegistrationComponent implements OnInit {
   get userEmail() {
     return this.userForm.get("userEmail");
   }
+
+
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email' :
+            '';
+  }
+  getErrorMessage2() {
+    return this.password.hasError('required') ? 'This field is required' :
+      
+            '';
+  }
+  getErrorMessage3() {
+    return this.userDOB.hasError('required') ? 'You must choose a date ' :
+      
+            '';
+  }
+  getErrorMessage4() {
+    return this.userPreferences.hasError('required') ? 'You must choose a genre ' :
+      
+            '';
+  }
+  
 }
