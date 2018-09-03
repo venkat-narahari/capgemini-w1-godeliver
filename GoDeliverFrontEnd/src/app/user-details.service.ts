@@ -9,6 +9,7 @@ export class UserDetailsService {
   //Making http client obj to perform http operations
   constructor(public http: HttpClient) { }
 
+  private getUserDetails_url ="http://localhost:8080/userprofile/api/v1/"
   //Backend saveuser url
   private post_url = "http://localhost:8080/userprofile/api/v1/user";
 
@@ -16,5 +17,10 @@ export class UserDetailsService {
 
     // To store the details through microservice into the database
     return this.http.post<UserDetails>(this.post_url, user);
+  }
+
+  getUser(user: UserDetails) :Observable<UserDetails>{
+
+    return this.http.get<UserDetails>(this.getUserDetails_url+'/'+ user.userEmail);
   }
 }

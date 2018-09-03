@@ -1,31 +1,31 @@
-<!-- Wishlist html page-->
-
-
-<div class="row">
-  <div class="col-sm-3" *ngFor="let books of bookList; let i = index">
-    <div *ngIf="i < 9">
-      <div class="card mt-3 mb-3">
-        <div class="card-header text-center">
-          {{ books.releaseYear | date:'mediumDate' }}
+<div class="container">
+    <div *ngIf="wishlist">
+        <h2>Wishlist</h2>
+        <div class="col-sm-3" *ngFor="let book of wishlist; let i = index">
+            <div *ngIf='i<100'>
+                <!-- cards to display books -->
+                <mat-card class="book-card mt-3 mb-3">
+                    <img mat-card-image src="{{ book.poster }}" style="height: 200px; background-size: cover;" alt="Photo of a {{book.title}}">
+                    <mat-card-header>
+                        <span class="spacer"></span>
+                        <div *ngIf=email>
+                            <mat-icon class="example-icon">
+                                <a (click)="removeFromWishlist($event, book)">favorite</a>
+                            </mat-icon>
+                        </div>
+                        <mat-card-title height="10px">
+                            <h6>{{ (book.title.length>30)? (book.title | slice:0:30)+'..':(book.title) }}</h6>
+                        </mat-card-title>
+                        <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
+                        <mat-card-subtitle>Rs {{book.cost}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <span class="spacer"></span>
+                        <button (click)="addToCart(book)" mat-button>Add to cart</button>
+                        <button routerLink="../book/{{ book.bookISBN_10 }}" mat-button>Details</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
-        <div class="card-body">
-          <img class="card-img-top img-fluid" src="{{books.poster}}" alt="{{ books.title }}" style="height: 280px">
-          <p class="text-center">{{ books.title }}</p>
-          <a routerLink="/books/{{ books.id }}" href="#" class="btn btn-block btn-info">Books Details</a>
-          <button (click)="delete(books.id)">Delete books from wishlist</button>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
-text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It
-has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
-was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-<br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-<br>

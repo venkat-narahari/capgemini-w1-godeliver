@@ -9,16 +9,18 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class CartComponent implements OnInit {
   carts: Cart[];
+  interval: any;
   itemToEdit: any;
   constructor(private firebase: FirebaseService, route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.firebase.getCart().subscribe(carts => {
+        this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
     });
 
   }
 
+ 
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
   }

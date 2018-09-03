@@ -20,6 +20,10 @@ export class FirebaseService {
   address: Observable<Address[]>;
   addDoc:AngularFirestoreDocument<Address>;
 
+  profile: AngularFirestoreCollection<Profile>;
+  profiles: Observable<Profile[]>;
+  profileDoc:AngularFirestoreDocument<Profile>;
+
 
   constructor(public fs: AngularFirestore) {
     let idName='rajawatshivam007@gmail.com';
@@ -41,6 +45,14 @@ export class FirebaseService {
           return {id, ...data};
         })))  
 
+        this.profile = this.fs.collection('users/'+idName+'/profile');
+        // this.carts=this.fs.collection('cart').valueChanges();
+        this.profiles = this.profile.snapshotChanges().pipe(
+          map(changes => changes.map(a => {
+            const data = a.payload.doc.data() as Profile;
+            const id = a.payload.doc.id;
+            return {id, ...data};
+          })))  
         
       this.add = this.fs.collection('users/'+idName+'/address');
       // this.carts=this.fs.collection('cart').valueChanges();
@@ -59,6 +71,17 @@ export class FirebaseService {
 
   addItem(carts: Cart) {
     this.cart.add(carts);
+  }
+
+  getUserProfile() {
+    return this.profiles;
+  }
+
+  updateUserProfile(profile: Profile) {
+    let idName='rajawatshivam007@gmail.com';
+    this.cartDoc=this.fs.doc(`users/`+idName+`/profile/${profile.id}`);
+    this.cartDoc.update(profile);
+
   }
 
   getWishlist() {
@@ -80,6 +103,12 @@ export class FirebaseService {
   deleteItem(item:Cart) {
     let idNam='rajawatshivam007@gmail.com';
     this.cartDoc = this.fs.doc(`users/`+idNam+`/cart/${item.id}`);
+    this.cartDoc.delete();
+  }
+
+  removeFromWishlist(item:Cart) {
+    let idNam='rajawatshivam007@gmail.com';
+    this.cartDoc = this.fs.doc(`users/`+idNam+`/wishlist/${item.id}`);
     this.cartDoc.delete();
   }
 
@@ -109,5 +138,12 @@ export interface Cart {
 
 export interface Address {
   address:string;
+  id?:string;
+}
+
+export interface Profile {
+  mobile:string;
+  gender:string;
+  email:string;
   id?:string;
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { BookService } from "../book.service";
+import { FirebaseService, Cart } from "../firebase.service";
+import { Books } from "../book-details";
 
 @Component({
   selector: "app-wishlist",
@@ -8,13 +10,40 @@ import { BookService } from "../book.service";
   styleUrls: ["./wishlist.component.css"]
 })
 export class WishlistComponent implements OnInit {
-  book: any;
-  bookList = [];
-  deleteList: any;
+  wishlist: Cart[];
+  item: Cart = {
+    bookISBN_10: '',
+    title: '',
+    cost:1,
+    poster: '',
+    genre: '',
+    quantity:1
+   };
+
   constructor(
+    private firebase: FirebaseService,
     private router: ActivatedRoute,
     private bookService: BookService
-  ) { }
+  ) {}
   ngOnInit() {
-    }
+    this.firebase.getWishlist().subscribe(carts => {
+      this.wishlist = carts;
+    });
+  }
+
+  addToCart(book) {
+    this.item.title = book.title;
+    this.item.poster = book.poster;
+    this.item.bookISBN_10 = book.bookISBN_10;
+    this.item.cost = parseInt(book.cost);
+    this.item.genre = book.genre;
+    this.item.quantity=1;
+    this.item.totalPrice=parseInt(book.cost);
+    this.firebase.addItem(this.item);
+  }
+
+  removeFromWishlist(event, book) {
+    this.firebase.removeFromWishlist(book);
+  }
+
 }
