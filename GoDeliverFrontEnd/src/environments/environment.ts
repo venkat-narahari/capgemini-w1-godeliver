@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyCZV-lLSzbwUnNE-pTMxiZg9K8ufw1p0H8",
-    authDomain: "godeliver-214009.firebaseapp.com",
-    databaseURL: "https://godeliver-214009.firebaseio.com",
-    projectId: "godeliver-214009",
-    storageBucket: "godeliver-214009.appspot.com",
-    messagingSenderId: "16856312197"
+    apiKey: "AIzaSyDWTPGwJUmbZz-mYPhf-9UFdAtZ9ljw1-k",
+    authDomain: "godeliver-88aec.firebaseapp.com",
+    databaseURL: "https://godeliver-88aec.firebaseio.com",
+    projectId: "godeliver-88aec",
+    storageBucket: "",
+    messagingSenderId: "830258797498"
   }
 };
 

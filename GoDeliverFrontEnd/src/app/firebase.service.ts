@@ -18,7 +18,7 @@ export class FirebaseService {
 
 
   constructor(public fs: AngularFirestore) {
-    let idName='shivam';
+    let idName='rajawatshivam007@gmail.com';
     this.cart = this.fs.collection('users/'+idName+'/cart');
     // this.carts=this.fs.collection('cart').valueChanges();
     this.carts = this.cart.snapshotChanges().pipe(
@@ -56,13 +56,13 @@ export class FirebaseService {
   }
 
   deleteItem(item:Cart) {
-    let idNam='shivam';
+    let idNam='rajawatshivam007@gmail.com';
     this.cartDoc = this.fs.doc(`users/`+idNam+`/cart/${item.id}`);
     this.cartDoc.delete();
   }
 
   deleteAdd(item:Address) {
-    let idNam='shivam';
+    let idNam='rajawatshivam007@gmail.com';
     this.cartDoc = this.fs.doc(`users/`+idNam+`/address/${item.id}`);
     this.cartDoc.delete();
   }
