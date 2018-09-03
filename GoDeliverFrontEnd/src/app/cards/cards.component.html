@@ -9,7 +9,7 @@
       </mat-icon>
     </div>
     <mat-card-title height="10px">
-      <h6>{{ book.title }}</h6>
+      <h6>{{ (book.title.length>30)? (book.title | slice:0:30)+'..':(book.title) }}</h6>
     </mat-card-title>
     <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
     <mat-card-subtitle>Rs {{book.cost}}</mat-card-subtitle>
