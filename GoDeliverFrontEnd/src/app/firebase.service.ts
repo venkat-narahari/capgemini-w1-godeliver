@@ -75,6 +75,7 @@ export interface Cart {
   genre?: string;
   poster?: string;
   id?:string;
+  quantity?:number;
 
 }
 

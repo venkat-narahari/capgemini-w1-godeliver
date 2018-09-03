@@ -19,4 +19,11 @@ export class CartComponent implements OnInit {
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
   }
+  incrementQuantity(item:Cart) {
+    item.quantity+=1;
+  }
+  decrementQuantity(item:Cart) {
+    item.quantity-=1;
+
+  }
 }

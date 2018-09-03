@@ -14,9 +14,10 @@ export class CardsComponent implements OnInit {
   carts: Cart = {
     bookISBN_10: '',
     title: '',
-    cost: '',
+    cost:null,
     poster: '',
     genre: '',
+    quantity:1
    };
 
 
@@ -39,6 +40,7 @@ export class CardsComponent implements OnInit {
     this.carts.bookISBN_10 = book.bookISBN_10;
     this.carts.cost = book.cost;
     this.carts.genre = book.genre;
+    this.carts.quantity=1;
     this.firebase.addItem(this.carts);
   }
 }
