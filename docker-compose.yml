@@ -84,79 +84,55 @@ services:
 
    build: user-login/
    
-   image: user-login
+   image: user-auth
 
-   container_name: user-login-docker
-
-   depends_on:
-
-    - mysql
-
-   healthcheck:
-
-    test: exit 0
-
-   image: login
-
-   network_mode: host
-
+   container_name: user-login
+   
+   environment: 
+      - JAVA_OPTS= "-XX:+UnlockExperimentalVMOptions 
+                    -XX:+UseCGroupMemoryLimitForHeap"
+   network_mode: "host"
+   hostname: localhost
    ports:
+      - 8082:8082
+   depends_on:
+     eureka-server:
+       condition: service_healthy
+     database:
+       condition: service_healthy
+   healthcheck:
+     test: "exit 0"
 
-    - 8082:8082
-
-   restart: always
 
 
-
-  mysql:
-
-   container_name: mysql-docker
+  database:
+  
+   container_name: mysql-login
 
    image: mysql:5.5
 
    ports:
 
     - 3306:3306
-
-   network_mode: host
-
+    
    environment:
-
-    MYSQL_ROOT_PASSWORD: root
+ 
+    MYSQL_ROOT_PASSWORD: Root@123
 
     MYSQL_DATABASE: go_d
-
-    MYSQL_PASSWORD: 
-
+    
+    MYSQL_USER: root
+    
+   volumes:
+      - /opt/data:/var/lib/mysql
+      
+   network_mode: "host"
+   
+   hostname: localhost
+    
    healthcheck:
 
     test: exit 0
-
-
-
-  book-service:
-  
-   build: book-service/
-   
-   image: book-service
-
-   restart: always
-
-   network_mode: host
-
-   container_name: bookservice
-
-   depends_on:
-
-    - mongo
-
-   ports:
-
-    - 8888:8888
-
-   healthcheck:
-
-    test: "exit 0"
 
 
   user-profile:
@@ -270,6 +246,7 @@ services:
     KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
     KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    KAFKA_CREATE_TOPICS: "userprofile, book_details"
    restart: always
    network_mode: host 
    hostname: localhost
