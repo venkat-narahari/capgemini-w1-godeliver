@@ -14,7 +14,7 @@ export class CardsComponent implements OnInit {
   item: Cart = {
     bookISBN_10: '',
     title: '',
-    cost:'',
+    cost:1,
     poster: '',
     genre: '',
     quantity:1
@@ -38,9 +38,10 @@ export class CardsComponent implements OnInit {
     this.item.title = book.title;
     this.item.poster = book.poster;
     this.item.bookISBN_10 = book.bookISBN_10;
-    this.item.cost = book.cost;
+    this.item.cost = parseInt(book.cost);
     this.item.genre = book.genre;
     this.item.quantity=1;
+    this.item.totalPrice=parseInt(book.cost);
     this.firebase.addItem(this.item);
   }
 

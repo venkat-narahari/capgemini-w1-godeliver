@@ -88,17 +88,23 @@ export class FirebaseService {
     this.cartDoc = this.fs.doc(`users/`+idNam+`/address/${item.id}`);
     this.cartDoc.delete();
   }
+  
+  updateItem(item:Cart) {
+    let idName='rajawatshivam007@gmail.com';
+    this.cartDoc=this.fs.doc(`users/`+idName+`/cart/${item.id}`);
+    this.cartDoc.update(item);
+  }
 }
 
 export interface Cart {
   bookISBN_10?: string;
   title?: string;
-  cost?: string;
+  cost?: number;
   genre?: string;
   poster?: string;
   id?:string;
   quantity?:number;
-
+  totalPrice?:number;
 }
 
 export interface Address {

@@ -20,9 +20,9 @@
             <h4>Rs {{item.cost}}</h4>
           </td>
           <td><img src={{item.poster}} width="100" height="100" /></td>
-          <td><span class="btn btn-default btn-md btn-qty" (click)="decrementQuantity(item)">
+          <td><span class="btn btn-default btn-md btn-qty" (click)="decrementQuantity($event, item)">
               <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-            </span><span class="btn btn-default btn-md btn-qty" (click)="incrementQuantity(item)">
+            </span><span class="btn btn-default btn-md btn-qty" (click)="incrementQuantity($event, item)">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </span></td>
           <td>{{item.quantity}}</td>
@@ -34,10 +34,10 @@
             <h4></h4>
           </td>
           <td>
-            <h4>Total Items: {{totalQuantity}}</h4>
+            <h4>Total Items: {{totalQuantity()}}</h4>
           </td>
           <td>
-            <h4>Total: ${{totalPrice}}</h4>
+            <h4>Total: Rs {{getSum()}}</h4>
           </td>
           <td><button (click)="checkout()" class="btn btn-md btn-success">Checkout</button></td>
         </tr>
