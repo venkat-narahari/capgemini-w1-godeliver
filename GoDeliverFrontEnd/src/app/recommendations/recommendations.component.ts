@@ -68,8 +68,7 @@ export class RecommendationsComponent implements OnInit {
     this.bookdetails.userId = JSON.parse(
       localStorage.getItem("userCurrentEmail")
     );
-    this.bookService
-      .addToWishlist(this.bookdetails)
-      .subscribe(res => console.log("Done"));
+    //this.bookService
+      
   }
 }

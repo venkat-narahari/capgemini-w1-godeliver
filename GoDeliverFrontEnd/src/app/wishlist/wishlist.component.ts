@@ -16,14 +16,5 @@ export class WishlistComponent implements OnInit {
     private bookService: BookService
   ) { }
   ngOnInit() {
-    this.bookService
-      .getWishList()
-      .subscribe(fullList => (this.bookList = fullList));
-    console.log(this.bookList);
-  }
-  delete(id) {
-    this.bookService
-      .deleteWishList(id)
-      .subscribe(data => (this.deleteList = data));
-  }
+    }
 }

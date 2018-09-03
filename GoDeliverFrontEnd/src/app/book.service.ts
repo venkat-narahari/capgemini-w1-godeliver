@@ -7,28 +7,16 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class BookService {
-  private wishlist_url = "http://localhost:8087/api/v1/book";
-  private get_url = "http://localhost:8087/api/v1/books";
-  private delete_url = "http://localhost:8087/api/v1/book/delete";
-  private recommended_url = "http://localhost:8092/api/v1/recommendation";
-  private getTopSelling_url = "http://localhost:8888/api/v1/books";
-  private getGenre_url = "http://localhost:8075/api/v1/genre";
-  private getBookById_url = "http://localhost:8888/api/v1/book/";
-  private getBookByName_url = "http://localhost:8888/api/v1";
-  private getTopRated_url = "http://localhost:8092/api/v1/booksbyrating";
+
+  private recommended_url = "http://localhost:8080/recommendation/api/v1/";
+  private getTopSelling_url = "http://localhost:8888/book/api/v1/books";
+  private getGenre_url = "http://localhost:8080/recommendation/api/v1/genre";
+  private getBookById_url = "http://localhost:8888/book/api/v1/book/";
+  private getBookByName_url = "http://localhost:8888/book/api/v1";
+  private getTopRated_url = "http://localhost:8080/recommendation/api/v1/rating";
   constructor(private http: HttpClient) { }
 
-  getWishList(): Observable<Books[]> {
-    return this.http.get<Books[]>(this.get_url);
-  }
-
-  addToWishlist(book: Books): Observable<Books> {
-    return this.http.post<Books>(this.wishlist_url, book);
-  }
-  deleteWishList(id) {
-    return this.http.delete(this.delete_url + "/" + id);
-  }
-
+ 
   getBookByName(book) {
     return this.http.get(this.getBookByName_url + "/" + book);
   }
