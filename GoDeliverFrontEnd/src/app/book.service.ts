@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class BookService {
 
   private recommended_url = "http://localhost:8080/recommendation/api/v1/";
-  private getTopSelling_url = "http://localhost:8888/book/api/v1/books";
+  private getTopSelling_url = "http://localhost:8888/api/v1/books";
   private getGenre_url = "http://localhost:8080/recommendation/api/v1/genre";
   private getBookById_url = "http://localhost:8888/book/api/v1/book/";
   private getBookByName_url = "http://localhost:8888/book/api/v1";

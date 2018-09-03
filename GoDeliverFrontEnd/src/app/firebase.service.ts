@@ -12,6 +12,10 @@ export class FirebaseService {
   carts: Observable<Cart[]>;
   cartDoc:AngularFirestoreDocument<Cart>;
 
+  wishlist: AngularFirestoreCollection<Cart>;
+  wishlists: Observable<Cart[]>;
+  wishlistDoc:AngularFirestoreDocument<Cart>;
+
   add: AngularFirestoreCollection<Address>;
   address: Observable<Address[]>;
   addDoc:AngularFirestoreDocument<Address>;
@@ -28,6 +32,16 @@ export class FirebaseService {
         return {id, ...data};
       })))
 
+      this.wishlist = this.fs.collection('users/'+idName+'/wishlist');
+      // this.carts=this.fs.collection('cart').valueChanges();
+      this.wishlists = this.wishlist.snapshotChanges().pipe(
+        map(changes => changes.map(a => {
+          const data = a.payload.doc.data() as Cart;
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        })))  
+
+        
       this.add = this.fs.collection('users/'+idName+'/address');
       // this.carts=this.fs.collection('cart').valueChanges();
       this.address = this.add.snapshotChanges().pipe(
@@ -45,6 +59,14 @@ export class FirebaseService {
 
   addItem(carts: Cart) {
     this.cart.add(carts);
+  }
+
+  getWishlist() {
+    return this.wishlists;
+  }
+
+  addItemToWishlist(wishlists: Cart) {
+    this.wishlist.add(wishlists);
   }
 
   addAddress(address: Address) {

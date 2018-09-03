@@ -53,7 +53,6 @@ export class RegistrationComponent implements OnInit {
     this.user.userDob = this.userDOB.value;
     this.user.userPassword = this.userPassword.value;
     this.user.userPreferences = this.genre.value;
-    console.log(this.genre.value);
     this.userDetailService.addUser(this.user).subscribe(
       data => { },
       error => {
