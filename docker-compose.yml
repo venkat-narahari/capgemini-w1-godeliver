@@ -87,10 +87,6 @@ services:
    image: user-auth
 
    container_name: user-login
-   
-   environment: 
-      - JAVA_OPTS= "-XX:+UnlockExperimentalVMOptions 
-                    -XX:+UseCGroupMemoryLimitForHeap"
    network_mode: "host"
    hostname: localhost
    ports:
