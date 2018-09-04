@@ -12,7 +12,7 @@ export class RecommendationsComponent implements OnInit {
   top_selling: any;
   top_rated;
   email;
-  genres = [];
+  genres;
   bookdetails = new Books(
     "",
     "",
@@ -37,7 +37,6 @@ export class RecommendationsComponent implements OnInit {
       this.email = localStorage.getItem("currentUserEmail");
       this.bookService.getRecommendationList(this.email).subscribe(fullList => {
         this.recommended_books = fullList;
-        console.log("inside ngOnInit getRecommendationList");
       });
     }
     //getting top sellingbooks
@@ -49,6 +48,11 @@ export class RecommendationsComponent implements OnInit {
     this.bookService.getTopRated().subscribe(list => {
       console.log("topselling data is 111 ", list);
       this.top_rated = list;
+    });
+
+    //getting toprated  books
+    this.bookService.getGenreList().subscribe(list => {
+      this.genres = list;
     });
   }
 }

@@ -17,8 +17,9 @@
     <div class="row">
         <div class="col-sm-10">
             <h1 class="">
-                <!-- {{user.userName}} -->
-                Shivam
+                <div *ngFor="let use of user; let i=index">
+                {{use}}
+            </div>
             </h1>
         </div>
         <div class="col-sm-2 mb-4"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive"
@@ -32,14 +33,14 @@
                 <ul class="list-group">
                     <li class="list-group-item text-muted" contenteditable="false">Profile</li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">DOB</strong></span>
-                        {{user.userDOB}}</li>
+                        </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email ID</strong></span>
-                        {{user.userEmail}}</li>
+                        </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Phone Number</strong></span>
-                        {{profile.phoneNumber}}
+                        
                     </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Gender </strong></span>
-                        {{profile.gender}}
+                        
 
                     </li>
                 </ul>
@@ -57,11 +58,11 @@
 
                     </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Cart</strong></span>
-                        {{cartLength}}</li>
+                        {{ cartLength }}</li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">My Orders</strong></span>
-                        125</li>
+                        </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Wishlist</strong></span>
-                        {{wishlistLenght}}</li>
+                        {{wishlistLength}}</li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Settings</strong></span>
                     </li>
                     <li class="list-group-item text-right"><span class="pull-left"><strong class="">Delete Account</strong></span>

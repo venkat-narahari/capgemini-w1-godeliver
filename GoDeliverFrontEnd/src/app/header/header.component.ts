@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") !== null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
+      console.log(this.curUser);
       this.noUser = "";
     } else {
       this.noUser = "NoUser";

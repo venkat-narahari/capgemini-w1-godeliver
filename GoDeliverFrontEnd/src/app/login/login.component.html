@@ -1,7 +1,7 @@
 <!-- Login Page authentication with username and password -->
 <div class="conatiner">
 
-  <body background="assets/loginbackground.jpg">
+  <body>
     <div class="background">
       <div class="row mb-4 ml-1">
         <div class="col-sm-7">
@@ -22,12 +22,12 @@
               <mat-hint>eg:abc@gmail.com</mat-hint>
             </mat-form-field> -->
             <mat-form-field>
-              <input matInput placeholder="Enter your email" [formControl]="email" required>
+              <input matInput placeholder="Enter your email" [formControl]="userEmail" name="userEmail" required>
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" style="margin-top:18px">
-              <input matInput type="password" placeholder="password" formControlName="userPassword" name="userPassword" required minlength="8">
+              <input matInput type="password" placeholder="password" [formControl]="userPassword" name="userPassword" required minlength="8">
               <!--error handling for password-->
               <!-- <div *ngIf="userPassword.dirty && userPassword.errors" class="error">
                 <div *ngIf="userPassword.errors.required" class="validation_message">

@@ -52,6 +52,6 @@ export class CardsComponent implements OnInit {
     this.item.cost = book.cost;
     this.item.genre = book.genre;
     this.item.quantity=1;
-    this.firebase.addItem(this.item);
+    this.firebase.addItemToWishlist(this.item);
   }
 }

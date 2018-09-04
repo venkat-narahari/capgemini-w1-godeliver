@@ -26,7 +26,7 @@ export class FirebaseService {
 
 
   constructor(public fs: AngularFirestore) {
-    let idName='rajawatshivam007@gmail.com';
+    let idName=JSON.parse(localStorage.getItem('currentUserEmail'));
     this.cart = this.fs.collection('users/'+idName+'/cart');
     // this.carts=this.fs.collection('cart').valueChanges();
     this.carts = this.cart.snapshotChanges().pipe(
@@ -77,13 +77,6 @@ export class FirebaseService {
     return this.profiles;
   }
 
-  updateUserProfile(profile: Profile) {
-    let idName='rajawatshivam007@gmail.com';
-    this.cartDoc=this.fs.doc(`users/`+idName+`/profile/${profile.id}`);
-    this.cartDoc.update(profile);
-
-  }
-
   getWishlist() {
     return this.wishlists;
   }
@@ -101,27 +94,34 @@ export class FirebaseService {
   }
 
   deleteItem(item:Cart) {
-    let idNam='rajawatshivam007@gmail.com';
-    this.cartDoc = this.fs.doc(`users/`+idNam+`/cart/${item.id}`);
+    let idName=JSON.parse(localStorage.getItem('currentUserEmail'));
+    this.cartDoc = this.fs.doc(`users/`+idName+`/cart/${item.id}`);
     this.cartDoc.delete();
   }
 
   removeFromWishlist(item:Cart) {
-    let idNam='rajawatshivam007@gmail.com';
-    this.cartDoc = this.fs.doc(`users/`+idNam+`/wishlist/${item.id}`);
+    let idName=JSON.parse(localStorage.getItem('currentUserEmail'));
+    this.cartDoc = this.fs.doc(`users/`+idName+`/wishlist/${item.id}`);
     this.cartDoc.delete();
   }
 
   deleteAdd(item:Address) {
-    let idNam='rajawatshivam007@gmail.com';
-    this.cartDoc = this.fs.doc(`users/`+idNam+`/address/${item.id}`);
+    let idName=JSON.parse(localStorage.getItem('currentUserEmail'));
+    this.cartDoc = this.fs.doc(`users/`+idName+`/address/${item.id}`);
     this.cartDoc.delete();
   }
   
   updateItem(item:Cart) {
-    let idName='rajawatshivam007@gmail.com';
+    let idName=JSON.parse(localStorage.getItem('currentUserEmail'));
     this.cartDoc=this.fs.doc(`users/`+idName+`/cart/${item.id}`);
     this.cartDoc.update(item);
+  }
+  
+  updateUserProfile(profile: Profile) {
+    let idName=JSON.parse(localStorage.getItem('currentUserEmail'));
+    this.cartDoc=this.fs.doc(`users/`+idName+`/profile/${profile.id}`);
+    this.cartDoc.update(profile);
+
   }
 }
 
