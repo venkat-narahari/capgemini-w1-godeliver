@@ -1,6 +1,19 @@
 version: '2.1'
 
 services:
+#   front-end:
+#    build: GoDeliverFrontEnd/
+#    image: angular
+#    restart: always
+#    container_name: front-end
+#    network_mode: "host"
+#    hostname: localhost
+#    ports:
+#      - 4200:4200
+#    healthcheck:
+#      test: "exit 0"   
+
+
 
   eureka-server:
   
