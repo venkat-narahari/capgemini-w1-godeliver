@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { BookService } from "../book.service";
-import { FirebaseService } from '../firebase.service';
+import { FirebaseService, Wishlist } from '../firebase.service';
 import { Cart } from "../firebase.service";
 @Component({
   selector: "app-cards",
@@ -17,11 +17,23 @@ export class CardsComponent implements OnInit {
     cost:1,
     poster: '',
     genre: '',
-    quantity:1
-   };
+    quantity:1,
+  }
 
 
-  //To store current user email for wishlist
+  wish: Wishlist = {
+    bookISBN_10: '',
+    title: '',
+    cost:1,
+    poster: '',
+    genre: '',
+    quantity:1,
+    author:'',
+    publisher:'',
+    emailID:''
+  }
+
+    //To store current user email for wishlist
   email: any;
 
   constructor(private bookService: BookService, private firebase: FirebaseService) { }
@@ -46,12 +58,17 @@ export class CardsComponent implements OnInit {
   }
 
   addToWishlist(book) {
-    this.item.title = book.title;
-    this.item.poster = book.poster;
-    this.item.bookISBN_10 = book.bookISBN_10;
-    this.item.cost = book.cost;
-    this.item.genre = book.genre;
-    this.item.quantity=1;
-    this.firebase.addItemToWishlist(this.item);
-  }
+    this.wish.title = book.title;
+    this.wish.poster = book.poster;
+    this.wish.bookISBN_10 = book.bookISBN_10;
+    this.wish.cost = book.cost;
+    this.wish.genre = book.genre;
+    this.wish.quantity=1;
+    this.wish.author=book.author;
+    this.wish.publisher=book.publisher;
+    this.wish.emailID="rajawat@gmail.com";
+    this.firebase.addItemToWishlist(this.wish);
+    this.bookService.itemToWishlistRecommendation(this.wish).subscribe(
+      data => { console.log('done')});
+    }
 }

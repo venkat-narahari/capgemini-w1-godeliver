@@ -147,3 +147,17 @@ export interface Profile {
   email:string;
   id?:string;
 }
+
+export interface Wishlist {
+  bookISBN_10?: string;
+  title?: string;
+  cost?: number;
+  genre?: string;
+  poster?: string;
+  id?:string;
+  quantity?:number;
+  totalPrice?:number;
+  author?:string;
+  publisher?:string;
+  emailID?:string;
+}

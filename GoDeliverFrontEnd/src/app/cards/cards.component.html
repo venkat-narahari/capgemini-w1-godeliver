@@ -3,11 +3,10 @@
   <img mat-card-image src="{{ book.poster }}" style="height: 200px; background-size: cover;" alt="Photo of a {{book.title}}">
   <mat-card-header>
     <span class="spacer"></span>
-    <div *ngIf=email>
+    
       <mat-icon class="example-icon">
         <a (click)="addToWishlist(book)">favorite</a>
       </mat-icon>
-    </div>
     <mat-card-title height="10px">
       <h6>{{ (book.title.length>30)? (book.title | slice:0:30)+'..':(book.title) }}</h6>
     </mat-card-title>
