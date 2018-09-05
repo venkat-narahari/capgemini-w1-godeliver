@@ -204,7 +204,7 @@ services:
 
   neo4j:
 
-   image: neo4js
+   image: neo4j
 
    container_name: spring-neo4j
 
