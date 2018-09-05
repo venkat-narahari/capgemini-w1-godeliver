@@ -63,7 +63,7 @@ public class Controller {
 
 	@RequestMapping(value = "/rating", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllBooksByRating() throws BookNotFoundException {
-		List<BookListener> getAllBooksByRating ;
+		List<BookListener> getAllBooksByRating;
 		try {
 			getAllBooksByRating = (List<BookListener>) bookService.getAllBooksByRating();
 		} catch (BookNotFoundException e) {
@@ -124,26 +124,40 @@ public class Controller {
 		return new ResponseEntity<List<BookListener>>(getAllBooksByPreferences, HttpStatus.OK);
 
 	}
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ResponseEntity<?> save(@RequestBody Wishlist wishlist) {
 		System.out.println(wishlist.getCost());
-		Wishlist save =  bookService.save(wishlist);
-					
+		Wishlist save = userService.save(wishlist);
+
 		return new ResponseEntity<Wishlist>(save, HttpStatus.ACCEPTED);
 
 	}
 
 	@GetMapping(value = "/wishlist")
-		public ResponseEntity<?> getBooksFromWishlist() {
-			List<Wishlist> getBooksFromWishlist = new ArrayList<Wishlist>();
-			try {
-				getBooksFromWishlist = (List<Wishlist>) bookService.getBooksFromWishlist();
-			} catch (BookNotFoundException e) {
-				String result = e.getMessage();
-				return new ResponseEntity<String>(result, HttpStatus.OK);
-			}
-			return new ResponseEntity<List<Wishlist>>(getBooksFromWishlist, HttpStatus.OK);
-
+	public ResponseEntity<?> getBooksFromWishlist() {
+		List<Wishlist> getBooksFromWishlist = new ArrayList<Wishlist>();
+		try {
+			getBooksFromWishlist = (List<Wishlist>) userService.getBooksFromWishlist();
+		} catch (BookNotFoundException e) {
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
 		}
+		return new ResponseEntity<List<Wishlist>>(getBooksFromWishlist, HttpStatus.OK);
+
+	}
+
+	@GetMapping(value = "/likes")
+	public ResponseEntity<?> getBooksByLikes() {
+		List<Wishlist> getBooksFromLikes = new ArrayList<Wishlist>();
+		try {
+			getBooksFromLikes = userService.getBooksByLikes();
+		} catch (BookNotFoundException e) {
+			String result = e.getMessage();
+			return new ResponseEntity<String>(result, HttpStatus.OK);
+		}
+		return new ResponseEntity<List<Wishlist>>(getBooksFromLikes, HttpStatus.OK);
+
+	}
 
 }

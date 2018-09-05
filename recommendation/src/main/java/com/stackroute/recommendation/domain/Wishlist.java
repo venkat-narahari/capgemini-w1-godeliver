@@ -19,8 +19,23 @@ public class Wishlist {
 	private String publisher;
 	private int quantity;
 	private String title;
-	
+//	private List<Book> wishlist;
 
+	
+//	public BookWishlist(String author, String bookISBN_10, String cost, String emailID, String genre, String poster,
+//			String publisher, int quantity, String title) {
+//		super();
+//		this.author = author;
+//		this.bookISBN_10 = bookISBN_10;
+//		this.cost = cost;
+//		this.emailID = emailID;
+//		this.genre = genre;
+//		this.poster = poster;
+//		this.publisher = publisher;
+//		this.quantity = quantity;
+//		this.title = title;
+//	
+//	}
 
 	public Wishlist(String author, String bookISBN_10, String cost, String emailID, String genre, String poster,
 			String publisher, int quantity, String title) {

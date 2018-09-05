@@ -2,15 +2,16 @@ package com.stackroute.recommendation.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.recommendation.domain.Author;
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.domain.Genre;
-import com.stackroute.recommendation.domain.Wishlist;
 import com.stackroute.recommendation.exceptions.BookNotFoundException;
 import com.stackroute.recommendation.exceptions.NoBooksFoundException;
 import com.stackroute.recommendation.relations.OfType;
@@ -121,18 +122,6 @@ public class BookService {
 
 	}
 
-	public Wishlist save(Wishlist wishlist) {
-		Wishlist getBooks = wishlistRepository.save(wishlist);
-		return getBooks;
+	
 
-	}
-
-	public List<Wishlist> getBooksFromWishlist() throws BookNotFoundException {
-		List<Wishlist> getBooks = (List<Wishlist>) wishlistRepository.findAll();
-		if (!(getBooks.isEmpty())) {
-			return getBooks;
-		} else
-			throw new BookNotFoundException("Books not found");
-
-	}
 }
