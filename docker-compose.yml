@@ -1,20 +1,7 @@
 version: '2.1'
 
 services:
-#   front-end:
-#    build: GoDeliverFrontEnd/
-#    image: angular
-#    restart: always
-#    container_name: front-end
-#    network_mode: "host"
-#    hostname: localhost
-#    ports:
-#      - 4200:4200
-#    healthcheck:
-#      test: "exit 0"   
-
-
-
+   
   eureka-server:
   
     depends_on:
@@ -26,8 +13,10 @@ services:
     restart: always
 
     network_mode: "host"
+    
+    build: eureka-server/
 
-    image: shiri277/eurekaserver:1.0
+    image: eurekaserver
 
     hostname: localhost
 
@@ -42,8 +31,10 @@ services:
 
 
   config-service:
+  
+   build: config-service/
 
-   image: shiri277/config-server:1.0
+   image: config-server
    
    restart: always
 
@@ -63,7 +54,9 @@ services:
 
   api-gateway:
 
-   image: shiri277/api-gateway:1.0
+   build: zuul-apigateway/
+
+   image: api-gateway
 
    depends_on:
 

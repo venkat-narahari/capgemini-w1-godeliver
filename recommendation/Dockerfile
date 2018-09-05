@@ -2,6 +2,8 @@
 
 FROM java:8-jre
 
+#ENV NEO4J_AUTH=none
+
 # copy jar file to docker file system
 
 ADD ./target/recommendation-0.0.1-SNAPSHOT.jar /usr/app/recommendation-0.0.1-SNAPSHOT.jar
