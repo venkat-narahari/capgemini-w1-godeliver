@@ -19,26 +19,15 @@ public class Wishlist {
 	private String publisher;
 	private int quantity;
 	private String title;
-//	private List<Book> wishlist;
-
 	
-//	public BookWishlist(String author, String bookISBN_10, String cost, String emailID, String genre, String poster,
-//			String publisher, int quantity, String title) {
-//		super();
-//		this.author = author;
-//		this.bookISBN_10 = bookISBN_10;
-//		this.cost = cost;
-//		this.emailID = emailID;
-//		this.genre = genre;
-//		this.poster = poster;
-//		this.publisher = publisher;
-//		this.quantity = quantity;
-//		this.title = title;
-//	
-//	}
+//	@Relationship(type = "ofType", direction = Relationship.INCOMING)
+//	private List<User> user;
+	
 
-	public Wishlist(String author, String bookISBN_10, String cost, String emailID, String genre, String poster,
-			String publisher, int quantity, String title) {
+	public Wishlist(Long nodeId, String author, String bookISBN_10, String cost, String emailID, String genre,
+			String poster, String publisher, int quantity, String title) {
+		super();
+		this.nodeId = nodeId;
 		this.author = author;
 		this.bookISBN_10 = bookISBN_10;
 		this.cost = cost;
@@ -48,10 +37,23 @@ public class Wishlist {
 		this.publisher = publisher;
 		this.quantity = quantity;
 		this.title = title;
+		
+	}
+
+//	public List<User> getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(List<User> user) {
+//		this.user = user;
+//	}
+
+	public Wishlist(Iterable<Wishlist> iterable) {
+
 	}
 
 	public Wishlist() {
-
+		
 	}
 
 	public Long getNodeId() {
@@ -136,9 +138,11 @@ public class Wishlist {
 
 	@Override
 	public String toString() {
-		return "Wishlist [ author=" + author + ", bookISBN_10=" + bookISBN_10 + ", cost=" + cost + ", emailID="
-				+ emailID + ", genre=" + genre + ", poster=" + poster + ", publisher=" + publisher + ", quantity="
-				+ quantity + ", title=" + title + "]";
+		return "Wishlist [nodeId=" + nodeId + ", author=" + author + ", bookISBN_10=" + bookISBN_10 + ", cost=" + cost
+				+ ", emailID=" + emailID + ", genre=" + genre + ", poster=" + poster + ", publisher=" + publisher
+				+ ", quantity=" + quantity + ", title=" + title + "]";
 	}
+
+
 
 }

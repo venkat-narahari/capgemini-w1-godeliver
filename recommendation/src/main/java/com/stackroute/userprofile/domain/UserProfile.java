@@ -1,6 +1,9 @@
 package com.stackroute.userprofile.domain;
 
 import java.util.Arrays;
+import java.util.List;
+
+import com.stackroute.recommendation.domain.Wishlist;
 
 public class UserProfile {
 
@@ -11,20 +14,36 @@ public class UserProfile {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
-
+	private List<Wishlist> wishlist;
 	public UserProfile() {
 
 	}
 
-	@Override
-	public String toString() {
-		return "User [userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob + ", userPassword="
-				+ userPassword + ", userPreferences=" + Arrays.toString(userPreferences) + ", userGender=" + userGender
-				+ ", userMobile=" + userMobile + "]";
+	
+	public List<Wishlist> getWishlist() {
+		return wishlist;
 	}
 
+
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
+
+
+	@Override
+	public String toString() {
+		return "UserProfile [userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob
+				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
+				+ ", userGender=" + userGender + ", userMobile=" + userMobile + ", wishlist=" + wishlist + "]";
+	}
+
+
+
+
+
+
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, double userMobile) {
+			String userGender, double userMobile, List<Wishlist> wishlist) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -33,7 +52,13 @@ public class UserProfile {
 		this.userPreferences = userPreferences;
 		this.userGender = userGender;
 		this.userMobile = userMobile;
+		this.wishlist = wishlist;
 	}
+
+
+
+
+
 
 	public String getUserName() {
 		return userName;

@@ -30,7 +30,7 @@ public class BookListener {
 	@Relationship(type = "ofType", direction = Relationship.OUTGOING)
 	private List<Genre> genres;
 	@Relationship(type = "writtenBy", direction = Relationship.OUTGOING)
-	List<Author> authors;
+	private List<Author> authors;
 	
 	
 	public BookListener() {

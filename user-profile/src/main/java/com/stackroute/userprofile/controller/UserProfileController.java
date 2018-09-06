@@ -38,8 +38,7 @@ public class UserProfileController {
 			UserProfile userProfile;
 			try {
 				userProfile = userProfileServicesImpl.saveUser(user);
-			}
-			catch(MongoConnectionException e) {
+			} catch (MongoConnectionException e) {
 				return new ResponseEntity<String>("Connection Failed", HttpStatus.GATEWAY_TIMEOUT);
 			}
 			if (userProfile != null) {
@@ -62,14 +61,12 @@ public class UserProfileController {
 			UserProfile updatedUser;
 			try {
 				updatedUser = userProfileServicesImpl.updateUser(user);
-			}
-			catch(MongoConnectionException e) {
+			} catch (MongoConnectionException e) {
 				return new ResponseEntity<String>("Connection Failed", HttpStatus.GATEWAY_TIMEOUT);
 			}
-			if(updatedUser!=null) {
+			if (updatedUser != null) {
 				return new ResponseEntity<String>("User updated", HttpStatus.OK);
-			}
-			else {
+			} else {
 				throw new UserNotExistsException("User doesn't exists with this email!");
 			}
 		} catch (UserNotExistsException e) {
@@ -87,8 +84,7 @@ public class UserProfileController {
 			UserProfile user;
 			try {
 				user = userProfileServicesImpl.viewUser(userEmail);
-			}
-			catch(MongoConnectionException e) {
+			} catch (MongoConnectionException e) {
 				return new ResponseEntity<String>("Connection Failed", HttpStatus.GATEWAY_TIMEOUT);
 			}
 			if (user != null) {
@@ -101,5 +97,5 @@ public class UserProfileController {
 		}
 
 	}
-
+	
 }

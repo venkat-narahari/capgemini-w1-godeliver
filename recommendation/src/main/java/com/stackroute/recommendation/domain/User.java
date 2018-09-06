@@ -21,16 +21,13 @@ public class User {
 	private String[] userPreferences;
 	private String userGender;
 	private double userMobile;
+
+	@Relationship(type = "liked", direction = Relationship.OUTGOING)
+	private List<Wishlist> wishlist;
 	
-	
 
-	@Relationship(type = "likes", direction = Relationship.OUTGOING)
-	List<Wishlist> wishlist;
-
-
-
-	public User(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, double userMobile, List<Wishlist> wishlist) {
+	public User( String userName, String userEmail, String userDob, String userPassword,
+			String[] userPreferences, String userGender, double userMobile, List<Wishlist> wishlist) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -42,15 +39,12 @@ public class User {
 		this.wishlist = wishlist;
 	}
 
-	public User() {
-
+	public List<Wishlist> getWishlist() {
+		return wishlist;
 	}
 
-	@Override
-	public String toString() {
-		return "User [nodeId=" + nodeId + ", userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob
-				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
-				+ ", userGender=" + userGender + ", userMobile=" + userMobile + "]";
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
 	}
 
 	public Long getNodeId() {
@@ -59,28 +53,6 @@ public class User {
 
 	public void setNodeId(Long nodeId) {
 		this.nodeId = nodeId;
-	}
-
-	public User(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String userGender, double userMobile) {
-		super();
-
-		this.userName = userName;
-		this.userEmail = userEmail;
-		this.userDob = userDob;
-		this.userPassword = userPassword;
-		this.userPreferences = userPreferences;
-		this.userGender = userGender;
-		this.userMobile = userMobile;
-	}
-	
-
-	public List<Wishlist> getWishlist() {
-		return wishlist;
-	}
-
-	public void setWishlist(List<Wishlist> wishlist) {
-		this.wishlist = wishlist;
 	}
 
 	public String getUserName() {
@@ -139,4 +111,16 @@ public class User {
 		this.userMobile = userMobile;
 	}
 
+	public User() {
+
+	}
+
+	@Override
+	public String toString() {
+		return "User [nodeId=" + nodeId + ", userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob
+				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
+				+ ", userGender=" + userGender + ", userMobile=" + userMobile + "]";
+	}
+
+	
 }

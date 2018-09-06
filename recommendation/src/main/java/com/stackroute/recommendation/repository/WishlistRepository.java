@@ -11,7 +11,7 @@ import com.stackroute.recommendation.domain.Wishlist;
 @Repository
 public interface WishlistRepository extends Neo4jRepository<Wishlist, Long> {
 
-	@Query("MATCH (p:User)-[l:likes]->(g:Wishlist) RETURN g")
+	@Query("MATCH (p:User)-[l:liked]->(g:Wishlist) RETURN g")
 	public List<Wishlist> getBooksByLikes();
 
 }

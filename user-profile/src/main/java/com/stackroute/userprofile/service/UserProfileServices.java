@@ -10,5 +10,6 @@ public interface UserProfileServices {
 	public UserProfile updateUser(UserProfile userProfile) throws MongoConnectionException;
 
 	public UserProfile viewUser(String userEmail) throws MongoConnectionException;
-
-}
+	
+	
+	}
