@@ -3,5 +3,5 @@ spring:
   application:
     name: book
 server:
-  port: "27017"
+  port: "8888"
       

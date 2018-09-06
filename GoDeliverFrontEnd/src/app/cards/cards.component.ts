@@ -19,10 +19,12 @@ export class CardsComponent implements OnInit {
     genre: '',
     quantity:1
    };
-
+   deleteList:any;
+   like:boolean=true;
 
   //To store current user email for wishlist
   email: any;
+ 
 
   constructor(private bookService: BookService, private firebase: FirebaseService) { }
 
@@ -54,4 +56,14 @@ export class CardsComponent implements OnInit {
     this.item.quantity=1;
     this.firebase.addItem(this.item);
   }
+
+ colorChange(){
+   this.like=!this.like;
+ }
+
+ removeFromWishlist(event, book) {
+  this.firebase.removeFromWishlist(book);
+}
+  
+ 
 }
