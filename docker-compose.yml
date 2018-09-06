@@ -84,83 +84,6 @@ services:
 
   
 
-<<<<<<< HEAD
-#  user-login:
-#
-#   build: user-login/
-#   
-#   image: user-auth
-#
-#   container_name: user-login
-#   network_mode: "host"
-#   hostname: localhost
-#   ports:
-#      - 8082:8082
-#   depends_on:
-#     eureka-server:
-#       condition: service_healthy
-#     database:
-#       condition: service_healthy
-#   healthcheck:
-#     test: "exit 0"
-#
-#
-#
-#  database:
-#  
-#   container_name: mysql-login
-#
-#   image: mysql:5.5
-#
-#   ports:
-#
-#    - 3306:3306
-#    
-#   environment:
-# 
-#    MYSQL_ROOT_PASSWORD: Root@123
-#
-#    MYSQL_DATABASE: go_d
-#    
-#    MYSQL_USER: root
-#    
-#   volumes:
-#      - /opt/data:/var/lib/mysql
-#      
-#   network_mode: "host"
-#   
-#   hostname: localhost
-#    
-#   healthcheck:
-#
-#    test: exit 0
-#
-#
-#  user-profile:
-#  
-#   build: user-profile/
-#   
-#   image: user-profile
-#
-#   restart: always
-#
-#   network_mode: host
-#
-#   container_name: userprofile
-#
-#   depends_on:
-#
-#    - mongo
-#
-#   ports:
-#
-#    - 8070:8070
-#
-#   healthcheck:
-#
-#    test: "exit 0"
-#
-=======
   user-login:
 
    build: user-login/
@@ -236,7 +159,6 @@ services:
 
     test: "exit 0"
 
->>>>>>> 5df37638c3b1d3a66b243556930e0c1eeb4d334f
 
   mongo:
 
@@ -266,52 +188,6 @@ services:
     - 8888:8888
    healthcheck:
     test: "exit 0"
-<<<<<<< HEAD
-    
- 
-#  recommendation:
-#  
-#   build: recommendation/
-#   
-#   image: recommendation
-#
-#   restart: always
-#
-#   network_mode: host
-#
-#   container_name: recommendation
-#
-#   depends_on:
-#
-#    - neo4j
-#
-#   ports:
-#
-#    - 8092:8092
-#
-#   healthcheck:
-#
-#    test: "exit 0"
-#
-#
-#  neo4j:
-#
-#   image: neo4j
-#
-#   network_mode: host
-#
-#   container_name: spring-neo4j
-#
-#   ports:
-#
-#    - 7474:7474
-#    - 7687:7687
-#
-#   volumes:
-#
-#    - $HOME/neo4j/data:/data
-#
-=======
 
 
   neo4j:
@@ -357,7 +233,6 @@ services:
    healthcheck:
 
     test: "exit 0"
->>>>>>> 5df37638c3b1d3a66b243556930e0c1eeb4d334f
 
 
   zookeeper:
