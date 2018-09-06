@@ -4,8 +4,8 @@ import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.RelationshipEntity;
 import org.neo4j.ogm.annotation.StartNode;
 
-import com.stackroute.recommendation.domain.Genre;
 import com.stackroute.recommendation.domain.User;
+import com.stackroute.recommendation.domain.Wishlist;
 
 @RelationshipEntity(type = "likes")
 public class Likes {
@@ -13,14 +13,10 @@ public class Likes {
 	@StartNode
 	private User user;
 	@EndNode
-	private Genre genre;
+	private Wishlist Wishlist;
 	public Likes() {
 		super();
 		
-	}
-	@Override
-	public String toString() {
-		return "Likes [user=" + user + ", genre=" + genre + "]";
 	}
 	public User getUser() {
 		return user;
@@ -28,17 +24,21 @@ public class Likes {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Genre getGenre() {
-		return genre;
+	public Wishlist getWishlist() {
+		return Wishlist;
 	}
-	
-	public void setGenre(Genre genre) {
-		this.genre = genre;
+	public void setWishlist(Wishlist wishlist) {
+		this.Wishlist = wishlist;
 	}
-	
-public Likes(User user, Genre genre) {
-		
+	public Likes(User user, Wishlist wishlist) {
+		super();
 		this.user = user;
-		this.genre = genre;
+		this.Wishlist = wishlist;
 	}
+	@Override
+	public String toString() {
+		return "Likes [user=" + user + ", wishlist=" + Wishlist + "]";
+	}
+	
+	
 }

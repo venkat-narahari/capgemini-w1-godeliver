@@ -22,11 +22,25 @@ public class User {
 	private String userGender;
 	private double userMobile;
 	
-	@Relationship(type = "likes", direction = Relationship.OUTGOING)
-	List<BookListener> books;
+	
 
 	@Relationship(type = "likes", direction = Relationship.OUTGOING)
-	List<Genre> genres;
+	List<Wishlist> wishlist;
+
+
+
+	public User(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
+			String userGender, double userMobile, List<Wishlist> wishlist) {
+		super();
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userDob = userDob;
+		this.userPassword = userPassword;
+		this.userPreferences = userPreferences;
+		this.userGender = userGender;
+		this.userMobile = userMobile;
+		this.wishlist = wishlist;
+	}
 
 	public User() {
 
@@ -58,6 +72,15 @@ public class User {
 		this.userPreferences = userPreferences;
 		this.userGender = userGender;
 		this.userMobile = userMobile;
+	}
+	
+
+	public List<Wishlist> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
 	}
 
 	public String getUserName() {

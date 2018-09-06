@@ -25,7 +25,7 @@ public class RecommendationConfig {
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, "books");
-		props.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.bookservice");
+		//props.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.bookservice");
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 		return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Book.class));

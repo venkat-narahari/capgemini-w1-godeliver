@@ -18,8 +18,9 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://localhost:8082/api/v1/login`,
+        `http://172.23.238.193:8080/user-login/api/v1/login`,
         { userEmail, userPassword },
+        
         options
       )
       .pipe(
@@ -36,9 +37,11 @@ export class AuthenticationService {
               JSON.stringify(user.email)
             );
           }
+          console.log(userPassword);
           return user;
         })
       );
+      
   }
 
   logout() {

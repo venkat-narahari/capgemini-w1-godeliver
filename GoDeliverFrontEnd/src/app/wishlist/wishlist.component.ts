@@ -11,6 +11,7 @@ import { Books } from "../book-details";
 })
 export class WishlistComponent implements OnInit {
   wishlist: Cart[];
+  email:any;
   item: Cart = {
     bookISBN_10: '',
     title: '',
@@ -26,6 +27,7 @@ export class WishlistComponent implements OnInit {
     private bookService: BookService
   ) {}
   ngOnInit() {
+    this.email=JSON.parse(localStorage.getItem('currentUserEmail'));
     this.firebase.getWishlist().subscribe(carts => {
       this.wishlist = carts;
     });

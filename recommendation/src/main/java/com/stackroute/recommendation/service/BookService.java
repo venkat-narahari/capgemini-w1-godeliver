@@ -2,10 +2,12 @@ package com.stackroute.recommendation.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.recommendation.domain.Author;
 import com.stackroute.recommendation.domain.BookListener;
@@ -18,6 +20,7 @@ import com.stackroute.recommendation.repository.AuthorRepository;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.repository.GenreRepository;
 import com.stackroute.recommendation.repository.OfTypeRepository;
+import com.stackroute.recommendation.repository.WishlistRepository;
 import com.stackroute.recommendation.repository.WrittenByRepository;
 
 @Service
@@ -32,20 +35,23 @@ public class BookService {
 	OfTypeRepository ofTypeRepository;
 	WrittenByRepository writtenByRepository;
 	UserService userService;
+	WishlistRepository wishlistRepository;
 
 	@Autowired
 	public BookService(BookRepository bookRepository, GenreRepository genreRepository,
 			AuthorRepository authorRepository, OfTypeRepository ofTypeRepository,
-			WrittenByRepository writtenByRepository) {
+			WrittenByRepository writtenByRepository, WishlistRepository wishlistRepository) {
 		this.bookRepository = bookRepository;
 		this.genreRepository = genreRepository;
 		this.authorRepository = authorRepository;
 		this.ofTypeRepository = ofTypeRepository;
 		this.writtenByRepository = writtenByRepository;
+		this.wishlistRepository = wishlistRepository;
 	}
 
 	/*
-	 *  get books from book_details topic and it saves the books in Neo4j database.
+	 * getBookFromTopic() method is used to get books from book_details topic and it
+	 * saves the books in Neo4j database.
 	 */
 
 	@KafkaListener(groupId = "books", topics = "book_details")
@@ -70,48 +76,52 @@ public class BookService {
 		writtenByRepository.save(writtenBy);
 	}
 
-	//  get books from book database
+	// getAllBooksFromDb() method is used to get books from book database
 
-	public List<Book> getAllBooksFromDb() throws NoBooksFoundException{
+	public List<Book> getAllBooksFromDb() throws NoBooksFoundException {
 
-		if(!(bookFromTopic.isEmpty())) {
-		return bookFromTopic;
-		}
-		else throw new NoBooksFoundException("No Books Found");
+		if (!(bookFromTopic.isEmpty())) {
+			return bookFromTopic;
+		} else
+			throw new NoBooksFoundException("No Books Found");
 	}
 
 	/*
-	 *  get books from database based on rating
+	 * getAllBooksByRating() method is used to get books from database based on
+	 * rating
 	 */
-	public List<BookListener> getAllBooksByRating() throws BookNotFoundException{
+	public List<BookListener> getAllBooksByRating() throws BookNotFoundException {
 		List<BookListener> getAllBooksByRating = (List<BookListener>) bookRepository.getAllBooksByRating();
-		if(!(getAllBooksByRating.isEmpty())) {
+		if (!(getAllBooksByRating.isEmpty())) {
 			return getAllBooksByRating;
-			
-		}
-		else throw new BookNotFoundException("No book of that rating found");
-		
+
+		} else
+			throw new BookNotFoundException("No book of that rating found");
+
 	}
 
-	// get books from database based on genre
+	// getBooksByGenre() method is used to get books from database based on genre
 
-	public List<BookListener> getBooksByGenre(String name) throws BookNotFoundException{
+	public List<BookListener> getBooksByGenre(String name) throws BookNotFoundException {
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBooksByGenre(name);
-		if(!(getAllBooks.isEmpty())){
+		if (!(getAllBooks.isEmpty())) {
 
 			return getAllBooks;
-		}
-		else throw new BookNotFoundException("No book of that genre found");
+		} else
+			throw new BookNotFoundException("No book of that genre found");
 
 	}
-	// get books written by author
+//getBooksByAuthor() method is used to get books written by author
 
-	public List<BookListener> getBooksByAuthor(String name) throws BookNotFoundException{
+	public List<BookListener> getBooksByAuthor(String name) throws BookNotFoundException {
 		List<BookListener> getAllBooks = (List<BookListener>) bookRepository.getBookByAuthor(name);
-		if(!(getAllBooks.isEmpty())) {
+		if (!(getAllBooks.isEmpty())) {
 			return getAllBooks;
-		}
-		else throw new BookNotFoundException("Book written by the given author not found");
+		} else
+			throw new BookNotFoundException("Book written by the given author not found");
 
 	}
+
+	
+
 }

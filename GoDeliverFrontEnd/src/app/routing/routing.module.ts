@@ -13,6 +13,7 @@ import { ReturnpolicyComponent } from "../returnpolicy/returnpolicy.component";
 import { ServicepageComponent } from "../servicepage/servicepage.component";
 import { CartComponent } from "../cart/cart.component";
 import { BookComponent } from "../book/book.component";
+import { AdminComponent } from "../admin/admin.component"
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: "orders", component: OrdersComponent },
   { path: "profile", component: ProfileComponent },
   { path: "about", component: AboutusComponent },
+  { path: "admin", component: AdminComponent },
   { path: "return", component: ReturnpolicyComponent },
   { path: "servicepage", component: ServicepageComponent },
   { path: "cart", component: CartComponent },

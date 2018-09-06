@@ -33,6 +33,8 @@ public class OfType {
 	}
 
 	
+	
+
 	public OfType(BookListener bookListener, Genre genre) {
 		super();
 		this.bookListener = bookListener;

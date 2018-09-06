@@ -17,4 +17,5 @@ public interface BookRepository extends Neo4jRepository<BookListener, Long> {
 
 	@Query("MATCH (u:BookListener)-[o:writtenBy]->(c:Author) where c.name={name} return u")
 	public List<BookListener> getBookByAuthor(@Param("name") String name);
+
 }

@@ -9,9 +9,9 @@ export class UserDetailsService {
   //Making http client obj to perform http operations
   constructor(public http: HttpClient) { }
 
-  private getUserDetails_url ="http://localhost:8080/userprofile/api/v1/"
+  private getUserDetails_url ="http://172.23.238.193:8080/userprofile/api/v1/user?userEmail="
   //Backend saveuser url
-  private post_url = "http://localhost:8080/userprofile/api/v1/user";
+  private post_url = "http://172.23.238.193:8080/userprofile/api/v1/user";
 
   addUser(user: UserDetails): Observable<UserDetails> {
 
@@ -19,8 +19,8 @@ export class UserDetailsService {
     return this.http.post<UserDetails>(this.post_url, user);
   }
 
-  getUser(user: UserDetails) :Observable<UserDetails>{
+  getUser(user) :Observable<UserDetails[]>{
 
-    return this.http.get<UserDetails>(this.getUserDetails_url+'/'+ user.userEmail);
+    return this.http.get<UserDetails[]>(this.getUserDetails_url+user);
   }
 }

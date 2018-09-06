@@ -10,12 +10,18 @@ import com.stackroute.recommendation.domain.BookListener;
 @RelationshipEntity(type="writtenBy")
 public class WrittenBy {
 @Id 
+//	private Long nodeId;
 	
 	@StartNode
 	private BookListener bookListener;
 	@EndNode
 	private Author author;
-
+//	public Long getNodeId() {
+//		return nodeId;
+//	}
+//	public void setNodeId(Long nodeId) {
+//		this.nodeId = nodeId;
+//	}
 	public BookListener getBookListener() {
 		return bookListener;
 	}
@@ -29,6 +35,8 @@ public class WrittenBy {
 		this.author = author;
 	}
 	public WrittenBy( BookListener bookListener, Author author) {
+		super();
+//		this.nodeId = nodeId;
 		this.bookListener = bookListener;
 		this.author = author;
 	}
