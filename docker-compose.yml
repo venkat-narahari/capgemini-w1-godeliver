@@ -1,7 +1,7 @@
 version: '2.1'
 
 services:
-   
+
   eureka-server:
   
     depends_on:
@@ -13,10 +13,12 @@ services:
     restart: always
 
     network_mode: "host"
-    
-    build: eureka-server/
 
-    image: eurekaserver
+    build: eureka-server/
+   
+    image: eureka-server
+
+    container_name: eureka-server
 
     hostname: localhost
 
@@ -31,10 +33,12 @@ services:
 
 
   config-service:
-  
-   build: config-service/
 
+   build: config-service/
+   
    image: config-server
+
+   container_name: config-server
    
    restart: always
 
@@ -55,8 +59,10 @@ services:
   api-gateway:
 
    build: zuul-apigateway/
-
+   
    image: api-gateway
+
+   container_name: api-gateway
 
    depends_on:
 
@@ -82,169 +88,196 @@ services:
 
     test: "exit 0"
 
-  
-
-  user-login:
-
-   build: user-login/
-   
-   image: user-auth
-
-   container_name: user-login
-   network_mode: "host"
-   hostname: localhost
-   ports:
-      - 8082:8082
-   depends_on:
-     eureka-server:
-       condition: service_healthy
-     database:
-       condition: service_healthy
-   healthcheck:
-     test: "exit 0"
-
-
-
-  database:
-  
-   container_name: mysql-login
-
-   image: mysql:5.5
-
-   ports:
-
-    - 3306:3306
-    
-   environment:
- 
-    MYSQL_ALLOW_EMPTY_PASSWORD: "true" 
-
-    MYSQL_DATABASE: go_d
-    
-    MYSQL_USER: root
-    
-   volumes:
-      - /opt/data:/var/lib/mysql
-      
-   network_mode: "host"
-   
-   hostname: localhost
-    
-   healthcheck:
-
-    test: exit 0
-
-
-  user-profile:
-  
-   build: user-profile/
-   
-   image: user-profile
-
-   restart: always
-
-   network_mode: host
-
-   container_name: userprofile
-
-   depends_on:
-
-    - mongo
-
-   ports:
-
-    - 8070:8070
-
-   healthcheck:
-
-    test: "exit 0"
-
-
-  mongo:
-
-   image: mongo
-
-   network_mode: host
-
-   container_name: spring-mongo
-
-   ports:
-
-    - 27017:27017
-
-   volumes:
-
-    - /usr/src/home:/data/db
-
-
-  recommendation:
-  
-   build: recommendation/
-   
-   image: recommendation
-
-   restart: always
-
-   network_mode: host
-
-   container_name: recommendation
-
-   depends_on:
-
-    - neo4j
-
-   ports:
-
-    - 8092:8092
-
-   healthcheck:
-
-    test: "exit 0"
-
-
-  neo4j:
-
-   image: neo4j
-
-   container_name: spring-neo4j
-
-   ports:
-
-    - 7474:7474
-    - 7687:7687
-
-   volumes:
-
-    - $HOME/neo4j/data:/data
-
-   healthcheck:
-
-    test: "exit 0"
-
-
-  book-service:
-
-   build: book-service/
-
-   image: book-service
-
-   restart: always
-
-   network_mode: host
-
-   container_name: bookservice
-
-   depends_on:
-
-    - mongo
-
-   ports:
-
-    - 8888:8888
-
-   healthcheck:
-
-    test: "exit 0"
+#  user-login:
+#
+#   build: user-login/
+#   
+#   image: user-auth
+#
+#   container_name: user-login
+#   network_mode: "host"
+#   hostname: localhost
+#   ports:
+#      - 8082:8082
+#   depends_on:
+#     
+#     database:
+#       condition: service_healthy
+#   healthcheck:
+#     test: "exit 0"
+#
+#
+#
+#  database:
+#  
+#   container_name: mysql-login
+#
+#   image: mysql:5.5
+#
+#   ports:
+#
+#    - 3306:3306
+#    
+#   environment:
+# 
+#    MYSQL_ALLOW_EMPTY_PASSWORD: "true" 
+#
+#    MYSQL_DATABASE: go_d
+#    
+#    MYSQL_USER: root
+#    
+#   volumes:
+#      - /opt/data:/var/lib/mysql
+#      
+#   network_mode: "host"
+#   
+#   hostname: localhost
+#    
+#   healthcheck:
+#
+#    test: exit 0
+#
+#
+#
+#
+#  user-profile:
+#  
+#   build: user-profile/
+#   
+#   image: user-profile
+#
+#   restart: always
+#
+#   network_mode: host
+#
+#   container_name: userprofile
+#
+#   depends_on:
+#
+#    - mongo
+#
+#   ports:
+#
+#    - 8070:8070
+#
+#   healthcheck:
+#
+#    test: "exit 0"
+#
+#
+#  mongo:
+#
+#   image: mongo
+#
+#   network_mode: host
+#
+#   container_name: spring-mongo
+#
+#   ports:
+#
+#    - 27017:27017
+#
+#   volumes:
+#
+#    - /usr/src/home:/data/db
+#
+#  book-service:
+#
+#   build: book-service/
+#
+#   image: book-service
+#
+#   restart: always
+#
+#   network_mode: host
+#
+#   container_name: bookservice
+#
+#   depends_on:
+#
+#    - mongo
+#
+#   ports:
+#
+#    - 8888:8888
+#
+#   healthcheck:
+#
+#    test: "exit 0"
+
+#  recommendation:
+#  
+#   build: recommendation/
+#   
+#   image: recommendation
+#
+#   restart: always
+#
+#   network_mode: host
+#
+#   container_name: recommendation
+#
+#   depends_on:
+#
+#    - neo4j
+#
+#   ports:
+#
+#    - 8092:8092
+#
+#   healthcheck:
+#
+#    test: "exit 0"
+#
+#
+#  neo4j:
+#
+#   image: neo4j
+#
+#   container_name: spring-neo4j
+#
+#   ports:
+#
+#    - 7474:7474
+#    - 7687:7687
+#
+#   volumes:
+#
+#    - $HOME/neo4j/data:/data
+#
+#   healthcheck:
+#
+#    test: "exit 0"
+#
+
+
+
+  prometheus:
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    image: prom/prometheus
+    network_mode: host 
+    hostname: localhost
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+      - /var/lib/grafana
+    restart: always
+    network_mode: host 
+    hostname: localhost
+    ports:
+      - 3000:3000
+    healthcheck:
+      test: "exit 0"
 
 
   zookeeper:
@@ -258,7 +291,7 @@ services:
 
     test: "exit 0"
     
-
+       
   
   kafka:
    image: wurstmeister/kafka
@@ -269,10 +302,9 @@ services:
    ports:
     - '9092:9092'
    environment:
-    KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
+    KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
     KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-    KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1"
    restart: always
    network_mode: host 
    hostname: localhost
