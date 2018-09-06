@@ -87,169 +87,170 @@ services:
    healthcheck:
 
     test: "exit 0"
+    
 
-#  user-login:
-#
-#   build: user-login/
-#   
-#   image: user-auth
-#
-#   container_name: user-login
-#   network_mode: "host"
-#   hostname: localhost
-#   ports:
-#      - 8082:8082
-#   depends_on:
-#     
-#     database:
-#       condition: service_healthy
-#   healthcheck:
-#     test: "exit 0"
-#
-#
-#
-#  database:
-#  
-#   container_name: mysql-login
-#
-#   image: mysql:5.5
-#
-#   ports:
-#
-#    - 3306:3306
-#    
-#   environment:
-# 
-#    MYSQL_ALLOW_EMPTY_PASSWORD: "true" 
-#
-#    MYSQL_DATABASE: go_d
-#    
-#    MYSQL_USER: root
-#    
-#   volumes:
-#      - /opt/data:/var/lib/mysql
-#      
-#   network_mode: "host"
-#   
-#   hostname: localhost
-#    
-#   healthcheck:
-#
-#    test: exit 0
-#
-#
-#
-#
-#  user-profile:
-#  
-#   build: user-profile/
-#   
-#   image: user-profile
-#
-#   restart: always
-#
-#   network_mode: host
-#
-#   container_name: userprofile
-#
-#   depends_on:
-#
-#    - mongo
-#
-#   ports:
-#
-#    - 8070:8070
-#
-#   healthcheck:
-#
-#    test: "exit 0"
-#
-#
-#  mongo:
-#
-#   image: mongo
-#
-#   network_mode: host
-#
-#   container_name: spring-mongo
-#
-#   ports:
-#
-#    - 27017:27017
-#
-#   volumes:
-#
-#    - /usr/src/home:/data/db
-#
-#  book-service:
-#
-#   build: book-service/
-#
-#   image: book-service
-#
-#   restart: always
-#
-#   network_mode: host
-#
-#   container_name: bookservice
-#
-#   depends_on:
-#
-#    - mongo
-#
-#   ports:
-#
-#    - 8888:8888
-#
-#   healthcheck:
-#
-#    test: "exit 0"
+  user-login:
 
-#  recommendation:
-#  
-#   build: recommendation/
-#   
-#   image: recommendation
-#
-#   restart: always
-#
-#   network_mode: host
-#
-#   container_name: recommendation
-#
-#   depends_on:
-#
-#    - neo4j
-#
-#   ports:
-#
-#    - 8092:8092
-#
-#   healthcheck:
-#
-#    test: "exit 0"
-#
-#
-#  neo4j:
-#
-#   image: neo4j
-#
-#   container_name: spring-neo4j
-#
-#   ports:
-#
-#    - 7474:7474
-#    - 7687:7687
-#
-#   volumes:
-#
-#    - $HOME/neo4j/data:/data
-#
-#   healthcheck:
-#
-#    test: "exit 0"
-#
+   build: user-login/
+   
+   image: user-auth
 
+   container_name: user-login
+   network_mode: "host"
+   hostname: localhost
+   ports:
+      - 8082:8082
+   depends_on:
+     
+     database:
+       condition: service_healthy
+   healthcheck:
+     test: "exit 0"
+
+
+
+  database:
+  
+   container_name: mysql-login
+
+   image: mysql:5.5
+
+   ports:
+
+    - 3306:3306
+    
+   environment:
+ 
+    MYSQL_ALLOW_EMPTY_PASSWORD: "true" 
+
+    MYSQL_DATABASE: go_d
+    
+    MYSQL_USER: root
+    
+   volumes:
+      - /opt/data:/var/lib/mysql
+      
+   network_mode: "host"
+   
+   hostname: localhost
+    
+   healthcheck:
+
+    test: exit 0
+
+
+
+
+  user-profile:
+  
+   build: user-profile/
+   
+   image: user-profile
+
+   restart: always
+
+   network_mode: host
+
+   container_name: userprofile
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8070:8070
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+  mongo:
+
+   image: mongo
+
+   network_mode: host
+
+   container_name: spring-mongo
+
+   ports:
+
+    - 27017:27017
+
+   volumes:
+
+    - /usr/src/home:/data/db
+    
+
+  book-service:
+
+   build: book-service/
+
+   image: book-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: bookservice
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8888:8888
+
+   healthcheck:
+
+    test: "exit 0"
+    
+
+  recommendation:
+  
+   build: recommendation/
+   
+   image: recommendation
+
+   restart: always
+
+   network_mode: host
+
+   container_name: recommendation
+
+   depends_on:
+
+    - neo4j
+
+   ports:
+
+    - 8092:8092
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+  neo4j:
+
+   image: neo4j
+
+   container_name: spring-neo4j
+
+   ports:
+
+    - 7474:7474
+    - 7687:7687
+
+   volumes:
+
+    - $HOME/neo4j/data:/data
+
+   healthcheck:
+
+    test: "exit 0"
 
 
   prometheus:
@@ -276,6 +277,10 @@ services:
     hostname: localhost
     ports:
       - 3000:3000
+    environment:
+     - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+     - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+     - GF_USERS_ALLOW_SIGN_UP=false
     healthcheck:
       test: "exit 0"
 
