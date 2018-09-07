@@ -15,13 +15,11 @@ import com.stackroute.recommendation.domain.Genre;
 import com.stackroute.recommendation.exceptions.BookNotFoundException;
 import com.stackroute.recommendation.exceptions.NoBooksFoundException;
 import com.stackroute.recommendation.relations.OfType;
-import com.stackroute.recommendation.relations.WrittenBy;
 import com.stackroute.recommendation.repository.AuthorRepository;
 import com.stackroute.recommendation.repository.BookRepository;
 import com.stackroute.recommendation.repository.GenreRepository;
 import com.stackroute.recommendation.repository.OfTypeRepository;
 import com.stackroute.recommendation.repository.WishlistRepository;
-import com.stackroute.recommendation.repository.WrittenByRepository;
 
 @Service
 public class BookService {
@@ -33,19 +31,19 @@ public class BookService {
 	GenreRepository genreRepository;
 	AuthorRepository authorRepository;
 	OfTypeRepository ofTypeRepository;
-	WrittenByRepository writtenByRepository;
+	//WrittenByRepository writtenByRepository;
 	UserService userService;
 	WishlistRepository wishlistRepository;
 
 	@Autowired
 	public BookService(BookRepository bookRepository, GenreRepository genreRepository,
-			AuthorRepository authorRepository, OfTypeRepository ofTypeRepository,
-			WrittenByRepository writtenByRepository, WishlistRepository wishlistRepository) {
+			OfTypeRepository ofTypeRepository,AuthorRepository authorRepository,
+			 WishlistRepository wishlistRepository) {
 		this.bookRepository = bookRepository;
 		this.genreRepository = genreRepository;
 		this.authorRepository = authorRepository;
 		this.ofTypeRepository = ofTypeRepository;
-		this.writtenByRepository = writtenByRepository;
+		//this.writtenByRepository = writtenByRepository;
 		this.wishlistRepository = wishlistRepository;
 	}
 
@@ -72,8 +70,8 @@ public class BookService {
 		OfType ofType = new OfType(bookObj, genre);
 		ofTypeRepository.save(ofType);
 
-		WrittenBy writtenBy = new WrittenBy(bookObj, author);
-		writtenByRepository.save(writtenBy);
+//		WrittenBy writtenBy = new WrittenBy(bookObj, author);
+//		writtenByRepository.save(writtenBy);
 	}
 
 	// getAllBooksFromDb() method is used to get books from book database

@@ -1,9 +1,13 @@
 package com.stackroute.userprofile.domain;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
+
 public class UserProfile {
 	private String userName;
 	@Id
@@ -14,13 +18,16 @@ public class UserProfile {
 	private String[] userAddress;
 	private String userGender;
 	private long userMobile;
-
+	private List<Wishlist> wishlist;
+	
+	
 	public UserProfile() {
 
 	}
 
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
-			String[] userAddress, String userGender, long userMobile) {
+			String[] userAddress, String userGender, long userMobile,
+			List<com.stackroute.userprofile.domain.Wishlist> wishlist) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -30,6 +37,29 @@ public class UserProfile {
 		this.userAddress = userAddress;
 		this.userGender = userGender;
 		this.userMobile = userMobile;
+		this.wishlist = wishlist;
+	}
+
+
+
+
+
+
+	
+	@Override
+	public String toString() {
+		return "UserProfile [userName=" + userName + ", userEmail=" + userEmail + ", userDob=" + userDob
+				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
+				+ ", userAddress=" + Arrays.toString(userAddress) + ", userGender=" + userGender + ", userMobile="
+				+ userMobile + ", wishlist=" + wishlist + "]";
+	}
+
+	public List<Wishlist> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
 	}
 
 	public String getUserName() {
@@ -95,8 +125,6 @@ public class UserProfile {
 	public void setUserMobile(long userMobile) {
 		this.userMobile = userMobile;
 	}
-
-	
 
 	
 

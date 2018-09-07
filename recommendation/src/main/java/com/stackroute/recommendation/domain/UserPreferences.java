@@ -1,15 +1,17 @@
 package com.stackroute.recommendation.domain;
 
 import java.util.Arrays;
-
+import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
 public class UserPreferences {
-	@Id
-	
+	@Id @GeneratedValue
+	private Long nodeId;
 	private String[] userPreferences;
+//	@Relationship(type = "likes", direction = Relationship.INCOMING)
+//	private List<User> user;
 	public UserPreferences() {
 		
 	}
@@ -33,3 +35,4 @@ public class UserPreferences {
 
 	
 }
+

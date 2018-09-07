@@ -16,11 +16,14 @@ public class UserProfileServicesImpl implements UserProfileServices {
 
 	private UserProfileRepository userProfileRepository;
 	private KafkaConfiguration kafkaConfig;
+	
 
 	@Autowired
-	public UserProfileServicesImpl(UserProfileRepository userProfileRepository, KafkaConfiguration kafkaConfig) {
+	public UserProfileServicesImpl(UserProfileRepository userProfileRepository,
+			KafkaConfiguration kafkaConfig) {
 		this.userProfileRepository = userProfileRepository;
 		this.kafkaConfig = kafkaConfig;
+		
 	}
 
 	@SuppressWarnings("static-access")
@@ -35,7 +38,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	 * the user will be saved
 	 */
 	@Override
-	public UserProfile saveUser(UserProfile user) throws MongoConnectionException{
+	public UserProfile saveUser(UserProfile user) throws MongoConnectionException {
 		if (userProfileRepository.getByUserEmail(user.getUserEmail()) == null) {
 			kafkaTemplate.send(topic, user);
 			user.setUserPassword(null);
@@ -49,7 +52,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	 * Updating the existing user
 	 */
 	@Override
-	public UserProfile updateUser(UserProfile user) throws MongoConnectionException{
+	public UserProfile updateUser(UserProfile user) throws MongoConnectionException {
 		if (userProfileRepository.getByUserEmail(user.getUserEmail()) != null) {
 			kafkaTemplate.send(topic, user);
 			user.setUserPassword(null);
@@ -64,7 +67,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	 * method for viewing the existing user
 	 */
 	@Override
-	public UserProfile viewUser(String userEmail) throws MongoConnectionException{
+	public UserProfile viewUser(String userEmail) throws MongoConnectionException {
 		if (userProfileRepository.getByUserEmail(userEmail) != null) {
 			UserProfile user = userProfileRepository.getByUserEmail(userEmail);
 			return user;
