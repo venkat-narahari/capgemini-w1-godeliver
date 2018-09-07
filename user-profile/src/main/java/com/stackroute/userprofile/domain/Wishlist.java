@@ -17,9 +17,6 @@ public class Wishlist {
 		private int quantity;
 		private String title;
 		
-//		@Relationship(type = "ofType", direction = Relationship.INCOMING)
-//		private List<User> user;
-		
 
 		public Wishlist(String author, String bookISBN_10, String cost, String emailID, String genre,
 				String poster, String publisher, int quantity, String title) {
@@ -37,13 +34,6 @@ public class Wishlist {
 			
 		}
 
-//		public List<User> getUser() {
-//			return user;
-//		}
-	//
-//		public void setUser(List<User> user) {
-//			this.user = user;
-//		}
 
 		public Wishlist(Iterable<Wishlist> iterable) {
 

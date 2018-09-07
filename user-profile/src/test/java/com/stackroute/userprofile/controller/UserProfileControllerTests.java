@@ -8,6 +8,8 @@
 //import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 //
+//import java.util.List;
+//
 //import org.junit.Before;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
@@ -25,6 +27,7 @@
 //
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.stackroute.userprofile.domain.UserProfile;
+//import com.stackroute.userprofile.domain.Wishlist;
 //import com.stackroute.userprofile.service.UserProfileServicesImpl;
 //
 //@RunWith(SpringRunner.class)
@@ -50,6 +53,7 @@
 //		userProfileMockMvc = MockMvcBuilders.standaloneSetup(userProfileController).build();
 //		String[] userPreferences = new String[] { "action", "adventure", "romance" };
 //		String[] userAddress = new String[] { "171,stackroute"};
+//		
 //
 //		userProfile = new UserProfile("sumanth", "sumanth@gmail.com", "24-04-1996", "qwerty12", userPreferences, userAddress,  "Male",
 //				9876543210L);

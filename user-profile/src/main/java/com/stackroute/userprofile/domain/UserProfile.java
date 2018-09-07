@@ -39,12 +39,6 @@ public class UserProfile {
 		this.userMobile = userMobile;
 		this.wishlist = wishlist;
 	}
-
-
-
-
-
-
 	
 	@Override
 	public String toString() {
