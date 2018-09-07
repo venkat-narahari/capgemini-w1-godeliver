@@ -15,20 +15,18 @@ public class UserProfile {
 	private String userGender;
 	private double userMobile;
 	private List<Wishlist> wishlist;
+
 	public UserProfile() {
 
 	}
 
-	
 	public List<Wishlist> getWishlist() {
 		return wishlist;
 	}
 
-
 	public void setWishlist(List<Wishlist> wishlist) {
 		this.wishlist = wishlist;
 	}
-
 
 	@Override
 	public String toString() {
@@ -36,11 +34,6 @@ public class UserProfile {
 				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
 				+ ", userGender=" + userGender + ", userMobile=" + userMobile + ", wishlist=" + wishlist + "]";
 	}
-
-
-
-
-
 
 	public UserProfile(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
 			String userGender, double userMobile, List<Wishlist> wishlist) {
@@ -54,11 +47,6 @@ public class UserProfile {
 		this.userMobile = userMobile;
 		this.wishlist = wishlist;
 	}
-
-
-
-
-
 
 	public String getUserName() {
 		return userName;

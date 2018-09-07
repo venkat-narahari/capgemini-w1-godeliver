@@ -21,7 +21,7 @@ import com.stackroute.userprofile.domain.UserProfile;
 @Service
 public class UserService {
 	private UserRepository userRepo;
-	//LikesRepository likesRepository;
+
 	BookListener bookObj;
 	UserPreferencesRepository userPreferencesRepository;
 	WishlistRepository wishlistRepository;
@@ -30,9 +30,8 @@ public class UserService {
 
 	@Autowired
 	public UserService(UserRepository userRepo, UserPreferencesRepository userPreferencesRepository,
-		LikedRepository likedRepository, WishlistRepository wishlistRepository) {
+			LikedRepository likedRepository, WishlistRepository wishlistRepository) {
 		this.userRepo = userRepo;
-		//this.likesRepository = likesRepository;
 		this.userPreferencesRepository = userPreferencesRepository;
 		this.wishlistRepository = wishlistRepository;
 		this.likedRepository = likedRepository;
@@ -42,21 +41,13 @@ public class UserService {
 	public void save(@Payload UserProfile userListener) {
 		User userObj = new User(userListener.getUserName(), userListener.getUserEmail(), userListener.getUserDob(),
 				userListener.getUserPassword(), userListener.getUserPreferences(), userListener.getUserGender(),
-				userListener.getUserMobile(),userListener.getWishlist());
+				userListener.getUserMobile(), userListener.getWishlist());
 		userRepo.save(userObj);
 		UserPreferences userPreferences = new UserPreferences(userListener.getUserPreferences());
 		userPreferencesRepository.save(userPreferences);
-		
-		System.out.println("harithaaaaaaaaaaaaaaa");
-//		
-//		Wishlist wishlist1 = new Wishlist(wishlist.getNodeId(), wishlist.getAuthor(), wishlist.getBookISBN_10(),
-//				wishlist.getCost(), wishlist.getEmailID(), wishlist.getGenre(), wishlist.getPoster(),
-//				wishlist.getPublisher(), wishlist.getQuantity(), wishlist.getTitle());
-//		System.out.println("hhhh" + wishlist1);
-//		Liked liked =new Liked(userObj,wishlist1);
-//		likedRepository.save(liked);
-
 	}
+
+	// to get the books by giving user email
 
 	public List<BookListener> getBooksByPreferences(String userMail) throws BookNotFoundException {
 		List<BookListener> getAllBooks = (List<BookListener>) userRepo.getBooksByPreferences(userMail);
@@ -66,27 +57,23 @@ public class UserService {
 			throw new BookNotFoundException("No books found");
 	}
 
+	// to get the books when user likes the book
+
 	public List<Wishlist> getBooksByLikes() throws BookNotFoundException {
 		List<Wishlist> getAllBooks = wishlistRepository.getBooksByLikes();
-//		Wishlist wishlist1 = new Wishlist(wishlist.getNodeId(), wishlist.getAuthor(), wishlist.getBookISBN_10(),
-//				wishlist.getCost(), wishlist.getEmailID(), wishlist.getGenre(), wishlist.getPoster(),
-//				wishlist.getPublisher(), wishlist.getQuantity(), wishlist.getTitle());
-//		System.out.println("hhhh" + wishlist1);
-//		User userObj =new User(userRepo.);
-//		Liked liked =new Liked(userObj,wishlist1);
-//		likedRepository.save(liked);
-
 		if (!(getAllBooks.isEmpty())) {
 			return getAllBooks;
 		} else
 			throw new BookNotFoundException("No books found");
 	}
 
+	// to save the books in wishlist which are liked by user
 	public Wishlist save(Wishlist wishlist) {
 		Wishlist getBooks = wishlistRepository.save(wishlist);
 		return getBooks;
 	}
 
+	// to get the books stored in wishlist
 	public List<Wishlist> getBooksFromWishlist() throws BookNotFoundException {
 		List<Wishlist> getBooks = (List<Wishlist>) wishlistRepository.findAll();
 

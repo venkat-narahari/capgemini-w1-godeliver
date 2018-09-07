@@ -24,14 +24,14 @@ import com.stackroute.recommendation.service.UserService;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/api/v1")
-public class Controller {
+public class RecommendationController {
 
 	BookService bookService;
 	BookRepository bookRepository;
 	UserService userService;
 
 	@Autowired
-	public Controller(BookService bookService, UserService userService, BookRepository bookRepository) {
+	public RecommendationController(BookService bookService, UserService userService, BookRepository bookRepository) {
 		this.bookService = bookService;
 		this.bookRepository = bookRepository;
 		this.userService = userService;
@@ -122,7 +122,10 @@ public class Controller {
 		return new ResponseEntity<List<BookListener>>(getAllBooksByPreferences, HttpStatus.OK);
 
 	}
-
+	/*
+	 * to save the  wishlist books rest end
+	 * point for this method will be "api/v1/save"
+	 */
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ResponseEntity<?> save(@RequestBody Wishlist wishlist) {
 		System.out.println(wishlist.getCost());
@@ -131,7 +134,10 @@ public class Controller {
 		return new ResponseEntity<Wishlist>(save, HttpStatus.ACCEPTED);
 
 	}
-
+	/*
+	 * to get the  wishlist books rest end
+	 * point for this method will be "api/v1/wishlist"
+	 */
 	@GetMapping(value = "/wishlist")
 	public ResponseEntity<?> getBooksFromWishlist() {
 		List<Wishlist> getBooksFromWishlist = new ArrayList<Wishlist>();

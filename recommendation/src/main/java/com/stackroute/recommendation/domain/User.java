@@ -24,10 +24,9 @@ public class User {
 
 	@Relationship(type = "liked", direction = Relationship.OUTGOING)
 	private List<Wishlist> wishlist;
-	
 
-	public User( String userName, String userEmail, String userDob, String userPassword,
-			String[] userPreferences, String userGender, double userMobile, List<Wishlist> wishlist) {
+	public User(String userName, String userEmail, String userDob, String userPassword, String[] userPreferences,
+			String userGender, double userMobile, List<Wishlist> wishlist) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -121,6 +120,4 @@ public class User {
 				+ ", userPassword=" + userPassword + ", userPreferences=" + Arrays.toString(userPreferences)
 				+ ", userGender=" + userGender + ", userMobile=" + userMobile + "]";
 	}
-
-	
 }
