@@ -44,7 +44,6 @@ import { CardsComponent } from "./cards/cards.component";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { FirebaseService } from "./firebase.service";
-import { AdminComponent } from './admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +62,6 @@ import { AdminComponent } from './admin/admin.component';
     CartComponent,
     BookComponent,
     CardsComponent,
-    AdminComponent,
     BillingComponent
   ],
   imports: [
