@@ -137,7 +137,10 @@ export interface Cart {
 }
 
 export interface Address {
-  address:string;
+  address?:string;
+  name?:string;
+  email?:string;
+  phone?:number;
   id?:string;
 }
 

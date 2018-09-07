@@ -1,3 +1,4 @@
+import { BillingComponent } from './billing/billing.component';
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -26,7 +27,8 @@ import {
   MatCheckboxModule,
   MatIconModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatExpansionModule
 } from "@angular/material";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
@@ -61,8 +63,8 @@ import { AdminComponent } from './admin/admin.component';
     CartComponent,
     BookComponent,
     CardsComponent,
-    AdminComponent
-
+    AdminComponent,
+    BillingComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,7 @@ import { AdminComponent } from './admin/admin.component';
     FlexLayoutModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
     AngularFireModule.initializeApp(environment.firebase, 'godeliverfrontend'),
     AngularFirestoreModule
   ],

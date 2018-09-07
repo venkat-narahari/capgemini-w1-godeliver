@@ -1,3 +1,4 @@
+import { BillingComponent } from './../billing/billing.component';
 import { LoginComponent } from "./../login/login.component";
 import { HomeComponent } from "./../home/home.component";
 
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
   { path: "servicepage", component: ServicepageComponent },
   { path: "cart", component: CartComponent },
   { path: "book/:bookISBN", component: BookComponent },
-  { path: "book", component: BookComponent }
+  { path: "book", component: BookComponent },
+  { path:"billing", component: BillingComponent}
 ];
 
 @NgModule({
