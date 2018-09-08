@@ -12,8 +12,11 @@
   padding: 0 20px 0 0;
 }
 nav .navbar-nav li a {
-  color:white !important;
+  color:black !important;
   font-weight: 900;
   padding-left: 15px;
 }
 
+.navbar-toggler-icon {
+  background-image: url("../../assets/hamburg.png");
+}
