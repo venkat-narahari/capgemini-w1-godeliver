@@ -1,4 +1,4 @@
-FFROM java:8-jre
+FROM java:8-jre
 
 RUN mkdir /src
 
