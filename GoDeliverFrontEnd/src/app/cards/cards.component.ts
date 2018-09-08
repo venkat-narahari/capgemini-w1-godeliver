@@ -19,7 +19,8 @@ export class CardsComponent implements OnInit {
     cost: 1,
     poster: "",
     genre: "",
-    quantity: 1
+    quantity: 1,
+    volume:1
   };
   deleteList: any;
   like: boolean = true;
@@ -33,7 +34,8 @@ export class CardsComponent implements OnInit {
     quantity: 1,
     author: "",
     publisher: "",
-    emailID: ""
+    emailID: "",
+    volume:1
   };
 
   //To store current user email for wishlist
@@ -57,6 +59,7 @@ export class CardsComponent implements OnInit {
     this.item.cost = parseInt(book.cost);
     this.item.genre = book.genre;
     this.item.quantity = 1;
+    this.item.volume=parseInt(book.volume);
     this.item.totalPrice = parseInt(book.cost);
     this.firebase.addItem(this.item);
   }
@@ -69,6 +72,7 @@ export class CardsComponent implements OnInit {
     this.wish.genre = book.genre;
     this.wish.quantity = 1;
     this.wish.author = book.author;
+    this.wish.volume=parseInt(book.volume);
     this.wish.publisher = book.publisher;
     this.wish.emailID = "rajawat@gmail.com";
     this.firebase.addItemToWishlist(this.wish);

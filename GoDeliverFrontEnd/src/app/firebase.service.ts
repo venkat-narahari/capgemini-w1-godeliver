@@ -134,6 +134,7 @@ export interface Cart {
   id?:string;
   quantity?:number;
   totalPrice?:number;
+  volume?:number;
 }
 
 export interface Address {
@@ -142,6 +143,7 @@ export interface Address {
   email?:string;
   phone?:number;
   id?:string;
+
 }
 
 export interface Profile {
@@ -163,4 +165,5 @@ export interface Wishlist {
   author?:string;
   publisher?:string;
   emailID?:string;
+  volume?:number;
 }

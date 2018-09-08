@@ -9,7 +9,7 @@
         <a (click)="addToWishlist(book)">favorite</a>
       </mat-icon>
     </div>
-    <mat-card-title  class="title">
+    <mat-card-title class="title">
       <h5 class="title">{{ (book.title.length>20)? (book.title | slice:0:20)+'..':(book.title) }}</h5>
     </mat-card-title>
     <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
@@ -23,12 +23,10 @@
 
       </svg>
       Quick Add</button>
-      <a *ngIf="like" (click)="colorChange()" class="material-icons fav">favorite_border</a>
-      <img *ngIf="!like" (click)="colorChange()" class="fav" src="https://png.icons8.com/color/50/000000/hearts.png" width=10% height=10%>
-      <div *ngIf="!like">
-        <a (click)="addToWishlist()"></a>
-  </div>
-  <div *ngIf="like"><a (click)="removeFromWishlist($event,book)"></a></div>
-   
+    <div *ngIf=email class="pull-right">
+      <mat-icon class="example-icon">
+        <a (click)="addToWishlist(book)">favorite</a>
+      </mat-icon>
+    </div>
   </mat-card-actions>
 </mat-card>
