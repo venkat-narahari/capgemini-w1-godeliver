@@ -14,6 +14,7 @@ import { ReturnpolicyComponent } from "../returnpolicy/returnpolicy.component";
 import { ServicepageComponent } from "../servicepage/servicepage.component";
 import { CartComponent } from "../cart/cart.component";
 import { BookComponent } from "../book/book.component";
+import { AllComponent } from '../all/all.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
   { path: "cart", component: CartComponent },
   { path: "book/:bookISBN", component: BookComponent },
   { path: "book", component: BookComponent },
-  { path:"billing", component: BillingComponent}
+  { path:"billing", component: BillingComponent},
+  { path:"allbooks", component: AllComponent}
 ];
 
 @NgModule({

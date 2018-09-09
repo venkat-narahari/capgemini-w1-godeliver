@@ -1,13 +1,13 @@
-import { BillingComponent } from './billing/billing.component';
+import { BillingComponent } from "./billing/billing.component";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { RegistrationComponent } from "./registration/registration.component";
-import { environment } from '../environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from "../environments/environment";
+import { AngularFireModule } from "angularfire2";
+import { AngularFirestoreModule } from "angularfire2/firestore";
 import { HomeComponent } from "./home/home.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { UserDetailsService } from "./user-details.service";
@@ -41,9 +41,12 @@ import { OrdersComponent } from "./orders/orders.component";
 import { CartComponent } from "./cart/cart.component";
 import { BookComponent } from "./book/book.component";
 import { CardsComponent } from "./cards/cards.component";
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatSidenavModule, MatToolbarModule } from "@angular/material";
 import { FirebaseService } from "./firebase.service";
+import { AllComponent } from "./all/all.component";
+import { NgxPaginationModule } from "ngx-pagination";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +65,8 @@ import { FirebaseService } from "./firebase.service";
     CartComponent,
     BookComponent,
     CardsComponent,
-    BillingComponent
+    BillingComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,
@@ -86,10 +90,12 @@ import { FirebaseService } from "./firebase.service";
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
-    AngularFireModule.initializeApp(environment.firebase, 'godeliverfrontend'),
-    AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase, "godeliverfrontend"),
+    AngularFirestoreModule,
+    NgxPaginationModule
   ],
-  providers: [FirebaseService,
+  providers: [
+    FirebaseService,
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -97,4 +103,4 @@ import { FirebaseService } from "./firebase.service";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

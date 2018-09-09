@@ -8,6 +8,8 @@ ADD ./target/recommendation-0.0.1-SNAPSHOT.jar /usr/app/recommendation-0.0.1-SNA
 
 # java -jar <jar fileName>
 
+EXPOSE 8092
+
 WORKDIR usr/app
 
 ENTRYPOINT ["java","-jar", "recommendation-0.0.1-SNAPSHOT.jar"]
