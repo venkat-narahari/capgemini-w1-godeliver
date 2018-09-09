@@ -20,7 +20,7 @@ export class CardsComponent implements OnInit {
     poster: "",
     genre: "",
     quantity: 1,
-    volume:1
+    volume: 1
   };
   deleteList: any;
   like: boolean = true;
@@ -35,22 +35,48 @@ export class CardsComponent implements OnInit {
     author: "",
     publisher: "",
     emailID: "",
-    volume:1
+    volume: 1
   };
 
   //To store current user email for wishlist
   email: any;
-
+  books: any;
+  heartImage: any;
+  booksLength: any;
   constructor(
     private bookService: BookService,
     private firebase: FirebaseService
   ) {}
 
   ngOnInit() {
-    if (localStorage.getItem("currentUserEmail") != null) {
+    this.firebase.getWishlist()
+    .subscribe(data => {
+      this.books = data;
+    });
+    setTimeout(()=>{    //<<<---    using ()=> syntax
+      this.heaImage();
+ }, 3000);
+    this.firebase.getWishlist().subscribe(data => {
+      this.booksLength = data.length;
+    });
+    
+        if (localStorage.getItem("currentUserEmail") != null) {
       this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
   }
+
+heaImage() {
+  console.log(this.books);
+    for (let i = 0; i < this.booksLength; i++) {
+      if (this.book.title == this.books[i].title) {
+        this.heartImage = "../../assets/red.png";
+      }
+      else {
+      this.heartImage="../../assets/white.png";
+      console.log("you are right");
+    }
+  }
+}
 
   addToCart(book) {
     this.item.title = book.title;
@@ -59,7 +85,7 @@ export class CardsComponent implements OnInit {
     this.item.cost = parseInt(book.cost);
     this.item.genre = book.genre;
     this.item.quantity = 1;
-    this.item.volume=parseInt(book.volume);
+    this.item.volume = parseInt(book.volume);
     this.item.totalPrice = parseInt(book.cost);
     this.firebase.addItem(this.item);
   }
@@ -72,7 +98,7 @@ export class CardsComponent implements OnInit {
     this.wish.genre = book.genre;
     this.wish.quantity = 1;
     this.wish.author = book.author;
-    this.wish.volume=parseInt(book.volume);
+    this.wish.volume = parseInt(book.volume);
     this.wish.publisher = book.publisher;
     this.wish.emailID = "rajawat@gmail.com";
     this.firebase.addItemToWishlist(this.wish);
@@ -80,8 +106,8 @@ export class CardsComponent implements OnInit {
       console.log("done");
     });
   }
-  colorChange(){
-    this.like=!this.like;
+  colorChange() {
+    this.like = !this.like;
   }
 
   removeFromWishlist(event, book) {

@@ -23,9 +23,9 @@
 
       </svg>
       Quick Add</button>
-    <div *ngIf=email class="pull-right">
+    <div class="pull-center">
       <mat-icon class="example-icon">
-        <a (click)="addToWishlist(book)">favorite</a>
+        <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
       </mat-icon>
     </div>
   </mat-card-actions>
