@@ -30,5 +30,6 @@
 		<module>user-login</module>
 		<module>recommendation</module>
 		<module>book-service</module>
+		<module>logistics-service</module>
 	</modules>
 </project>
