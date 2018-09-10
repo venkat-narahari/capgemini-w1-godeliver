@@ -16,7 +16,7 @@ import com.stackroute.logisticsservice.exception.MongoConnectionException;
 import com.stackroute.logisticsservice.repository.LogisticsRepository;
 
 @Service
-@PropertySource(value = "classpath:logistics.properties")
+@PropertySource(value = {"classpath:logistics.properties","classpath:bootstrap.properties"})
 public class LogisticsServiceImpl implements LogisticsService {
 
 	@Value("#{'${vehicle.capacity}'}")
@@ -79,6 +79,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 			DateLogistics newDate = new DateLogistics(order.getOrderDate(), newSlots);
 			logisticsRepository.save(newDate);
 			selectedDate = newDate;
+			System.out.println(newDate.getDate());
 		}
 		return selectedDate;
 	}
@@ -183,6 +184,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 			selectedDate = optionalSelectedDate.get();
 		} else {
 			selectedDate = null;
+			System.out.println("null");
 		}
 		return selectedDate;
 	}

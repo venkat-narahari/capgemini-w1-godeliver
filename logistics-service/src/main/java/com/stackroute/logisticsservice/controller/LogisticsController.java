@@ -36,6 +36,7 @@ public class LogisticsController {
 	/*
 	 * Controller method to get available slots and cost of slots.
 	 */
+
 	@RequestMapping(value = "/slots", method = RequestMethod.GET, produces = "application/json")
 	public ResponseEntity<?> getAvailableSlots(@RequestParam("orderId") String orderId,
 			@RequestParam("orderConsumerName") String orderConsumerName,
@@ -45,7 +46,7 @@ public class LogisticsController {
 			@RequestParam("orderLongitude") String orderLongitude,
 			@RequestParam("orderVolume") String orderVolume,
 			@RequestParam("orderDate") String orderDate) {
-		final String uri = "http://<localhost>:8084/Cvrp/slots";
+		final String uri = "http://172.23.239.124:8084/api/v1/cvrp/slots";
 		try {
 			Location newLocation = new Location(orderLatitude,orderLongitude);
 			Order newOrder = new Order(orderId, orderConsumerName, orderConsumerAddress,orderConsumerPhone, newLocation,orderVolume, orderDate,false,null,null);
