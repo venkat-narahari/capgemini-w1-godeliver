@@ -20,7 +20,7 @@ import { LoginGuard } from '../login.guard';
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent, canActivate:[LoginGuard] },
-  { path: "register", component: RegistrationComponent },
+  { path: "register", component: RegistrationComponent, canActivate:[LoginGuard] },
   { path: "wishlist", component: WishlistComponent, canActivate:[AuthGuard] },
   { path: "orders", component: OrdersComponent, canActivate:[AuthGuard] },
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },

@@ -18,15 +18,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") !== null) {
-      if(localStorage.getItem("xavdnmzicn")!==null) {
-        this.admin=JSON.parse(localStorage.getItem("xavdnmzicn"));
-      }
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
       console.log(this.curUser);
       this.noUser = "";
     } else {
       this.noUser = "NoUser";
     }
+    if(localStorage.getItem("xavdnmzicn")!==null) {
+      this.admin=JSON.parse(localStorage.getItem("xavdnmzicn"));
+    }
+    
   }
 
   //logout function to remove the user details from local storage
