@@ -46,6 +46,9 @@ import { MatSidenavModule, MatToolbarModule } from "@angular/material";
 import { FirebaseService } from "./firebase.service";
 import { AllComponent } from "./all/all.component";
 import { NgxPaginationModule } from "ngx-pagination";
+import { AdminComponent } from './admin/admin.component';
+import { GrafanaComponent } from './grafana/grafana.component';
+import { AuthGuard } from "./auth.guard";
 
 @NgModule({
   declarations: [
@@ -66,7 +69,9 @@ import { NgxPaginationModule } from "ngx-pagination";
     BookComponent,
     CardsComponent,
     BillingComponent,
-    AllComponent
+    AllComponent,
+    AdminComponent,
+    GrafanaComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +104,7 @@ import { NgxPaginationModule } from "ngx-pagination";
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    UserDetailsService
+    UserDetailsService, AuthGuard
   ],
   bootstrap: [AppComponent]
 })

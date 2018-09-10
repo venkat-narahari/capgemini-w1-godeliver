@@ -15,14 +15,15 @@
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav" >
-     
+    <div class="collapse navbar-collapse" id="navbarNav">
+
       <ul class="navbar-nav" style="padding-right: 70px; padding-left:100px">
         <div *ngIf=noUser style="padding-top: 10px;">
           <li class="nav-item">
             <a class="nav-link" routerLink="/login" href="#">Login</a>
           </li>
         </div>
+
 
         <div *ngIf=curUser style="padding-top: 10px;">
           <li class="nav-item dropdown">
@@ -34,6 +35,10 @@
               <a class="dropdown-item " routerLink="/profile" href="#">User Profile</a>
               <a class="dropdown-item " routerLink="/wishlist" href="#">Wishlist</a>
               <a class="dropdown-item " routerLink="/orders">Orders</a>
+              <div *ngIf=admin>
+                <a class="dropdown-item " routerLink="/fleet" href="#">Fleet Management</a>
+                <a class="dropdown-item " routerLink="/graphana">Graphana</a>
+              </div>
               <a class="dropdown-item " (click)="logout()">Logout</a>
             </div>
           </li>
@@ -41,7 +46,7 @@
         </div>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle navbar-dark" href="#" id="navbardrop" data-toggle="dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">
             More
           </a>
           <div class="dropdown-menu ">

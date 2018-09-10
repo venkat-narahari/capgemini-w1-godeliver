@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit {
     this.user.userPassword = this.userPassword.value;
     this.user.userPreferences = this.genre.value;
     this.userDetailService.addUser(this.user).subscribe(
-      data => { },
+      data => { console.log('done')},
       error => {
         this.error = "Fields are required";
       }

@@ -15,12 +15,12 @@ import { ServicepageComponent } from "../servicepage/servicepage.component";
 import { CartComponent } from "../cart/cart.component";
 import { BookComponent } from "../book/book.component";
 import { AllComponent } from '../all/all.component';
-import { AuthGuard } from '../services/guards.service';
-
+import { AuthGuard } from '../auth.guard';
+import { LoginGuard } from '../login.guard';
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegistrationComponent },
+  { path: "login", component: LoginComponent, canActivate:[LoginGuard] },
+  { path: "register", component: RegistrationComponent, canActivate:[LoginGuard] },
   { path: "wishlist", component: WishlistComponent, canActivate:[AuthGuard] },
   { path: "orders", component: OrdersComponent, canActivate:[AuthGuard] },
   { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
