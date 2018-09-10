@@ -18,7 +18,7 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://172.23.238.193:8080/user-login/api/v1/login`,
+        `http://localhost:8080/user-login/api/v1/login`,
         { userEmail, userPassword },
         
         options
@@ -36,6 +36,10 @@ export class AuthenticationService {
               "currentUserEmail",
               JSON.stringify(user.email)
             );
+            localStorage.setItem(
+              "xavdnmzicn",
+              JSON.stringify(user.role)
+            );
           }
           console.log(userPassword);
           return user;
@@ -43,10 +47,14 @@ export class AuthenticationService {
       );
       
   }
-
   logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
+    localStorage.removeItem("xavdnmzicn");
+   
+  }
+
+  loggedIn() {
+    return !!localStorage.getItem('currentUserToken');
   }
 }

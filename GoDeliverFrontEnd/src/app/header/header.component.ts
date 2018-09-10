@@ -12,11 +12,15 @@ export class HeaderComponent implements OnInit {
   curuser: any;
   search: string = "shivam";
   title: any;
+  admin:any;
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") !== null) {
+      if(localStorage.getItem("xavdnmzicn")!==null) {
+        this.admin=JSON.parse(localStorage.getItem("xavdnmzicn"));
+      }
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
       console.log(this.curUser);
       this.noUser = "";
@@ -29,6 +33,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
+    localStorage.removeItem("xavdnmzicn");
     location.reload();
     this.noUser = "NoUser";
   }
