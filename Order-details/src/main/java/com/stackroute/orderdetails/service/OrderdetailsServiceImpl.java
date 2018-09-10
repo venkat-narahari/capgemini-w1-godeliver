@@ -1,11 +1,9 @@
 package com.stackroute.orderdetails.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-
 import com.stackroute.orderdetails.config.KafkaConfig;
 import com.stackroute.orderdetails.domain.Orderdetails;
 import com.stackroute.orderdetails.exceptions.MongoConnectionException;
@@ -29,6 +27,10 @@ public class OrderdetailsServiceImpl implements OrderdetailsService {
 		this.kafkaConfig = kafkaConfig;
 	}
 
+	/*
+	 * Checks whether the details exists with the email id or not and if not exists,
+	 * the user will be saved,else throws exception
+	 */
 	@Override
 	public Orderdetails saveDetails(Orderdetails orderdetails) throws MongoConnectionException {
 		if (orderdetailsRepository.getByEmailId(orderdetails.getEmailId()) == null) {
@@ -41,6 +43,10 @@ public class OrderdetailsServiceImpl implements OrderdetailsService {
 
 	}
 
+	/*
+	 * Checks whether the details exists or not and if exists,gets all the details
+	 */
+
 	@Override
 	public List<Orderdetails> getAll() throws NoDetailsFoundException {
 		if (((List<Orderdetails>) orderdetailsRepository.findAll()) != null) {
@@ -49,6 +55,8 @@ public class OrderdetailsServiceImpl implements OrderdetailsService {
 		} else
 			return null;
 	}
+
+	// method to get get the details based on email id
 
 	@Override
 	public Orderdetails getByEmailId(String emailId) {
