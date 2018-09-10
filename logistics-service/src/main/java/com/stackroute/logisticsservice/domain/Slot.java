@@ -21,7 +21,7 @@ public class Slot {
 	}
 
 	public Slot(String slotId, String slotDuration, String slotStartTime, String slotEndTime, String slotNoOfVehicles,
-			String slotCost, Vehicle[] vehicles) {
+			String slotCost, Vehicle[] slotVehicle) {
 		super();
 		this.slotId = slotId;
 		this.slotDuration = slotDuration;
@@ -29,7 +29,7 @@ public class Slot {
 		this.slotEndTime = slotEndTime;
 		this.slotNoOfVehicles = slotNoOfVehicles;
 		this.slotCost = slotCost;
-		this.slotVehicle = vehicles;
+		this.slotVehicle = slotVehicle;
 	}
 
 	public String getSlotId() {
@@ -72,11 +72,11 @@ public class Slot {
 		this.slotNoOfVehicles = slotNoOfVehicles;
 	}
 
-	public Vehicle[] getVehicles() {
+	public Vehicle[] getSlotVehicles() {
 		return slotVehicle;
 	}
 
-	public void setVehicles(Vehicle[] vehicles) {
+	public void setSlotVehicles(Vehicle[] vehicles) {
 		this.slotVehicle = vehicles;
 	}
 

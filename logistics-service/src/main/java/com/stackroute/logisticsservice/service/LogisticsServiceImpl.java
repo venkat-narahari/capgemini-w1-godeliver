@@ -145,7 +145,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 		
 		
 		for(int i=0; i<noOfSlots; i++) {
-			Vehicle vehicles[] = orderDateSlots[i].getVehicles();
+			Vehicle vehicles[] = orderDateSlots[i].getSlotVehicles();
 			for(int j=0; j<noOfVehicles; j++) {
 				Order orders[] = vehicles[j].getVehicleRoute();
 				for(int k=0; k<orders.length;k++) {
@@ -157,7 +157,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 				}
 				vehicles[j].setVehicleRoute(orders);
 			}
-			orderDateSlots[i].setVehicles(vehicles);
+			orderDateSlots[i].setSlotVehicles(vehicles);
 		}
 		
 		
