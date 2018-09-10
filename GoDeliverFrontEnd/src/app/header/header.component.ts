@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   curuser: any;
   search: string = "shivam";
   title: any;
+  admin:any;
 
   constructor(private bookService: BookService) { }
 
@@ -23,12 +24,17 @@ export class HeaderComponent implements OnInit {
     } else {
       this.noUser = "NoUser";
     }
+    if(localStorage.getItem("xavdnmzicn")!==null) {
+      this.admin=JSON.parse(localStorage.getItem("xavdnmzicn"));
+    }
+    
   }
 
   //logout function to remove the user details from local storage
   logout() {
     localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
+    localStorage.removeItem("xavdnmzicn");
     location.reload();
     this.noUser = "NoUser";
   }

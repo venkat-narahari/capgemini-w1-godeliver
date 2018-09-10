@@ -1,6 +1,6 @@
 <!-- cards to display books -->
 <mat-card class="book-card mt-3 mb-3">
-  <img mat-card-image src="{{ book.poster }}" style="height: 300px; background-size: cover;" alt="Photo of a {{book.title}}"
+  <img mat-card-image src="{{ book.poster }}" style="height: 225px; background-size: cover;" alt="Photo of a {{book.title}}"
     routerLink="book/{{ book.bookISBN_10 }}">
   <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
     <span class="spacer"></span>
@@ -9,8 +9,8 @@
         <a (click)="addToWishlist(book)">favorite</a>
       </mat-icon>
     </div>
-    <mat-card-title height="10px" class="title">
-      <h4 class="titl">{{ (book.title.length>30)? (book.title | slice:0:30)+'..':(book.title) }}</h4>
+    <mat-card-title class="title">
+      <h5 class="title">{{ (book.title.length>20)? (book.title | slice:0:20)+'..':(book.title) }}</h5>
     </mat-card-title>
     <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
     <mat-card-subtitle>₹ {{book.cost}}</mat-card-subtitle>
@@ -23,12 +23,10 @@
 
       </svg>
       Quick Add</button>
-      <a *ngIf="like" (click)="colorChange()" class="material-icons fav">favorite_border</a>
-      <img *ngIf="!like" (click)="colorChange()" class="fav" src="https://png.icons8.com/color/50/000000/hearts.png" width=10% height=10%>
-      <div *ngIf="!like">
-        <a (click)="addToWishlist()"></a>
-  </div>
-  <div *ngIf="like"><a (click)="removeFromWishlist($event,book)"></a></div>
-   
+    <div class="pull-center">
+      <mat-icon class="example-icon">
+        <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
+      </mat-icon>
+    </div>
   </mat-card-actions>
 </mat-card>

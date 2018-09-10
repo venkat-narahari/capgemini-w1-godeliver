@@ -14,22 +14,24 @@ import { ReturnpolicyComponent } from "../returnpolicy/returnpolicy.component";
 import { ServicepageComponent } from "../servicepage/servicepage.component";
 import { CartComponent } from "../cart/cart.component";
 import { BookComponent } from "../book/book.component";
-
-
+import { AllComponent } from '../all/all.component';
+import { AuthGuard } from '../auth.guard';
+import { LoginGuard } from '../login.guard';
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegistrationComponent },
-  { path: "wishlist", component: WishlistComponent },
-  { path: "orders", component: OrdersComponent },
-  { path: "profile", component: ProfileComponent },
+  { path: "login", component: LoginComponent, canActivate:[LoginGuard] },
+  { path: "register", component: RegistrationComponent, canActivate:[LoginGuard] },
+  { path: "wishlist", component: WishlistComponent, canActivate:[AuthGuard] },
+  { path: "orders", component: OrdersComponent, canActivate:[AuthGuard] },
+  { path: "profile", component: ProfileComponent, canActivate:[AuthGuard] },
   { path: "about", component: AboutusComponent },
   { path: "return", component: ReturnpolicyComponent },
   { path: "servicepage", component: ServicepageComponent },
   { path: "cart", component: CartComponent },
   { path: "book/:bookISBN", component: BookComponent },
   { path: "book", component: BookComponent },
-  { path:"billing", component: BillingComponent}
+  { path:"billing", component: BillingComponent},
+  { path:"allbooks", component: AllComponent}
 ];
 
 @NgModule({

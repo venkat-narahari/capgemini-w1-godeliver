@@ -247,6 +247,8 @@ services:
    volumes:
 
     - $HOME/neo4j/data:/data
+   environment: 
+    - NEO4J_AUTH=none
 
    healthcheck:
 
