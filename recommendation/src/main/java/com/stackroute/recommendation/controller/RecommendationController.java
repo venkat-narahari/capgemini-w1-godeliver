@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.stackroute.bookservice.domain.Book;
 import com.stackroute.recommendation.domain.BookListener;
@@ -110,8 +111,8 @@ public class RecommendationController {
 	 * getBooksByAuthor() method is used to get books based on preferences Rest end
 	 * point for this method will be "api/v1/prefereces/{userMail}"
 	 */
-	@GetMapping(value = "/preferences/{userMail}")
-	public ResponseEntity<?> getBooksByPreferences(@PathVariable String userMail) {
+	@GetMapping(value = "/preferences")
+	public ResponseEntity<?> getBooksByPreferences(@RequestParam String userMail) {
 		List<BookListener> getAllBooksByPreferences = new ArrayList<BookListener>();
 		try {
 			getAllBooksByPreferences = (List<BookListener>) userService.getBooksByPreferences(userMail);
