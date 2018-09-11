@@ -5,18 +5,18 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.stackroute</groupId>
-	<artifactId>Order-details</artifactId>
+	<artifactId>order-details</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Order-details</name>
-	<description>Demo project for Spring Boot</description>
+	<name>order-details</name>
+	<description>Order details microservice</description>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.4.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.stackroute</groupId>
+		<artifactId>capgemini-w1-godeliver-test</artifactId>
+		<version>1.0.0</version>
+		<!--<relativePath />--> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>

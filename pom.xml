@@ -31,5 +31,6 @@
 		<module>recommendation</module>
 		<module>book-service</module>
 		<module>logistics-service</module>
+		<module>order-details</module>
 	</modules>
 </project>
