@@ -101,7 +101,8 @@ services:
    ports:
       - 8082:8082
    depends_on:
-     
+     eureka-server:
+       condition: service_healthy
      database:
        condition: service_healthy
    healthcheck:
@@ -181,6 +182,11 @@ services:
    volumes:
 
     - /usr/src/home:/data/db
+    
+   healthcheck:
+
+    test: exit 0
+
     
 
   book-service:
@@ -309,9 +315,10 @@ services:
    ports:
     - '9092:9092'
    environment:
-    KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+    KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
     KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+    KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1"
    restart: always
    network_mode: host 
    hostname: localhost
