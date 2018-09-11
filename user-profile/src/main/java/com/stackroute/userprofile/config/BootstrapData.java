@@ -21,7 +21,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		String[] userPreferences=new String[] {"comic","adventure","action"};
+		String[] userPreferences=new String[] {"comic","thriller","romance"};
 		String[] userAddress=new String[] {"171,above sbi,opposite raheja arcade"};
 		UserProfile userProfile = new UserProfile();
 		userProfile.setUserName("stackroute");

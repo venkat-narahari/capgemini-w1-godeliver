@@ -167,6 +167,56 @@ services:
     test: "exit 0"
 
 
+  Order-details:
+  
+   build: Order-details/
+   
+   image: order-details
+
+   restart: always
+
+   network_mode: host
+
+   container_name: Orderdetails
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8081:8081
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+  logistics-service:
+  
+   build: logistics-service/
+   
+   image: logistics-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: logistics-service
+
+   depends_on:
+
+    - mongo
+
+   ports:
+
+    - 8086:8086
+
+   healthcheck:
+
+    test: "exit 0"
+
+
   mongo:
 
    image: mongo
