@@ -1,3 +1,30 @@
-<p>
-  settings works!
-</p>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+</head>
+
+<div class="container" id="product-section">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#address" aria-controls="description" role="tab" data-toggle="tab">Address</a>
+    </li>
+    <li role="presentation">
+      <a href="#Profile" aria-controls="features" role="tab" data-toggle="tab">Profile</a>
+    </li>
+
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="description">
+      <p *ngFor="let add of address">{{ add.address }}</p>
+    </div>
+    <div role="tabpanel" class="tab-pane top-10" id="features">
+      <ul>
+        <li><strong>DOB:</strong></li>
+        <li><strong> Age:</strong></li>
+        <li><strong>Gender:</strong></li>
+        <li><strong>Email:</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>

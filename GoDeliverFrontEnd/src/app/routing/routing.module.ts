@@ -17,6 +17,8 @@ import { BookComponent } from "../book/book.component";
 import { AllComponent } from '../all/all.component';
 import { AuthGuard } from '../auth.guard';
 import { LoginGuard } from '../login.guard';
+import { DeleteaccountComponent } from '../deleteaccount/deleteaccount.component';
+import { SettingsComponent } from '../settings/settings.component';
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent, canActivate:[LoginGuard] },
@@ -31,7 +33,9 @@ const appRoutes: Routes = [
   { path: "book/:bookISBN", component: BookComponent },
   { path: "book", component: BookComponent },
   { path:"billing", component: BillingComponent},
-  { path:"allbooks", component: AllComponent}
+  { path:"allbooks", component: AllComponent},
+  { path:"deleteaccount", component: DeleteaccountComponent},
+  { path:"settings", component: SettingsComponent},
 ];
 
 @NgModule({
