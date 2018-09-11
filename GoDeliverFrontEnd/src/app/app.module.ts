@@ -49,6 +49,8 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { AdminComponent } from './admin/admin.component';
 import { GrafanaComponent } from './grafana/grafana.component';
 import { AuthGuard } from "./auth.guard";
+import { SettingsComponent } from './settings/settings.component';
+import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { AuthGuard } from "./auth.guard";
     BillingComponent,
     AllComponent,
     AdminComponent,
-    GrafanaComponent
+    GrafanaComponent,
+    SettingsComponent,
+    DeleteaccountComponent
   ],
   imports: [
     BrowserModule,

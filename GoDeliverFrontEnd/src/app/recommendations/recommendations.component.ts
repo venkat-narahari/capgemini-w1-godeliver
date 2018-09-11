@@ -34,14 +34,13 @@ export class RecommendationsComponent implements OnInit {
   //Method for displaying the recommendations by considering user email as an input
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") != null) {
-      this.email = localStorage.getItem("currentUserEmail");
+      this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
       this.bookService.getRecommendationList(this.email).subscribe(fullList => {
         this.recommended_books = fullList;
       });
     }
     //getting top sellingbooks
     this.bookService.getTopSellingList().subscribe(data => {
-      console.log("topselling data is 111111111 ", data);
       this.top_selling = data;
     });
     //getting toprated  books

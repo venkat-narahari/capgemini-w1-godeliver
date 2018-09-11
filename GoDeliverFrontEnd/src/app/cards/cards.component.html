@@ -3,12 +3,6 @@
   <img mat-card-image src="{{ book.poster }}" style="height: 225px; background-size: cover;" alt="Photo of a {{book.title}}"
     routerLink="book/{{ book.bookISBN_10 }}">
   <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
-    <span class="spacer"></span>
-    <div *ngIf=email>
-      <mat-icon class="example-icon">
-        <a (click)="addToWishlist(book)">favorite</a>
-      </mat-icon>
-    </div>
     <mat-card-title class="title">
       <h5 class="title">{{ (book.title.length>20)? (book.title | slice:0:20)+'..':(book.title) }}</h5>
     </mat-card-title>
@@ -23,6 +17,7 @@
 
       </svg>
       Quick Add</button>
+      <span class="spacer"></span>
     <div class="pull-center">
       <mat-icon class="example-icon">
         <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
