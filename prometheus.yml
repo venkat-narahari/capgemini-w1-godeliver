@@ -5,12 +5,8 @@ global:
   # scrape_timeout is set to the global default (10s).
 
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+ 
   - job_name: 'prometheus'
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
     static_configs:
     - targets: ['127.0.0.1:9090']
 
@@ -59,4 +55,16 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
     - targets: ['127.0.0.1:8082']
+    
+  - job_name: 'order-details'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['127.0.0.1:8081']
+    
+  - job_name: 'logistics-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['127.0.0.1:8086']
    
