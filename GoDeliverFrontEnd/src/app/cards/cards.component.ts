@@ -21,7 +21,8 @@ export class CardsComponent implements OnInit {
     poster: "",
     genre: "",
     quantity: 1,
-    volume: 1
+    volume: 1,
+    totalVolume: 1
   };
   deleteList: any;
   like: boolean = true;
@@ -53,9 +54,6 @@ export class CardsComponent implements OnInit {
     this.firebase.getWishlist().subscribe(data => {
       this.books = data;
       this.booksLength = data.length;
-      // setTimeout(() => {
-      //   this.heaImage();
-      // }, 2000);
     });
     setTimeout(() => {
       this.heaImage();
@@ -87,6 +85,7 @@ export class CardsComponent implements OnInit {
     this.item.quantity = 1;
     this.item.volume = parseInt(book.volume);
     this.item.totalPrice = parseInt(book.cost);
+    this.item.totalVolume = parseInt(book.volume);
     this.firebase.addItem(this.item);
   }
 

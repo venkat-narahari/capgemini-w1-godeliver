@@ -1,3 +1,4 @@
+import { TimeslotsComponent } from './../timeslots/timeslots.component';
 import { BillingComponent } from './../billing/billing.component';
 import { LoginComponent } from "./../login/login.component";
 import { HomeComponent } from "./../home/home.component";
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   { path:"allbooks", component: AllComponent},
   { path:"deleteaccount", component: DeleteaccountComponent},
   { path:"settings", component: SettingsComponent},
+  { path: "timeslots", component: TimeslotsComponent}
 ];
 
 @NgModule({

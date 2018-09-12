@@ -27,6 +27,7 @@ export class CartComponent implements OnInit {
   incrementQuantity(event, item: Cart) {
     item.quantity += 1;
     item.totalPrice = item.quantity * item.cost;
+    item.totalVolume = item.quantity * item.volume;
     if (item.quantity > 5) {
       item.quantity = 5;
     }
@@ -36,6 +37,7 @@ export class CartComponent implements OnInit {
     if (item.quantity > 1) {
       item.quantity -= 1;
       item.totalPrice = item.quantity * item.cost;
+      item.totalVolume = item.quantity * item.volume;
       this.firebase.updateItem(item);
     }
   }
