@@ -6,8 +6,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FirebaseService {
-
-
   cart: AngularFirestoreCollection<Cart>;
   carts: Observable<Cart[]>;
   cartDoc:AngularFirestoreDocument<Cart>;
@@ -135,15 +133,18 @@ export interface Cart {
   quantity?:number;
   totalPrice?:number;
   volume?:number;
+  totalVolume?:number;
 }
 
 export interface Address {
   address?:string;
   name?:string;
   email?:string;
-  phone?:number;
+  phone?:string;
   id?:string;
-
+  city?:string;
+  addType?:string;
+  orderId?:string;
 }
 
 export interface Profile {

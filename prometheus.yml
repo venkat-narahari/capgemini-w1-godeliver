@@ -18,53 +18,53 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8761']
+    - targets: ['172.23.239.100:8761']
 
   - job_name: 'apigateway'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8080']
+    - targets: ['172.23.239.100:8080']
     
   - job_name: 'config-server'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8891']
+    - targets: ['172.23.239.100:8891']
 
   - job_name: 'user-profile'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8070'] 
+    - targets: ['172.23.239.114:8070'] 
 
   - job_name: 'book-service'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8888']
+    - targets: ['172.23.239.114:8888']
 
   - job_name: 'recommendation'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8092']
+    - targets: ['172.23.239.114:8092']
 
   - job_name: 'user-login'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8082']
+    - targets: ['172.23.239.114:8082']
     
   - job_name: 'order-details'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8081']
+    - targets: ['172.23.239.114:8081']
     
   - job_name: 'logistics-service'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['127.0.0.1:8086']
+    - targets: ['172.23.239.114:8086']
    

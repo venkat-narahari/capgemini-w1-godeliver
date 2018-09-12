@@ -2,25 +2,24 @@
   <div class="col-sm-6">
     <div *ngIf=usAdd>
       <h2 style="margin-left:10px">Delivery Details</h2>
-      <div style="margin-left:20px;margin-right:10px" *ngFor="let address of usAdd">
-        <mat-card>
-          <label class="radio-inline" style="margin-left:30px">
-
+      <div style="margin-left:20px;margin-right:10px" *ngFor="let address of usAdd" >
+        <mat-card class="delivery">
             <mat-card-title>
-              <mat-radio-button style="margin-top:2px;" value="option" style="font-size:10px">{{address.name}}</mat-radio-button>
+                  <input type="radio" class="rad-btn" name="addresses" value="address.email" (click)="radioselected()" [checked]='true' ngModel>
+                  <label class= "name"> {{address.name}}
+                </label>
             </mat-card-title>
-            <mat-card-content>
-              <p>{{address.email}}</p>
-              <p>{{address.name}}</p>
+            <mat-card-content class="content">
+              <div style="display:inline-block">
               <p>{{address.phone}}</p>
               <p>{{address.address}}</p>
-            </mat-card-content>
-          </label>
-          <div class="wrapper">
-            <button class="btn btn-block-sm" style="background-color:darkorange;width:130px;margin-left:30px; margin-bottom: 10px;">DELIVER
-              HERE
-            </button>
-            <button class="btn btn-block-sm" style="background-color:rgb(245, 236, 236);width:130px;margin-left:30px; margin-bottom: 10px;width:150px;"
+            </div>
+            </mat-card-content> 
+          <div *ngIf="isRadioSelect()">
+            <button (click)="orderDetails(address)" class="btn btn-block-sm text-white" style="background-color:darkorange;width:130px;margin-left:30px; margin-bottom: 10px;">DELIVER
+                HERE
+            </button>          
+            <button class="btn btn-block-sm" style="background-color:rgb(245, 236, 236);width:130px;margin-left:30px; margin-bottom: 10px;"
               (click)="deleteAddress($event, address)">DELETE<i class="fa fa-trash pl-4"></i></button>
           </div>
         </mat-card>
@@ -34,46 +33,51 @@
             Add New Address
           </mat-panel-title>
         </mat-expansion-panel-header>
-
-        <form class="example-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
-          <mat-form-field class="example-full-width" style="margin-left:20px">
-            <input matInput placeholder="Full Name" formControlName="userName" name="userName" required>
-            <mat-hint> eg:Harry Potter</mat-hint>
-          </mat-form-field>
-          <mat-form-field hintLabel="Max 10 characters" style="margin-left:20px">
-            <input matInput #input maxlength="10" placeholder="Enter your phone number" formControlName="userPhone" name="userPhone"
-              required>
-            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-          </mat-form-field><br>
-          <!-- <mat-form-field class="example-full-width" style="margin-left:20px">
-              <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required>
-               <mat-error *ngIf="userEmail.invalid">Email is required</mat-error> 
-            </mat-form-field> -->
-
-          <mat-form-field class="example-full-width" style="margin-left:20px">
-            <input matInput placeholder="Email" [formControl]="userEmail" required>
-            <mat-error *ngIf="userEmail.hasError('email') && !userEmail.hasError('required')">
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="userEmail.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="example-full-width" style="margin-left:20px">
-            <input matInput placeholder="Address" formControlName="userAddress" name="userAddress" required>
-          </mat-form-field><br>
-          <button style="background-color:darkorange;border-radius: 8px;height:50px;margin-left:60px">
-            Save and Deliver</button>
+        <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+  
+            <mat-form-field class="example-full-width" style="margin-left:20px">
+              <input matInput placeholder="Full Name"  [(ngModel)]="firstname" name="firstname" required>
+                      </mat-form-field>
+   
+            <mat-form-field style="margin-left:20px">
+              <input matInput placeholder="Enter your phone number" [(ngModel)]="phoneNumb" name="phoneNumb" required
+                pattern="[0-9]*" minlength="10" maxlength="10">
+              <mat-error *ngIf="userPhone.hasError('phone')&&!userPhone.hasError('required')">
+                Enter a valid phone number
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field style="margin-left:10px">
+                <input matInput placeholder="Enter Email" [(ngModel)]="usermail" name="mail" required>
+                <mat-error *ngIf="userEmail.hasError('email')&&!userEmail.hasError('required')"></mat-error>
+              </mat-form-field>
+    
+            <mat-form-field class="example-full-width" style="margin-left:20px">
+              <input matInput placeholder="Enter address" [(ngModel)]="address" name="address" required>
+              <!-- <mat-error *ngIf="userPhone.hasError('phone')&&!userPhone.hasError('required')">
+                  Enter a valid phone number
+                </mat-error> -->
+            </mat-form-field>
+            <mat-form-field style="margin-left:10px">
+              <input matInput placeholder="Enter City"  [(ngModel)]="city" name="city" required>
+            </mat-form-field>
+          <div class="text-center">
+            <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button>
+          </div>
         </form>
       </mat-expansion-panel>
       <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       </mat-expansion-panel>
     </mat-accordion>
+    <!-- <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field> -->
   </div>
   <div class="col-sm-5">
     <mat-card>
       <mat-card-title>
-        <h3><b>Order Details</b></h3>
+        <b>Order Details</b>
       </mat-card-title>
       <mat-card-content>
         <div class="table-responsive">
@@ -94,10 +98,21 @@
                 <h5>{{getSum()}}</h5>
               </td>
             </tr>
+            <hr>
+            <tr>
+              <td style="width: 400px">
+                <h5>Deliver Cahrges</h5>
+              </td>
+              <td>
+                <h5>FREE</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>{{getVolume()}}</td>
+            </tr>
           </thead>
+        
         </div>
-
-
       </mat-card-content>
     </mat-card>
   </div>

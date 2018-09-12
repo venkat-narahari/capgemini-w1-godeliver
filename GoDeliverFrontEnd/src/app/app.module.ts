@@ -1,3 +1,4 @@
+import { TimeslotsComponent } from './timeslots/timeslots.component';
 import { BillingComponent } from "./billing/billing.component";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -52,6 +53,7 @@ import { GrafanaComponent } from './grafana/grafana.component';
 import { AuthGuard } from "./auth.guard";
 import { SettingsComponent } from './settings/settings.component';
 import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component';
+import { Timestamp } from "rxjs/internal/operators/timestamp";
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component'
     AdminComponent,
     GrafanaComponent,
     SettingsComponent,
+    TimeslotsComponent,
     DeleteaccountComponent
   ],
   imports: [
