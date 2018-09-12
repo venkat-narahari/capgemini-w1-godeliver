@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,9 @@ import com.stackroute.logisticsservice.domain.Vehicle;
 import com.stackroute.logisticsservice.exception.MongoConnectionException;
 import com.stackroute.logisticsservice.repository.LogisticsRepository;
 
+@Primary
 @Service
-@PropertySource(value = {"classpath:logistics.properties","classpath:bootstrap.properties"})
+@PropertySource(value = {"classpath:logistics.yml"})
 public class LogisticsServiceImpl implements LogisticsService {
 
 	@Value("#{'${vehicle.capacity}'}")

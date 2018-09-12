@@ -3,6 +3,7 @@ package com.stackroute.logisticsservice.config;
 import static springfox.documentation.builders.PathSelectors.regex;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -12,11 +13,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@Component
 public class SwaggerConfig extends WebMvcConfigurationSupport {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.stackroute.userprofile.controller"))
+				.apis(RequestHandlerSelectors.basePackage("com.stackroute.logistics.controller"))
 				.paths(regex("/api/v1.*")).build();
 
 	}

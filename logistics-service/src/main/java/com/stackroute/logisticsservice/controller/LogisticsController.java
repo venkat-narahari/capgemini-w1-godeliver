@@ -14,6 +14,8 @@ import com.stackroute.logisticsservice.domain.DateLogistics;
 import com.stackroute.logisticsservice.domain.Location;
 import com.stackroute.logisticsservice.domain.Order;
 import com.stackroute.logisticsservice.domain.Route;
+import com.stackroute.logisticsservice.domain.Slot;
+import com.stackroute.logisticsservice.domain.Vehicle;
 import com.stackroute.logisticsservice.exception.DateNotAvailableException;
 import com.stackroute.logisticsservice.exception.MongoConnectionException;
 import com.stackroute.logisticsservice.exception.SlotsNotAvailableException;
@@ -46,7 +48,7 @@ public class LogisticsController {
 			@RequestParam("orderLongitude") String orderLongitude,
 			@RequestParam("orderVolume") String orderVolume,
 			@RequestParam("orderDate") String orderDate) {
-		final String uri = "http://172.23.239.124:8084/api/v1/cvrp/slots";
+		
 		try {
 			Location newLocation = new Location(orderLatitude,orderLongitude);
 			Order newOrder = new Order(orderId, orderConsumerName, orderConsumerAddress,orderConsumerPhone, newLocation,orderVolume, orderDate,false,null,null);
@@ -55,9 +57,15 @@ public class LogisticsController {
 			if (selectedDate == null) {
 				throw new DateNotAvailableException("Error: Date not available");
 			}
-			Route newOrderRoute = new Route(selectedDate, newOrder);
 			RestTemplate restTemplate = new RestTemplate();
 			try {
+				Route newOrderRoute = new Route(selectedDate, newOrder);
+				DateLogistics dl = newOrderRoute.getDateLogistics();
+				Slot sl[]=dl.getSlots();
+				Vehicle v[] =sl[0].getSlotVehicles();
+				System.out.println(v[0].getVehicleCapacity());
+				System.out.println("abc");
+				final String uri = "http://localhost:8084/api/v1/cvrp/slots";
 				orderedRoute = restTemplate.postForObject(uri, newOrderRoute, Route.class);
 			}
 			catch(Exception exception) {
