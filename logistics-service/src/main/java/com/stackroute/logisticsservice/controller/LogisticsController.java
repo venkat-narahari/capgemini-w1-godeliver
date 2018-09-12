@@ -61,7 +61,9 @@ public class LogisticsController {
 			try {
 				Route newOrderRoute = new Route(selectedDate, newOrder);
 				DateLogistics dl = newOrderRoute.getDateLogistics();
+				System.out.println(dl.getDate());			
 				Slot sl[]=dl.getSlots();
+				
 				Vehicle v[] =sl[0].getSlotVehicles();
 				System.out.println(v[0].getVehicleCapacity());
 				System.out.println("abc");
