@@ -14,13 +14,25 @@ background {
 }
 
 .loginButton {
-  position: relative;
-  left: 50%;
+  margin-top: 2%;
+  left: 25%;
   background-color:grey;
 }
 
 .register {
   position: relative;
   top: 2%;
-  left: -10%;
+  padding-left: 17%
+  
+}
+mat-form-field{
+  padding-right: 10px;
+  width: 300px;
+}
+mat-card{
+  margin-top: 20%; 
+  margin-bottom: 110%;
+  width: 350px;
+  
+
 }

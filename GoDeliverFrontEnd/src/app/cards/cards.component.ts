@@ -13,6 +13,7 @@ export class CardsComponent implements OnInit {
   // To take input data from other pages
   @Input("book")
   book;
+
   item: Cart = {
     bookISBN_10: "",
     title: "",
@@ -49,34 +50,33 @@ export class CardsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.firebase.getWishlist()
-    .subscribe(data => {
-      this.books = data;
-    });
-    setTimeout(()=>{    //<<<---    using ()=> syntax
-      this.heaImage();
- }, 3000);
     this.firebase.getWishlist().subscribe(data => {
+      this.books = data;
       this.booksLength = data.length;
+      // setTimeout(() => {
+      //   this.heaImage();
+      // }, 2000);
     });
-    
-        if (localStorage.getItem("currentUserEmail") != null) {
+    setTimeout(() => {
+      this.heaImage();
+    }, 2000);
+
+    if (localStorage.getItem("currentUserEmail") != null) {
       this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
   }
 
-heaImage() {
-  console.log(this.books);
-    for (let i = 0; i < this.booksLength; i++) {
+  heaImage() {
+    this.heartImage="../../assets/white.png";
+    for (let i = 0; i < this.books.length; i++) {
+      
       if (this.book.title == this.books[i].title) {
+        console.log(this.books[i].title,'111');
         this.heartImage = "../../assets/red.png";
+
       }
-      else {
-      this.heartImage="../../assets/white.png";
-      console.log("you are right");
     }
   }
-}
 
   addToCart(book) {
     this.item.title = book.title;

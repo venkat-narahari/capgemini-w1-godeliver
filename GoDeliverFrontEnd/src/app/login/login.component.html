@@ -4,23 +4,22 @@
   <body>
     <div class="background">
       <div class="row mb-4 ml-1">
-        <div class="col-sm-7">
-          <!-- body back-ground-->
-          <img class="img-responsive" src="assets/home.jpeg" style="width:800px;height:520px;">
-        </div>
-        <div class="col-sm-5">
+  
+        <div class="col-sm-12">
           <!--form class for username and password  using Material-->
+         
           <form class="example-form " [formGroup]="userForm" (ngSubmit)="loginSubmit()" style="height:70%">
             <!-- <mat-form-field class="">
               <input matInput type="text" placeholder="Email" formControlName="userEmail" name="userEmail" required [pattern]="emailPattern"> -->
-            <!--error handling for Email-->
-            <!-- <div *ngIf="userEmail.dirty && userEmail.errors" class="error">
+              <!--error handling for Email-->
+              <!-- <div *ngIf="userEmail.dirty && userEmail.errors" class="error">
                 <div *ngIf="userEmail.errors.required" class="validation_message">
                   User Email required.
                 </div>
               </div>
               <mat-hint>eg:abc@gmail.com</mat-hint>
             </mat-form-field> -->
+            <mat-card>
             <mat-form-field>
               <input matInput placeholder="Enter your email" [formControl]="userEmail" name="userEmail" required>
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -41,9 +40,11 @@
             <br><br>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
             <!-- Routing to signup page when the user clicks on the Signup button-->
-            <a class="register" [routerLink]="['/register']" style="color:rgb(12, 5, 5)">New to GoDeliver? Sign Up!
+            <a class="register" [routerLink]="['/register']"  style="color:rgb(12, 5, 5)">New to GoDeliver? Sign Up!
             </a>
+          </mat-card>
           </form>
+     
           <!--  end of form class-->
         </div>
       </div>

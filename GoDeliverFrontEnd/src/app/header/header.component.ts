@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.noUser = "NoUser";
     }
-    if(localStorage.getItem("xavdnmzicn")!==null) {
+    if(localStorage.getItem('xavdnmzicn')!==null) {
       this.admin=JSON.parse(localStorage.getItem("xavdnmzicn"));
     }
     
