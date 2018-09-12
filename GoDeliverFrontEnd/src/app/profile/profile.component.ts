@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Address } from "../firebase.service";
 import { FirebaseService } from "../firebase.service";
-import { Cart } from "../firebase.service";
 import { UserDetailsService } from "../user-details.service";
 @Component({
   selector: "app-profile",
@@ -12,9 +11,9 @@ export class ProfileComponent implements OnInit {
   wishlistLength;
   cartLength;
   addre: Address[];
-  user: any;
+  userdata: any;
   profile: any;
-  userEmail:any;
+  userEmail: any;
   constructor(
     private firebase: FirebaseService,
     private userDetails: UserDetailsService
@@ -24,9 +23,9 @@ export class ProfileComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.userEmail=JSON.parse(localStorage.getItem('currentUserEmail'));
+    this.userEmail = JSON.parse(localStorage.getItem('currentUserEmail'));
     console.log(this.userEmail);
-    
+
     this.firebase.getAddress().subscribe(address => {
       this.addre = address;
     });
@@ -42,14 +41,12 @@ export class ProfileComponent implements OnInit {
     this.firebase.getWishlist().subscribe(wishlist => {
       this.wishlistLength = wishlist.length;
     });
+    
+    this.userDetails.getUser(this.userEmail).subscribe(data => {
+      this.userdata = data;    
+  });                                                                                                                                                                                                                                                                                                                                                         
 
-    this.userDetails
-      .getUser(this.userEmail)
-      .subscribe(data => {
-        this.user = data;
-      });
-
-  }
+}
 
   addAddress(address) {
     this.add.address = address;
