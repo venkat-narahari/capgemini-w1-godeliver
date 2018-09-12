@@ -22,6 +22,7 @@ import { AuthenticationService } from "./services/authentication.service";
 import { ErrorInterceptor } from "./interceptors/error.interceptor";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 import { MaterialModule } from "./material";
+import {MatStepperModule} from '@angular/material/stepper';
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -101,7 +102,8 @@ import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component'
     MatExpansionModule,
     AngularFireModule.initializeApp(environment.firebase, "godeliverfrontend"),
     AngularFirestoreModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatStepperModule
   ],
   providers: [
     FirebaseService,
