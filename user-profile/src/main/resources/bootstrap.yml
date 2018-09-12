@@ -1,9 +1,12 @@
-spring.cloud.config.uri= http://172.23.239.100:8891
+server:
+  port: "8070"
+spring:
+  application:
+    name: userprofile
+  cloud:
+    config:
+      uri: http://172.23.239.100:8891
 
-#server properties
-server.port=8070
-
-spring.application.name=userprofile
 
 #
 #mongo properties

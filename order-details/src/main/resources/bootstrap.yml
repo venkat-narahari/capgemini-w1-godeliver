@@ -1,9 +1,13 @@
+server:
+  port: "8081"
+spring:
+  application:
+    name: order
+  cloud:
+    config:
+      uri: http://172.23.239.100:8891
 
-spring.cloud.config.uri= http://172.23.239.100:8891
 
-spring.application.name=order
-
-server.port=8081
 
 #spring.data.mongodb.database=orderdetails
 #spring.data.mongodb.host=localhost

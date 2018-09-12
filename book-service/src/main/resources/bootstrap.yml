@@ -1,7 +1,11 @@
-server.port=8888
-
-spring.cloud.config.uri=http://172.23.239.100:8891
-spring.application.name=book
+server:
+  port: "8888"
+spring:
+  application:
+    name: book
+  cloud:
+    config:
+      uri: http://172.23.239.100:8891
 
 #spring.data.mongodb.database=booksdb
 #spring.data.mongodb.host=localhost
