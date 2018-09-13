@@ -20,6 +20,7 @@ import { AuthGuard } from '../auth.guard';
 import { LoginGuard } from '../login.guard';
 import { DeleteaccountComponent } from '../deleteaccount/deleteaccount.component';
 import { SettingsComponent } from '../settings/settings.component';
+import { AdminComponent } from '../admin/admin.component';
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent, canActivate:[LoginGuard] },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
   { path:"allbooks", component: AllComponent},
   { path:"deleteaccount", component: DeleteaccountComponent},
   { path:"settings", component: SettingsComponent},
-  { path: "timeslots", component: TimeslotsComponent}
+  { path: "timeslots", component: TimeslotsComponent},
+  { path: "admin", component: AdminComponent}
 ];
 
 @NgModule({

@@ -53,8 +53,8 @@ import { GrafanaComponent } from './grafana/grafana.component';
 import { AuthGuard } from "./auth.guard";
 import { SettingsComponent } from './settings/settings.component';
 import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component';
-import { Timestamp } from "rxjs/internal/operators/timestamp";
-
+import { AgmCoreModule } from '@agm/core'          ;  // @agm/core
+import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,7 +106,12 @@ import { Timestamp } from "rxjs/internal/operators/timestamp";
     AngularFireModule.initializeApp(environment.firebase, "godeliverfrontend"),
     AngularFirestoreModule,
     NgxPaginationModule,
-    MatStepperModule
+    MatStepperModule,
+    AgmCoreModule.forRoot({ // @agm/core
+      apiKey: 'removed',
+    }),
+    AgmDirectionModule    // agm-direction
+  
   ],
   providers: [
     FirebaseService,

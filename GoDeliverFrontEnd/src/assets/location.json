@@ -1,0 +1,188 @@
+{
+  "_id": "12-08-2018",
+  "slots": [
+    {
+      "slotId": "0",
+      "slotDuration": "180",
+      "slotStartTime": "0900",
+      "slotEndTime": "1200",
+      "slotNoOfVehicles": "3",
+      "slotVehicle": [
+       {
+          "vehicleId": "1",
+          "vehicleCapacity": "5670000",
+          "vehicleRouteDurationLimit": "180",
+          "vehicleRoute": [
+            {
+              "orderId": "4",
+              "orderLocation": {
+                "orderLatitude": "12.9266122",
+                "orderLongitude": "77.6934768"
+              },
+              "orderVolume": "3",
+              "orderDate": "04-08-2018",
+              "availableSlots": "Slot 1",
+              "selectedSlots": "Slot 1"
+            },
+            {
+              "orderId": "5",
+              "orderLocation": {
+                "orderLatitude": "12.9660028",
+                "orderLongitude": "77.7157291"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            },
+            {
+              "orderId": "6",
+              "orderLocation": {
+                "orderLatitude": "12.9680858",
+                "orderLongitude": "77.7139127"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            }
+          ]
+        },
+        {
+          "vehicleId": "2",
+          "vehicleCapacity": "5670000",
+          "vehicleRouteDurationLimit": "180",
+          "vehicleRoute": [
+            {
+              "orderId": "4",
+              "orderLocation": {
+                "orderLatitude": "12.9266122",
+                "orderLongitude": "77.6934768"
+              },
+              "orderVolume": "3",
+              "orderDate": "04-08-2018",
+              "availableSlots": "Slot 1",
+              "selectedSlots": "Slot 1"
+            },
+            {
+              "orderId": "5",
+              "orderLocation": {
+                "orderLatitude": "12.9660028",
+                "orderLongitude": "77.7157291"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            },
+            {
+              "orderId": "6",
+              "orderLocation": {
+                "orderLatitude": "12.9680858",
+                "orderLongitude": "77.7139127"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slotId": "1",
+      "slotDuration": "180",
+      "slotStartTime": "1300",
+      "slotEndTime": "1600",
+      "slotNoOfVehicles": "3",
+      "slotVehicle": [
+        {
+          "vehicleId": "0",
+          "vehicleCapacity": "5670000",
+          "vehicleRouteDurationLimit": "180"
+        },
+        {
+          "vehicleId": "1",
+          "vehicleCapacity": "5670000",
+          "vehicleRouteDurationLimit": "180",
+          "vehicleRoute": [
+            {
+              "orderId": "4",
+              "orderLocation": {
+                "orderLatitude": "12.9266122",
+                "orderLongitude": "77.6934768"
+              },
+              "orderVolume": "3",
+              "orderDate": "04-08-2018",
+              "availableSlots": "Slot 1",
+              "selectedSlots": "Slot 1"
+            },
+            {
+              "orderId": "5",
+              "orderLocation": {
+                "orderLatitude": "12.9660028",
+                "orderLongitude": "77.7157291"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            },
+            {
+              "orderId": "6",
+              "orderLocation": {
+                "orderLatitude": "12.9680858",
+                "orderLongitude": "77.7139127"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            }
+          ]
+        },
+        {
+          "vehicleId": "2",
+          "vehicleCapacity": "5670000",
+          "vehicleRouteDurationLimit": "180",
+          "vehicleRoute": [
+            {
+              "orderId": "4",
+              "orderLocation": {
+                "orderLatitude": "12.9266122",
+                "orderLongitude": "77.6934768"
+              },
+              "orderVolume": "3",
+              "orderDate": "04-08-2018",
+              "availableSlots": "Slot 1",
+              "selectedSlots": "Slot 1"
+            },
+            {
+              "orderId": "5",
+              "orderLocation": {
+                "orderLatitude": "12.9660028",
+                "orderLongitude": "77.7157291"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            },
+            {
+              "orderId": "6",
+              "orderLocation": {
+                "orderLatitude": "12.9680858",
+                "orderLongitude": "77.7139127"
+              },
+              "orderVolume": "2",
+              "orderDate": "04-08-2018",
+              "availableSlots": "",
+              "selectedSlots": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
