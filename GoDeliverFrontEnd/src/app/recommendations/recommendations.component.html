@@ -12,7 +12,7 @@
 <h2>Top Selling</h2>
 <!-- div class to display top selling books in home page-->
 <div class="row">
-  <div class="col-sm-3" *ngFor="let book of top_selling">
+  <div class="col-sm-3" *ngFor="let book of top_selling; let i =index">
     <div *ngIf='i<4'>
       <app-cards [book]=book></app-cards>
     </div>

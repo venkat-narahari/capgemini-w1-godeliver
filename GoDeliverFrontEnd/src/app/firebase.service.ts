@@ -165,6 +165,5 @@ export interface Wishlist {
   totalPrice?:number;
   author?:string;
   publisher?:string;
-  emailID?:string;
   volume?:number;
 }

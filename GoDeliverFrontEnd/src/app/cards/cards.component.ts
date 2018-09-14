@@ -36,7 +36,6 @@ export class CardsComponent implements OnInit {
     quantity: 1,
     author: "",
     publisher: "",
-    emailID: "",
     volume: 1
   };
 
@@ -45,6 +44,10 @@ export class CardsComponent implements OnInit {
   books: any;
   heartImage: any;
   booksLength: any;
+  wishlist: any;
+  cart: any;
+  cartsLength: any;
+  wishlistLength:any;
   constructor(
     private bookService: BookService,
     private firebase: FirebaseService
@@ -62,21 +65,30 @@ export class CardsComponent implements OnInit {
     if (localStorage.getItem("currentUserEmail") != null) {
       this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
+
+    this.firebase.getWishlist().subscribe(wishlist => {
+      this.wishlist = wishlist;
+      this.wishlistLength = wishlist.length;
+    });
+
+    this.firebase.getCart().subscribe(cart => {
+      this.cart = cart;
+      this.cartsLength = cart.length;
+    });
   }
 
   heaImage() {
-    this.heartImage="../../assets/white.png";
+    this.heartImage = "../../assets/white.png";
     for (let i = 0; i < this.books.length; i++) {
-      
       if (this.book.title == this.books[i].title) {
-        console.log(this.books[i].title,'111');
+        console.log(this.books[i].title, "111");
         this.heartImage = "../../assets/red.png";
-
       }
     }
   }
 
   addToCart(book) {
+    let bool = true;
     this.item.title = book.title;
     this.item.poster = book.poster;
     this.item.bookISBN_10 = book.bookISBN_10;
@@ -86,10 +98,18 @@ export class CardsComponent implements OnInit {
     this.item.volume = parseInt(book.volume);
     this.item.totalPrice = parseInt(book.cost);
     this.item.totalVolume = parseInt(book.volume);
-    this.firebase.addItem(this.item);
+    for (let i = 0; i < this.cartsLength; i++) {
+      if (this.item.bookISBN_10 === this.cart[i].bookISBN_10) {
+        bool = false;
+      }
+    }
+    if (bool) {
+      this.firebase.addItem(this.item);
+    }
   }
 
   addToWishlist(book) {
+    let bool = true;
     this.wish.title = book.title;
     this.wish.poster = book.poster;
     this.wish.bookISBN_10 = book.bookISBN_10;
@@ -99,11 +119,19 @@ export class CardsComponent implements OnInit {
     this.wish.author = book.author;
     this.wish.volume = parseInt(book.volume);
     this.wish.publisher = book.publisher;
-    this.wish.emailID = "rajawat@gmail.com";
-    this.firebase.addItemToWishlist(this.wish);
-    this.bookService.itemToWishlistRecommendation(this.wish).subscribe(data => {
-      console.log("done");
-    });
+    for (let i = 0; i < this.wishlistLength; i++) {
+      if (this.wish.bookISBN_10 === this.wishlist[i].bookISBN_10) {
+        bool = false;
+      }
+    }
+    if (bool) {
+      this.firebase.addItemToWishlist(this.wish);
+      this.bookService
+        .itemToWishlistRecommendation(this.wish)
+        .subscribe(data => {
+          console.log("done");
+        });
+    }
   }
   colorChange() {
     this.like = !this.like;

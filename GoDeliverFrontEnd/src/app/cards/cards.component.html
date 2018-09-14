@@ -17,11 +17,13 @@
 
       </svg>
       Quick Add</button>
-      <span class="spacer"></span>
-    <div class="pull-center">
-      <mat-icon class="example-icon">
-        <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
-      </mat-icon>
+    <span class="spacer"></span>
+    <div *ngIf=email>
+      <div class="pull-center">
+        <mat-icon class="example-icon">
+          <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
+        </mat-icon>
+      </div>
     </div>
   </mat-card-actions>
 </mat-card>
