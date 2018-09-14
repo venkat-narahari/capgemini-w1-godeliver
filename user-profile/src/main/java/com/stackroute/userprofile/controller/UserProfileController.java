@@ -88,7 +88,7 @@ public class UserProfileController {
 				return new ResponseEntity<String>("Connection Failed", HttpStatus.GATEWAY_TIMEOUT);
 			}
 			if (user != null) {
-				return new ResponseEntity<UserProfile>(user, HttpStatus.FOUND);
+				return new ResponseEntity<UserProfile>(user, HttpStatus.ACCEPTED);
 			} else {
 				throw new UserNotExistsException("User doesn't exists with this email!");
 			}
