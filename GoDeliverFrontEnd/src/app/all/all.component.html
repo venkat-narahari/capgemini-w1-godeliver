@@ -25,19 +25,20 @@
 
             </svg>
             Quick Add</button>
-          <a *ngIf="like" (click)="colorChange()" class="material-icons fav">favorite_border</a>
-          <img *ngIf="!like" (click)="colorChange()" class="fav" src="https://png.icons8.com/color/50/000000/hearts.png"
-            width=10% height=10%>
-          <div *ngIf="!like">
-            <a (click)="addToWishlist()"></a>
+          <span class="spacer"></span>
+          <div *ngIf=email>
+            <div class="pull-center">
+              <mat-icon class="example-icon">
+                <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
+              </mat-icon>
+            </div>
           </div>
-          <div *ngIf="like"><a (click)="removeFromWishlist($event,book)"></a></div>
 
         </mat-card-actions>
       </mat-card>
     </div>
     <div class="text-center">
-      <pagination-controls  (pageChange)="p =$event"></pagination-controls>
+      <pagination-controls (pageChange)="p =$event"></pagination-controls>
     </div>
   </div>
 </div>

@@ -6,14 +6,17 @@ import { BookService } from "../book.service";
   styleUrls: ["./all.component.css"]
 })
 export class AllComponent implements OnInit {
- 
- books:any;
- 
+  books: any;
+  email: any;
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
     this.bookService.getAllBooks().subscribe(data => {
       this.books = data;
     });
+
+    if (localStorage.getItem("currentUserEmail") != null) {
+      this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
+    }
   }
 }
