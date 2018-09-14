@@ -1,7 +1,7 @@
 
 spring:
   application:
-    name: book
+    name: book-ms
 server:
   port: 8888
       
