@@ -169,7 +169,7 @@ services:
 
   Order-details:
   
-   build: Order-details/
+   build: order-details/
    
    image: order-details
 
@@ -177,7 +177,7 @@ services:
 
    network_mode: host
 
-   container_name: Orderdetails
+   container_name: orderdetails
 
    depends_on:
 

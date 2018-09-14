@@ -51,7 +51,7 @@ public class LogisticsController {
 		
 		try {
 			Location newLocation = new Location(orderLatitude,orderLongitude);
-			Order newOrder = new Order(orderId, orderConsumerName, orderConsumerAddress,orderConsumerPhone, newLocation,orderVolume, orderDate,false,null,null);
+			Order newOrder = new Order(orderId, orderConsumerName, orderConsumerAddress,orderConsumerPhone, newLocation,orderVolume, orderDate,false,false,null,null);
 			DateLogistics selectedDate = logisticsServiceImpl.getDateDetails(newOrder);
 			Route orderedRoute;
 			if (selectedDate == null) {
