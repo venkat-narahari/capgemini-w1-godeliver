@@ -141,4 +141,22 @@ public class LogisticsController {
 		return new ResponseEntity<String>("Succesfully Deleted",HttpStatus.OK);
 	}
 	
+	
+	/*
+	 * Controller method to get locations all orders with specific date, vehicle and slot.
+	 */
+	@RequestMapping(value = "/locations", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<?> getOrderLocations(@RequestParam("date") String date, @RequestParam("slotId") String slotId, @RequestParam("vehicleId") String vehicleId) {
+		Location orderLocations[];
+		try {
+			orderLocations = logisticsServiceImpl.getOrderLocation(date, slotId, vehicleId);
+		}
+		catch(MongoConnectionException connectionException) {
+			return new ResponseEntity<String>("Error: Connection Issue", HttpStatus.GATEWAY_TIMEOUT);
+		}
+		return new ResponseEntity<Location[]>(orderLocations,HttpStatus.FOUND);
+	}
+	
+	
+	
 }

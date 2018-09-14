@@ -9,6 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.logisticsservice.domain.DateLogistics;
+import com.stackroute.logisticsservice.domain.Location;
 import com.stackroute.logisticsservice.domain.Order;
 import com.stackroute.logisticsservice.domain.Route;
 import com.stackroute.logisticsservice.domain.Slot;
@@ -169,6 +170,28 @@ public class LogisticsServiceImpl implements LogisticsService {
 		
 		return isDeleted;
 	}
+	
+	public Location[] getOrderLocation(String date, String slotId, String vehicleId) throws MongoConnectionException{
+		Location[] locations = null;
+		DateLogistics selectedDate = getDateLogistics(date);
+		Slot slot[] = selectedDate.getSlots();
+		
+		for(int i=0; i<noOfSlots; i++) {
+			if(slotId.equals(String.valueOf(i))) {
+				Vehicle[] vehicles = slot[i].getSlotVehicles();
+				for(int j=0; j<noOfVehicles; j++) {
+					if(vehicleId.equals(String.valueOf(j))) {
+						Order order[]=vehicles[j].getVehicleRoute();
+						locations= new Location[order.length];
+						for(int k=0;k<order.length;k++) {
+							locations[k]=order[k].getOrderLocation();
+						}
+					}
+				}
+			}
+		}
+		return locations;
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -190,6 +213,12 @@ public class LogisticsServiceImpl implements LogisticsService {
 		}
 		return selectedDate;
 	}
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * Service method to remove order from route
