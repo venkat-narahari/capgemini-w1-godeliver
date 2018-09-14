@@ -2,7 +2,7 @@ server:
   port: 8070
 spring:
   application:
-    name: userprofile
+    name: userprofile-ms
 #  data:
 #    mongodb:
 #      database: userprofile

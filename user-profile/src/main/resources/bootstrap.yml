@@ -2,7 +2,7 @@ server:
   port: "8070"
 spring:
   application:
-    name: userprofile
+    name: userprofile-ms
   cloud:
     config:
       uri: http://172.23.239.100:8891
