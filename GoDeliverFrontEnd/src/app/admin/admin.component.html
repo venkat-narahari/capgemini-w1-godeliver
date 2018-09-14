@@ -1,17 +1,19 @@
 <div class="container text-center">
   <form #myForm="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
-      <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfDelivery" name="dateOfDelivery" placeholder="Choose a date">
+      <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfDelivery" name="dateOfDelivery" required placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field><br>
     <button type="submit" (click)="timePrint(0900)" [disabled]="!myForm.form.valid" class="btn btn-primary">9 Am - 12
-    </button>
-    <button type="submit" (click)="timePrint(1300)" [disabled]="!myForm.form.valid" class="btn btn-primary">1 Pm - 4 Pm</button>
+    </button>&nbsp;
+    <button type="submit" (click)="timePrint(1300)" [disabled]="!myForm.form.valid" class="btn btn-primary">1 Pm - 4 Pm</button>&nbsp;
     <button type="submit" (click)="timePrint(1700)" [disabled]="!myForm.form.valid" class="btn btn-primary">5 Pm - 8 Pm</button>
   </form>
 </div>
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
-  </agm-direction>
-</agm-map>
+<div *ngIf=origin>
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
+    </agm-direction>
+  </agm-map>
+</div>

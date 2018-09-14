@@ -108,7 +108,7 @@ import { AgmDirectionModule } from 'agm-direction';   // agm-direction
     NgxPaginationModule,
     MatStepperModule,
     AgmCoreModule.forRoot({ // @agm/core
-      apiKey: 'removed',
+      apiKey: '',
     }),
     AgmDirectionModule    // agm-direction
   
