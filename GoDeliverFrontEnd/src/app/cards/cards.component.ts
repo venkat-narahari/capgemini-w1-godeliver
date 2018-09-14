@@ -79,7 +79,7 @@ export class CardsComponent implements OnInit {
 
   heaImage() {
     this.heartImage = "../../assets/white.png";
-    for (let i = 0; i < this.books.length; i++) {
+    for (let i = 0; i < this.booksLength; i++) {
       if (this.book.title == this.books[i].title) {
         console.log(this.books[i].title, "111");
         this.heartImage = "../../assets/red.png";
