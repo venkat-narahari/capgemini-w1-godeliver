@@ -2,7 +2,7 @@ server:
   port: "8888"
 spring:
   application:
-    name: book
+    name: book-ms
   cloud:
     config:
       uri: http://172.23.239.100:8891
