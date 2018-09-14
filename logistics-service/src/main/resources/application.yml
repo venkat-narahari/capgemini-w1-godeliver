@@ -2,4 +2,4 @@ server:
   port: 8086
 spring:
   application:
-    name: logistics-ms
+    name: logistics

@@ -2,4 +2,4 @@ server:
   port: 8092
 spring:
   application:
-    name: recommendation-ms
+    name: recommendation

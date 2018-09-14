@@ -2,7 +2,7 @@ server:
   port: "8081"
 spring:
   application:
-    name: order-ms
+    name: order
   cloud:
     config:
       uri: http://172.23.239.100:8891

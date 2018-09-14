@@ -2,7 +2,7 @@ server:
   port: "8092"
 spring:
   application:
-    name: recommendation-ms
+    name: recommendation
   cloud:
     config:
       uri: http://172.23.239.100:8891

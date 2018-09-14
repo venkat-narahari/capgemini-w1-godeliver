@@ -4,7 +4,7 @@ server:
 
 spring:
   application:
-    name: logistics-ms
+    name: logistics
   cloud:
     config:
       uri: http://172.23.239.100:8891
