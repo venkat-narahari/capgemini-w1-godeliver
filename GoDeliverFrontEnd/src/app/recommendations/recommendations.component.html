@@ -27,14 +27,3 @@
     </div>
   </div>
 </div>
-<div *ngIf=genres>
-  <h2>Genres</h2>
-  <!-- div class to display  top rated books in home page-->
-  <div class="row">
-    <div class="col-sm-3" *ngFor="let book of genres; let i = index">
-      <div *ngIf='i < 4'>
-        <app-cards [book]=book></app-cards>
-      </div>
-    </div>
-  </div>
-</div>

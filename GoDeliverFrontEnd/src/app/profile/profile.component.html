@@ -1,7 +1,7 @@
 <div class="container target">
     <div class="row">
-        <div class="col-sm-10">
-            <h1>{{userdata.userName}}</h1>
+        <div class="col-sm-10 capitalize">
+            <h1>{{userdata.userName }}</h1>
         </div>
     </div>
     <br>
@@ -11,11 +11,11 @@
             <ul class="list-group">
                 <li class="list-group-item text-muted" contenteditable="false">Profile</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">DOB</strong></span>
-                    {{userdata.userDob}}</li>
+                    {{(userdata.userDob.length>10)? (userdata.userDob | slice:0:10):(userdata.userDob)}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email ID</strong></span>
                     {{userdata.userEmail}}</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Phone Number</strong></span>
-                    {{userdata.userMobile}}
+                <li *ngFor="let ad of addre; let i=index" class="list-group-item text-right"><span class="pull-left"><strong class="">Phone Number</strong></span>
+                   <div *ngIf=i<1> {{ad.phone}}</div>
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Gender </strong></span>
 
@@ -43,8 +43,8 @@
         <!--/col-3-->
         <div class="col-sm-9" contenteditable="false">
             <div class="panel panel-default">
-                <div class="panel-heading">Shivam's Bio</div>
-                <div class="panel-body"> A long description about me.
+                <div class="panel-heading capitalize">{{userdata.userName}}'s Bio</div>
+                <div class="panel-body"> Hello! My name is {{userdata.userName}}, I am a fullstack developer.
 
                 </div>
             </div>
