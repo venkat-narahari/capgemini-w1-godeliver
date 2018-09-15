@@ -120,9 +120,9 @@ public class LogisticsController {
 		try {
 			dateLogistics = logisticsServiceImpl.getDateLogistics(date);
 		} catch (MongoConnectionException connectionException) {
-			return new ResponseEntity<String>("Error: Connection Issue",HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("Error: Connection Issue",HttpStatus.GATEWAY_TIMEOUT);
 		}
-		return new ResponseEntity<DateLogistics>(dateLogistics,HttpStatus.FOUND);
+		return new ResponseEntity<DateLogistics>(dateLogistics,HttpStatus.ACCEPTED);
 		
 	}
 	
@@ -154,7 +154,7 @@ public class LogisticsController {
 		catch(MongoConnectionException connectionException) {
 			return new ResponseEntity<String>("Error: Connection Issue", HttpStatus.GATEWAY_TIMEOUT);
 		}
-		return new ResponseEntity<Location[]>(orderLocations,HttpStatus.FOUND);
+		return new ResponseEntity<Location[]>(orderLocations,HttpStatus.ACCEPTED);
 	}
 	
 	
