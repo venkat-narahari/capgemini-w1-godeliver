@@ -43,6 +43,7 @@ public class UserService {
 				userListener.getUserPassword(), userListener.getUserPreferences(), userListener.getUserGender(),
 				userListener.getUserMobile(), userListener.getWishlist());
 		userRepo.save(userObj);
+System.out.println("ggggggggggg"+userRepo.save(userObj));
 		UserPreferences userPreferences = new UserPreferences(userListener.getUserPreferences());
 		userPreferencesRepository.save(userPreferences);
 	}

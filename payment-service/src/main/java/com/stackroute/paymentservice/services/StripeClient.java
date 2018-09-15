@@ -12,48 +12,40 @@ import com.stripe.model.Refund;
 
 @Component
 public class StripeClient {
-    @Autowired
-    StripeClient() {
-        Stripe.apiKey = "sk_test_vPdUFvDpA4y3GzNpQqGitpiz";
-    }
 
-//    public Customer createCustomer(String token, String email) throws Exception {
-//        Map<String, Object> customerParams = new HashMap<String, Object>();
-//        customerParams.put("email", email);
-//        customerParams.put("source", token);
-//        return Customer.create(customerParams);
-//    }
-//
-//    private Customer getCustomer(String id) throws Exception {
-//        return Customer.retrieve(id);
-//    }
- 
-    String chargeId;
-    
-    public Charge chargeNewCard(String token, double amount) throws Exception {
-        Map<String, Object> chargeParams = new HashMap<String, Object>();
-        chargeParams.put("amount", (int)(amount * 100));
-        chargeParams.put("currency", "INR");
-        chargeParams.put("source", token);
-        
-//        RequestOptions options = RequestOptions
-//        		  .builder()
-//        		  .setIdempotencyKey("A1m2a3r4")
-//        		  .build();
-        Charge charge = Charge.create(chargeParams);
-        chargeId = charge.getId();
-        System.out.println(charge.getId());
-        return charge;
-    }
+	@Autowired
+	StripeClient() {
+		Stripe.apiKey = "sk_test_vPdUFvDpA4y3GzNpQqGitpiz";
+	}
 
-    public Refund cardRefund() throws Exception {
-    	Map<String, Object> refundParams = new HashMap<String, Object>();
-    	refundParams.put("charge", chargeId);
+	String chargeId;
 
-    	Refund refund = Refund.create(refundParams);
+	/**
+	 * Gets amount from request mapping header and charges the card and returns the
+	 * charged amount to stripe
+	 **/
+	public Charge chargeNewCard(String token, double amount) throws Exception {
+		Map<String, Object> chargeParams = new HashMap<String, Object>();
+		chargeParams.put("amount", (int) (amount * 100));
+		chargeParams.put("currency", "INR");
+		chargeParams.put("source", token);
+		Charge charge = Charge.create(chargeParams);
+		chargeId = charge.getId();
+		System.out.println(charge.getId());
+		return charge;
+	}
+
+	/**
+	 * Refund a charge, perform a cardRefund call, providing the ID of
+	 * the charge to be refunded.
+	 **/
+	public Refund cardRefund() throws Exception {
+		Map<String, Object> refundParams = new HashMap<String, Object>();
+		refundParams.put("charge", chargeId);
+
+		Refund refund = Refund.create(refundParams);
 		return refund;
-    	
-    }
 
+	}
 
 }

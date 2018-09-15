@@ -23,6 +23,10 @@ public class PaymentController {
 		this.stripeClient = stripeClient;
 	}
 
+	/**
+	 * Gets token and amount from post mapping request header and charges the credit
+	 * card
+	 **/
 	@PostMapping("/charge")
 	public Charge chargeCard(HttpServletRequest request) throws Exception {
 		String token = request.getHeader("token");
@@ -30,6 +34,10 @@ public class PaymentController {
 		return this.stripeClient.chargeNewCard(token, amount);
 	}
 
+	/**
+	 * Refund a charge via the API, perform a cardRefund call, providing the ID
+	 * of the charge to be refunded.
+	 **/
 	@PostMapping("/refund")
 	public Refund refundCard(HttpServletRequest request) throws Exception {
 		return this.stripeClient.cardRefund();
