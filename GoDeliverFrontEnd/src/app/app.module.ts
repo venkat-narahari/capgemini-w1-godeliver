@@ -1,3 +1,4 @@
+import { DeliveryCardComponent } from './delivery-card/delivery-card.component';
 import { TimeslotsComponent } from './timeslots/timeslots.component';
 import { BillingComponent } from "./billing/billing.component";
 import { NgModule } from "@angular/core";
@@ -79,7 +80,8 @@ import { AgmDirectionModule } from 'agm-direction';   // agm-direction
     GrafanaComponent,
     SettingsComponent,
     TimeslotsComponent,
-    DeleteaccountComponent
+    DeleteaccountComponent,
+    DeliveryCardComponent
   ],
   imports: [
     BrowserModule,

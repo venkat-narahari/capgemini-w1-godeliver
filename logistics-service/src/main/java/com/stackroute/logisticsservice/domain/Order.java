@@ -15,6 +15,7 @@ public class Order {
 	private Location orderLocation;
 	private String orderVolume;
 	private String orderDate;
+	private boolean isDepot;
 	private boolean isRouted;
 	private Slots availableSlots;
 	private String selectedSlot;
@@ -25,7 +26,7 @@ public class Order {
 	
 	
 	public Order(String orderId, String orderConsumerName, String orderConsumerAddress, String orderConsumerPhone,
-			Location orderLocation, String orderVolume, String orderDate, boolean isRouted, Slots availableSlots,
+			Location orderLocation, String orderVolume, String orderDate, boolean isDepot, boolean isRouted, Slots availableSlots,
 			String selectedSlot) {
 		this.orderId = orderId;
 		this.orderConsumerName = orderConsumerName;
@@ -34,6 +35,7 @@ public class Order {
 		this.orderLocation = orderLocation;
 		this.orderVolume = orderVolume;
 		this.orderDate = orderDate;
+		this.setDepot(isDepot);
 		this.isRouted = isRouted;
 		this.availableSlots = availableSlots;
 		this.selectedSlot = selectedSlot;
@@ -114,6 +116,16 @@ public class Order {
 
 	public void setOrderConsumerPhone(String orderConsumerPhone) {
 		this.orderConsumerPhone = orderConsumerPhone;
+	}
+
+
+	public boolean isDepot() {
+		return isDepot;
+	}
+
+
+	public void setDepot(boolean isDepot) {
+		this.isDepot = isDepot;
 	}
 	
 }

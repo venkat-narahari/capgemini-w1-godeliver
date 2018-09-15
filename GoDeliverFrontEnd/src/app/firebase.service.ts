@@ -143,8 +143,8 @@ export interface Address {
   phone?:string;
   id?:string;
   city?:string;
-  addType?:string;
-  orderId?:string;
+  addLat?:string,
+  addLng?:string,
 }
 
 export interface Profile {

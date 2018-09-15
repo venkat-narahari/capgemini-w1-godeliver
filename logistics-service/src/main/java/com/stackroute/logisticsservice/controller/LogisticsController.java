@@ -52,7 +52,7 @@ public class LogisticsController {
 		
 		try {
 			Location newLocation = new Location(orderLatitude,orderLongitude);
-			Order newOrder = new Order(orderId, orderConsumerName, orderConsumerAddress,orderConsumerPhone, newLocation,orderVolume, orderDate,false,null,null);
+			Order newOrder = new Order(orderId, orderConsumerName, orderConsumerAddress,orderConsumerPhone, newLocation,orderVolume, orderDate,false,false,null,null);
 			DateLogistics selectedDate = logisticsServiceImpl.getDateDetails(newOrder);
 			Route orderedRoute;
 			if (selectedDate == null) {
@@ -121,9 +121,9 @@ public class LogisticsController {
 		try {
 			dateLogistics = logisticsServiceImpl.getDateLogistics(date);
 		} catch (MongoConnectionException connectionException) {
-			return new ResponseEntity<String>("Error: Connection Issue",HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("Error: Connection Issue",HttpStatus.GATEWAY_TIMEOUT);
 		}
-		return new ResponseEntity<DateLogistics>(dateLogistics,HttpStatus.FOUND);
+		return new ResponseEntity<DateLogistics>(dateLogistics,HttpStatus.ACCEPTED);
 		
 	}
 	
@@ -155,7 +155,7 @@ public class LogisticsController {
 		catch(MongoConnectionException connectionException) {
 			return new ResponseEntity<String>("Error: Connection Issue", HttpStatus.GATEWAY_TIMEOUT);
 		}
-		return new ResponseEntity<Location[]>(orderLocations,HttpStatus.FOUND);
+		return new ResponseEntity<Location[]>(orderLocations,HttpStatus.ACCEPTED);
 	}
 	
 	
