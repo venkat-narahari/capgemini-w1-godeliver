@@ -167,6 +167,27 @@ services:
     test: "exit 0"
 
 
+  payment-service:
+  
+   build: payment-service/
+   
+   image: payment-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: payment-service
+
+   ports:
+
+    - 9091:9091
+
+   healthcheck:
+
+    test: "exit 0"
+
+
   Order-details:
   
    build: order-details/
