@@ -1,4 +1,3 @@
-import { PaymentComponent } from "./../payment/payment.component";
 import { TimeslotsComponent } from "./../timeslots/timeslots.component";
 import { BillingComponent } from "./../billing/billing.component";
 import { LoginComponent } from "./../login/login.component";
@@ -45,7 +44,7 @@ const appRoutes: Routes = [
   { path: "settings", component: SettingsComponent },
   { path: "timeslots", component: TimeslotsComponent },
   { path: "admin", component: AdminComponent },
-  { path: "payment", component: PaymentComponent }
+
 ];
 
 @NgModule({

@@ -11,12 +11,18 @@ export class CartComponent implements OnInit {
   carts: Cart[];
   interval: any;
   itemToEdit: any;
+  noCart:boolean;
   constructor(private firebase: FirebaseService, route: ActivatedRoute) {}
 
   ngOnInit() {
         this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
     });
+    if(this.carts.length==null) {
+      this.noCart=true;
+    }
+    else
+    this.noCart=false;
 
   }
 
