@@ -1,4 +1,5 @@
-import { TimeslotsComponent } from './timeslots/timeslots.component';
+import { HttpModule } from "@angular/http";
+import { TimeslotsComponent } from "./timeslots/timeslots.component";
 import { BillingComponent } from "./billing/billing.component";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -23,7 +24,7 @@ import { AuthenticationService } from "./services/authentication.service";
 import { ErrorInterceptor } from "./interceptors/error.interceptor";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 import { MaterialModule } from "./material";
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from "@angular/material/stepper";
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -48,13 +49,14 @@ import { MatSidenavModule, MatToolbarModule } from "@angular/material";
 import { FirebaseService } from "./firebase.service";
 import { AllComponent } from "./all/all.component";
 import { NgxPaginationModule } from "ngx-pagination";
-import { AdminComponent } from './admin/admin.component';
-import { GrafanaComponent } from './grafana/grafana.component';
+import { AdminComponent } from "./admin/admin.component";
+import { GrafanaComponent } from "./grafana/grafana.component";
 import { AuthGuard } from "./auth.guard";
-import { SettingsComponent } from './settings/settings.component';
-import { DeleteaccountComponent } from './deleteaccount/deleteaccount.component';
-import { AgmCoreModule } from '@agm/core'          ;  // @agm/core
-import { AgmDirectionModule } from 'agm-direction';   // agm-direction
+import { SettingsComponent } from "./settings/settings.component";
+import { DeleteaccountComponent } from "./deleteaccount/deleteaccount.component";
+import { AgmCoreModule } from "@agm/core"; // @agm/core
+import { AgmDirectionModule } from "agm-direction";
+import { PaymentComponent } from "./payment/payment.component"; // agm-direction
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +81,8 @@ import { AgmDirectionModule } from 'agm-direction';   // agm-direction
     GrafanaComponent,
     SettingsComponent,
     TimeslotsComponent,
-    DeleteaccountComponent
+    DeleteaccountComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -107,19 +110,23 @@ import { AgmDirectionModule } from 'agm-direction';   // agm-direction
     AngularFirestoreModule,
     NgxPaginationModule,
     MatStepperModule,
-    AgmCoreModule.forRoot({ // @agm/core
-      apiKey: '',
+    HttpModule,
+    AgmCoreModule.forRoot({
+      // @agm/core
+      apiKey: ""
     }),
-    AgmDirectionModule    // agm-direction
-  
+    AgmDirectionModule // agm-direction
   ],
   providers: [
     FirebaseService,
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    UserDetailsService, AuthGuard
+    UserDetailsService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  HttpModule;
+}
