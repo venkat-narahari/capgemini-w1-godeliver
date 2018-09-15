@@ -39,11 +39,12 @@ public class UserService {
 
 	@KafkaListener(topics = "userprofile", groupId = "group_json", containerFactory = "userKafkaListenerContainerFactory")
 	public void save(@Payload UserProfile userListener) {
+		System.out.println("ggggggggggg");
 		User userObj = new User(userListener.getUserName(), userListener.getUserEmail(), userListener.getUserDob(),
 				userListener.getUserPassword(), userListener.getUserPreferences(), userListener.getUserGender(),
 				userListener.getUserMobile(), userListener.getWishlist());
 		userRepo.save(userObj);
-System.out.println("ggggggggggg"+userRepo.save(userObj));
+		System.out.println("ggggggggggg"+userRepo.save(userObj));
 		UserPreferences userPreferences = new UserPreferences(userListener.getUserPreferences());
 		userPreferencesRepository.save(userPreferences);
 	}

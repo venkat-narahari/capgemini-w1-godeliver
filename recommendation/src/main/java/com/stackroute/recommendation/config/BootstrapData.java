@@ -1,4 +1,4 @@
-package com.stackroute.recommendation.config;
+3package com.stackroute.recommendation.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -114,7 +114,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book5.setLanguage("English");
 		bookRepository.save(book5);
 		
-		String[] userPreferences=new String[] {"comic","adventure","action"};
+		String[] userPreferences=new String[] {"Comic","Thriller","Romance"};
 		User user=new User();
 		user.setUserName("stackroute");
 		user.setUserEmail("stackroute@gmail.com");
