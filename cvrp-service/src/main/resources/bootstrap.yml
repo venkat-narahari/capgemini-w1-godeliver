@@ -1,0 +1,9 @@
+server:
+  port: "8084"
+
+spring:
+  application:
+    name: cvrp-ms
+  cloud:
+    config:
+      uri: http://172.23.239.100:8891
