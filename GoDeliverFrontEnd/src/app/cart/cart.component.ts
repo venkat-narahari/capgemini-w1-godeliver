@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Cart } from "../firebase.service";
 import { FirebaseService } from "../firebase.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
@@ -11,22 +11,22 @@ export class CartComponent implements OnInit {
   carts: Cart[];
   interval: any;
   itemToEdit: any;
-  noCart:boolean;
-  constructor(private firebase: FirebaseService, route: ActivatedRoute) {}
+  noCart: boolean;
+  constructor(
+    private firebase: FirebaseService,
+    private route: ActivatedRoute,
+   private router: Router
+  ) {}
 
   ngOnInit() {
-        this.firebase.getCart().subscribe(carts => {
+    this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
     });
-    if(this.carts.length==null) {
-      this.noCart=true;
-    }
-    else
-    this.noCart=false;
-
+    if (this.carts.length == null) {
+      this.noCart = true;
+    } else this.noCart = false;
   }
 
- 
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
   }
@@ -47,20 +47,25 @@ export class CartComponent implements OnInit {
       this.firebase.updateItem(item);
     }
   }
-  getSum(index: number) : number {
+  getSum(index: number): number {
     let sum = 0;
-    let totalQuantity=0;
-    for(let i = 0; i < this.carts.length; i++) {
-      totalQuantity+= this.carts[i].quantity;
+    let totalQuantity = 0;
+    for (let i = 0; i < this.carts.length; i++) {
+      totalQuantity += this.carts[i].quantity;
       sum += this.carts[i].totalPrice;
     }
     return sum;
   }
-  totalQuantity(index: number) : number {
-    let totalQuantity=0;
-    for(let i = 0; i < this.carts.length; i++) {
-      totalQuantity+= this.carts[i].quantity;
+  totalQuantity(index: number): number {
+    let totalQuantity = 0;
+    for (let i = 0; i < this.carts.length; i++) {
+      totalQuantity += this.carts[i].quantity;
     }
     return totalQuantity;
+  }
+
+  billingRoute() {
+    this.router.navigate(["/billing"]);
+    location.reload();
   }
 }

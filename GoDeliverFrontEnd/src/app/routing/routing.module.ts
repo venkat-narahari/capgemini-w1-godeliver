@@ -22,6 +22,8 @@ import { DeleteaccountComponent } from "../deleteaccount/deleteaccount.component
 import { SettingsComponent } from "../settings/settings.component";
 import { AdminComponent } from "../admin/admin.component";
 import { PaymentComponent } from "../payment/payment.component";
+
+
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent, canActivate: [LoginGuard] },

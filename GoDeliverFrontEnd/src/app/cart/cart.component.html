@@ -39,7 +39,7 @@
           <td>
             <h4>Total: Rs {{getSum()}}</h4>
           </td>
-          <td><button (click)="checkout()" class="btn btn-md btn-success"><a routerLink="/billing" style="color:white;">Checkout</a></button></td>
+          <td><button class="btn btn-md btn-success"><a (click)="billingRoute()" style="color:white;">Checkout</a></button></td>
         </tr>
       </tbody>
     </table>
