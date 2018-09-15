@@ -8,8 +8,7 @@ a{
   cursor: pointer;
 }
 .fav {
- 
-  float: right;
+  padding-left:75%;
   color:red;
   cursor: pointer;
 }

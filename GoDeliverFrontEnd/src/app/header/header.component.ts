@@ -24,9 +24,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.noUser = "NoUser";
     }
-    if(localStorage.getItem('xavdnmzicn')!==null) {
-      this.admin=JSON.parse(localStorage.getItem("xavdnmzicn"));
-    }
     
   }
 
@@ -34,7 +31,6 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
-    localStorage.removeItem("xavdnmzicn");
     location.reload();
     this.noUser = "NoUser";
   }

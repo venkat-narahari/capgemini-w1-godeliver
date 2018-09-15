@@ -27,6 +27,7 @@ export class WishlistComponent implements OnInit {
     private bookService: BookService
   ) {}
   ngOnInit() {
+    
     this.email=JSON.parse(localStorage.getItem('currentUserEmail'));
     this.firebase.getWishlist().subscribe(carts => {
       this.wishlist = carts;
