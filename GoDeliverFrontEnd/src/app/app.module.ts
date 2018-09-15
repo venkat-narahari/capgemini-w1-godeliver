@@ -57,6 +57,7 @@ import { DeleteaccountComponent } from "./deleteaccount/deleteaccount.component"
 import { AgmCoreModule } from "@agm/core"; // @agm/core
 import { AgmDirectionModule } from "agm-direction";
 import { DeliveryCardComponent } from "./delivery-card/delivery-card.component";
+import { PaymentComponent } from "./payment/payment.component";
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { DeliveryCardComponent } from "./delivery-card/delivery-card.component";
     SettingsComponent,
     TimeslotsComponent,
     DeleteaccountComponent,
-    DeliveryCardComponent
+    DeliveryCardComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
