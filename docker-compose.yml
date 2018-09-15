@@ -141,7 +141,6 @@ services:
 
 
 
-
   user-profile:
   
    build: user-profile/
@@ -165,6 +164,51 @@ services:
    healthcheck:
 
     test: "exit 0"
+
+
+
+  payment-service:
+  
+   build: payment-service/
+   
+   image: payment-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: payment-service
+
+   ports:
+
+    - 9091:9091
+
+   healthcheck:
+
+    test: "exit 0"
+
+
+
+  cvrp-service:
+  
+   build: cvrp-service/
+   
+   image: cvrp-service
+
+   restart: always
+
+   network_mode: host
+
+   container_name: cvrp-service
+
+   ports:
+
+    - 8084:8084
+
+   healthcheck:
+
+    test: "exit 0"
+
 
 
   Order-details:

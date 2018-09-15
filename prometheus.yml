@@ -67,4 +67,15 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
     - targets: ['172.23.239.121:8086']
-   
+
+  - job_name: 'payment-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['172.23.239.120:8086']
+
+  - job_name: 'cvrp-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['172.23.239.120:8086']

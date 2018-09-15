@@ -1,8 +1,9 @@
 /*css for login page*/
 
 .background {
-  background: url("../../assets/1234.gif");
   background-size: cover;
+  background-image : url("../../assets/1234.gif");
+  
 }
 
 .example-form {

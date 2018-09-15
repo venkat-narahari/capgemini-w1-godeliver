@@ -232,12 +232,8 @@ label {
   margin-top: 20px;
 } */
 
-
-
-
 .example-full-width {
   width: 550px;
-  
 }
 
 .example-form {
@@ -246,31 +242,24 @@ label {
   left: 50%;
   transform: translate(-50%, -50%);
   text-decoration-color: antiquewhite;
-
 }
 
 .register {
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 .reg {
-  clear:both;
+  clear: both;
 }
 
-.registercard{
-
+.registercard {
   text-align: center;
   margin: 4% auto;
   background-color: white;
 
   padding: 2% 4%;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   border-radius: 5px;
 }
-
-
-  
-  
-
 
 /* button {
   width: 149px;
@@ -280,11 +269,11 @@ label {
 
  } */
 
- .button {
+.button {
   border: 1px solid #fff;
   border-radius: 12px;
   background-color: grey;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 17px;
   width: 90px;
@@ -301,7 +290,7 @@ label {
 }
 
 .button span:after {
-  content: '\00bb';
+  content: "\00bb";
   position: absolute;
   opacity: 0;
   top: 0;
@@ -318,8 +307,8 @@ label {
   right: 0;
 }
 
- .page-bg {
-   background-image : url("../../assets/1234.gif"); 
+.page-bg {
+  background-image: url("../../assets/1234.gif");
   background-size: cover;
   background-repeat: no-repeat;
   position: fixed;
@@ -328,31 +317,28 @@ label {
   z-index: -1;
 }
 
-
-  mat-card{
-    height: 90px; 
-    padding:0px;
-
-  }
-img{
-    width: 120px;
-    height: 80px;
-    padding-right: 20px;
-    margin-left: 0px;
-  
-  }
-  mat-card-title{
-    padding:0;
-    font-size: 17px;
-  }
-  
-.cardss {
-  margin:20px;
-  justify-content: center;
-  float:left;
+mat-card {
+  height: 90px;
+  padding: 0px;
 }
-  
-  /* #card2{
+img {
+  width: 120px;
+  height: 80px;
+  padding-right: 20px;
+  margin-left: 0px;
+}
+mat-card-title {
+  padding: 0;
+  font-size: 17px;
+}
+
+.cardss {
+  margin: 20px;
+  justify-content: center;
+  float: left;
+}
+
+/* #card2{
     background: url(https://image.ibb.co/dAAMEe/rooot123.jpg);
     background-repeat: no-repeat;
     background-size: 160px 100px;
@@ -396,6 +382,3 @@ img{
   } */
 
 /* ::ng-deep .mat-list-option:first-child .mat-pseudo-checkbox{ display: none;} */
-
-
-  
