@@ -1,7 +1,4 @@
-import { MatListModule } from '@angular/material/list';
-import { LogisticService } from './../logistics.service';
-import { v4 as uuid } from "uuid"
-import { Order } from './../order-details';
+import { LogisticService } from "./../logistics.service";
 import { ActivatedRoute } from "@angular/router";
 import { FirebaseService, Address, Cart } from "./../firebase.service";
 import { Component, OnInit, Input } from "@angular/core";
@@ -14,6 +11,7 @@ import {
   FormBuilder,
   Validators
 } from "@angular/forms";
+import { SearchService } from "../search.service";
 @Component({
   selector: "app-billing",
   templateUrl: "./billing.component.html",
@@ -21,27 +19,25 @@ import {
 })
 export class BillingComponent implements OnInit {
   orders: any;
-  order = new Order("","","","","","","","");
-  email = new FormControl('', [Validators.required, Validators.email]);
-  isRadioSelected: boolean = false;
-  orderId: string;
+
+  email = new FormControl("", [Validators.required, Validators.email]);
+
   add: Address = {
     address: "",
     email: "",
     phone: "",
-    city:"",
-    name: "",
-    addType: "",
-    orderId: "",
+    city: "",
+    name: ""
   };
-  firstname:any;
-  usAdd: any;
+  firstname: any;
+  addressList;
   carts: Cart[];
-  phoneNumb:any;
-  address:any;
-  city:any;
+  phoneNumb: any;
+  address: any;
+  city: any;
   usermail: any;
-  usersAddress:any;
+  usersAddress: any;
+  date: any;
   // usersEmail:any
   userEmail: FormControl = new FormControl("", [
     Validators.required,
@@ -54,29 +50,37 @@ export class BillingComponent implements OnInit {
   constructor(
     private firebase: FirebaseService,
     private route: ActivatedRoute,
+    private searchService: SearchService,
     private formBuilder: FormBuilder,
     private logistic: LogisticService
   ) {}
+  movies: any;
+<<<<<<< HEAD
+  getLatLng(address) {
+=======
+  getMovie(address) {
+>>>>>>> d7f99297282456e36ee073be446d7c66015415a7
+    this.searchService.getLatLng(address).subscribe(data => {
+      this.movies = data["latLng"];
+    });
+  }
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
       userName: ["", [Validators.required]],
       userEmail: ["", [Validators.required]],
       userPhone: ["", [Validators.required]],
-      usercity: ["",[Validators.required]],
+      usercity: ["", [Validators.required]],
       userAddress: ["", [Validators.required]],
       userAddType: ["", [Validators.required]]
     });
-    
     this.firebase.getAddress().subscribe(carts => {
-      this.usAdd = carts;
+      this.addressList = carts;
     });
     this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
     });
-    // this.add.orderId=(uuid());
-    // console.log(this.add.orderId);
   }
   totalQuant() {
     let totalQuantity = 0;
@@ -95,45 +99,32 @@ export class BillingComponent implements OnInit {
     }
     return sum;
   }
- 
- getVolume(){
-   let volumeTotal = 0;
-   for(let i=0; i < this.totalLength; i++) {
-     volumeTotal += this.carts[i].totalVolume
-   }
-   return volumeTotal;
- } 
+
+  getVolume() {
+    let volumeTotal = 0;
+    for (let i = 0; i < this.totalLength; i++) {
+      volumeTotal += this.carts[i].totalVolume;
+    }
+    return volumeTotal;
+  }
   onSubmit() {
-      this.add.name = this.firstname;
-      this.add.phone = this.phoneNumb;
-      this.add.address=this.address;
-      this.add.city=this.city;
-      this.add.email=this.usermail;
-      this.firebase.addAddress(this.add);
+    console.log(this.address);
+    this.add.name = this.firstname;
+    this.add.phone = this.phoneNumb;
+    this.add.address = this.address;
+    this.add.city = this.city;
+    this.add.email = this.usermail;
+    this.searchService.getLatLng(this.address).subscribe(data => {
+      setTimeout(() => {
+        this.add.addLat = data["lat"];
+        console.log(this.add.addLat);
+        this.add.addLng = data["lng"];
+      }, 1);
+    });
+    this.firebase.addAddress(this.add);
   }
-  radioselected() {
-    this.isRadioSelected = true;
-  }
-
-  isRadioSelect(){
-    return this.isRadioSelected;
-  }
-  orderDetails(address){
-  this.order.orderId=(uuid().replace(/-/g,''));
-  console.log(this.order.orderId);
-  this.order.orderConsumerName=this.add.name;
-  console.log(this.order.orderConsumerName);
-  this.order.orderConsumerAddress=this.add.address+", "+this.add.city;
-  console.log(this.order.orderConsumerAddress);
-  this.order.orderConsumerPhone=this.add.phone;
-  console.log(this.order.orderConsumerName);
-  this.order.orderVolume=this.getVolume().toString();
-  console.log(this.order.orderVolume);
-  //this.logistic.orderDetails().subscribe(res => console.log("done"));
-  }
-
-  deleteAddress(event, item) {
-    this.firebase.deleteAdd(item);
+  getdetails() {
+    this.firebase.addAddress(this.add);
   }
   get userName() {
     return this.userForm.get("userName");
@@ -144,13 +135,10 @@ export class BillingComponent implements OnInit {
   get userMail() {
     return this.userForm.get("userEmail");
   }
-  get usercity()
-  {
-    return this.userForm.get("usercity")
+  get usercity() {
+    return this.userForm.get("usercity");
   }
   get userAddress() {
     return this.userForm.get("userAddress");
   }
 }
-
- 

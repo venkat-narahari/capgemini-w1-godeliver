@@ -18,12 +18,9 @@ export class ProfileComponent implements OnInit {
     private firebase: FirebaseService,
     private userDetails: UserDetailsService
   ) {}
-  add: Address = {
-    address: ""
-  };
 
   ngOnInit() {
-    this.userEmail = JSON.parse(localStorage.getItem('currentUserEmail'));
+    this.userEmail = JSON.parse(localStorage.getItem("currentUserEmail"));
     console.log(this.userEmail);
 
     this.firebase.getAddress().subscribe(address => {
@@ -41,19 +38,9 @@ export class ProfileComponent implements OnInit {
     this.firebase.getWishlist().subscribe(wishlist => {
       this.wishlistLength = wishlist.length;
     });
-    
+
     this.userDetails.getUser(this.userEmail).subscribe(data => {
-      this.userdata = data;    
-  });                                                                                                                                                                                                                                                                                                                                                         
-
-}
-
-  addAddress(address) {
-    this.add.address = address;
-    this.firebase.addAddress(this.add);
-  }
-
-  deleteAdd(event, item) {
-    this.firebase.deleteAdd(item);
+      this.userdata = data;
+    });
   }
 }

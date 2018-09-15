@@ -1,20 +1,21 @@
 import { Order } from './order-details';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogisticService {
- private logistics_url="http://localhost:8890/api/v1/save";
- private slot_url="http://localhost:8086/api/v1/";
- private vehicles_url="http://localhost:8890/api/v1/"
+
+ private slot_url="http://172.23.239.100:8080/logistics/api/v1/";
+ private vehicles_url="http://172.23.239.100:8080/logistics/api/v1/"
   constructor(private http: HttpClient) { }
-orders: Order;
-  orderDetails(): Observable<Order[]> {
-    return this.http.get<Order[]>(this.slot_url+'slots?orderId='+this.orders.orderId+'&orderConsumerName='+this.orders.orderConsumerPhone+'&orderConsumerAddress='+this.orders.orderConsumerAddress+'&orderConsumerPhone='+this.orders.orderConsumerPhone+'&orderLatitude='+this.orders.orderLatitude+'&orderLongitude='+this.orders.orderLongitude+'&orderVolume='+this.orders.orderVolume+'&orderDate='+this.orders.orderDate);
+  orderDetails(order) {
+    return this.http.get<Order[]>(this.slot_url+'slots?orderId='+order.orderId+'&orderConsumerName='+order.orderConsumerName+'&orderConsumerAddress='+order.orderConsumerAddress+'&orderConsumerPhone='+order.orderConsumerPhone+'&orderLatitude='+order.orderLatitude+'&orderLongitude='+order.orderLongitude+'&orderVolume='+order.orderVolume+'&orderDate='+order.orderDate);
   }
 
 }

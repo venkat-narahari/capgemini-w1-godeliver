@@ -24,8 +24,9 @@ import com.stackroute.logisticsservice.service.LogisticsService;
 /**
  * Controller for mapping to generate a logistics service
  */
+@CrossOrigin
 @RestController
-@RequestMapping(value = "api/v1")
+@RequestMapping(value = "/api/v1")
 public class LogisticsController {
 
 	private LogisticsService logisticsServiceImpl;

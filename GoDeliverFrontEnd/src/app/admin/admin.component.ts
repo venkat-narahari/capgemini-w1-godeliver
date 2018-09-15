@@ -62,9 +62,6 @@ export class AdminComponent implements OnInit {
     this.stops.join();
     console.log(this.stops);
   }
-  location() {
-    console.log(this.geo);
-  }
   timePrint(event, item) {
     this.timeslot = item;
   }

@@ -82,7 +82,7 @@ import { PaymentComponent } from "./payment/payment.component"; // agm-direction
     SettingsComponent,
     TimeslotsComponent,
     DeleteaccountComponent,
-    PaymentComponent
+    DeliveryCardComponent
   ],
   imports: [
     BrowserModule,

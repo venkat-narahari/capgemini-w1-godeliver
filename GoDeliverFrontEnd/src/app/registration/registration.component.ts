@@ -69,14 +69,14 @@ preferencesSubmit(){
 
   genre = new FormControl();
   genreList = [
-    {id:1, name:"Thriller", card:"card1", click:"card1", img:"https://image.ibb.co/g2POcz/fffff.jpg"},
-    {id:2,name:"Fiction", card:"card2", click:"card2", img:"https://image.ibb.co/dAAMEe/rooot123.jpg)" },
-    {id:3,name:"History", card:"card3", click:"card3", img:"https://image.ibb.co/jBP6xz/wwww_160x100.jpg"},
-    {id:4,name:"Biography", card:"card4", click:"card4", img:"https://image.ibb.co/jyc1fK/meghs.jpg"},
-    {id:5,name:"Sports", card:"card5", click:"card5", img:"https://image.ibb.co/mEFJSz/6666.jpg"},
-    {id:6,name:"Romance", card:"card6", click:"card6", img:"https://preview.ibb.co/fGjpZe/d3255.jpg"},
-    {id:7,name:"Horror", card:"card7", click:"card7", img:"https://image.ibb.co/d0Cq7z/Virat_Kohli.jpg)"},
-    {id:8,name:"Comic", card:"card8", click:"card8", img:"https://image.ibb.co/iPbicz/thenunnnn.jpg"}
+    {id:1, name:"thriller", card:"card1", click:"card1", img:"https://image.ibb.co/g2POcz/fffff.jpg"},
+    {id:2,name:"fiction", card:"card2", click:"card2", img:"https://image.ibb.co/dAAMEe/rooot123.jpg)" },
+    {id:3,name:"history", card:"card3", click:"card3", img:"https://image.ibb.co/jBP6xz/wwww_160x100.jpg"},
+    {id:4,name:"biography", card:"card4", click:"card4", img:"https://image.ibb.co/jyc1fK/meghs.jpg"},
+    {id:5,name:"sports", card:"card5", click:"card5", img:"https://image.ibb.co/mEFJSz/6666.jpg"},
+    {id:6,name:"romance", card:"card6", click:"card6", img:"https://preview.ibb.co/fGjpZe/d3255.jpg"},
+    {id:7,name:"horror", card:"card7", click:"card7", img:"https://image.ibb.co/d0Cq7z/Virat_Kohli.jpg)"},
+    {id:8,name:"comic", card:"card8", click:"card8", img:"https://image.ibb.co/iPbicz/thenunnnn.jpg"}
   ];
 
 
