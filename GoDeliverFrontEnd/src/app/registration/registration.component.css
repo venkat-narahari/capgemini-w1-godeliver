@@ -319,7 +319,7 @@ label {
 }
 
  .page-bg {
-  /* background-image : url("../../assets/1234.gif"); */
+  background-image : url("../../assets/1234.gif");
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.3;
