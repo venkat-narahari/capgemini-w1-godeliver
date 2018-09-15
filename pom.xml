@@ -33,5 +33,6 @@
 		<module>logistics-service</module>
 		<module>order-details</module>
 		<module>payment-service</module>
+		<module>cvrp-service</module>
 	</modules>
 </project>
