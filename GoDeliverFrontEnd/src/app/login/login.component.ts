@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute} from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import {FormControl, Validators} from '@angular/forms';
+import { getMaxListeners } from 'cluster';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
       // this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
     }
 
+    
+
     ngOnInit() {
       this.userForm = this.formBuilder.group({
         userEmail: [
@@ -34,8 +37,17 @@ export class LoginComponent implements OnInit {
     }
 // when user clicks login button this method will be called and user input will be evaluated and corresponding error handling
     loginSubmit() {
-
+      if(this.userEmail.value=="admin@gmail.com"&&this.userPassword.value=="admin123"){
       this.authenticationService.login(this.userEmail.value, this.userPassword.value)
+      .subscribe(
+          data => {
+              this.router.navigate(['/admin']);
+              location.reload();
+          
+          }
+        );
+          }else{
+            this.authenticationService.login(this.userEmail.value, this.userPassword.value)
       .subscribe(
           data => {
               this.router.navigate(['']);
@@ -47,6 +59,8 @@ export class LoginComponent implements OnInit {
           //     this.error = 'Username or password is required'; 
           // },
         );
+
+          }
     }
     
 //method which gets the useremail and returns to login validation form
