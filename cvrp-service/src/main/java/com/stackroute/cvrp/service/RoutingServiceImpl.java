@@ -97,7 +97,7 @@ public class RoutingServiceImpl implements RoutingService {
 			cvrp.getRoute(route);
 			cvrp.greedySolution(ordersList, distanceMatrix);
 			cvrp.greedySolution(ordersList, distanceMatrix);
-			//cvrp.TabuSearch(10, distanceMatrix);
+			cvrp.TabuSearch(10, distanceMatrix);
 
 		}
 		for (int i = 0; i < distanceMatrix.length; i++) {
