@@ -101,6 +101,9 @@ public class RoutingServiceImpl implements RoutingService {
 //			System.out.println("vehicles of routing service"+vehicles[i].getVehicleRoute().length);
 //			}
 			cvrp.TabuSearch(10, distanceMatrix);
+			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
+			System.out.println("updated vehicles "+cvrp.updatedVehicles()[s]);
+			}
 
 		}
 		for (int i = 0; i < distanceMatrix.length; i++) {
