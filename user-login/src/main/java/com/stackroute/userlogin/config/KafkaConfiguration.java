@@ -7,7 +7,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
@@ -18,7 +17,6 @@ import com.stackroute.userprofile.domain.UserProfile;
 
 @EnableKafka
 @Configuration
-@PropertySource(value = {"classpath:bootstrap.yml"})
 public class KafkaConfiguration {
 
 	/* kafka consumer factory*/
@@ -26,7 +24,7 @@ public class KafkaConfiguration {
 	public ConsumerFactory<String, UserProfile> consumerFactory() {
 		Map<String, Object> config = new HashMap<>();
 		
-		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.49:9092");
+		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.61:9092");
 		config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
 		config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
