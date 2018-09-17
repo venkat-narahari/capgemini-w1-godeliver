@@ -13,6 +13,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "3240000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "60",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -54,6 +55,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "4260000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "50",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -95,6 +97,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "3260000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "48",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -145,6 +148,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "4500000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "57",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -186,6 +190,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "2810000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "47",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -227,6 +232,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "1220000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "57",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -277,6 +283,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "3240000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "65",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -318,6 +325,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "4260000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "46",
           "vehicleRoute": [
             {
               "orderId": "4",
@@ -359,6 +367,7 @@
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "5060000",
           "vehicleRouteDurationLimit": "180",
+          "vehicleCoveredDistance": "55",
           "vehicleRoute": [
             {
               "orderId": "4",
