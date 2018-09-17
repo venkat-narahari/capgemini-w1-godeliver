@@ -29,7 +29,7 @@ public class RoutingServiceImpl implements RoutingService {
 	private Location location;
 	private Location newOrderLocation;
 	private Location depoLocation = new Location("12.9353863", "77.6117461");
-	private Order depoOrder=new Order(depoLocation);
+	private Order depoOrder = new Order(depoLocation);
 	private Order[] orderArray;
 	private double[][] distanceMatrix;
 	private boolean checkIfFits;
@@ -97,7 +97,13 @@ public class RoutingServiceImpl implements RoutingService {
 			cvrp.getRoute(route);
 			cvrp.greedySolution(ordersList, distanceMatrix);
 			cvrp.greedySolution(ordersList, distanceMatrix);
+			//for(int k=0;k<vehicles.length;k++) {
+//			System.out.println("vehicles of routing service"+vehicles[i].getVehicleRoute().length);
+//			}
 			cvrp.TabuSearch(10, distanceMatrix);
+			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
+			System.out.println("updated vehicles "+cvrp.updatedVehicles()[s]);
+			}
 
 		}
 		for (int i = 0; i < distanceMatrix.length; i++) {
@@ -113,3 +119,4 @@ public class RoutingServiceImpl implements RoutingService {
 	}
 
 }
+

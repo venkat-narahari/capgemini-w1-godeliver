@@ -21,6 +21,12 @@
     <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
     </agm-direction>
   </agm-map>
+</div><br><br>
+<div *ngIf=doughnutChartData>
+  <div style="display: block">
+    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  </div>
 </div>
 <br>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>

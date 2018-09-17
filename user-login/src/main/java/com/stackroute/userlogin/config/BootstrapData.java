@@ -25,6 +25,11 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		user.setUserEmail("stackroute@gmail.com");
 		user.setUserPassword("qwerty12");
 		userRepository.save(user);
+		
+		User admin = new User();
+		admin.setUserEmail("admin@gmail.com");
+		admin.setUserPassword("admin123");
+		userRepository.save(admin);
 	}
 
 }

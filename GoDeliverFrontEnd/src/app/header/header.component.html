@@ -17,7 +17,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
 
-      <ul class="navbar-nav" style="padding-right: 70px; padding-left:100px">
+      <ul class="navbar-nav">
         <div *ngIf=noUser style="padding-top: 10px;">
           <li class="nav-item">
             <a class="nav-link" routerLink="/login" href="#">Login</a>
@@ -51,11 +51,12 @@
         </li>
         <div *ngIf=curUser style="padding-top:10px;">
           <li class="nav-item">
-            <a class="nav-link " (click)="wishlistRoute()"  href="#">Wishlist</a>
+            <a class="nav-link " (click)="wishlistRoute()" href="#">Wishlist</a>
           </li>
         </div>
         <li class="nav-item">
-          <a class="nav-link" (click)="cartRoute()">Cart</a>
+          <a class="nav-link" (click)="cartRoute()" style="cursor:pointer"><i class="fa fa-cart-plus"><span class="badge">{{cartLength}}</span></i>
+            Cart</a>
         </li>
       </ul>
     </div>
