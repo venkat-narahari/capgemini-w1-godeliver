@@ -19,7 +19,7 @@ import com.stackroute.logisticsservice.repository.LogisticsRepository;
 
 @Primary
 @Service
-@PropertySource(value = {"classpath:logistics.yml"})
+@PropertySource(value = {"classpath:bootstrap.yml"})
 public class LogisticsServiceImpl implements LogisticsService {
 
 	@Value("#{'${vehicle.capacity}'}")

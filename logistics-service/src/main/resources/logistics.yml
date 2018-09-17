@@ -1,7 +1,0 @@
-vehicle.capacity: 5670000
-vehicle.routeDurationLimit: 200
-slot.numberOfSlots: 3
-slot.numberOfVehicles: 3
-slot.duration: 180
-slot.startTime: 0900,1300,1700
-slot.endTime: 1200,1600,2000
