@@ -96,24 +96,27 @@ public class RoutingServiceImpl implements RoutingService {
 			CvrpServiceImpl1 cvrp = new CvrpServiceImpl1(ordersList.size(), vehicles.length, vehicleCap);
 			cvrp.getRoute(route);
 			cvrp.greedySolution(ordersList, distanceMatrix);
+			cvrp.SolutionPrint("Solution after greedy solution");
 			cvrp.greedySolution(ordersList, distanceMatrix);
 			//for(int k=0;k<vehicles.length;k++) {
 //			System.out.println("vehicles of routing service"+vehicles[i].getVehicleRoute().length);
 //			}
 			cvrp.TabuSearch(10, distanceMatrix);
+			cvrp.SolutionPrint("Solution after tabu");
+
 			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
 			System.out.println("updated vehicles "+cvrp.updatedVehicles()[s]);
 			}
 
 		}
-		for (int i = 0; i < distanceMatrix.length; i++) {
-			for (int j = 0; j < distanceMatrix.length; j++)
-				System.out.println("distance matrix is " + distanceMatrix[i][j]);
-		}
-		System.out.println("orderList fianl is " + ordersList);
-		System.out.println("");
-		System.out.println("LocationList " + locationList);
-		convertToJson(ordersList);
+//		for (int i = 0; i < distanceMatrix.length; i++) {
+//			for (int j = 0; j < distanceMatrix.length; j++)
+//				System.out.println("distance matrix is " + distanceMatrix[i][j]);
+//		}
+//		System.out.println("orderList fianl is " + ordersList);
+//		System.out.println("");
+//		System.out.println("LocationList " + locationList);
+//		convertToJson(ordersList);
 
 		return null;
 	}
