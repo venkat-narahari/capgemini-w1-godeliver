@@ -38,10 +38,6 @@ export class AuthenticationService {
               "currentUserEmail",
               JSON.stringify(user.email)
             );
-            localStorage.setItem(
-              "xavdnmzicn",
-              JSON.stringify(user.role)
-            );
           }
           console.log(userPassword);
           return user;
@@ -52,15 +48,12 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
-    localStorage.removeItem("xavdnmzicn");
-   
+      
   }
 
   loggedIn() {
     return !!localStorage.getItem('currentUserToken');
   }
 
-  adminLoggedIn() {
-    return !!(JSON.parse(localStorage.getItem('currentUserEmail'))==='admin@gmail.com')
-  }
+  
 }
