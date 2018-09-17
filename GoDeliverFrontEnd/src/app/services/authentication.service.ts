@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { Login } from "../login";
+import { getMaxListeners } from "cluster";
 
 @Injectable()
 export class AuthenticationService {
@@ -57,5 +58,9 @@ export class AuthenticationService {
 
   loggedIn() {
     return !!localStorage.getItem('currentUserToken');
+  }
+
+  adminLoggedIn() {
+    return !!(JSON.parse(localStorage.getItem('currentUserEmail'))==='admin@gmail.com')
   }
 }

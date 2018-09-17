@@ -25,8 +25,7 @@ export class CardsComponent implements OnInit {
     totalVolume: 1
   };
   deleteList: any;
-  like: boolean = true;
-  noLike:boolean=false;
+  like: boolean=false;
   wish: Wishlist = {
     bookISBN_10: "",
     title: "",
@@ -78,10 +77,10 @@ export class CardsComponent implements OnInit {
   }
 
   heaImage() {
-    this.heartImage = "../../assets/white.png";
+    //this.heartImage = "../../assets/white.png";
     for (let i = 0; i < this.booksLength; i++) {
       if (this.book.title == this.books[i].title) {
-        this.heartImage = "https://png.icons8.com/color/24/e74c3c/hearts.png"
+        this.like=true;
       }
     }
   }
@@ -136,7 +135,7 @@ export class CardsComponent implements OnInit {
     if(this.like==false) {
       this.like=true;
     }
-    else {
+    else if(this.like==true){
       this.like=false;
     }
   }
