@@ -1,3 +1,4 @@
+//Vehicle Model
 import { Order } from './Order';
 import { Deserializable } from './Deserializable';
 
@@ -10,7 +11,7 @@ export class Vehicle implements Deserializable{
       public vehicleCurrentLocation: string;
       public vehicleRoute: Order[];
 
-      deserialize(input: any) {
+      deserialize(input: any) :this {
         Object.assign(this, input);
         return this;
       }
