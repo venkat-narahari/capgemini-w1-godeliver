@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { BookService } from "../book.service";
 import { Router } from "@angular/router";
+import { FirebaseService } from "../firebase.service";
 
 @Component({
   selector: "app-header",
@@ -14,9 +15,11 @@ export class HeaderComponent implements OnInit {
   search: string = "shivam";
   title: any;
   admin:any;
+  cartLength:any;
 
   constructor(private bookService: BookService,
-              private router:Router
+              private router:Router,
+              private firebase:FirebaseService
     ) { }
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.noUser = "NoUser";
     }
+    this.firebase.getCart().subscribe(data => {this.cartLength=data.length});
     
   }
 
