@@ -5,7 +5,7 @@ spring:
     name: book-ms
   cloud:
     config:
-      uri: http://172.23.239.100:8891
+      uri: http://10.20.1.206:8891
 
 #spring.data.mongodb.database=booksdb
 #spring.data.mongodb.host=localhost

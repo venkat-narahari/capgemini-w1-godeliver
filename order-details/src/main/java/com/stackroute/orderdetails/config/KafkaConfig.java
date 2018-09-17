@@ -27,7 +27,7 @@ public class KafkaConfig {
 	public ProducerFactory<String, Orderdetails> producerFactory() {
 		Map<String, Object> props = new HashMap<>();
 
-		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.49:9092");
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "10.20.1.129:9092");
 		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, "details");
