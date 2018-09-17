@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Vehicle {
 
-
 	private String vehicleId;
 	private String vehicleCapacity;
 	private String vehicleLoadedCapacity;
@@ -14,7 +13,7 @@ public class Vehicle {
 	private String vehicleRouteDurationLimit;
 	private String vehicleCurrentLocation;
 	private Order[] vehicleRoute;
-	//private ArrayList<Order> vehicleRouteList;
+	// private ArrayList<Order> vehicleRouteList;
 
 	public Vehicle() {
 
@@ -87,21 +86,37 @@ public class Vehicle {
 		this.vehicleRoute = vehicleRoute;
 	}
 
+	// List<Order> vehicleRouteList=Arrays.asList(this.vehicleRoute);
 	public void addOrder(Order order)// Add Customer to Vehicle Route
-	{
 
-		List<Order> vehicleRouteList = new ArrayList<>();
+	{
 		List<Order> vehicleRoute = new ArrayList<>();
-		Order orderObj;
-		if (this.getVehicleRoute() != null) {
-			vehicleRouteList = Arrays.asList(this.getVehicleRoute());
-			for (int i = 0; i < vehicleRouteList.size(); i++) {
-				orderObj = vehicleRouteList.get(i);
-				vehicleRoute.add(orderObj);
-			}
-			this.vehicleLoadedCapacity += order.getOrderVolume();
-			this.vehicleCurrentLocation = order.getOrderId();
-		}
+		vehicleRoute.add(order);
+		this.setVehicleRoute(vehicleRoute.toArray(new Order[vehicleRoute.size()]));
+		// System.out.println("order in add order+++++"+order.toString());
+		// vehicleRouteList = new ArrayList<>();
+		// List<Order> vehicleRoute = new ArrayList<>();
+		// Order orderObj;
+		// //List<Order> vehicleRouteList = Arrays.asList(this.getVehicleRoute());
+		//
+		// System.out.println("Order: "+order);
+		// vehicleRouteList.add(order);
+		// if (this.getVehicleRoute() != null) {
+		// vehicleRouteList = Arrays.asList(this.getVehicleRoute());
+		// for (int i = 0; i < vehicleRouteList.size(); i++) {
+		// orderObj = vehicleRouteList.get(i);
+		// vehicleRoute.add(order);
+		// }
+
+		// int i=this.vehicleRoute.length-1;
+		// this.vehicleRoute[i]=order;
+		// //this.vehicleLoadedCapacity += order.getOrderVolume();
+		int vehicleLoadedCapacity = Integer.parseInt(this.vehicleLoadedCapacity);
+		vehicleLoadedCapacity += Integer.parseInt(order.getOrderVolume());
+		// System.out.println("vehicle ++++"+vehicleLoadedCapacity);
+		this.vehicleLoadedCapacity = Integer.toString(vehicleLoadedCapacity);
+		this.vehicleCurrentLocation = order.getOrderId();
+
 	}
 
 	public Vehicle(int id, int cap) {
@@ -110,9 +125,7 @@ public class Vehicle {
 		this.vehicleLoadedCapacity = String.valueOf(0);
 		this.vehicleCurrentLocation = String.valueOf(0);
 		this.vehicleRoute = new Order[] {};
-		//this.vehicleRoute = new vehicleRoute[];
-		
-	
+		// this.vehicleRoute = new vehicleRoute[];
 
 	}
 
@@ -123,12 +136,12 @@ public class Vehicle {
 				+ ", vehicleRouteDurationLimit=" + vehicleRouteDurationLimit + ", vehicleCurrentLocation="
 				+ vehicleCurrentLocation + ", vehicleRoute=" + Arrays.toString(vehicleRoute) + "]";
 	}
-	
+
 	public boolean CheckIfFits(String demand) {
-		int dem=Integer.parseInt(demand);
-		int vehLoad=Integer.parseInt(vehicleLoadedCapacity);
-		int vehCap=Integer.parseInt(vehicleCapacity);
-		return((vehLoad+dem <= vehCap));
+		int dem = Integer.parseInt(demand);
+		int vehLoad = Integer.parseInt(vehicleLoadedCapacity);
+		int vehCap = Integer.parseInt(vehicleCapacity);
+		return ((vehLoad + dem <= vehCap));
 	}
 
 }
