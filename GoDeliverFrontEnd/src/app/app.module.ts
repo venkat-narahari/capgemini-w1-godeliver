@@ -116,7 +116,7 @@ import { AdminService } from './admin.service';
     HttpModule,
     AgmCoreModule.forRoot({
       // @agm/core
-      apiKey: 'AIzaSyDe2QqXrbtaORvL-I0WHpiI72HxtfTz5Zo'
+      apiKey: ''
     }),
     AgmDirectionModule // agm-direction
   ],
