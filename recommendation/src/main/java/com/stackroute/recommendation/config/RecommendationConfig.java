@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -19,11 +20,15 @@ import com.stackroute.userprofile.domain.UserProfile;
 @Configuration
 @EnableKafka
 public class RecommendationConfig {
+	
+	@Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServers;
 
 	@Bean
 	public ConsumerFactory<String, Book> consumerFactory() {
 		Map<String, Object> props = new HashMap<>();
-		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.49:9092");
+		
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
 		props.put(ConsumerConfig.GROUP_ID_CONFIG, "books");
 		//props.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.bookservice");
 		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -42,7 +47,7 @@ public class RecommendationConfig {
 	public ConsumerFactory<String, UserProfile> userConsumerFactory() {
 		Map<String, Object> config = new HashMap<>();
 
-		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "172.23.239.49:9092");
+		config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
 		config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
 		config.put(JsonDeserializer.TRUSTED_PACKAGES, "com.stackroute.userservice");
 		config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
