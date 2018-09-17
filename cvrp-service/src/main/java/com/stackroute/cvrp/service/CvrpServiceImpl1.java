@@ -203,9 +203,9 @@ public class CvrpServiceImpl1 implements CvrpService {
 				System.out.println("in condition");
 				this.vehicles[vehicleIndex].addOrder(orders[0]);
 			}
-			System.out.println("vehicles[vehicleIndex] ...>>>>>>>>>>" + vehicles[vehicleIndex]);
-			System.out.println("vehicles[vehicleIndex]" + vehicles[vehicleIndex].getVehicleCurrentLocation());
-			System.out.println("integer 11" + vehicles[vehicleIndex]);
+			//System.out.println("vehicles[vehicleIndex] ...>>>>>>>>>>" + vehicles[vehicleIndex]);
+			//System.out.println("vehicles[vehicleIndex]" + vehicles[vehicleIndex].getVehicleCurrentLocation());
+			//System.out.println("integer 11" + vehicles[vehicleIndex]);
 			int i;
 			for (i = 1; i < noOfOrders; i++) {
 				if (orders[i].isRouted() == false) {
@@ -215,7 +215,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 
 						candCost = distanceMatrix[Integer
 								.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation())][i];
-						System.out.println("candidate cost" + candCost);
+						//System.out.println("candidate cost" + candCost);
 						if (minCost > candCost) {
 							minCost = candCost;
 							orderIndex = i;
@@ -245,11 +245,11 @@ public class CvrpServiceImpl1 implements CvrpService {
 			}
 
 		}
-		System.out.println("vehicles in greedy sol >>>>>>>>>>>>>>>>"+Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation()));
-		System.out.println("*****************"+Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation()));
+		//System.out.println("vehicles in greedy sol >>>>>>>>>>>>>>>>"+ Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation()));
+		//System.out.println("*****************" + Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation()));
 		endCost = distanceMatrix[Integer.parseInt(vehicles[vehicleIndex].getVehicleCurrentLocation())][0];
 		this.vehicles[vehicleIndex].addOrder(orders[0]);
-		//vehicles[vehicleIndex].setVehicleRoute(orders);
+		// vehicles[vehicleIndex].setVehicleRoute(orders);
 		this.distance += endCost;
 		System.out.println("endcost in greedy" + endCost);
 		System.out.println("vehicles[veh]" + vehicles[vehicleIndex]);
@@ -261,6 +261,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 		System.out.println("inside tabu search");
 		List<Order> RouteFrom;
 		List<Order> RouteTo;
+		List<Order> routeList;
 
 		int movingNodeDemand = 0;
 
@@ -285,90 +286,97 @@ public class CvrpServiceImpl1 implements CvrpService {
 			BestNCost = Double.MAX_VALUE;
 			// System.out.println("Best cost"+BestNCost);
 			for (vehIndexFrom = 0; vehIndexFrom < this.vehicles.length; vehIndexFrom++) {
-				{
+				//System.out.println("inside for loop checking vehiclIndex " + vehIndexFrom);
+				
 					RouteFrom = Arrays.asList(this.vehicles[vehIndexFrom].getVehicleRoute());
+					if (RouteFrom != null) {
+						int RoutFromLength = RouteFrom.size();
+//						System.out.println("route from length" + RoutFromLength);
+						for (int i = 1; i < RoutFromLength - 1; i++) { // Not possible to move depot!
 
-					int RoutFromLength = RouteFrom.size();
-					 System.out.println("route from length"+RoutFromLength);
-					for (int i = 1; i < RoutFromLength - 1; i++) { // Not possible to move depot!
+							for (VehIndexTo = 0; VehIndexTo < this.vehicles.length; VehIndexTo++) {
+								RouteTo = Arrays.asList(this.vehicles[VehIndexTo].getVehicleRoute());
+								int RouteTolength = RouteTo.size();
+//								System.out.println("hey" + RouteTolength);
+								for (int j = 0; (j < RouteTolength - 1); j++) {// Not possible to move after last Depot!
 
-						for (VehIndexTo = 0; VehIndexTo < this.vehicles.length; VehIndexTo++) {
-							RouteTo = Arrays.asList(this.vehicles[VehIndexTo].getVehicleRoute());
-							int RouteTolength = RouteTo.size();
-							 System.out.println("hey"+RouteTolength);
-							for (int j = 0; (j < RouteTolength - 1); j++) {// Not possible to move after last Depot!
+									movingNodeDemand = Integer.parseInt(RouteFrom.get(i).getOrderVolume());
 
-								movingNodeDemand = Integer.parseInt(RouteFrom.get(i).getOrderVolume());
+									if ((vehIndexFrom == VehIndexTo) || this.vehicles[VehIndexTo]
+											.CheckIfFits(String.valueOf(movingNodeDemand))) {
+										// If we assign to a different route check capacity constrains
+										// if in the new route is the same no need to check for capacity
 
-								if ((vehIndexFrom == VehIndexTo)
-										|| this.vehicles[VehIndexTo].CheckIfFits(String.valueOf(movingNodeDemand))) {
-									// If we assign to a different route check capacity constrains
-									// if in the new route is the same no need to check for capacity
+										if (((vehIndexFrom == VehIndexTo) && ((j == i) || (j == i - 1))) == false) // Not
+																													// a
+																													// move
+																													// that
+																													// Changes
+																													// solution
+																													// cost
+										{
+//											System.out.println("i*&^%^&*^&^&^%&$^&$&$$%&%");
+											double MinusCost1 = distanceMatrix[Integer
+													.parseInt(RouteFrom.get(i - 1).getOrderId())][Integer
+															.parseInt(RouteFrom.get(i).getOrderId())];
+											// System.out.println("Minus Cost 1 "+i+" "+ MinusCost1);
+											double MinusCost2 = distanceMatrix[Integer
+													.parseInt(RouteFrom.get(i).getOrderId())][Integer
+															.parseInt(RouteFrom.get(i + 1).getOrderId())];
+											// System.out.println("Minus Cost 2 "+i+" "+ MinusCost2);
+											double MinusCost3 = distanceMatrix[Integer
+													.parseInt(RouteTo.get(j).getOrderId())][Integer
+															.parseInt(RouteTo.get(j + 1).getOrderId())];
+											// System.out.println("Minus Cost 3 "+i+" "+ MinusCost3);
 
-									if (((vehIndexFrom == VehIndexTo) && ((j == i) || (j == i - 1))) == false) // Not a
-																												// move
-																												// that
-																												// Changes
-																												// solution
-																												// cost
-									{ 
-										 System.out.println("i*&^%^&*^&^&^%&$^&$&$$%&%");
-										double MinusCost1 = distanceMatrix[Integer
-												.parseInt(RouteFrom.get(i - 1).getOrderId())][Integer
-														.parseInt(RouteFrom.get(i).getOrderId())];
-										// System.out.println("Minus Cost 1 "+i+" "+ MinusCost1);
-										double MinusCost2 = distanceMatrix[Integer
-												.parseInt(RouteFrom.get(i).getOrderId())][Integer
-														.parseInt(RouteFrom.get(i + 1).getOrderId())];
-										// System.out.println("Minus Cost 2 "+i+" "+ MinusCost2);
-										double MinusCost3 = distanceMatrix[Integer
-												.parseInt(RouteTo.get(j).getOrderId())][Integer
-														.parseInt(RouteTo.get(j + 1).getOrderId())];
-										// System.out.println("Minus Cost 3 "+i+" "+ MinusCost3);
+											double AddedCost1 = distanceMatrix[Integer
+													.parseInt(RouteFrom.get(i - 1).getOrderId())][Integer
+															.parseInt(RouteFrom.get(i + 1).getOrderId())];
+											// System.out.println("Added Cost 1 "+i+" "+" "+j+ AddedCost1);
+											double AddedCost2 = distanceMatrix[Integer
+													.parseInt(RouteTo.get(j).getOrderId())][Integer
+															.parseInt(RouteFrom.get(i).getOrderId())];
 
-										double AddedCost1 = distanceMatrix[Integer
-												.parseInt(RouteFrom.get(i - 1).getOrderId())][Integer
-														.parseInt(RouteFrom.get(i + 1).getOrderId())];
-										// System.out.println("Added Cost 1 "+i+" "+" "+j+ AddedCost1);
-										double AddedCost2 = distanceMatrix[Integer
-												.parseInt(RouteTo.get(j).getOrderId())][Integer
-														.parseInt(RouteFrom.get(i).getOrderId())];
+											// System.out.println("Added Cost 2 "+i+" "+" "+j+ AddedCost2);
+											double AddedCost3 = distanceMatrix[Integer
+													.parseInt(RouteFrom.get(i).getOrderId())][Integer
+															.parseInt(RouteTo.get(j + 1).getOrderId())];
+											// System.out.println("Added Cost 3 "+i+" "+" "+j+ AddedCost3);
 
-										// System.out.println("Added Cost 2 "+i+" "+" "+j+ AddedCost2);
-										double AddedCost3 = distanceMatrix[Integer
-												.parseInt(RouteFrom.get(i).getOrderId())][Integer
-														.parseInt(RouteTo.get(j + 1).getOrderId())];
-										// System.out.println("Added Cost 3 "+i+" "+" "+j+ AddedCost3);
+											// Check if the move is a Tabu! - If it is Tabu break
+											if ((TABU_Matrix[Integer
+													.parseInt(RouteFrom.get(i - 1).getOrderId())][Integer
+															.parseInt(RouteFrom.get(i + 1).getOrderId())] != 0)
+													|| (TABU_Matrix[Integer
+															.parseInt(RouteTo.get(j).getOrderId())][Integer
+																	.parseInt(RouteFrom.get(i).getOrderId())] != 0)
+													|| (TABU_Matrix[Integer
+															.parseInt(RouteFrom.get(i).getOrderId())][Integer
+																	.parseInt(RouteTo.get(j + 1).getOrderId())] != 0)) {
+												// System.out.println("ifififififif@@@@@@@@@");
+												break;
+											}
 
-										// Check if the move is a Tabu! - If it is Tabu break
-										if ((TABU_Matrix[Integer.parseInt(RouteFrom.get(i - 1).getOrderId())][Integer
-												.parseInt(RouteFrom.get(i + 1).getOrderId())] != 0)
-												|| (TABU_Matrix[Integer.parseInt(RouteTo.get(j).getOrderId())][Integer
-														.parseInt(RouteFrom.get(i).getOrderId())] != 0)
-												|| (TABU_Matrix[Integer.parseInt(RouteFrom.get(i).getOrderId())][Integer
-														.parseInt(RouteTo.get(j + 1).getOrderId())] != 0)) {
-//											System.out.println("ifififififif@@@@@@@@@");
-											break;
-										}
+											NeigthboorCost = AddedCost1 + AddedCost2 + AddedCost3 - MinusCost1
+													- MinusCost2 - MinusCost3;
+											// System.out.println(NeigthboorCost);
+											// System.out.println("inside if*&*&*&**"+NeigthboorCost);
 
-										NeigthboorCost = AddedCost1 + AddedCost2 + AddedCost3 - MinusCost1 - MinusCost2
-												- MinusCost3;
-										// System.out.println(NeigthboorCost);
-//										System.out.println("inside if*&*&*&**"+NeigthboorCost);
-
-										if (NeigthboorCost < BestNCost) {
-											BestNCost = NeigthboorCost;
-											SwapIndexA = i;
-											SwapIndexB = j;
-											SwapRouteFrom = vehIndexFrom;
-											SwapRouteTo = VehIndexTo;
+											if (NeigthboorCost < BestNCost) {
+												BestNCost = NeigthboorCost;
+												SwapIndexA = i;
+												SwapIndexB = j;
+												SwapRouteFrom = vehIndexFrom;
+												SwapRouteTo = VehIndexTo;
+											}
 										}
 									}
 								}
 							}
 						}
 					}
-				}
+			}
+				//System.out.println("value of vehiclIndex is " + vehIndexFrom);
 
 				for (int o = 0; o < TABU_Matrix[0].length; o++) {
 					for (int p = 0; p < TABU_Matrix[0].length; p++) {
@@ -378,8 +386,8 @@ public class CvrpServiceImpl1 implements CvrpService {
 					}
 				}
 
-				RouteFrom = Arrays.asList(this.vehicles[SwapRouteFrom].getVehicleRoute());
-				RouteTo = Arrays.asList(this.vehicles[SwapRouteTo].getVehicleRoute());
+				RouteFrom = new ArrayList<>(Arrays.asList(this.vehicles[SwapRouteFrom].getVehicleRoute()));
+				RouteTo = new ArrayList<>(Arrays.asList(this.vehicles[SwapRouteTo].getVehicleRoute()));
 				this.vehicles[SwapRouteFrom].setVehicleRoute(null);
 				this.vehicles[SwapRouteTo].setVehicleRoute(null);
 
@@ -399,10 +407,13 @@ public class CvrpServiceImpl1 implements CvrpService {
 				TABU_Matrix[Integer.parseInt(SwapNode.getOrderId())][NodeIDAfter] = TABU_Horizon + RendomDelay2;
 				TABU_Matrix[NodeID_F][NodeID_G] = TABU_Horizon + RendomDelay3;
 
+
 				RouteFrom.remove(SwapIndexA);
+
 
 				if (SwapRouteFrom == SwapRouteTo) {
 					if (SwapIndexA < SwapIndexB) {
+						
 						RouteTo.add(SwapIndexB, SwapNode);
 					} else {
 						RouteTo.add(SwapIndexB + 1, SwapNode);
@@ -447,7 +458,7 @@ public class CvrpServiceImpl1 implements CvrpService {
 			} catch (Exception e) {
 			}
 		}
-	}
+	
 
 	// We use 1-0 exchange move
 	// List<Order> RouteFrom = new ArrayList<Order>();
