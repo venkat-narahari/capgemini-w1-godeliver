@@ -19,4 +19,8 @@ export class AdminService {
   getRoute(item) {
    return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[item.vehicleId])).pipe(map(body => body['vehicleRoute']));
   }
+
+  getTotalVolume(item) {
+    return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[item.vehicleId]));
+   }
 }

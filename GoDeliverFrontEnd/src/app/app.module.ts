@@ -59,6 +59,7 @@ import { AgmDirectionModule } from "agm-direction";
 import { DeliveryCardComponent } from "./delivery-card/delivery-card.component";
 import { PaymentComponent } from "./payment/payment.component";
 import { AdminService } from './admin.service';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,9 +117,10 @@ import { AdminService } from './admin.service';
     HttpModule,
     AgmCoreModule.forRoot({
       // @agm/core
-      apiKey: ''
+      apiKey: 'hidden'
     }),
-    AgmDirectionModule // agm-direction
+    AgmDirectionModule, // agm-direction,
+    ChartsModule
   ],
   providers: [
     FirebaseService,
