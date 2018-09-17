@@ -1,45 +1,159 @@
 <h1 style="text-align: center">Select time slots</h1>
 <div class="container">
     <div class="col-sm-6">
-        <mat-card style="height:80%">
+
+        <mat-card style="height:320px;border-radius: 8px;margin-top:10px">
             <div class="row">
                 <div class="col-sm-4">
-                    <mat-card>
-                        <label>
-                            <input type="radio" style="margin-left:15px" name="editList" value="always" />slot 1
-                        </label>
-                        <p>{{price}}</p>
+
+                    <mat-card style="background-color:orange;;width:160px">
+                       
+                            <input type="radio"  name="editList" id="show_Id"[value]="timeslot1" ng-model="timeslot1"
+                            class="timeslot" (click)="radioselected(timeslot)" tabindex="1" />
+                            <label for="timeslot3"><button style="border-radius:8px;height:30px;margin-left:10px;background-color:darkblue"><p style="color:white;text-align:center;margin-top:5px">Timeslot1</p></button></label>
+                        <div *ngIf="isRadioSelect1()">
+                            <mat-card  style="height:20px">
+                                $5
+                            </mat-card>
+                            <button type="submit"  style="background-color:deepskyblue;margin-top:20px;border-radius: 8px;margin-left:15px">Confirm</button>
+                        </div>
                     </mat-card>
                 </div>
+
                 <div class="col-sm-4">
-                    <mat-card>
-                        <label>
-                            <input type="radio" style="margin-left:15px" name="editList" value="never" /> slot 2
-                        </label>
+                    <mat-card  style="background-color:orange;width:160px">
+                   
+                                <input type="radio"  name="editList" id="hide_Id"[value]="timeslot2" class="timeslot" (click)="radioselected1(timeslot2)" />
+                                <label for="timeslot3"><button style="border-radius:8px;height:30px;margin-left:10px;background-color:darkblue"><p style="color:white;text-align:center;margin-top:5px">Timeslot2</p></button></label>
+                        <div *ngIf="isRadioSelect2()">
+                                <mat-card style="height:20px">
+                                    $5
+                                </mat-card>
+                                <button type="submit"  style="background-color:deepskyblue;margin-top:20px;border-radius: 8px;margin-left:15px">Confirm</button>
+                            </div>
                     </mat-card>
-                </div>
+                </div> 
                 <div class="col-sm-4">
-                    <mat-card>
-                        <label>
-                            <input type="radio" style="margin-left:15px" name="editList" value="costChange" />slot 3
-                        </label>
+                    <mat-card  style="background-color:orange;width:160px">
+                                <input type="radio" name="editList" id="timeslot3"[value]="timeslot3" class="timeslot" (click)="radioselected2(timeslot3)" />
+                                <label for="timeslot3"><button style="border-radius:8px;height:30px;margin-left:10px;background-color:darkblue"><p style="color:white;text-align:center;margin-top:5px">Timeslot2</p></button></label>
+                        <div *ngIf="isRadioSelect3()">
+                                <mat-card  style="height:20px">
+                                   <p style="text-align: center;"> $5</p>
+                                </mat-card>
+                                <button type="submit"  style="background-color:deepskyblue;margin-top:20px;border-radius: 8px;margin-left:15px">Confirm</button>
+                            </div>
                     </mat-card>
                 </div>
             </div>
+         <button style="border-radius:2px;margin-top:20px;align-self: center;margin-top:15px;margin-left:20px">  <a class="link"(click)="billingRoute()"><p style="text-align: center;margin-top:5px"> Change Date?</p></a></button> 
+            
         </mat-card>
+
+
     </div>
-    <div class="col-sm-5" style="margin-left:20px;margin-top:0px">
-        <mat-card>
-            <mat-card-title>
-                <h3>Order Details</h3>
-            </mat-card-title>
-            <mat-card-content>
-                <h5>Total Items: {{totalQuantity()}}</h5>
-                <h5>Total Amount Payable: {{getSum()}}</h5>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div>
-<button class=" btn btn-block-sm btn-primary" style="margin-left:900px;margin-top:20px;margin-bottom: 15px">
+    <div class="col-sm-5"  >
+            <mat-card  style="height:320px;margin-top:10px;margin-left:20px">
+              <mat-card-title>
+                <b>Order Details</b>
+              </mat-card-title>
+              <mat-card-content>
+                <div class="table-responsive">
+                  <thead>
+                    <tr>
+                      <td style="width: 400px">
+                        <h5>Total Items</h5>
+                      </td>
+                      <td>
+                        <h5>{{  totalQuantity()}}</h5>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 400px">
+                        <h5>Amount Payable</h5>
+                      </td>
+                      <td>
+                        <h5>{{ getSum()}}</h5>
+                      </td>
+                    </tr>
+                    <hr class="horizantal"style="color:rgb(3, 3, 29)">
+                    <tr>
+                      <td style="width: 400px">
+                        <h5>Delivery Charges</h5>
+                      </td>
+                      <td>
+                        <h5>Free</h5>
+                      </td>
+                    </tr>
+                  </thead>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+<button class=" btn btn-block-sm btn-primary" style="margin-top:60px;margin-left:70px">
     <a routerLink="/payment" style="color:white">Proceed To Payment</a>
 </button>
+<br>
+<br>
+
+
+
+
+
+
+
+
+<!-- <h1 style="text-align: center">Select time slots</h1>
+<div class="container">
+        <div class="col-sm-6">
+                <mat-card style="height:80%">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <mat-card style="background-color:orange">
+                                    
+                                    <input type="radio" class="timeslot1" style="margin-left:15px"  id="timeslot1"name="editList" ng-model="timeslot1" [value]="timeslot1" (click)="radioselected(timeslot1)" />slot 1
+                            
+                                    <div *ngIf="isRadioSelect1()">
+                                            <mat-card  style="height:20px">
+                                                $5
+                                            </mat-card>
+                                            <button type="submit"  style="background-color:blue;margin-top:20px;border-radius: 8px;margin-left:15px">Confirm</button>
+                                        </div>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card>
+                                <label>
+                                    <input type="radio" style="margin-left:15px" name="editList" value="never" /> slot 2
+                                </label>
+                            </mat-card>
+                        </div>
+                        <div class="col-sm-4">
+                            <mat-card>
+                                <label>
+                                    <input type="radio" style="margin-left:15px" name="editList" value="costChange" />slot 3
+                                </label>
+                            </mat-card>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col-sm-5" style="margin-left:20px;margin-top:0px">
+                    <mat-card>
+                        <mat-card-title>
+                            <h3>Order Details</h3>
+                        </mat-card-title>
+                        <mat-card-content>
+                            <h5>Total Items: {{totalQuantity()}}</h5>
+                            <h5>Total Amount Payable: {{getSum()}}</h5>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+            <button class=" btn btn-block-sm btn-primary" style="margin-left:900px;margin-top:20px;margin-bottom: 15px">
+                <a routerLink="/payment" style="color:white">Proceed To Payment</a>
+            </button>
+ -->
+
+
+
