@@ -58,7 +58,7 @@ import { AgmCoreModule } from "@agm/core"; // @agm/core
 import { AgmDirectionModule } from "agm-direction";
 import { DeliveryCardComponent } from "./delivery-card/delivery-card.component";
 import { PaymentComponent } from "./payment/payment.component";
-
+import { AdminService } from './admin.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,7 +116,7 @@ import { PaymentComponent } from "./payment/payment.component";
     HttpModule,
     AgmCoreModule.forRoot({
       // @agm/core
-      apiKey: ""
+      apiKey: ''
     }),
     AgmDirectionModule // agm-direction
   ],
@@ -126,7 +126,7 @@ import { PaymentComponent } from "./payment/payment.component";
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     UserDetailsService,
-    AuthGuard
+    AuthGuard, AdminService
   ],
   bootstrap: [AppComponent]
 })

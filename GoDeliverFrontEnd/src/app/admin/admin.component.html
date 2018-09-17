@@ -5,10 +5,15 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field><br>
-    <button type="submit" (click)="timePrint(0900)" [disabled]="!myForm.form.valid" class="btn btn-primary">9 Am - 12
+    <mat-radio-group>
+      <mat-radio-button value="1" (click)="timePrint(0)">09 Am - 12 Pm</mat-radio-button>&nbsp;
+      <mat-radio-button value="2" (click)="timePrint(1)">01 Pm - 04 Pm</mat-radio-button>&nbsp;
+      <mat-radio-button value="3" (click)="timePrint(2)">05 Pm - 048 Pm</mat-radio-button>
+    </mat-radio-group><br>
+    <button type="submit" (click)="slotPrint(0)" [disabled]="!myForm.form.valid" class="btn btn-primary">Vehicle 1
     </button>&nbsp;
-    <button type="submit" (click)="timePrint(1300)" [disabled]="!myForm.form.valid" class="btn btn-primary">1 Pm - 4 Pm</button>&nbsp;
-    <button type="submit" (click)="timePrint(1700)" [disabled]="!myForm.form.valid" class="btn btn-primary">5 Pm - 8 Pm</button>
+    <button type="submit" (click)="slotPrint(1)" [disabled]="!myForm.form.valid" class="btn btn-primary">Vehicle 2</button>&nbsp;
+    <button type="submit" (click)="slotPrint(2)" [disabled]="!myForm.form.valid" class="btn btn-primary">Vehicle 3</button>
   </form>
 </div>
 <div *ngIf=origin>

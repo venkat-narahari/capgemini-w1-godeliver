@@ -19,8 +19,14 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.noCart=false;
     this.firebase.getCart().subscribe(carts => {
+      if(carts.length==0) {
+        this.noCart=true;
+      }
+      else
       this.carts = carts;
+     
     });
     if (this.carts.length == null) {
       this.noCart = true;
@@ -29,6 +35,10 @@ export class CartComponent implements OnInit {
 
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
+    if(this.carts.length==0) {
+      location.reload();
+      this.noCart=true;      
+  }
   }
   incrementQuantity(event, item: Cart) {
     item.quantity += 1;

@@ -1,3 +1,4 @@
+//Slots Model
 import { Vehicle } from './Vehicle';
 import { Deserializable } from './Deserializable';
 
@@ -10,7 +11,7 @@ export class Slot implements Deserializable{
       public slotCost: string;
       public slotVehicle: Vehicle[];
 
-      deserialize(input: any) {
+      deserialize(input: any) :this {
         Object.assign(this, input);
         return this;
       }

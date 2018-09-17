@@ -1,3 +1,4 @@
+//Order Model
 import { Slots }from './Slots';
 import { Location } from './Location';
 
@@ -13,7 +14,7 @@ export class Order {
       public availableSlots: Slots;
       public selectedSlot:string;
 
-      deserialize(input: any) {
+      deserialize(input: any) :this {
         Object.assign(this, input);
         return this;
       }
