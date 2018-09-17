@@ -90,9 +90,16 @@ public class Vehicle {
 	public void addOrder(Order order)// Add Customer to Vehicle Route
 
 	{
-		List<Order> vehicleRoute = new ArrayList<>();
+		List<Order> vehicleRoute;
+		if(this.getVehicleRoute().length!=0)
+		{vehicleRoute=new ArrayList<>(Arrays.asList(this.getVehicleRoute()));
 		vehicleRoute.add(order);
-		this.setVehicleRoute(vehicleRoute.toArray(new Order[vehicleRoute.size()]));
+		this.setVehicleRoute(vehicleRoute.toArray(new Order[vehicleRoute.size()]));}
+		else {
+			vehicleRoute=new ArrayList<>();
+			vehicleRoute.add(order);
+			this.setVehicleRoute(vehicleRoute.toArray(new Order[vehicleRoute.size()]));
+		}
 		// System.out.println("order in add order+++++"+order.toString());
 		// vehicleRouteList = new ArrayList<>();
 		// List<Order> vehicleRoute = new ArrayList<>();
