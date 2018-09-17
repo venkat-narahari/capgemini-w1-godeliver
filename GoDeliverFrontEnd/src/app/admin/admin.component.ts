@@ -77,7 +77,7 @@ export class AdminComponent implements OnInit {
 
   totalVolume() {
 
-      this.volume += this.vol.vehicleLoadedCapacity;
+      this.volume = this.vol.vehicleLoadedCapacity;
       console.log(this.volume);
       this.doughnutChartData= [this.volume,5670000-this.volume];
     }
