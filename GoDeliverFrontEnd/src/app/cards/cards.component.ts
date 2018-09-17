@@ -26,7 +26,7 @@ export class CardsComponent implements OnInit {
   };
   deleteList: any;
   like: boolean = true;
-
+  noLike:boolean=false;
   wish: Wishlist = {
     bookISBN_10: "",
     title: "",
@@ -81,8 +81,7 @@ export class CardsComponent implements OnInit {
     this.heartImage = "../../assets/white.png";
     for (let i = 0; i < this.booksLength; i++) {
       if (this.book.title == this.books[i].title) {
-        console.log(this.books[i].title, "111");
-        this.heartImage = "../../assets/red.png";
+        this.heartImage = "https://png.icons8.com/color/24/e74c3c/hearts.png"
       }
     }
   }
@@ -122,6 +121,7 @@ export class CardsComponent implements OnInit {
     for (let i = 0; i < this.wishlistLength; i++) {
       if (this.wish.bookISBN_10 === this.wishlist[i].bookISBN_10) {
         bool = false;
+        this.firebase.removeFromWishlist(this.wishlist[i]);
       }
     }
     if (bool) {
@@ -132,12 +132,14 @@ export class CardsComponent implements OnInit {
           console.log("done");
         });
     }
-  }
-  colorChange() {
-    this.like = !this.like;
+
+    if(this.like==false) {
+      this.like=true;
+    }
+    else {
+      this.like=false;
+    }
   }
 
-  removeFromWishlist(event, book) {
-    this.firebase.removeFromWishlist(book);
-  }
+  
 }
