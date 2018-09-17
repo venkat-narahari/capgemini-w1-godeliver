@@ -55,11 +55,8 @@ export class BillingComponent implements OnInit {
     private logistic: LogisticService
   ) {}
   movies: any;
-<<<<<<< HEAD
   getLatLng(address) {
-=======
-  getMovie(address) {
->>>>>>> d7f99297282456e36ee073be446d7c66015415a7
+
     this.searchService.getLatLng(address).subscribe(data => {
       this.movies = data["latLng"];
     });

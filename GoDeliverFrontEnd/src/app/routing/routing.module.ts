@@ -1,4 +1,3 @@
-import { PaymentComponent } from "./../payment/payment.component";
 import { TimeslotsComponent } from "./../timeslots/timeslots.component";
 import { BillingComponent } from "./../billing/billing.component";
 import { LoginComponent } from "./../login/login.component";
@@ -22,6 +21,9 @@ import { LoginGuard } from "../login.guard";
 import { DeleteaccountComponent } from "../deleteaccount/deleteaccount.component";
 import { SettingsComponent } from "../settings/settings.component";
 import { AdminComponent } from "../admin/admin.component";
+import { PaymentComponent } from "../payment/payment.component";
+
+
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
   { path: "settings", component: SettingsComponent },
   { path: "timeslots", component: TimeslotsComponent },
   { path: "admin", component: AdminComponent },
-  { path: "payment", component: PaymentComponent }
+  { path:"payment", component: PaymentComponent}
+
 ];
 
 @NgModule({

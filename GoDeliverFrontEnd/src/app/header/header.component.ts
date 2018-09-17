@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { BookService } from "../book.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -14,7 +15,9 @@ export class HeaderComponent implements OnInit {
   title: any;
   admin:any;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+              private router:Router
+    ) { }
 
   ngOnInit() {
     if (localStorage.getItem("currentUserEmail") !== null) {
@@ -33,5 +36,15 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem("currentUserToken");
     location.reload();
     this.noUser = "NoUser";
+  }
+
+  wishlistRoute() {
+    this.router.navigate(['/wishlist']);
+    location.reload();
+  }
+
+  cartRoute() {
+    this.router.navigate(['/cart']);
+    location.reload();
   }
 }

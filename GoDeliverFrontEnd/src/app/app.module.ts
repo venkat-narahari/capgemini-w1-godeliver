@@ -1,5 +1,5 @@
-import { HttpModule } from "@angular/http";
 import { TimeslotsComponent } from "./timeslots/timeslots.component";
+import { HttpModule } from "@angular/http";
 import { BillingComponent } from "./billing/billing.component";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -56,7 +56,9 @@ import { SettingsComponent } from "./settings/settings.component";
 import { DeleteaccountComponent } from "./deleteaccount/deleteaccount.component";
 import { AgmCoreModule } from "@agm/core"; // @agm/core
 import { AgmDirectionModule } from "agm-direction";
-import { PaymentComponent } from "./payment/payment.component"; // agm-direction
+import { DeliveryCardComponent } from "./delivery-card/delivery-card.component";
+import { PaymentComponent } from "./payment/payment.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +84,8 @@ import { PaymentComponent } from "./payment/payment.component"; // agm-direction
     SettingsComponent,
     TimeslotsComponent,
     DeleteaccountComponent,
-    DeliveryCardComponent
+    DeliveryCardComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

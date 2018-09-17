@@ -34,7 +34,7 @@ export class DeliveryCardComponent implements OnInit {
     return this.isRadioSelected;
   }
   orderDetails(address, phone, name, city, addLat, addLng, orderDate) {
-  console.log(address, phone, name,addLat);
+    console.log(address, phone, name,addLat);
     this.order.orderId = uuid().replace(/-/g, "");
     console.log(this.order.orderId);
     this.order.orderConsumerName = name;
@@ -51,7 +51,10 @@ export class DeliveryCardComponent implements OnInit {
     console.log(addLng);
     this.order.orderDate = this.date.toString();
     console.log(this.order.orderDate)
-    this.logistic.orderDetails(this.order).subscribe(res => console.log("done"));
+    this.logistic.orderDetails(this.order).subscribe(data => {
+      console.log(data)},
+        error => console.log("error: "+error)
+      );
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);
@@ -65,4 +68,3 @@ export class DeliveryCardComponent implements OnInit {
     return volumeTotal;
   }
 }
-

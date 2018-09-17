@@ -1,6 +1,7 @@
 /*css for login page*/
 
 .background {
+  background-size: cover;
   background-image : url("../../assets/1234.gif");
   
 }
