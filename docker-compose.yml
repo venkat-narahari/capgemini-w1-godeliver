@@ -11,10 +11,10 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8081:8081
-#    depends_on:
-#      eureka-server:
-#        condition: service_healthy
+      - 9076:9076
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 #      mongo-database:
 #        condition: service_healthy
     restart: always
@@ -30,10 +30,10 @@ services:
     network_mode: host
     hostname: localhost
     ports:
-      - 8086:8086
-#    depends_on:
-#      eureka-server:
-#        condition: service_healthy
+      - 9080:9080
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 #      mongo-database:
 #        condition: service_healthy
     restart: always
@@ -50,10 +50,10 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8082:8082
-#    depends_on:
-#      eureka-server:
-#        condition: service_healthy
+      - 9074:9074
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 #      mysql-database:
 #        condition: service_healthy
     restart: always
@@ -69,10 +69,10 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8070:8070
-#    depends_on:
-#      eureka-server:
-#        condition: service_healthy
+      - 9073:9073
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 #      mongo-database:
 #        condition: service_healthy
     restart: always
@@ -88,10 +88,10 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8888:8888
-#    depends_on:
-#      eureka-server:
-#        condition: service_healthy
+      - 9077:9077
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 #      mongo-database:
 #        condition: service_healthy
     restart: always
@@ -107,10 +107,10 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8092:8092
-#    depends_on:
-#      eureka-server:
-#        condition: service_healthy
+      - 9075:9075
+    depends_on:
+      eureka-server:
+        condition: service_healthy
 #      neo4j-database:
 #        condition: service_healthy
     restart: always
@@ -129,7 +129,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8761:8761
+      - 9070:9070
     restart: always
     healthcheck:
       test: "exit 0"
@@ -143,7 +143,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8891:8891
+      - 9071:9071
     restart: always
     healthcheck:
       test: "exit 0"
@@ -157,7 +157,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8080:8080
+      - 9072:9072
     depends_on:
       config-service:
         condition: service_healthy
@@ -249,7 +249,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 3000:3000
+      - 9081:9081
     volumes:
       - /var/lib/grafana
     environment:
@@ -269,7 +269,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 2181:2181
+      - 9082:9082
     restart: always
     healthcheck:
       test: "exit 0"
@@ -287,7 +287,7 @@ services:
       zookeeper:
         condition: service_healthy
     environment:
-      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
+      KAFKA_ZOOKEEPER_CONNECT: 'localhost:9082'
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1"
