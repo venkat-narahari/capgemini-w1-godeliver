@@ -1,11 +1,11 @@
 server:
-  port: "8070"
+  port: "9073"
 spring:
   application:
     name: userprofile-ms
   cloud:
     config:
-      uri: http://10.20.1.206:8891
+      uri: http://10.20.1.206:9071
 
 
 #

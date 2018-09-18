@@ -1,12 +1,12 @@
 server:
-  port: "8082"
+  port: "9074"
 
 spring:
   application:
     name: user-login
   cloud:
     config:
-      uri: http://10.20.1.206:8891
+      uri: http://10.20.1.206:9071
 
 #spring.datasource.url= jdbc:mysql://localhost:3306/go_d?useSSL=false
 #spring.datasource.username= root

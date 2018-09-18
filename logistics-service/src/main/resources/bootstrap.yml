@@ -1,13 +1,13 @@
 #application related
 server:
-  port: "8086"
+  port: "9080"
 
 spring:
   application:
     name: logistics-ms
   cloud:
     config:
-      uri: http://10.20.1.206:8891
+      uri: http://10.20.1.206:9071
 
 #mongo properties
 #spring.data.mongodb.host=localhost
