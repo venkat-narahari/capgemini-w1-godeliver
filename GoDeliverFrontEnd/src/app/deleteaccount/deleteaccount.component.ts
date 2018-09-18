@@ -15,5 +15,6 @@ export class DeleteaccountComponent implements OnInit {
 
   deleteAccount() {
     this.firebase.deleteUnregUser();
+    
   }
 }
