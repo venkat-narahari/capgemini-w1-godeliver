@@ -26,16 +26,15 @@ export class FirebaseService {
   profiles: Observable<Profile[]>;
   profileDoc: AngularFirestoreDocument<Profile>;
 
-  idName:any;
+  idName: any;
   constructor(public fs: AngularFirestore) {
-    if(JSON.parse(localStorage.getItem('uid'))!=null){
-      this.idName=JSON.parse(localStorage.getItem('uid'));
+    if (JSON.parse(localStorage.getItem("uid")) != null) {
+      this.idName = JSON.parse(localStorage.getItem("uid"));
       console.log(this.idName);
-      }
-      else {
-      this.idName=JSON.parse(localStorage.getItem('currentUserEmail'));
+    } else {
+      this.idName = JSON.parse(localStorage.getItem("currentUserEmail"));
       console.log(this.idName);
-      }
+    }
     this.cart = this.fs.collection("users/" + this.idName + "/cart");
     // this.carts=this.fs.collection('cart').valueChanges();
     this.carts = this.cart.snapshotChanges().pipe(
@@ -114,13 +113,11 @@ export class FirebaseService {
   }
 
   deleteItem(item: Cart) {
-  
     this.cartDoc = this.fs.doc(`users/` + this.idName + `/cart/${item.id}`);
     this.cartDoc.delete();
   }
 
   removeFromWishlist(item: Cart) {
-
     this.cartDoc = this.fs.doc(`users/` + this.idName + `/wishlist/${item.id}`);
     this.cartDoc.delete();
   }
@@ -136,26 +133,77 @@ export class FirebaseService {
   }
 
   updateUserProfile(profile: Profile) {
-    this.cartDoc = this.fs.doc(`users/` + this.idName + `/profile/${profile.id}`);
+    this.cartDoc = this.fs.doc(
+      `users/` + this.idName + `/profile/${profile.id}`
+    );
     this.cartDoc.update(profile);
   }
   async deleteCart() {
     //path of the collection
-    const path = "users/"+this.idName+"/cart"
+    const path = "users/" + this.idName + "/cart";
 
-//query snapshot
-    const qry: firebase.firestore.QuerySnapshot = await this.fs.collection(path).ref.get();
+    //query snapshot
+    const qry: firebase.firestore.QuerySnapshot = await this.fs
+      .collection(path)
+      .ref.get();
 
     const batch = this.fs.firestore.batch();
 
-//looping through docs in the collection to delete docs as a bulk operation
+    //looping through docs in the collection to delete docs as a bulk operation
     qry.forEach(doc => {
-      console.log('deleting....', doc.id);
+      console.log("deleting....", doc.id);
       batch.delete(doc.ref);
     });
-   // finally commit
-    batch.commit().then(res => console.log('committed batch.'))
-    .catch(err => console.error('error committing batch.', err));
+    // finally commit
+    batch
+      .commit()
+      .then(res => console.log("committed batch."))
+      .catch(err => console.error("error committing batch.", err));
+  }
+
+  //delete data of unregistered user once user is logged in
+  async deleteUnregUser() {
+    //path of the collection
+    const path = "users/" + this.idName + "/cart";
+
+    //query snapshot
+    const qry: firebase.firestore.QuerySnapshot = await this.fs
+      .collection(path)
+      .ref.get();
+
+    const batch = this.fs.firestore.batch();
+
+    //looping through docs in the collection to delete docs as a bulk operation
+    qry.forEach(doc => {
+      console.log("deleting....", doc.id);
+      batch.delete(doc.ref);
+    });
+    // finally commit
+    batch
+      .commit()
+      .then(res => console.log("committed batch."))
+      .catch(err => console.error("error committing batch.", err));
+
+    //path of the collection
+    const paths = "users/" + this.idName + "/address";
+
+    //query snapshot
+    const query: firebase.firestore.QuerySnapshot = await this.fs
+      .collection(paths)
+      .ref.get();
+
+    const batches = this.fs.firestore.batch();
+
+    //looping through docs in the collection to delete docs as a bulk operation
+    query.forEach(doc => {
+      console.log("deleting....", doc.id);
+      batches.delete(doc.ref);
+    });
+    // finally commit
+    batches
+      .commit()
+      .then(res => console.log("committed batches."))
+      .catch(err => console.error("error committing batches.", err));
   }
 }
 

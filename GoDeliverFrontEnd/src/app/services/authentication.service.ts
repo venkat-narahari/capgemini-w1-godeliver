@@ -4,10 +4,12 @@ import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { Login } from "../login";
 import { getMaxListeners } from "cluster";
+import { FirebaseService } from "../firebase.service";
+import { getLocaleTimeFormat } from "@angular/common";
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private firebase: FirebaseService) {}
 
   login(userEmail: String, userPassword: String): Observable<any> {
     const httpHeaders = new HttpHeaders({
@@ -21,7 +23,7 @@ export class AuthenticationService {
       .post<Login>(
         `http://13.127.190.125:9072/user-login/api/v1/login`,
         { userEmail, userPassword },
-        
+
         options
       )
       .pipe(
@@ -29,7 +31,15 @@ export class AuthenticationService {
           // login successful if there's a jwt token in the response
 
           if (user) {
+
+            //delete unregistered user once the user is logged in
+            if (localStorage.getItem("uid") != null) {
+              this.firebase.deleteUnregUser();
+              localStorage.removeItem("uid");
+            }
+
             // store user details and jwt token in local storage to keep user logged in between page refreshes
+           setTimeout(()=> {
             localStorage.setItem(
               "currentUserToken",
               JSON.stringify(user.token)
@@ -38,25 +48,19 @@ export class AuthenticationService {
               "currentUserEmail",
               JSON.stringify(user.email)
             );
-            if(localStorage.getItem("uid")!=null) {
-              localStorage.removeItem("uid");
-            }
+           },2000);
           }
           console.log(userPassword);
           return user;
         })
       );
-      
   }
   logout() {
     localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
-      
   }
 
   loggedIn() {
-    return !!localStorage.getItem('currentUserToken');
+    return !!localStorage.getItem("currentUserToken");
   }
-
-  
 }
