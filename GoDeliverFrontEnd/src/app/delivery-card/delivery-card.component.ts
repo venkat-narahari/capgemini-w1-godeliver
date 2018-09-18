@@ -51,10 +51,7 @@ export class DeliveryCardComponent implements OnInit {
     console.log(addLng);
     this.order.orderDate = this.date.toString();
     console.log(this.order.orderDate)
-    this.logistic.orderDetails(this.order).subscribe(data => {
-      console.log(data)},
-        error => console.log("error: "+error)
-      );
+    this.logistic.orderDetails(this.order);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);
