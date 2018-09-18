@@ -9,7 +9,7 @@
   <div class="registercard">
     <!-- form class for displaying the Registration page for user  uSing angularmaterial-->
 
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-horizontal-stepper #stepper>
       <mat-step [stepControl]="userForm">
         <form [formGroup]="userForm" (ngSubmit)="registerSubmit()" #myForm="ngForm">
           <mat-form-field class="example-full-width">

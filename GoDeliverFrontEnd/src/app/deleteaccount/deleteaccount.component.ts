@@ -12,4 +12,7 @@ export class DeleteaccountComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteAccount() {
+    
+  }
 }

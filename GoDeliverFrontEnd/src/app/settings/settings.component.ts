@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-settings',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
-  constructor() { }
+  add:any;
+  constructor(private firebase:FirebaseService) { }
 
   ngOnInit() {
+    this.firebase.getAddress().subscribe(data => {
+      this.add=data;
+    })
   }
 
 }
