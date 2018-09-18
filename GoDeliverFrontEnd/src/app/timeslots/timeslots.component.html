@@ -16,8 +16,10 @@
                        </div>
                        <div *ngIf="isRadioSelect1()">
                            {{slotCost[j]}}
+                           <div *ngIf="slots">
                            <button style="background-color:deepskyblue;margin-top:20px;border-radius: 8px;margin-left:15px"
-                               [disabled]="!slots">Confirm</button>
+                              >Confirm</button>
+                            </div>
                        </div>
                    </mat-card>
                </div>
