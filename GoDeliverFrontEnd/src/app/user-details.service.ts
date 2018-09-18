@@ -9,7 +9,8 @@ export class UserDetailsService {
   //Making http client obj to perform http operations
   constructor(public http: HttpClient) { }
 
-  private getUserDetails_url ="http://13.127.190.125:9072/userprofile/api/v1/user?userEmail="
+  private getUserDetails_url ="http://13.127.190.125:9072/userprofile/api/v1/user?userEmail=";
+  private deleteUserDetails_url = "http://13.127.190.125:9072/userprofile/api/v1/user?userEmail=";
   //Backend saveuser url
   private post_url = "http://13.127.190.125:9072/userprofile/api/v1/user";
 
@@ -22,5 +23,10 @@ export class UserDetailsService {
   getUser(user) :Observable<UserDetails[]>{
 
     return this.http.get<UserDetails[]>(this.getUserDetails_url+user);
+  }
+
+  deleteUser(useremail) :Observable<UserDetails[]>{
+
+    return this.http.post<UserDetails[]>(this.deleteUserDetails_url,useremail);
   }
 }
