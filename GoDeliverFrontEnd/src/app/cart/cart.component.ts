@@ -8,38 +8,28 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./cart.component.css"]
 })
 export class CartComponent implements OnInit {
-  carts: Cart[];
+  carts: Cart[] = [];
   interval: any;
   itemToEdit: any;
-  noCart: boolean;
+  
   constructor(
     private firebase: FirebaseService,
     private route: ActivatedRoute,
-   private router: Router
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.noCart=false;
-    this.firebase.getCart().subscribe(carts => {
-      if(carts.length==0) {
-        this.noCart=true;
-      }
-      else
-      this.carts = carts;
-     
+    this.firebase.getCart().subscribe(data => {
+      this.carts = data;
     });
-    if (this.carts.length == null) {
-      this.noCart = true;
-    } else this.noCart = false;
+  
   }
 
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
-    if(this.carts.length==0) {
-      location.reload();
-      this.noCart=true;      
+  
   }
-  }
+
   incrementQuantity(event, item: Cart) {
     item.quantity += 1;
     item.totalPrice = item.quantity * item.cost;
@@ -49,6 +39,7 @@ export class CartComponent implements OnInit {
     }
     this.firebase.updateItem(item);
   }
+
   decrementQuantity(event, item: Cart) {
     if (item.quantity > 1) {
       item.quantity -= 1;
@@ -57,6 +48,7 @@ export class CartComponent implements OnInit {
       this.firebase.updateItem(item);
     }
   }
+
   getSum(index: number): number {
     let sum = 0;
     let totalQuantity = 0;
@@ -66,6 +58,7 @@ export class CartComponent implements OnInit {
     }
     return sum;
   }
+
   totalQuantity(index: number): number {
     let totalQuantity = 0;
     for (let i = 0; i < this.carts.length; i++) {

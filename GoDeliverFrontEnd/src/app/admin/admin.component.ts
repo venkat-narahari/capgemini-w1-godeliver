@@ -32,10 +32,15 @@ export class AdminComponent implements OnInit {
     slot:1,
     vehicleId:1
   }
+  vol:any;
+  volume=0; 
+  public doughnutChartLabels:string[] = ['Filled', 'Empty'];
+  public doughnutChartData:number[];
+  public doughnutChartType:string = 'doughnut';
+
   constructor(private http: HttpClient, private admin: AdminService) {}
 
   ngOnInit() {}
-
   onSubmit() {
     this.item.slot=this.timeslot;
     this.item.vehicleId=this.slot;
@@ -43,8 +48,15 @@ export class AdminComponent implements OnInit {
       this.slotVehicleRoute = data;
       this.slotVehicleRouteLength=data.length;     
     });
+
+    this.admin.getTotalVolume(this.item).subscribe(data =>{
+      this.vol=data;
+    });
     setTimeout(() => {
       this.routes();
+    }, 2000);
+    setTimeout(() => {
+      this.totalVolume();
     }, 2000);
   }
 
@@ -62,6 +74,15 @@ export class AdminComponent implements OnInit {
     this.stops.join();
     console.log(this.stops);
   }
+
+  totalVolume() {
+
+      this.volume = this.vol.vehicleLoadedCapacity;
+      console.log(this.volume);
+      this.doughnutChartData= [this.volume,5670000-this.volume];
+    }
+
+
   timePrint(item) {
     this.timeslot = item;
     console.log(this.timeslot);
@@ -70,4 +91,14 @@ export class AdminComponent implements OnInit {
     this.slot = item;
     console.log(this.slot);
   }
+ 
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
+
 }
