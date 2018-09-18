@@ -269,7 +269,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 9082:9082
+      - 2181:2181
     restart: always
     healthcheck:
       test: "exit 0"
