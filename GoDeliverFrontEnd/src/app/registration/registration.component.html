@@ -1,92 +1,66 @@
 <!-- User registration HTML page-->
 <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
 <script src="node_modules/systemjs/dist/system.js"></script>
-<div class="row">
-  <div class="page-bg"></div>
-  <!-- <div class="col-sm-7">
-    <img class="img-responsive" src="assets/home.jpeg" style="width:800px;height:520px;">
-  </div>  -->
-  <div class="registercard">
-    <!-- form class for displaying the Registration page for user  uSing angularmaterial-->
 
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="userForm">
-        <form [formGroup]="userForm" (ngSubmit)="registerSubmit()" #myForm="ngForm">
-          <mat-form-field class="example-full-width">
-            <input matInput class="ip" placeholder="Full Name" formControlName="userName" name="userName">
-          </mat-form-field>
-          <br>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="password" class="example-full-width">
-            <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword" required/>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage2()}}</mat-error>
-          </mat-form-field>
-          <br>
-          <mat-form-field class="example-full-width">
-            <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB" required>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage3()}}</mat-error>
-          </mat-form-field>
-          <br>
-          <button type="submit" [disabled]="!myForm.form.valid" class="button" mat-button matStepperNext>
-            <span>Next</span>
-          </button>
-        </form>
-      </mat-step>
+<div class="component-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-md-offset-3">
+        <!-- form class for displaying the Registration page for user  uSing angularmaterial-->
+        <mat-card>
+          <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="userForm">
+              <form [formGroup]="userForm" (ngSubmit)="registerSubmit()" #myForm="ngForm">
+                <mat-form-field class="example-full-width">
+                  <input matInput class="ip" placeholder="Full Name" formControlName="userName" name="userName">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="password" class="example-full-width">
+                  <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword" required/>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage2()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage3()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <button type="submit" [disabled]="!myForm.form.valid" class="button" mat-button matStepperNext>
+                  <span class="button-word">Next</span>
+                </button>
+              </form>
+            </mat-step>
 
 
-      <mat-step [stepControl]="userForm">
-        <form [formGroup]="userForm" (ngSubmit)="preferencesSubmit()">
-          <!-- <mat-selection-list placeholder="Select Genre" [formControl]="genre" name="genre" > -->
-          <!-- <mat-list-option *ngFor="let genre of genreList" [value]="genre">{{genre}}</mat-list-option> -->
-          <!-- <div *ngFor="let genre of genreList">
-                    <mat-card id="{{genre.card}}" (click)="onclick()" > 
-          <mat-list-option class="option" [value]="genre.name">{{genre.name}}</mat-list-option>
-        </mat-card> 
-      </div> --> 
-          <div *ngFor="let genre of genreList" class="step2">
-            <mat-card id="{{genre.card}}" class="cardss" (click)="onclick(genre.id,genre.click,genre.name)">
-              <img mat-card-image src="{{genre.img}}" alt="movie genre">
-              <mat-card-title class="option">{{genre.name}}</mat-card-title>
-            </mat-card>
-          </div>
-            <!-- <mat-card id="card2" (click)="onclick1()"><mat-card-content class="option"> {{genreList[1]}}</mat-card-content></mat-card>
-                <mat-card id="card3" (click)="onclick2()"> <mat-card-content  class="option">{{genreList[6]}}</mat-card-content></mat-card><br>
-                <mat-card id="card4" (click)="onclick3()"> <mat-card-content class="option">{{genreList[5]}}</mat-card-content></mat-card>
-                <mat-card id="card5" (click)="onclick4()"> <mat-card-content class="option">{{genreList[2]}}</mat-card-content></mat-card><br> 
-                <mat-card id="card6" (click)="onclick5()"><mat-card-content  class="option">{{genreList[3]}}</mat-card-content></mat-card>
-                <mat-card id="card7" (click)="onclick6()"><mat-card-content  class="option">{{genreList[7]}}</mat-card-content></mat-card>
-                 <mat-card id="card8" (click)="onclick7()"> <mat-card-content class="option">{{genreList[4]}}</mat-card-content></mat-card><br>  -->
+            <mat-step [stepControl]="userForm">
+              <form [formGroup]="userForm" (ngSubmit)="preferencesSubmit()">
+                  <div *ngFor="let genre of genreList" class="step2">
+                    <div class="col-lg-3">
+                    <mat-card id="{{genre.card}}" class="option-cards" (click)="onclick(genre.id,genre.click,genre.name)">
+                      <img mat-card-image src="{{genre.img}}" alt="movie genre">
+                      <mat-card-title class="option">{{genre.name}}</mat-card-title>
+                    </mat-card>
+                  </div>
+                  </div>
 
-        
+                <div class="reg">
+                  <button class="button" mat-raised-button>
+                    <span class="button-word">Register</span>
+                  </button>
+                </div>
+              </form>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </mat-card>
 
-          <!-- <div id="container" *ngFor="let genre of genreList">
-
-                    <mat-card id="{{genre.card}}" (click)="onclick()"> 
-                        <mat-card-content class="option">{{genre.name}}</mat-card-content>
-                      </mat-card>  -->
-          <!-- <mat-card class="example-card m-3" fxFlex="row wrap" (click)="onGenreCardSelect(Names.name)" style="height: 160px; width: 120px">
-                        <img mat-card-image src="{{Names.img}}" alt="movie genre">
-                        <mat-card-content>
-                            <b class="genre-name">{{Names.name}}</b>
-                        </mat-card-content>
-                    </mat-card> -->
-          <!-- </div> -->
-
-          <div class="reg">
-            <button class="register" mat-raised-button 
-            style="color:rgb(252, 247, 247);background-color:grey" 
-            >
-              Register</button>
-          </div>
-        </form>
-      </mat-step>
-    </mat-horizontal-stepper>
+      </div>
+    </div>
   </div>
-
 </div>

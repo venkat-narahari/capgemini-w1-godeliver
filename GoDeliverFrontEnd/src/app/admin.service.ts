@@ -23,4 +23,10 @@ export class AdminService {
   getTotalVolume(item) {
     return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[item.vehicleId]));
    }
+
+   getTotalDistance(item) {
+    return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle']));
+   }
+
+
 }

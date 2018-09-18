@@ -17,6 +17,7 @@ export class AdminComponent implements OnInit {
   slotVehicle: any;
   slotOne: any;
   slotVehicleRoute: any;
+
   geo = {
     latitude: "",
     longitude: ""
@@ -34,6 +35,9 @@ export class AdminComponent implements OnInit {
   }
   vol:any;
   volume=0; 
+  distance = [];
+  data: any;
+  orderLength = [];
   public doughnutChartLabels:string[] = ['Filled', 'Empty'];
   public doughnutChartData:number[];
   public doughnutChartType:string = 'doughnut';
@@ -50,7 +54,23 @@ export class AdminComponent implements OnInit {
     });
 
     this.admin.getTotalVolume(this.item).subscribe(data =>{
-      this.vol=data;
+      this.vol=data; 
+    });
+    setTimeout(() => {
+      this.routes();
+    }, 2000);
+    setTimeout(() => {
+      this.totalVolume();
+    }, 2000);
+
+    this.admin.getTotalDistance(this.item).subscribe(data =>{
+      this.data=data;
+      for (let i=0; i<this.data.length; i++){
+        this.distance[i]=this.data[i].vehicleCoveredDistance; 
+        this.orderLength[i] = this.data[i].vehicleRoute.length;
+     }
+
+      
     });
     setTimeout(() => {
       this.routes();
@@ -59,6 +79,10 @@ export class AdminComponent implements OnInit {
       this.totalVolume();
     }, 2000);
   }
+
+
+  
+
 
   routes() {
     this.origin = this.destination = { lat: 12.9266122, lng: 77.6934768 };
@@ -80,6 +104,7 @@ export class AdminComponent implements OnInit {
       this.volume = this.vol.vehicleLoadedCapacity;
       console.log(this.volume);
       this.doughnutChartData= [this.volume,5670000-this.volume];
+      // this.distance=this.vol.vehicleCoveredDistance;
     }
 
 
@@ -101,4 +126,20 @@ export class AdminComponent implements OnInit {
     console.log(e);
   }
 
+
+
+
+
+public barChartOptions:any = {
+  scaleShowVerticalLines: false,
+  responsive: true
+};
+public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+public barChartType:string = 'bar';
+public barChartLegend:boolean = true;
+
+public barChartData:any[] = [
+  {data:this.distance, label: 'Vehicle Covered Distance'},
+  {data:this.orderLength, label: 'No. of Orders Placed'}
+];
 }
