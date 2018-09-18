@@ -60,6 +60,8 @@ import { DeliveryCardComponent } from "./delivery-card/delivery-card.component";
 import { PaymentComponent } from "./payment/payment.component";
 import { AdminService } from './admin.service';
 import { ChartsModule } from 'ng2-charts';
+import { TopsellingComponent } from './topselling/topselling.component';
+import { TopratedComponent } from './toprated/toprated.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,9 @@ import { ChartsModule } from 'ng2-charts';
     TimeslotsComponent,
     DeleteaccountComponent,
     DeliveryCardComponent,
-    PaymentComponent
+    PaymentComponent,
+    TopsellingComponent,
+    TopratedComponent
   ],
   imports: [
     BrowserModule,
