@@ -6,7 +6,7 @@ WORKDIR /src
 
 ADD target/eureka-server-1.0.0.jar /src/eureka-server-1.0.0.jar
 
-EXPOSE 8761
+EXPOSE 9070
 
 RUN sh -c 'touch /src/eureka-server-1.0.0.jar'
 

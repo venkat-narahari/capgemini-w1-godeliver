@@ -35,6 +35,7 @@ public class RoutingServiceImpl implements RoutingService {
 	private boolean checkIfFits;
 	private int vehicleCap;
 	private String slotid;
+	private Vehicle[] updatedVehicles;
 
 	@Autowired
 	public RoutingServiceImpl(CvrpServiceImpl cvrpServiceImpl1) {
@@ -91,18 +92,23 @@ public class RoutingServiceImpl implements RoutingService {
 				ordersList.get(j).setRouted(false);
 			}
 			CvrpServiceImpl cvrp = new CvrpServiceImpl(ordersList.size(), vehicles.length, vehicleCap);
-			cvrp.getRoute(route);
-			cvrp.greedySolution(ordersList, distanceMatrix);
-			cvrp.SolutionPrint("Solution after greedy solution");
-			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
-				System.out.println("updated vehicles "+cvrp.updatedVehicles()[s].toString());
-				}
-			cvrp.greedySolution(ordersList, distanceMatrix);
-			cvrp.TabuSearch(10, distanceMatrix);
-			cvrp.SolutionPrint("Solution after tabu");
-
-			
-
+            cvrp.getRoute(route);
+            cvrp.greedySolution(ordersList, distanceMatrix);
+            
+            cvrp.greedySolution(ordersList, distanceMatrix);
+            updatedVehicles=cvrp.SolutionPrint("Solution after greedy solution");
+            for(int s=0;s<cvrp.updatedVehicles().length;s++) {
+                System.out.println("updated vehicles after greedy solution"+cvrp.updatedVehicles()[s].toString());
+                }
+            //for(int k=0;k<vehicles.length;k++) {
+//            System.out.println("vehicles of routing service"+vehicles[i].getVehicleRoute().length);
+//            }
+            cvrp.TabuSearch(10, distanceMatrix);
+            cvrp.SolutionPrint("Solution after tabu");
+            updatedVehicles=cvrp.SolutionPrint("updated vehicles");
+            for(int e=0;e<updatedVehicles.length;e++) {
+            System.out.println("updated vehicles in routing "+updatedVehicles[e]);
+            }
 		}
 
 		return null;
