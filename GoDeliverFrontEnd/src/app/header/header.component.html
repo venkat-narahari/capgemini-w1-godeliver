@@ -5,24 +5,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <header>
-  <nav class="navbar navbar-expand-sm navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light m-0" id="nav">
+    <a class="navbar-brand" routerLink="">
+      <img src="assets/books.ico" alt="logo" style="width:40px;">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right border border-0" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="navbar-brand ml-5 col-xs-7 pl-5 pt-1">
-      <a routerLink="">
-        <img src="assets/books.ico" alt="logo" style="width:40px;">
-      </a>
-    </div>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-
+    <div class="collapse navbar-collapse justify-content-end" id="navbar">
       <ul class="navbar-nav">
-        <div *ngIf=noUser style="padding-top: 10px;">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login" href="#">Login</a>
-          </li>
-        </div>
+        <li *ngIf=noUser class="nav-item">
+          <a class="nav-link" routerLink="/login" href="#">Login</a>
+        </li>
 
         <div *ngIf=admin style="padding-top: 10px;">
           <li class="nav-item dropdown">
@@ -55,20 +50,20 @@
           <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">
             More
           </a>
-          <div class="dropdown-menu ">
+          <div class="dropdown-menu">
             <a class="dropdown-item" routerLink="/servicepage">24x7 Customer Care</a>
             <a class="dropdown-item " routerLink="/return">Return Policy</a>
             <a class="dropdown-item " routerLink="/about">About Us</a>
           </div>
         </li>
-        <div *ngIf=curUser style="padding-top:10px;">
-          <li class="nav-item">
-            <a class="nav-link " (click)="wishlistRoute()">Wishlist</a>
-          </li>
-        </div>
+        <li *ngIf=curUser class="nav-item">
+          <a class="nav-link " (click)="wishlistRoute()" href="#">Wishlist</a>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="cartRoute()" style="cursor:pointer"><i class="fa fa-cart-plus"><span class="badge">{{cartLength}}</span></i>
-            Cart</a>
+          <a class="nav-link" (click)="cartRoute()" style="cursor:pointer">
+            <i class="fa fa-cart-plus">
+              <span class="badge">{{cartLength}}</span>
+            </i> Cart</a>
         </li>
       </ul>
     </div>

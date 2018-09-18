@@ -1,26 +1,12 @@
-.example-icon {
-  padding: 0 14px;
+a{
+    color: black !important;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
-}
-.searchbar {
-  margin: 0 20px 0 0;
-}
-.searchbutton {
-  padding: 0 20px 0 0;
-}
-nav .navbar-nav li a {
-  color:black !important;
-  font-weight: 900;
-  padding-left: 15px;
-}
-
-.navbar-toggler-icon {
-  background-image: url("../../assets/hamburg.png");
-}
-._svgicon {
-  margin-top:10px;
-  color:black;
+a:hover{
+    letter-spacing: -1px;
+    font-weight: 900;
+    color: rgb(196, 17, 17) !important;
 }

@@ -290,7 +290,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://10.20.1.129:9092
       KAFKA_LISTENERS: PLAINTEXT://10.20.1.129:9092
-      KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1, order_details:1:1"
+      KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1, order_details:1:1, userprofile-login:1:1"
     restart: always
     healthcheck:
       test: "exit 0"

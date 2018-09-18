@@ -24,7 +24,6 @@ import com.stackroute.cvrp.exceptions.IllegalLocationMatrixException;
 public class CvrpServiceImpl implements CvrpService {
 
 	private Route list;
-	//private Slot[] slots;
 	private Vehicle[] vehicles;
 	private Vehicle[] vehiclesForBestSolution;
 	private double bestSolutionCost;
@@ -32,20 +31,12 @@ public class CvrpServiceImpl implements CvrpService {
 	private int noOfVehicles;
 	private int noOfOrders;
 	private double distance;
-//	private float filledSlotCapacity = 0;
-//	private float totalSlotCapacity = 0;
-//	private float newFilledCapacity;
-//	private float vehicleFilledCapacity;
-//	private float vehicleTotalCapacity;
-//	private DateLogistics dateLogs = new DateLogistics();
-//	private Slot[] slot;
 	private Order[] orders;
 
 	public CvrpServiceImpl() {
 
 	}
 
-	// @Override
 	public void getRoute(Route route) {
 		this.list = route;
 	}
@@ -65,7 +56,7 @@ public class CvrpServiceImpl implements CvrpService {
 
 	@Override
 	public double[][] getDistanceMatrix(List<Location> locationList) {
-		System.out.println("Json is disatnceMatrix is " + list);
+
 		String url1 = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?";
 		String origins = "origins=";
 		String origin = "";
@@ -74,7 +65,6 @@ public class CvrpServiceImpl implements CvrpService {
 		String destination = "";
 		String url2 = "travelMode=driving&key=AhT3nVgSlv14w5u2GLYkCrCJm1VWDkBeEGHpG4JFNb13vgktN7OIJEr-5KZZrZah";
 		String inline = "";
-//		List<Location> locations;
 		double[][] distanceMatrix = new double[locationList.size()][locationList.size()];
 		while (!(locationList.isEmpty())) {
 			if (count < 1) {
@@ -89,7 +79,6 @@ public class CvrpServiceImpl implements CvrpService {
 				origin = origins.substring(0, origins.length() - 1);
 				destination = destinations.substring(0, destinations.length() - 1);
 				String url = url1 + origin + "&" + destination + "&" + url2;
-				System.out.println("Url is " + url);
 
 				try {
 					count++;
@@ -105,8 +94,7 @@ public class CvrpServiceImpl implements CvrpService {
 						while (sc.hasNext()) {
 							inline += sc.nextLine();
 						}
-						System.out.println("\nJSON Response in String format");
-						System.out.println(inline);
+
 						sc.close();
 					}
 
@@ -120,12 +108,10 @@ public class CvrpServiceImpl implements CvrpService {
 					for (int j = 1; j < jsonarr_3.size(); j++) {
 						JSONObject jsonobj_2 = (JSONObject) jsonarr_3.get(j);
 						int str_data1 = ((Long) jsonobj_2.get("destinationIndex")).intValue();
-						System.out.println(str_data1);
+
 						int str_data2 = ((Long) jsonobj_2.get("originIndex")).intValue();
-						System.out.println(str_data2);
 						try {
 							Double str_data4 = (Double) jsonobj_2.get("travelDistance");
-							System.out.println(str_data4);
 							if (str_data1 != str_data2) {
 								distanceMatrix[str_data1][str_data2] = str_data4.doubleValue();
 								distanceMatrix[str_data2][str_data1] = str_data4.doubleValue();
@@ -135,7 +121,6 @@ public class CvrpServiceImpl implements CvrpService {
 						} catch (Exception e) {
 
 						}
-						System.out.println("\n");
 					}
 					conn.disconnect();
 					return distanceMatrix;
@@ -209,7 +194,6 @@ public class CvrpServiceImpl implements CvrpService {
 		this.distance += endCost;
 	}
 
-	
 	public double tabuSearch(int TABU_Horizon, double[][] distanceMatrix) {
 		List<Order> routeFrom;
 		List<Order> routeTo;
@@ -358,7 +342,7 @@ public class CvrpServiceImpl implements CvrpService {
 			this.distance += bestNCost;
 
 			if (this.distance < bestSolutionCost) {
-				System.out.println("heyyyyyyyyyyyy");
+
 				saveBestSolution();
 			}
 			if (iteration_number == max_interations) {
@@ -368,7 +352,6 @@ public class CvrpServiceImpl implements CvrpService {
 
 		this.vehicles = vehiclesForBestSolution;
 		this.distance = bestSolutionCost;
-		System.out.println("this is vehicles" + this.vehicles);
 
 		try {
 			PrintWriter writer = new PrintWriter("PastSolutionsTabu.txt", "UTF-8");
@@ -408,40 +391,27 @@ public class CvrpServiceImpl implements CvrpService {
 
 	public Vehicle[] solutionPrint(String Solution_Label)// Print Solution In console
 	{
-		System.out.println("=========================================================");
-        System.out.println(Solution_Label + "\n");
 
-        int vehicleFilledCapacity=0;
-        
-        for (int j = 0; j < this.noOfVehicles; j++) {
-            
-            if (this.vehicles[j].getVehicleRoute().length!=0) {
-                for(int e=0;e<this.vehicles[j].getVehicleRoute().length;e++) {
-                System.out.println("vehicle route after tabau search"+this.vehicles[j].getVehicleRoute()[e]);
-                //get order capacity of each order in each vehicle and add all orders capacity and set to vehiclefilledcapacity
-                }
-                System.out.print("Vehicle " + j + ":");
-                int RoutSize = this.vehicles[j].getVehicleRoute().length;
-                for (int k = 0; k < RoutSize; k++) {
-                    vehicleFilledCapacity += Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderVolume());
-                    this.vehicles[j].setVehicleLoadedCapacity(String.valueOf(vehicleFilledCapacity));
-                    
-                    if (k == RoutSize - 1) {
-                        System.out.print(this.vehicles[j].getVehicleRoute()[k].getOrderId());
-                    } else {
-                        System.out.print(this.vehicles[j].getVehicleRoute()[k].getOrderId() + "->");
-                    }
-                }
-                System.out.println("vehicles with filled capacity"+this.vehicles[j]);
-                System.out.println();
-            }
-        }
-        System.out.println("\nSolution Cost " + this.distance + "\n");
-        for(int j=0;j<vehicles.length;j++) {
-        System.out.println("vehciles in cvrp with filledcapacity"+vehicles[j]);
-        }
-        System.out.println("vehciles array"+vehicles.toString());
-        return this.vehicles;
-        }
+		int vehicleFilledCapacity = 0;
+
+		for (int j = 0; j < this.noOfVehicles; j++) {
+
+			if (this.vehicles[j].getVehicleRoute().length != 0) {
+
+				// get order capacity of each order in each vehicle and add all orders capacity
+				// and set to vehiclefilledcapacity
+
+				int RoutSize = this.vehicles[j].getVehicleRoute().length;
+				for (int k = 0; k < RoutSize; k++) {
+					vehicleFilledCapacity += Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderVolume());
+					this.vehicles[j].setVehicleLoadedCapacity(String.valueOf(vehicleFilledCapacity));
+
+				}
+
+			}
+		}
+
+		return this.vehicles;
+	}
 
 }
