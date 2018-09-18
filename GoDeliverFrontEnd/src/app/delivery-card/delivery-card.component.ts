@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { LogisticService } from './../logistics.service';
 import { FirebaseService, Cart } from './../firebase.service';
 import { Order } from './../order-details';
@@ -18,7 +19,7 @@ export class DeliveryCardComponent implements OnInit {
   totalLength: any;
   order = new Order("", "", "", "", "", "", "", "");
 
-  constructor(private fb: FirebaseService, private logistic: LogisticService) {}
+  constructor(private fb: FirebaseService, private logistic: LogisticService, private router: Router) {}
 
   ngOnInit() {
     this.fb.getCart().subscribe(carts => {
@@ -50,8 +51,12 @@ export class DeliveryCardComponent implements OnInit {
     this.order.orderLongitude = addLng;
     console.log(addLng);
     this.order.orderDate = this.date.toString();
-    console.log(this.order.orderDate)
+    console.log(this.order.orderDate);
     this.logistic.orderDetails(this.order);
+    setTimeout(() => {
+      this.router.navigate(["/timeslots"]);
+      location.reload();
+    }, 10000);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);

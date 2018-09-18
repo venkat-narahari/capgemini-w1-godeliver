@@ -113,13 +113,22 @@ export class BillingComponent implements OnInit {
     this.add.email = this.usermail;
     this.searchService.getLatLng(this.address).subscribe(data => {
       setTimeout(() => {
-        this.add.addLat = data["lat"];
+      this.add.addLat = data["lat"];
         console.log(this.add.addLat);
         this.add.addLng = data["lng"];
-      }, 1);
+      }, 1000);
+  
     });
+    setTimeout(() => {
+      this.addAddress();
+  }, 5000);
+  }
+
+  addAddress() {
+    console.log(this.add);
     this.firebase.addAddress(this.add);
   }
+ 
   getdetails() {
     this.firebase.addAddress(this.add);
   }
