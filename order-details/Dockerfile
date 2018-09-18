@@ -8,7 +8,7 @@ ADD ./target/order-details-0.0.1-SNAPSHOT.jar /usr/app/order-details-0.0.1-SNAPS
 
 # java -jar <jar fileName>
 
-EXPOSE 8081
+EXPOSE 9076
 
 WORKDIR usr/app
 
