@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from "@angular/core";
+import { FirebaseService, Cart } from "./../firebase.service";
 import { Http, Headers } from "@angular/http";
 import { FirebaseService } from "../firebase.service";
 
@@ -15,10 +17,13 @@ export class PaymentComponent implements OnInit {
   expiryMonth: string;
   expiryYear: string;
   cvc: string;
-
-  constructor(private http: Http, private firebase: FirebaseService) {}
+  totalamountpayable:any;
+  totalLength: any;
+  carts: Cart[];
+  constructor(private http: Http,private firebase: FirebaseService) {
+  }
   chargeCard(token: string) {
-    const headers = new Headers({ token: token, amount: 50 });
+    const headers = new Headers({ token: token, amount:this.getSum() });
     this.http
       .post("http://localhost:8080/payment/charge", {}, { headers: headers })
       .subscribe(resp => {
@@ -32,6 +37,23 @@ export class PaymentComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
       });
+  }
+  totalQuant() {
+    let totalQuantity = 0;
+ 
+    for (let i = 0; i < this.totalLength; i++) {
+      totalQuantity += this.carts[i].quantity;
+    }
+    return totalQuantity;
+  }
+ 
+  getSum() {
+    let sum = 0;
+ 
+    for (let i = 0; i < this.totalLength; i++) {
+      sum += this.carts[i].totalPrice;
+    }
+    return sum;
   }
 
   chargeCreditCard() {
@@ -75,9 +97,13 @@ export class PaymentComponent implements OnInit {
     if (localStorage.getItem("currentUserPayment")) {
       console.log("hi");
 
-      localStorage.removeItem("currentUserPayment");
-      this.firebase.deleteCart();
+  ngOnInit() {
+    this.firebase.getCart().subscribe(carts => {
+      this.carts = carts;
+      this.totalLength =  carts.length;
     }
+
+    )
   }
 
   ngOnInit() {}

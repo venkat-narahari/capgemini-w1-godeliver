@@ -29,21 +29,5 @@ export class LogisticService {
       {console.log(data)}
     );
   }
-  getLatitude()
-{
-  return this.http.get('../assets/location.json').subscribe(
-    data => {
-      let res=data[0];
-      this.slots=res['slots'];
-      console.log(this.slots);
-      console.log(this.slots[0]['slotId']);
-      console.log(this.slots[0]['slotduration']);
-    },
+}
 
-      (err: HttpErrorResponse) =>{
-      console.log(err.message);
-        
-      }
-  );
-}
-}

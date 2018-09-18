@@ -9,9 +9,9 @@ export class UserDetailsService {
   //Making http client obj to perform http operations
   constructor(public http: HttpClient) { }
 
-  private getUserDetails_url ="http://172.23.239.100:8080/userprofile/api/v1/user?userEmail="
+  private getUserDetails_url ="http://13.127.190.125:9072/userprofile/api/v1/user?userEmail="
   //Backend saveuser url
-  private post_url = "http://172.23.239.100:8080/userprofile/api/v1/user";
+  private post_url = "http://13.127.190.125:9072/userprofile/api/v1/user";
 
   addUser(user: UserDetails): Observable<UserDetails> {
 
