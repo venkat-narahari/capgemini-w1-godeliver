@@ -1,12 +1,12 @@
 server:
-  port: "8080"
+  port: "9072"
 
 spring:
   application:
     name: api-gateway
   cloud:
     config:
-      uri: http://10.20.1.206:8891
+      uri: http://10.20.1.206:9071
   
 
 
