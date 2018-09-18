@@ -5,7 +5,7 @@ FROM java:8-jre
 #copy jar file to docker file system
 ADD ./target/book-service-0.0.1-SNAPSHOT.jar /usr/app/book-service-0.0.1-SNAPSHOT.jar
 
-EXPOSE 8888
+EXPOSE 9077
 
 #java -jar <jar file name>
 WORKDIR usr/app
