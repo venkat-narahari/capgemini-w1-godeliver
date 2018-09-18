@@ -212,7 +212,7 @@ public class CvrpServiceImpl implements CvrpService {
 	}
 
 	
-	public void TabuSearch(int TABU_Horizon, double[][] distanceMatrix) {
+	public double TabuSearch(int TABU_Horizon, double[][] distanceMatrix) {
 		List<Order> routeFrom;
 		List<Order> routeTo;
 
@@ -381,6 +381,7 @@ public class CvrpServiceImpl implements CvrpService {
 			writer.close();
 		} catch (Exception e) {
 		}
+		return this.distance;
 	}
 
 	public Vehicle[] updatedVehicles() {
@@ -442,7 +443,7 @@ public class CvrpServiceImpl implements CvrpService {
         System.out.println("vehciles in cvrp with filledcapacity"+vehicles[j]);
         }
         System.out.println("vehciles array"+vehicles.toString());
-        return vehicles;
+        return this.vehicles;
         }
 
 }
