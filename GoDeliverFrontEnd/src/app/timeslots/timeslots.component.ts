@@ -20,8 +20,9 @@ carts: Cart[];
  isRadioSelected:boolean=false;
   a :'a';
  public  slotAvailability:boolean[] = [true,false,true]; 
- public slotCost: string[]=["$5","","$7"];
+ public slotCost: string[]=["₹20","","₹40"];
  public timeslots:string[]=["9AM-12PM","3PM-6PM","6PM-9PM"];
+ public minimum:string;
  
 // 
 
@@ -91,5 +92,7 @@ billingRoute() {
   this.router.navigate(["/billing"]);
   location.reload();
 }
+
+
 
 }
