@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Http, Headers } from "@angular/http";
+import { FirebaseService } from "../firebase.service";
 
 @Component({
   selector: "app-payment",
@@ -15,7 +16,7 @@ export class PaymentComponent implements OnInit {
   expiryYear: string;
   cvc: string;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private firebase: FirebaseService) {}
   chargeCard(token: string) {
     const headers = new Headers({ token: token, amount: 50 });
     this.http
@@ -47,6 +48,12 @@ export class PaymentComponent implements OnInit {
           if (token != null) {
             this.chargeCard(token);
             console.log(token);
+            localStorage.setItem("currentUserPayment", JSON.stringify(token));
+
+            setTimeout(() => {
+              this.deleteCart();
+            }, 8000);
+
             this.msg = "Your Transaction is success";
           }
 
@@ -63,6 +70,14 @@ export class PaymentComponent implements OnInit {
 
   refundCreditCard() {
     this.refundCard();
+  }
+  deleteCart() {
+    if (localStorage.getItem("currentUserPayment")) {
+      console.log("hi");
+
+      localStorage.removeItem("currentUserPayment");
+      this.firebase.deleteCart();
+    }
   }
 
   ngOnInit() {}
