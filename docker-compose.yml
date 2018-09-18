@@ -249,7 +249,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 9081:9081
+      - 3000:3000
     volumes:
       - /var/lib/grafana
     environment:
