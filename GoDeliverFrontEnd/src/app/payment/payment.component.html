@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mb-4 ml-1" style="align-self:center">
 
-    <mat-card>
+    <mat-card style="margin:auto">
       <!-- <form #myForm="ngForm" (ngSubmit)="onSubmit()"> -->
       <h2 style="margin-left:20px">Payment Form</h2>
       <form #myForm="ngForm">
@@ -43,7 +43,7 @@
         <button type="submit" [disabled]="!myForm.form.valid" appNoDblClick (click)="chargeCreditCard()" style="border-radius:8px;height:40px">Submit</button>
         <button (click)="refundCreditCard()" style="border-radius:8px;margin-left:20px;height:40px">Refund</button><br><br>
         <p style="color:green">{{msg}}</p>
-
+<p> {{sum}}</p>
 
       </form>
     </mat-card>

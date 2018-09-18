@@ -4,7 +4,7 @@ FROM java:8-jre
 # copy jar file to docker file system
 ADD ./target/user-login-0.0.1-SNAPSHOT.jar /usr/app/user-login-0.0.1-SNAPSHOT.jar
 
-EXPOSE 8082
+EXPOSE 9074
 
 # java -jar <jar file name>
 WORKDIR usr/app

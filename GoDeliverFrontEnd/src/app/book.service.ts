@@ -8,14 +8,14 @@ import { Observable } from "rxjs";
 })
 export class BookService {
 
-  private recommended_url = "http://172.23.239.100:8080/recommendation/api/v1/preferences/?userMail=";
-  private getTopSelling_url = "http://172.23.239.100:8080/book/api/v1/books";
-  private getGenre_url = "http://172.23.239.100:8080/recommendation/api/v1/genre";
-  private getBookById_url = "http://172.23.239.100:8080/book/api/v1/book/";
+  private recommended_url = "http://13.127.190.125:9072/recommendation/api/v1/preferences/?userMail=";
+  private getTopSelling_url = "http://13.127.190.125:9072/api/v1/books";
+  private getGenre_url = "http://13.127.190.125:9072/recommendation/api/v1/genre";
+  private getBookById_url = "http://13.127.190.125:9072/book/api/v1/book/";
   private getBookByName_url = "http://172.23.239.100:8080/book/api/v1";
-  private getTopRated_url = "http://172.23.239.100:8080/recommendation/api/v1/rating";
-  private WishlistRecommendation_url ="http://172.23.239.100:8080/recommendation/api/v1/save";
-  private getAllBooks_url = "http://172.23.239.100:8080/book/api/v1/books";
+  private getTopRated_url = "http://13.127.190.125:9072/recommendation/api/v1/rating";
+  private WishlistRecommendation_url ="http://13.127.190.125:9072/recommendation/api/v1/save";
+  private getAllBooks_url = "http://13.127.190.125:9072/api/v1/books";
 
 
   constructor(private http: HttpClient) { }

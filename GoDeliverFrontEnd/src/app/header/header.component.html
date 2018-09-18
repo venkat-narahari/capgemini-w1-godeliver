@@ -1,3 +1,9 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light m-0" id="nav">
     <a class="navbar-brand" routerLink="">
@@ -13,16 +19,32 @@
           <a class="nav-link" routerLink="/login" href="#">Login</a>
         </li>
 
-        <li *ngIf=curUser class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            {{ curUser }}
-          </a>
-          <div class="dropdown-menu ">
-            <a class="dropdown-item " routerLink="/profile" href="#">User Profile</a>
-            <a class="dropdown-item " routerLink="/orders">Orders</a>
-            <a class="dropdown-item " (click)="logout()">Logout</a>
-          </div>
-        </li>
+        <div *ngIf=admin style="padding-top: 10px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              {{ adminName }}
+            </a>
+            <div class="dropdown-menu ">
+              <a class="dropdown-item " routerLink="/grafana">Grafana</a>
+              <a class="dropdown-item " routerLink="/prometheus">Prometheus</a>
+              <a class="dropdown-item " (click)="logout()">Logout</a>
+            </div>
+          </li>
+        </div>
+
+        <div *ngIf=curUser style="padding-top: 10px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              {{ curUser }}
+            </a>
+            <div class="dropdown-menu ">
+              <a class="dropdown-item " routerLink="/profile" href="#">User Profile</a>
+
+              <a class="dropdown-item " routerLink="/orders">Orders</a>
+              <a class="dropdown-item " (click)="logout()">Logout</a>
+            </div>
+          </li>
+        </div>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">

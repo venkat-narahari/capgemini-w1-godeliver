@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { Login } from "../login";
+import { getMaxListeners } from "cluster";
 
 @Injectable()
 export class AuthenticationService {
@@ -18,7 +19,7 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://172.23.239.100:8080/user-login/api/v1/login`,
+        `http://13.127.190.125:9072/user-login/api/v1/login`,
         { userEmail, userPassword },
         
         options
@@ -37,10 +38,6 @@ export class AuthenticationService {
               "currentUserEmail",
               JSON.stringify(user.email)
             );
-            localStorage.setItem(
-              "xavdnmzicn",
-              JSON.stringify(user.role)
-            );
           }
           console.log(userPassword);
           return user;
@@ -51,11 +48,12 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem("currentUserEmail");
     localStorage.removeItem("currentUserToken");
-    localStorage.removeItem("xavdnmzicn");
-   
+      
   }
 
   loggedIn() {
     return !!localStorage.getItem('currentUserToken');
   }
+
+  
 }

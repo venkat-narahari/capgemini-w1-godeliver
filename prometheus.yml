@@ -1,81 +1,94 @@
-# my global config
 global:
-  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
-  # scrape_timeout is set to the global default (10s).
+  scrape_interval:     15s
+  evaluation_interval: 15s
 
 scrape_configs:
  
   - job_name: 'prometheus'
     static_configs:
-    - targets: ['localhost:9090']
+    - targets: ['10.20.1.129:9090']
 
-  - job_name: 'grafana'
-    static_configs:
-      - targets: ['localhost:3000']
 
   - job_name: 'eureka-server'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.100:8761']
+    - targets: ['10.20.1.206:9070']
+
+
+  - job_name: 'config-server'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9071']
+
 
   - job_name: 'apigateway'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.100:8080']
-    
-  - job_name: 'config-server'
-    metrics_path: '/actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-    - targets: ['172.23.239.100:8891']
+    - targets: ['10.20.1.206:9072']
 
+    
   - job_name: 'user-profile'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.114:8070'] 
+    - targets: ['10.20.1.206:9073'] 
 
-  - job_name: 'book-service'
-    metrics_path: '/actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-    - targets: ['172.23.239.114:8888']
-
-  - job_name: 'recommendation'
-    metrics_path: '/actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-    - targets: ['172.23.239.114:8092']
 
   - job_name: 'user-login'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.114:8082']
+    - targets: ['10.20.1.206:9074']
+
+
+  - job_name: 'recommendation'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9075']
+
     
   - job_name: 'order-details'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.121:8081']
-    
-  - job_name: 'logistics-service'
-    metrics_path: '/actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-    - targets: ['172.23.239.121:8086']
+    - targets: ['10.20.1.206:9076']
 
-  - job_name: 'payment-service'
+
+  - job_name: 'book-service'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.123:9091']
+    - targets: ['10.20.1.206:9077']
+
 
   - job_name: 'cvrp-service'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-    - targets: ['172.23.239.123:8084']
+    - targets: ['10.20.1.206:9078']
+
+
+  - job_name: 'payment-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9079']
+
+    
+  - job_name: 'logistics-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9080']
+
+
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['10.20.1.129:3000']
+
+
+

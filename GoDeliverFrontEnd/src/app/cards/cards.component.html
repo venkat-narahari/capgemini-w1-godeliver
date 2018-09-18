@@ -19,11 +19,21 @@
       Quick Add</button>
     <span class="spacer"></span>
     <div *ngIf=email>
-      <div class="fav">
-        <mat-icon class="example-icon">
-          <a (click)="addToWishlist(book)"><img src={{heartImage}}> </a>
-        </mat-icon>
+      <div *ngIf=like>
+        <div class="fav">
+          <mat-icon class="example-icon">
+            <a (click)="addToWishlist(book)"><img src="assets/red.png"> </a>
+          </mat-icon>
+        </div>
       </div>
+      <div *ngIf=!like>
+          <div class="fav">
+            <mat-icon class="example-icon">
+              <a (click)="addToWishlist(book)"><img src="assets/white.png"> </a>
+            </mat-icon>
+          </div>
+        </div>
+  
     </div>
   </mat-card-actions>
 </mat-card>

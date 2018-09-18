@@ -1,8 +1,9 @@
-import { LogisticService } from './../logistics.service';
-import { FirebaseService, Cart } from './../firebase.service';
-import { Order } from './../order-details';
+import { Router } from "@angular/router";
+import { LogisticService } from "./../logistics.service";
+import { FirebaseService, Cart } from "./../firebase.service";
+import { Order } from "./../order-details";
 import { Component, OnInit, Input } from "@angular/core";
-import { v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 
 @Component({
   selector: "app-delivery-card",
@@ -10,15 +11,20 @@ import { v4 as uuid} from "uuid";
   styleUrls: ["./delivery-card.component.css"]
 })
 export class DeliveryCardComponent implements OnInit {
-  @Input() address;
+  @Input()
+  address;
   isRadioSelected: boolean = false;
   orders: any;
-  date:any;
+  date: any;
   carts: Cart[];
   totalLength: any;
   order = new Order("", "", "", "", "", "", "", "");
 
-  constructor(private fb: FirebaseService, private logistic: LogisticService) {}
+  constructor(
+    private fb: FirebaseService,
+    private logistic: LogisticService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fb.getCart().subscribe(carts => {
@@ -34,7 +40,7 @@ export class DeliveryCardComponent implements OnInit {
     return this.isRadioSelected;
   }
   orderDetails(address, phone, name, city, addLat, addLng, orderDate) {
-    console.log(address, phone, name,addLat);
+    console.log(address, phone, name, addLat);
     this.order.orderId = uuid().replace(/-/g, "");
     console.log(this.order.orderId);
     this.order.orderConsumerName = name;
@@ -50,11 +56,12 @@ export class DeliveryCardComponent implements OnInit {
     this.order.orderLongitude = addLng;
     console.log(addLng);
     this.order.orderDate = this.date.toString();
-    console.log(this.order.orderDate)
-    this.logistic.orderDetails(this.order).subscribe(data => {
-      console.log(data)},
-        error => console.log("error: "+error)
-      );
+    console.log(this.order.orderDate);
+    this.logistic.orderDetails(this.order);
+    setTimeout(() => {
+      this.router.navigate(["/timeslots"]);
+      location.reload();
+    }, 10000);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);

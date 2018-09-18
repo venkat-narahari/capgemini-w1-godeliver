@@ -8,7 +8,7 @@ ADD ./target/recommendation-0.0.1-SNAPSHOT.jar /usr/app/recommendation-0.0.1-SNA
 
 # java -jar <jar fileName>
 
-EXPOSE 8092
+EXPOSE 9075
 
 WORKDIR usr/app
 

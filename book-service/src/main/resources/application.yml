@@ -3,5 +3,5 @@ spring:
   application:
     name: book-ms
 server:
-  port: 8888
+  port: 9077
       

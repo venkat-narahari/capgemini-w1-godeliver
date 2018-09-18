@@ -18,6 +18,7 @@ import com.stackroute.userprofile.domain.UserProfile;
 public class KafkaConfiguration {
 	
 	static final String TOPIC = "userprofile";
+	static final String TOPIC1 = "userprofile-login";
 
 	@Bean
 	public ProducerFactory<String, UserProfile> producerFactory() {
@@ -37,5 +38,9 @@ public class KafkaConfiguration {
 
 	public static String getTopic() {
 		return TOPIC;
+	}
+	
+	public static String getTopic1() {
+		return TOPIC1;
 	}
 }
