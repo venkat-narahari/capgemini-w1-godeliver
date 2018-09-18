@@ -19,7 +19,7 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://172.23.239.100:8080/user-login/api/v1/login`,
+        `http://13.127.190.125:9072/user-login/api/v1/login`,
         { userEmail, userPassword },
         
         options

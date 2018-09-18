@@ -121,6 +121,10 @@ export class FirebaseService {
     this.cartDoc.update(profile);
 
   }
+
+  deleteCart() {
+    this.cartDoc.delete();
+  }
 }
 
 export interface Cart {

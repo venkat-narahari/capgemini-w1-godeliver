@@ -30,6 +30,11 @@ export class TimeslotsComponent implements OnInit {
   ) {
     //Do Something
   }
+  
+  
+  // ngOnInit(date){
+  //   this.date = new Date();
+  // }
 
   ngOnInit() {
     this.date = new Date();
@@ -40,6 +45,7 @@ export class TimeslotsComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+  
   }
 
   // isButtonSelect(){
@@ -55,11 +61,13 @@ export class TimeslotsComponent implements OnInit {
   }
   getSum() {
     let sum = 0;
+ 
     for (let i = 0; i < this.totalLength; i++) {
       sum += this.carts[i].totalPrice;
     }
     return sum;
   }
+  
 
   getMin() {
     let min = parseInt(this.slotCost[0]);
@@ -70,10 +78,14 @@ export class TimeslotsComponent implements OnInit {
     return min;
   }
 
+ isRadioSelect1() {
+   return this.isRadioSelected;
+ }
 
-  radioselected() {
-    this.isRadioSelected = true;
-  }
+billingRoute() {
+  this.router.navigate(["/billing"]);
+  location.reload();
+}
 
   isRadioSelect1() {
     return this.isRadioSelected;
