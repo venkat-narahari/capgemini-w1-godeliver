@@ -6,13 +6,22 @@
   text-align: center;
   margin: 0 auto;
   height: 100vh;
+  width: 100%;
   background-size: contain;
-  background: repeat;
-  background-image : url("../../assets/1234.gif");
+  background-image : url("../../assets/wallpaper.gif");
 }
 
-.example-full-width {
+.container-fluid.container-card{
+  text-align: center;
+  margin: 0 auto;
+  height: auto;
   width: 90%;
+  background:none;
+}
+
+
+.example-full-width {
+  width: 70%;
 }
 
 mat-card {
@@ -85,4 +94,8 @@ img {
   margin: 5%;
   width: 120px;
   height: 120px;
+}
+
+.step2{
+  margin: 1%;
 }
