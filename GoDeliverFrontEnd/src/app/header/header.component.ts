@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   search: string = "shivam";
   title: any;
   admin:any;
+  adminName:any;
   cartLength:any;
 
   constructor(private bookService: BookService,
@@ -23,13 +24,19 @@ export class HeaderComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    if (localStorage.getItem("currentUserEmail") !== null) {
+    if(JSON.parse(localStorage.getItem('currentUserEmail'))=="admin@gmail.com") {
+      this.admin=true;
+      this.adminName= JSON.parse(localStorage.getItem("currentUserEmail"));
+      this.curUser=null;
+    }
+    else if (localStorage.getItem("currentUserEmail") !== null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
       console.log(this.curUser);
       this.noUser = "";
     } else {
       this.noUser = "NoUser";
     }
+
     this.firebase.getCart().subscribe(data => {this.cartLength=data.length});
     
   }
