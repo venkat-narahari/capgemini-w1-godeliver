@@ -287,7 +287,7 @@ services:
       zookeeper:
         condition: service_healthy
     environment:
-      KAFKA_ZOOKEEPER_CONNECT: 'localhost:9082'
+      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1"
