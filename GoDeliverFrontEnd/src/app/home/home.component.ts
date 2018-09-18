@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BookService } from "../book.service";
+import { v4 as uuid } from "uuid";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -14,10 +15,23 @@ export class HomeComponent implements OnInit {
   search: any;
   books_result: any;
   check = "hi";
+  uniqueId: any;
+
   constructor(private bookService: BookService, private route: Router) {
     this.location = route.url;
   }
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem("currentUserEmail") == null) {
+      if (localStorage.getItem("uid") != null) {
+        console.log("already there");
+      } else {
+        this.uniqueId = uuid().replace(/-/g, "");
+        let key = "uid";
+        localStorage.setItem(key, JSON.stringify(this.uniqueId));
+        console.log(this.uniqueId);
+      }
+    }
+  }
 
   // get search results of movies
   searchBooks() {
@@ -29,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   backToHome() {
-    this.route.navigate(['']);
+    this.route.navigate([""]);
     location.reload();
   }
 }

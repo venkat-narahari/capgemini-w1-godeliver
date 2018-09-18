@@ -38,6 +38,9 @@ export class AuthenticationService {
               "currentUserEmail",
               JSON.stringify(user.email)
             );
+            if(localStorage.getItem("uid")!=null) {
+              localStorage.removeItem("uid");
+            }
           }
           console.log(userPassword);
           return user;
