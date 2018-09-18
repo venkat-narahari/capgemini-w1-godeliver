@@ -68,6 +68,9 @@ export class PaymentComponent implements OnInit {
             console.log(token);
             localStorage.setItem("currentUserPayment", JSON.stringify(token));
 
+            setTimeout(() => {
+              this.deleteCart();
+            }, 6000);
             this.msg = "Your Transaction is success";
           }
 
@@ -85,7 +88,18 @@ export class PaymentComponent implements OnInit {
   refundCreditCard() {
     this.refundCard();
   }
-  
+  deleteCart() {
+    if (localStorage.getItem("currentUserPayment")) {
+      if (localStorage.getItem("uid") != null) {
+        localStorage.removeItem("uid");
+        localStorage.removeItem("currentUserPayment");
+      } else {
+        localStorage.removeItem("currentUserEmail");
+        localStorage.removeItem("currentUserPayment");
+      }
+      this.firebase.deleteCart();
+    }
+  }
 
   ngOnInit() {
     this.firebase.getCart().subscribe(carts => {

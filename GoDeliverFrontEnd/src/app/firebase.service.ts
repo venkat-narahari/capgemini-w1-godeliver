@@ -139,7 +139,24 @@ export class FirebaseService {
     this.cartDoc = this.fs.doc(`users/` + this.idName + `/profile/${profile.id}`);
     this.cartDoc.update(profile);
   }
- 
+  async deleteCart() {
+    //path of the collection
+    const path = "users/"+this.idName+"/cart"
+
+//query snapshot
+    const qry: firebase.firestore.QuerySnapshot = await this.fs.collection(path).ref.get();
+
+    const batch = this.fs.firestore.batch();
+
+//looping through docs in the collection to delete docs as a bulk operation
+    qry.forEach(doc => {
+      console.log('deleting....', doc.id);
+      batch.delete(doc.ref);
+    });
+   // finally commit
+    batch.commit().then(res => console.log('committed batch.'))
+    .catch(err => console.error('error committing batch.', err));
+  }
 }
 
 export interface Cart {
