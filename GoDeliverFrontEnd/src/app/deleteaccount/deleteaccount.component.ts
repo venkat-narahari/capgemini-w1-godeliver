@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-deleteaccount',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteaccountComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firebase:FirebaseService) { }
 
   ngOnInit() {
   }
 
   deleteAccount() {
-    
+    this.firebase.deleteUnregUser();
   }
 }

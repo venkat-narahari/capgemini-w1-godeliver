@@ -204,6 +204,26 @@ export class FirebaseService {
       .commit()
       .then(res => console.log("committed batches."))
       .catch(err => console.error("error committing batches.", err));
+
+      const pathes = "users/" + this.idName + "/wishlist";
+
+      //query snapshot
+      const qery: firebase.firestore.QuerySnapshot = await this.fs
+        .collection(paths)
+        .ref.get();
+  
+      const btches = this.fs.firestore.batch();
+  
+      //looping through docs in the collection to delete docs as a bulk operation
+      qery.forEach(doc => {
+        console.log("deleting....", doc.id);
+        btches.delete(doc.ref);
+      });
+      // finally commit
+      btches
+        .commit()
+        .then(res => console.log("committed batches."))
+        .catch(err => console.error("error committing batches.", err));  
   }
 }
 
