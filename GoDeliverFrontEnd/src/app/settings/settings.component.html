@@ -16,7 +16,7 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="description">
-      <p *ngFor="let add of address">{{ add.address }}</p>
+      <p *ngFor="let ad of add; let i=index">{{ ad.address }}</p>
     </div>
     <div role="tabpanel" class="tab-pane top-10" id="features">
       <ul>
