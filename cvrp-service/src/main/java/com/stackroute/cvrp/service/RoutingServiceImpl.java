@@ -18,7 +18,7 @@ import com.stackroute.cvrp.domain.Vehicle;
 @Service
 public class RoutingServiceImpl implements RoutingService {
 
-	private CvrpServiceImpl1 cvrpServiceImpl1;
+	private CvrpServiceImpl cvrpServiceImpl1;
 	private Order newOrder;
 	private DateLogistics dateLogistics;
 	private Slot[] slots;
@@ -37,7 +37,7 @@ public class RoutingServiceImpl implements RoutingService {
 	private String slotid;
 
 	@Autowired
-	public RoutingServiceImpl(CvrpServiceImpl1 cvrpServiceImpl1) {
+	public RoutingServiceImpl(CvrpServiceImpl cvrpServiceImpl1) {
 		this.cvrpServiceImpl1 = cvrpServiceImpl1;
 	}
 
@@ -64,10 +64,8 @@ public class RoutingServiceImpl implements RoutingService {
 		for (int i = 0; i < slots.length; i++) {
 			ordersList = new ArrayList<>();
 			locationList = new ArrayList<>();
-//			locationList.add(depoLocation);
 			ordersList.add(depoOrder);
 			vehicles = slots[i].getSlotVehicle();
-			// slotid=slots[i].getSlotId();
 			for (int j = 0; j < vehicles.length; j++) {
 				orders = vehicles[i].getVehicleRoute();
 				vehicleCap = Integer.parseInt(vehicles[i].getVehicleCapacity());
@@ -78,7 +76,6 @@ public class RoutingServiceImpl implements RoutingService {
 				}
 			}
 
-			// System.out.println("oroderList is " + ordersList);
 			for (int l = 0; l < ordersList.size(); l++) {
 				location = ordersList.get(l).getOrderLocation();
 				locationList.add(location);
@@ -93,27 +90,20 @@ public class RoutingServiceImpl implements RoutingService {
 			for (int j = 1; j < ordersList.size(); j++) {
 				ordersList.get(j).setRouted(false);
 			}
-			CvrpServiceImpl1 cvrp = new CvrpServiceImpl1(ordersList.size(), vehicles.length, vehicleCap);
+			CvrpServiceImpl cvrp = new CvrpServiceImpl(ordersList.size(), vehicles.length, vehicleCap);
 			cvrp.getRoute(route);
 			cvrp.greedySolution(ordersList, distanceMatrix);
-			cvrp.greedySolution(ordersList, distanceMatrix);
-			//for(int k=0;k<vehicles.length;k++) {
-//			System.out.println("vehicles of routing service"+vehicles[i].getVehicleRoute().length);
-//			}
-			cvrp.TabuSearch(10, distanceMatrix);
+			cvrp.SolutionPrint("Solution after greedy solution");
 			for(int s=0;s<cvrp.updatedVehicles().length;s++) {
-			System.out.println("updated vehicles "+cvrp.updatedVehicles()[s]);
-			}
+				System.out.println("updated vehicles "+cvrp.updatedVehicles()[s].toString());
+				}
+			cvrp.greedySolution(ordersList, distanceMatrix);
+			cvrp.TabuSearch(10, distanceMatrix);
+			cvrp.SolutionPrint("Solution after tabu");
+
+			
 
 		}
-		for (int i = 0; i < distanceMatrix.length; i++) {
-			for (int j = 0; j < distanceMatrix.length; j++)
-				System.out.println("distance matrix is " + distanceMatrix[i][j]);
-		}
-		System.out.println("orderList fianl is " + ordersList);
-		System.out.println("");
-		System.out.println("LocationList " + locationList);
-		convertToJson(ordersList);
 
 		return null;
 	}

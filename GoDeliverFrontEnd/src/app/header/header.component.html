@@ -24,6 +24,18 @@
           </li>
         </div>
 
+        <div *ngIf=admin style="padding-top: 10px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              {{ adminName }}
+            </a>
+            <div class="dropdown-menu ">
+              <a class="dropdown-item " routerLink="/grafana">Grafana</a>
+              <a class="dropdown-item " routerLink="/prometheus">Prometheus</a>
+              <a class="dropdown-item " (click)="logout()">Logout</a>
+            </div>
+          </li>
+        </div>
 
         <div *ngIf=curUser style="padding-top: 10px;">
           <li class="nav-item dropdown">
@@ -51,7 +63,7 @@
         </li>
         <div *ngIf=curUser style="padding-top:10px;">
           <li class="nav-item">
-            <a class="nav-link " (click)="wishlistRoute()" href="#">Wishlist</a>
+            <a class="nav-link " (click)="wishlistRoute()">Wishlist</a>
           </li>
         </div>
         <li class="nav-item">

@@ -38,12 +38,12 @@ public class Order {
 	
 
 	public Order(Location orderLocation) {
-		this.orderId = "00";
+		this.orderId = "0";
 		this.orderConsumerName = "depot";
 		this.orderConsumerAddress = "depot";
 		this.orderConsumerPhone = "000";
 		this.orderLocation = orderLocation;
-		this.orderVolume = "00";
+		this.orderVolume = "0";
 		this.orderDate = "00";
 		this.isDepot = true;
 		this.isRouted = false;

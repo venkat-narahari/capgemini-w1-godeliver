@@ -4,29 +4,46 @@
       <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfDelivery" name="dateOfDelivery" required placeholder="Choose a date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker touchUi #picker></mat-datepicker>
-    </mat-form-field><br>
+    </mat-form-field>
+    <br>
     <mat-radio-group>
       <mat-radio-button value="1" (click)="timePrint(0)">09 Am - 12 Pm</mat-radio-button>&nbsp;
       <mat-radio-button value="2" (click)="timePrint(1)">01 Pm - 04 Pm</mat-radio-button>&nbsp;
       <mat-radio-button value="3" (click)="timePrint(2)">05 Pm - 048 Pm</mat-radio-button>
-    </mat-radio-group><br>
+    </mat-radio-group>
+    <br>
     <button type="submit" (click)="slotPrint(0)" [disabled]="!myForm.form.valid" class="btn btn-primary">Vehicle 1
     </button>&nbsp;
     <button type="submit" (click)="slotPrint(1)" [disabled]="!myForm.form.valid" class="btn btn-primary">Vehicle 2</button>&nbsp;
     <button type="submit" (click)="slotPrint(2)" [disabled]="!myForm.form.valid" class="btn btn-primary">Vehicle 3</button>
   </form>
 </div>
-<div *ngIf=origin>
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
-    </agm-direction>
-  </agm-map>
-</div><br><br>
-<div *ngIf=doughnutChartData>
-  <div style="display: block">
-    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+<br>
+  <br>
+  <br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6" style="background-color:lavender;">
+      <div *ngIf=origin>
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
+          </agm-direction>
+        </agm-map>
+      </div>
+    </div>
+
+      <div class="col-sm-6" style="background-color:lavender;">
+        <div *ngIf=doughnutChartData>
+          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
   </div>
 </div>
-<br>
-<br><br><br><br><br><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>

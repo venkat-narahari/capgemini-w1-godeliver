@@ -22,6 +22,8 @@ import { DeleteaccountComponent } from "../deleteaccount/deleteaccount.component
 import { SettingsComponent } from "../settings/settings.component";
 import { AdminComponent } from "../admin/admin.component";
 import { PaymentComponent } from "../payment/payment.component";
+import { TopratedComponent } from "../toprated/toprated.component";
+import { TopsellingComponent } from "../topselling/topselling.component";
 
 
 const appRoutes: Routes = [
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
   { path: "settings", component: SettingsComponent },
   { path: "timeslots", component: TimeslotsComponent },
   { path: "admin", component: AdminComponent },
-  { path:"payment", component: PaymentComponent}
+  { path:"payment", component: PaymentComponent},
+  { path:"toprated", component: TopratedComponent},
+  { path:"topselling", component: TopsellingComponent}
 
 ];
 
