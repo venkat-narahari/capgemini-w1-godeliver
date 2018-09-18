@@ -8,7 +8,7 @@ ADD ./target/payment-service-0.0.1-SNAPSHOT.jar /usr/app/payment-service-0.0.1-S
 
 # java -jar <jar fileName>
 
-EXPOSE 9091
+EXPOSE 9079
 
 WORKDIR usr/app
 
