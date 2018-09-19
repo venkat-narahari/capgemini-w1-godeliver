@@ -66,7 +66,7 @@ public class LogisticsController {
 				System.out.println(dl.getDate());			
 				Slot sl[]=dl.getSlots();
 				
-				Vehicle v[] =sl[0].getSlotVehicles();
+				Vehicle v[] =sl[0].getSlotVehicle();
 				System.out.println(v[0].getVehicleCapacity());
 				System.out.println("abc");
 				final String uri = "http://localhost:8084/api/v1/cvrp/slots";

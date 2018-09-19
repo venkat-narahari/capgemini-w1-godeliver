@@ -73,6 +73,7 @@ public class RoutingServiceImpl implements RoutingService {
 		slots = dateLogistics.getSlots();
 		String[] slotCost = new String[slots.length];
 		boolean[] slotAvailable = new boolean[slots.length];
+		
 
 		for (int i = 0; i < slots.length; i++) {
 			ordersList = new ArrayList<>();
@@ -85,8 +86,11 @@ public class RoutingServiceImpl implements RoutingService {
 					orders = vehicles[i].getVehicleRoute();
 					vehicleCap = Integer.parseInt(vehicles[i].getVehicleCapacity());
 					if (orders != null) {
-						for (int k = 0; k < orders.length; k++) {
-							ordersList.add(orders[k]);
+						if (orders.length != 0) {
+							for (int k = 0; k < orders.length; k++) {
+								ordersList.add(orders[k]);
+								
+							}
 						}
 					}
 				}
@@ -97,6 +101,17 @@ public class RoutingServiceImpl implements RoutingService {
 				}
 				newOrderLocation = newOrder.getOrderLocation();
 				ordersList.add(newOrder);
+				System.out.println("orderlist is "+ordersList.toString());
+				String[] orderId = new String[ordersList.size()];
+				for(int a=0;a<ordersList.size();a++) {
+					System.out.println("slot is "+ordersList.get(a).getOrderId());
+					//orderId=new String[orders.length];
+					orderId[a]=ordersList.get(a).getOrderId();
+					ordersList.get(a).setOrderId(String.valueOf(a));
+				}
+				for(int b=0;b<orderId.length;b++) {
+					System.out.println("order is "+orderId[b]);
+				}
 				locationList.add(newOrderLocation);
 				distanceMatrix = cvrpServiceImpl.getDistanceMatrix(locationList);
 				for (int j = 1; j < ordersList.size(); j++) {
@@ -109,10 +124,23 @@ public class RoutingServiceImpl implements RoutingService {
 
 				greedyUpdateDistance = cvrp.updatedDistance();
 				greedyUpdatedVehicles = cvrp.solutionPrint("Solution after greedy solution");
-
 				cvrp.tabuSearch(10, distanceMatrix);
 				tabuUpdatedVehicles = cvrp.solutionPrint("Solution after tabu search");
 				tabuUpdateDistance = cvrp.updatedDistance();
+				for(int c=0;c<greedyUpdatedVehicles.length;c++) {
+					for(int d=0;d<greedyUpdatedVehicles[c].getVehicleRoute().length;d++) {
+						if(greedyUpdatedVehicles[c].getVehicleRoute()[d].getOrderId().equals(String.valueOf(d+1)))
+							greedyUpdatedVehicles[c].getVehicleRoute()[d].setOrderId(orderId[d+1]);
+					}
+				}
+
+				
+				for(int c=0;c<tabuUpdatedVehicles.length;c++) {
+					for(int d=0;d<tabuUpdatedVehicles[c].getVehicleRoute().length;d++) {
+						if(tabuUpdatedVehicles[c].getVehicleRoute()[d].getOrderId().equals(String.valueOf(d+1)))
+							tabuUpdatedVehicles[c].getVehicleRoute()[d].setOrderId(orderId[d+1]);
+					}
+				}
 
 			} else {
 				slotAvailable[i] = false;

@@ -26,5 +26,11 @@ public class Route {
 	public void setNewOrder(Order newOrder) {
 		this.newOrder = newOrder;
 	}
+
+	@Override
+	public String toString() {
+		return "Route [dateLogistics=" + dateLogistics + ", newOrder=" + newOrder + "]";
+	}
+	
 	
 }

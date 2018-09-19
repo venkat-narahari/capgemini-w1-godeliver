@@ -19,7 +19,7 @@ import com.stackroute.logisticsservice.repository.LogisticsRepository;
 
 @Primary
 @Service
-@PropertySource(value = {"classpath:bootstrap.yml"})
+@PropertySource(value = {"classpath:bootstrap.yml","classpath:logistics.properties"})
 public class LogisticsServiceImpl implements LogisticsService {
 
 	@Value("#{'${vehicle.capacity}'}")
@@ -148,7 +148,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 		
 		
 		for(int i=0; i<noOfSlots; i++) {
-			Vehicle vehicles[] = orderDateSlots[i].getSlotVehicles();
+			Vehicle vehicles[] = orderDateSlots[i].getSlotVehicle();
 			for(int j=0; j<noOfVehicles; j++) {
 				Order orders[] = vehicles[j].getVehicleRoute();
 				for(int k=0; k<orders.length;k++) {
@@ -160,7 +160,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 				}
 				vehicles[j].setVehicleRoute(orders);
 			}
-			orderDateSlots[i].setSlotVehicles(vehicles);
+			orderDateSlots[i].setSlotVehicle(vehicles);
 		}
 		
 		
@@ -178,7 +178,7 @@ public class LogisticsServiceImpl implements LogisticsService {
 		
 		for(int i=0; i<noOfSlots; i++) {
 			if(slotId.equals(String.valueOf(i))) {
-				Vehicle[] vehicles = slot[i].getSlotVehicles();
+				Vehicle[] vehicles = slot[i].getSlotVehicle();
 				for(int j=0; j<noOfVehicles; j++) {
 					if(vehicleId.equals(String.valueOf(j))) {
 						Order order[]=vehicles[j].getVehicleRoute();

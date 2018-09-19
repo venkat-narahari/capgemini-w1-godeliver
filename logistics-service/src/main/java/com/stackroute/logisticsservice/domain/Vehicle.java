@@ -1,5 +1,7 @@
 package com.stackroute.logisticsservice.domain;
 
+import java.util.Arrays;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /*
@@ -75,5 +77,15 @@ public class Vehicle {
 	public void setVehicleRoute(Order[] vehicleRoute) {
 		this.vehicleRoute = vehicleRoute;
 	}
+
+	@Override
+	public String toString() {
+		return "Vehicle [vehicleId=" + vehicleId + ", vehicleCapacity=" + vehicleCapacity + ", vehicleLoadedCapacity="
+				+ vehicleLoadedCapacity + ", vehicleRouteDuration=" + vehicleRouteDuration
+				+ ", vehicleRouteDurationLimit=" + vehicleRouteDurationLimit + ", vehicleCurrentLocation="
+				+ vehicleCurrentLocation + ", vehicleRoute=" + Arrays.toString(vehicleRoute) + "]";
+	}
+	
+	
 	
 }
