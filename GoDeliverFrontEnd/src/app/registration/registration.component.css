@@ -1,5 +1,5 @@
 .component-body{
-  height: 100vh;
+  height: 80vh;
 }
 
 .container-fluid{
@@ -7,8 +7,9 @@
   margin: 0 auto;
   height: 100vh;
   width: 100%;
-  background-size: contain;
-  background-image : url("../../assets/wallpaper.gif");
+  /* background-image : url(../../assets/wall.gif); */
+ background-size: contain;
+ background-repeat: no-repeat
 }
 
 .container-fluid.container-card{

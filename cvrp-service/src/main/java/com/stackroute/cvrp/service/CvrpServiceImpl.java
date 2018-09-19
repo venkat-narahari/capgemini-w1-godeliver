@@ -32,6 +32,8 @@ public class CvrpServiceImpl implements CvrpService {
 	private int noOfOrders;
 	private double distance;
 	private Order[] orders;
+	private List<Order> orderList;
+	private Vehicle[] vehicleWithoutDepot;
 
 	public CvrpServiceImpl() {
 
@@ -47,10 +49,12 @@ public class CvrpServiceImpl implements CvrpService {
 		this.distance = 0;
 		vehicles = new Vehicle[noOfVehicles];
 		vehiclesForBestSolution = new Vehicle[noOfVehicles];
+		vehicleWithoutDepot=new Vehicle[noOfVehicles];
 		pastSolutions = new ArrayList<>();
 		for (int i = 0; i < noOfVehicles; i++) {
 			vehicles[i] = new Vehicle(i + 1, vehCap);
 			vehiclesForBestSolution[i] = new Vehicle(i + 1, vehCap);
+			vehicleWithoutDepot[i]=new Vehicle(i + 1, vehCap);
 		}
 	}
 
@@ -400,6 +404,18 @@ public class CvrpServiceImpl implements CvrpService {
 
 				// get order capacity of each order in each vehicle and add all orders capacity
 				// and set to vehiclefilledcapacity
+				orderList=new ArrayList<Order>(Arrays.asList(this.vehicles[j].getVehicleRoute()));
+				orderList.remove(orderList.size()-1);
+				orderList.remove(orderList.size()-1);
+				orderList.remove(0);
+				Order[] orders= orderList.toArray(new Order[orderList.size()]);
+				for(int i=0;i<orders.length;i++) {
+					System.out.println("orders "+orders[i]);
+					this.vehicleWithoutDepot[j].addOrder(orders[i]);
+
+				}
+				System.out.println("vehicle route "+this.vehicleWithoutDepot[j].toString());
+				//this.vehicleWithoutDepot[j].setVehicleRoute(orders);
 
 				int RoutSize = this.vehicles[j].getVehicleRoute().length;
 				for (int k = 0; k < RoutSize; k++) {
@@ -411,7 +427,7 @@ public class CvrpServiceImpl implements CvrpService {
 			}
 		}
 
-		return this.vehicles;
+		return this.vehicleWithoutDepot;
 	}
 
 }

@@ -1,15 +1,15 @@
 /*css for login page*/
 .component-body{
-  height: 100vh;
+  height: 80vh;
 }
 
 .container-fluid{
   text-align: center;
   margin: 0 auto;
   height: 100vh;
-  background-size: contain;
-  background: repeat;
-  background-image : url("../../assets/wallpaper.gif");
+ /* background-image : url(../../assets/wall.gif); */
+ background-size: contain;
+ background-repeat: no-repeat
 }
 
 .example-form {
