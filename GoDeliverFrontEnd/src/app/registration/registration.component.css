@@ -1,25 +1,23 @@
-.component-body{
-  height: 80vh;
-}
 
-.container-fluid{
+
+.container-fluid {
   text-align: center;
   margin: 0 auto;
-  height: 100vh;
+  height: 75vh;
   width: 100%;
-  /* background-image : url(../../assets/wall.gif); */
- background-size: contain;
- background-repeat: no-repeat
+  /* background-image: url(../../assets/wall.gif); */
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.container-fluid.container-card{
+
+.container-fluid.container-card {
   text-align: center;
   margin: 0 auto;
   height: auto;
   width: 90%;
-  background:none;
+  background: none;
 }
-
 
 .example-full-width {
   width: 70%;
@@ -28,7 +26,7 @@
 mat-card {
   top: 10%;
   text-align: center;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 mat-card-title {
@@ -44,15 +42,18 @@ mat-card-title {
   text-decoration-color: white;
 }
 
-.button-word{
+.mat-form-field{
+  font-size: 15px
+}
+
+.button-word {
   color: white;
   font-weight: 900;
   letter-spacing: 2px;
 }
 
-
 .button {
-  background-color:rgb(196, 17, 17);
+  background-color: rgb(196, 17, 17);
   color: white;
   text-align: center;
   font-size: 17px;
@@ -91,12 +92,12 @@ img {
   height: 80px;
 }
 
-.option-cards{
+.option-cards {
   margin: 5%;
   width: 120px;
   height: 120px;
 }
 
-.step2{
+.step2 {
   margin: 1%;
 }

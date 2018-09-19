@@ -1,15 +1,17 @@
 /*css for login page*/
-.component-body{
-  height: 80vh;
-}
 
-.container-fluid{
+
+.container-fluid {
   text-align: center;
   margin: 0 auto;
-  height: 100vh;
- /* background-image : url(../../assets/wall.gif); */
- background-size: contain;
- background-repeat: no-repeat
+  height: 75vh;
+  width: 100%;
+  /* background-image: url(../../assets/wall.gif); */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.mat-form-field{
+  font-size: 12px
 }
 
 .example-form {
@@ -22,10 +24,9 @@
   text-align: center;
 }
 
-
 .loginButton {
   margin: 2% 0% 5% 0%;
-  background-color:rgb(196, 17, 17);
+  background-color: rgb(196, 17, 17);
   color: white;
   font-weight: 900;
   letter-spacing: 2px;
@@ -35,10 +36,10 @@
   position: relative;
   color: blue;
 }
-mat-form-field{
+mat-form-field {
   width: 90%;
 }
-mat-card{
+mat-card {
   top: 40%;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

@@ -94,7 +94,6 @@ export class PaymentComponent implements OnInit {
         localStorage.removeItem("uid");
         localStorage.removeItem("currentUserPayment");
       } else {
-        localStorage.removeItem("currentUserEmail");
         localStorage.removeItem("currentUserPayment");
       }
       this.firebase.deleteCart();
