@@ -3,10 +3,15 @@ a{
     font-weight: 700;
     font-size: 15px;
     letter-spacing: 1px;
+    margin: 10px;
 }
 
 a:hover{
     letter-spacing: -1px;
-    font-weight: 900;
     color: rgb(196, 17, 17) !important;
+    margin: 10px;
+}
+
+nav{
+  vertical-align: middle;
 }
