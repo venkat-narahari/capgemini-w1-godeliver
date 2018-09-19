@@ -22,6 +22,10 @@ export class FirebaseService {
   address: Observable<Address[]>;
   addDoc: AngularFirestoreDocument<Address>;
 
+  query: AngularFirestoreCollection<Cart>;
+  queries: Observable<Cart[]>;
+
+
   profile: AngularFirestoreCollection<Profile>;
   profiles: Observable<Profile[]>;
   profileDoc: AngularFirestoreDocument<Profile>;
@@ -82,6 +86,19 @@ export class FirebaseService {
         })
       )
     );
+
+    this.query = this.fs.collection("query");
+
+    this.queries = this.query.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(a => {
+          const data = a.payload.doc.data() as Query;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
+
   }
 
   getCart() {
@@ -90,6 +107,10 @@ export class FirebaseService {
 
   addItem(carts: Cart) {
     this.cart.add(carts);
+  }
+
+  addQuery(queries: Query) {
+    this.query.add(queries);
   }
 
   getUserProfile() {
@@ -256,6 +277,13 @@ export interface Profile {
   gender: string;
   email: string;
   id?: string;
+}
+
+export interface Query {
+  name: string;
+  email: string;
+  query: string;
+  id?:string;
 }
 
 export interface Wishlist {
