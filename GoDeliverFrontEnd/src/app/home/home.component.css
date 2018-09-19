@@ -3,8 +3,6 @@
   height: 150%;
 }
 
-.btn-info{
-  font-weight: 900;
-  font-size: 12px;
-  vertical-align: middle;
+.btn-danger{
+  border-radius: 2px !important;
 }

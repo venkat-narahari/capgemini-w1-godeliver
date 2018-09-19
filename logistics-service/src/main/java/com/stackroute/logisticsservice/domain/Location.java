@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 public class Location {
+	
 	private String orderLatitude;
 	private String orderLongitude;
 	
@@ -30,6 +31,11 @@ public class Location {
 	}
 	public void setOrderLongitude(String orderLongitude) {
 		this.orderLongitude = orderLongitude;
+	}
+	
+	@Override
+	public String toString() {
+		return "Location [orderLatitude=" + orderLatitude + ", orderLongitude=" + orderLongitude + "]";
 	}
 	
 	

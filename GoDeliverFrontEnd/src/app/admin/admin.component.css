@@ -2,6 +2,6 @@ agm-map {
     height: 100vh;
 }
 
-.component-body{
-    height: 100vh;
+.container-fluid{
+    margin: 20px;
 }

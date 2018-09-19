@@ -1,9 +1,9 @@
 package com.stackroute.cvrp.domain;
 
+
 public class Route {
 	private DateLogistics dateLogistics;
 	private Order newOrder;
-
 	public Route() {
 
 	}

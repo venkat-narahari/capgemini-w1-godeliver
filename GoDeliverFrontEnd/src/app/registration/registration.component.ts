@@ -64,13 +64,14 @@ preferencesSubmit(){
         this.error = "Fields are required";
       }
     );
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
+
 }
 
   genre = new FormControl();
   genreList = [
     {id:1, name:"Thriller", card:"card1", click:"card1", img:"https://image.ibb.co/g2POcz/fffff.jpg"},
-    {id:2,name:"Fiction", card:"card2", click:"card2", img:"https://image.ibb.co/dAAMEe/rooot123.jpg)" },
+    {id:2,name:"Religion", card:"card2", click:"card2", img:"https://pjcockrell.files.wordpress.com/2015/04/prayer-motivator-devotional.jpg" },
     {id:3,name:"History", card:"card3", click:"card3", img:"https://image.ibb.co/jyc1fK/meghs.jpg"},
     {id:4,name:"Biography", card:"card4", click:"card4", img:"https://image.ibb.co/mEFJSz/6666.jpg"},
     {id:5,name:"Sports", card:"card5", click:"card5", img:"https://image.ibb.co/d0Cq7z/Virat_Kohli.jpg"},
