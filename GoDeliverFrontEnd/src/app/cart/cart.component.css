@@ -1,3 +1,12 @@
 .component-body{
-  height: 100vh; 
+  height: 100vh;
+  margin: 2%;
+}
+
+.fa-close{
+  color: red;
+}
+
+.btn.btn-xs.btn-default{
+  border-radius: 50%;
 }

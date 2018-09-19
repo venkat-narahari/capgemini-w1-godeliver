@@ -23,13 +23,15 @@
               </td>
               <td><img src={{item.poster}} width="100" height="100" /></td>
               <td><span class="btn btn-default btn-md btn-qty" (click)="decrementQuantity($event, item)">
-              <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </span><span class="btn btn-default btn-md btn-qty" (click)="incrementQuantity($event, item)">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              <i class="fa fa-minus-square-o" aria-hidden="true"></i>
+                </span>
+                <span>{{item.quantity}}</span>
+                <span class="btn btn-default btn-md btn-qty" (click)="incrementQuantity($event, item)">
+              <i class="fa fa-plus-square-o" aria-hidden="true"></i>
                 </span>
               </td>
               <td>{{item.quantity}}</td>
-              <td><button (click)="deleteItem($event,item)" class="btn btn-xs btn-danger">Remove Product</button></td>
+              <td><button (click)="deleteItem($event,item)" class="btn btn-xs btn-default"><i class="fa fa-close"></i></button></td>
             </tr>
 
             <tr class="warning">
