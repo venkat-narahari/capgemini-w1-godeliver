@@ -37,9 +37,7 @@ export class AdminComponent implements OnInit {
   distance = [];
   data: any;
   orderLength = [];
-  public doughnutChartLabels:string[] = ['Filled', 'Empty'];
   public doughnutChartData:number[];
-  public doughnutChartType:string = 'doughnut';
 
   constructor(private http: HttpClient, private admin: AdminService) {}
 
@@ -59,9 +57,6 @@ export class AdminComponent implements OnInit {
     setTimeout(() => {
       this.routes();
     }, 2000);
-    setTimeout(() => {
-      this.totalVolume();
-    }, 2000);
 
     this.admin.getTotalDistance(this.item).subscribe(data =>{
       this.data=data;
@@ -72,9 +67,6 @@ export class AdminComponent implements OnInit {
 
       
     });
-    setTimeout(() => {
-      this.routes();
-    }, 2000);
     setTimeout(() => {
       this.totalVolume();
     }, 2000);
