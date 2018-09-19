@@ -2,6 +2,18 @@ version: '2.1'
 
 services:
 
+#angular
+  GoDeliverFrontEnd:
+    image: rajawatshivam007/frontend
+    container_name: godfrontend
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 4200:4200   
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
 #orderdetails microservice
 
   order-details:
