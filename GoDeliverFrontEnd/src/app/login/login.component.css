@@ -7,7 +7,7 @@
   text-align: center;
   margin: 0 auto;
   height: 100vh;
- background-image : url(../../assets/wall.gif);
+ /* background-image : url(../../assets/wall.gif); */
  background-size: contain;
  background-repeat: no-repeat
 }
