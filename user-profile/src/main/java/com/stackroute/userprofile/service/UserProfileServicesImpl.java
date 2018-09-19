@@ -28,8 +28,8 @@ public class UserProfileServicesImpl implements UserProfileServices {
 
 	@SuppressWarnings("static-access")
 	String topic = kafkaConfig.getTopic();
-	@SuppressWarnings("static-access")
-	String topic1 = kafkaConfig.getTopic1();
+	//@SuppressWarnings("static-access")
+	//String topic1 = kafkaConfig.getTopic1();
 
 	// Kafka template from configuration and topic
 	@Autowired
@@ -43,7 +43,7 @@ public class UserProfileServicesImpl implements UserProfileServices {
 	public UserProfile saveUser(UserProfile user) throws MongoConnectionException {
 		if (userProfileRepository.getByUserEmail(user.getUserEmail()) == null) {
 			kafkaTemplate.send(topic, user);
-			kafkaTemplate.send(topic1, user);
+	//		kafkaTemplate.send(topic1, user);
 			user.setUserPassword(null);
 			UserProfile savedUser = userProfileRepository.save(user);
 			return savedUser;
