@@ -3,10 +3,10 @@ version: '2.1'
 services:
 
 #angular
-  GoDeliverFrontEnd:
+  godeliverfrontend:
     build: GoDeliverFrontEnd/
-    image: GoDeliverFrontEnd
-    container_name: GoDeliverFrontEnd
+    image: godeliverfrontend
+    container_name: godeliverfrontend
     network_mode: "host"
     hostname: localhost
     ports:
