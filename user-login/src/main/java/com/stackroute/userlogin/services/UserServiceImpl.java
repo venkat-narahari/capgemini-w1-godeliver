@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userDao;
 /* listening kafka from user-profile*/
-	@KafkaListener(topics = "userprofile", groupId = "group-json")
+	@KafkaListener(topics = "userprofile-login", groupId = "group-json")
 	public User save(UserProfile userProfile) {
 		User user = new User();
 		user.setUserEmail(userProfile.getUserEmail());
