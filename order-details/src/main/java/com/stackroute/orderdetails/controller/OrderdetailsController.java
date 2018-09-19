@@ -85,6 +85,8 @@ public class OrderdetailsController {
 		}
 	}
 	
+	// controller mapping to get details of particular user by giving orderid
+	
 	@RequestMapping(value = "/detailsbyid", method = RequestMethod.GET)
 	public ResponseEntity<?> getByOrderId(@RequestParam String orderId) throws MongoConnectionException {
 		try {

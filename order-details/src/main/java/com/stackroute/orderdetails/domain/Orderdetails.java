@@ -1,13 +1,12 @@
 package com.stackroute.orderdetails.domain;
 
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Orderdetails {
-	
-	@Id	
+
+	@Id
 	private String emailId;
 	private String orderId;
 	private String orderConsumerName;
@@ -25,9 +24,9 @@ public class Orderdetails {
 
 	}
 
-	public Orderdetails(String emailId, String orderId, String orderConsumerName,
-			String orderConsumerAddress, String orderConsumerNumber, String orderVolume, String orderDate,
-			String availableSlots, String selectedSlots, String orderQuantity, String price, Location orderLocation) {
+	public Orderdetails(String emailId, String orderId, String orderConsumerName, String orderConsumerAddress,
+			String orderConsumerNumber, String orderVolume, String orderDate, String availableSlots,
+			String selectedSlots, String orderQuantity, String price, Location orderLocation) {
 //		super();
 //		this._id = _id;
 		this.emailId = emailId;
@@ -44,24 +43,14 @@ public class Orderdetails {
 		this.orderLocation = orderLocation;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "Orderdetails [ emailId=" + emailId + ", orderId=" + orderId + ", orderConsumerName="
-				+ orderConsumerName + ", orderConsumerAddress=" + orderConsumerAddress + ", orderConsumerNumber="
-				+ orderConsumerNumber + ", orderVolume=" + orderVolume + ", orderDate=" + orderDate
-				+ ", availableSlots=" + availableSlots + ", selectedSlots=" + selectedSlots + ", orderQuantity="
-				+ orderQuantity + ", price=" + price + ", orderLocation=" + orderLocation + "]";
+		return "Orderdetails [ emailId=" + emailId + ", orderId=" + orderId + ", orderConsumerName=" + orderConsumerName
+				+ ", orderConsumerAddress=" + orderConsumerAddress + ", orderConsumerNumber=" + orderConsumerNumber
+				+ ", orderVolume=" + orderVolume + ", orderDate=" + orderDate + ", availableSlots=" + availableSlots
+				+ ", selectedSlots=" + selectedSlots + ", orderQuantity=" + orderQuantity + ", price=" + price
+				+ ", orderLocation=" + orderLocation + "]";
 	}
-//
-//	public String get_id() {
-//		return _id;
-//	}
-//
-//	public void set_id(String _id) {
-//		this._id = _id;
-//	}
 
 	public String getEmailId() {
 		return emailId;
@@ -158,6 +147,4 @@ public class Orderdetails {
 	public void setOrderLocation(Location orderLocation) {
 		this.orderLocation = orderLocation;
 	}
-
-	
 }
