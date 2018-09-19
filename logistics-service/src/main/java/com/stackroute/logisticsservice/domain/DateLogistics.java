@@ -1,5 +1,7 @@
 package com.stackroute.logisticsservice.domain;
 
+import java.util.Arrays;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -34,4 +36,9 @@ public class DateLogistics {
 	public void setSlots(Slot[] slots) {
 		this.slots = slots;
 	}
+	@Override
+	public String toString() {
+		return "DateLogistics [date=" + date + ", slots=" + Arrays.toString(slots) + "]";
+	}
+	
 }

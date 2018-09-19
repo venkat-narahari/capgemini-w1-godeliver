@@ -1,5 +1,7 @@
 package com.stackroute.logisticsservice.domain;
 
+import java.util.Arrays;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /*
@@ -30,4 +32,11 @@ public class Slots {
 	public void setSlotCost(String[] slotCost) {
 		this.slotCost = slotCost;
 	}
+	@Override
+	public String toString() {
+		return "Slots [slotAvailability=" + Arrays.toString(slotAvailability) + ", slotCost="
+				+ Arrays.toString(slotCost) + "]";
+	}
+	
+	
 }

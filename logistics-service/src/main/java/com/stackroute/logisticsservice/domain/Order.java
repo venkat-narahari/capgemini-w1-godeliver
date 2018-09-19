@@ -127,5 +127,16 @@ public class Order {
 	public void setDepot(boolean isDepot) {
 		this.isDepot = isDepot;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderConsumerName=" + orderConsumerName + ", orderConsumerAddress="
+				+ orderConsumerAddress + ", orderConsumerPhone=" + orderConsumerPhone + ", orderLocation="
+				+ orderLocation + ", orderVolume=" + orderVolume + ", orderDate=" + orderDate + ", isDepot=" + isDepot
+				+ ", isRouted=" + isRouted + ", availableSlots=" + availableSlots + ", selectedSlot=" + selectedSlot
+				+ "]";
+	}
+	
 	
 }

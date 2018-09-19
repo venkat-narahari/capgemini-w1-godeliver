@@ -1,5 +1,7 @@
 package com.stackroute.logisticsservice.domain;
 
+import java.util.Arrays;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /*
@@ -72,12 +74,12 @@ public class Slot {
 		this.slotNoOfVehicles = slotNoOfVehicles;
 	}
 
-	public Vehicle[] getSlotVehicles() {
+	public Vehicle[] getSlotVehicle() {
 		return slotVehicle;
 	}
 
-	public void setSlotVehicles(Vehicle[] vehicles) {
-		this.slotVehicle = vehicles;
+	public void setSlotVehicle(Vehicle[] slotVehicle) {
+		this.slotVehicle = slotVehicle;
 	}
 
 	public String getSlotCost() {
@@ -88,4 +90,12 @@ public class Slot {
 		this.slotCost = slotCost;
 	}
 
+	@Override
+	public String toString() {
+		return "Slot [slotId=" + slotId + ", slotDuration=" + slotDuration + ", slotStartTime=" + slotStartTime
+				+ ", slotEndTime=" + slotEndTime + ", slotNoOfVehicles=" + slotNoOfVehicles + ", slotCost=" + slotCost
+				+ ", slotVehicle=" + Arrays.toString(slotVehicle) + "]";
+	}
+
+	
 }
