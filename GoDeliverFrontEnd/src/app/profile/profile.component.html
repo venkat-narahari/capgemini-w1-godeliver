@@ -14,28 +14,31 @@
                     {{(userdata.userDob.length>10)? (userdata.userDob | slice:0:10):(userdata.userDob)}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email ID</strong></span>
                     {{userdata.userEmail}}</li>
-                <li *ngFor="let ad of addre; let i=index" class="list-group-item text-right"><span class="pull-left"><strong class="">Phone Number</strong></span>
-                   <div *ngIf=i<1> {{ad.phone}}</div>
+                <li *ngFor="let ad of addre; let i=index" class="list-group-item text-right"><span class="pull-left"><strong
+                            class="">Phone Number</strong></span>
+                    <div *ngIf=i<1> {{ad.phone}}</div>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Gender </strong></span>
-
-
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Preferences</strong></span>
+                    {{userdata.userPreferences}}
                 </li>
             </ul>
-            
+
             <ul class="list-group">
                 <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i>
 
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/cart">My Cart</a></strong></span>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/cart">My
+                                Cart</a></strong></span>
                     {{ cartLength }}</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/orders">My Orders</a></strong></span>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/orders">My
+                                Orders</a></strong></span>
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/wishlist">Wishlist</a></strong></span>
                     {{wishlistLength}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/setting">Settings</a></strong></span>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/deleteaccount">Delete Account</a></strong></span>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/deleteaccount">Delete
+                                Account</a></strong></span>
                 </li>
             </ul>
 
@@ -51,69 +54,20 @@
             <div class="panel panel-default target">
                 <div class="panel-heading" contenteditable="false">Products I Own</div>
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="http://lorempixel.com/600/200/people">
-                                <div class="caption">
-                                    <h3>
-                                        Rover
-                                    </h3>
-                                    <p>
-                                        Cocker Spaniel who loves treats.
-                                    </p>
-                                    <p>
-
-                                    </p>
-                                </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3" *ngFor="let book of top_selling; let i =index">
+                            <div *ngIf='i<4'>
+                                <app-cards [book]=book></app-cards>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="http://lorempixel.com/600/200/city">
-                                <div class="caption">
-                                    <h3>
-                                        Marmaduke
-                                    </h3>
-                                    <p>
-                                        Is just another friendly dog.
-                                    </p>
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="thumbnail">
-                                <img alt="300x200" src="http://lorempixel.com/600/200/sports">
-                                <div class="caption">
-                                    <h3>
-                                        Rocky
-                                    </h3>
-                                    <p>
-                                        Loves catnip and naps. Not fond of children.
-                                    </p>
-                                    <p>
-
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
-
-
-        <div id="push"></div>
     </div>
-
-    <script src="/plugins/bootstrap-select.min.js"></script>
-    <script src="/codemirror/jquery.codemirror.js"></script>
-    <script src="/beautifier.js"></script>
+    <div id="push"></div>
 </div>
+
+<script src="/plugins/bootstrap-select.min.js"></script>
+<script src="/codemirror/jquery.codemirror.js"></script>
+<script src="/beautifier.js"></script>

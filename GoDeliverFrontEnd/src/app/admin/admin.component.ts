@@ -85,7 +85,8 @@ export class AdminComponent implements OnInit {
 
 
   routes() {
-    this.origin = this.destination = { lat: 12.9266122, lng: 77.6934768 };
+    this.origin =  { lat: 12.9266122, lng: 77.6934768 };
+    this.destination = { lat: 12.9266115, lng: 77.6934758 };
     for (let i = 0; i < this.slotVehicleRouteLength; i++) {
       this.stops[i] = {
         location: {
