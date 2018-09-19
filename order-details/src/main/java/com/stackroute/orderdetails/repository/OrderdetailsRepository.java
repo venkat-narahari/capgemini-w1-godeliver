@@ -9,4 +9,6 @@ public interface OrderdetailsRepository extends CrudRepository<Orderdetails, Int
 
 	public Orderdetails getByEmailId(String emailId);
 
+	public Orderdetails getByOrderId(String orderId);
+
 }

@@ -1,5 +1,5 @@
 {
-  "_id": "12-08-2018",
+  "_id": "Thu Sep 20 2018 00:00:00 GMT+0530 (India Standard Time)",
   "slots": [
     {
       "slotId": "0",
@@ -7,6 +7,7 @@
       "slotStartTime": "0900",
       "slotEndTime": "1200",
       "slotNoOfVehicles": "3",
+      "slotost": "120",
       "slotVehicle": [
         {
           "vehicleId": "1",
@@ -208,6 +209,7 @@
       "slotStartTime": "1300",
       "slotEndTime": "1600",
       "slotNoOfVehicles": "3",
+      "slotost": "160",
       "slotVehicle": [
         {
           "vehicleId": "1",
@@ -442,6 +444,7 @@
       "slotStartTime": "0900",
       "slotEndTime": "1200",
       "slotNoOfVehicles": "3",
+      "slotost": "180",
       "slotVehicle": [
         {
           "vehicleId": "1",

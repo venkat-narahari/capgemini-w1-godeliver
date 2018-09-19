@@ -1,13 +1,12 @@
 <!-- Login Page authentication with username and password -->
 <div class="component-body">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-6 col-md-offset-3">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
 
         <!--form class for username and password  using Material-->
-        <form class="example-form " [formGroup]="userForm" (ngSubmit)="loginSubmit()" style="height:70%">
-          <mat-card>
-
+        <mat-card>
+          <form class="example-form container-fluid justify-content-center" [formGroup]="userForm" (ngSubmit)="loginSubmit()">
             <mat-form-field>
               <input matInput placeholder="Enter your email" [formControl]="userEmail" name="userEmail" required>
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
@@ -22,10 +21,9 @@
             <br>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
             <!-- Routing to signup page when the user clicks on the Signup button-->
-            <a class="register" [routerLink]="['/register']">New to GoDeliver? Sign Up!
-          </a>
-          </mat-card>
-        </form>
+            <a class="register" [routerLink]="['/register']">New to GoDeliver? Sign Up!</a>
+          </form>
+        </mat-card>
         <!--  end of form class-->
       </div>
     </div>

@@ -84,4 +84,21 @@ public class OrderdetailsController {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_FOUND);
 		}
 	}
+	
+	@RequestMapping(value = "/detailsbyid", method = RequestMethod.GET)
+	public ResponseEntity<?> getByOrderId(@RequestParam String orderId) throws MongoConnectionException {
+		try {
+			Orderdetails getdetails;
+			getdetails = orderdetailsService.getByOrderId(orderId);
+			if (getdetails != null) {
+				return new ResponseEntity<Orderdetails>(getdetails, HttpStatus.FOUND);
+			} else {
+				throw new NoDetailsFoundException("Details doesn't exists with this id!");
+			}
+		} catch (NoDetailsFoundException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	
 }
