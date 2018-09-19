@@ -7,6 +7,15 @@
   color: red;
 }
 
+.fa-close:hover{
+  color: white;
+}
+
 .btn.btn-xs.btn-default{
   border-radius: 50%;
+}
+
+.btn.btn-xs.btn-default:hover{
+  border-radius: 50%;
+  background-color: red;
 }
