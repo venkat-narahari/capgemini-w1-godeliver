@@ -2,10 +2,10 @@ package com.stackroute.cvrp.domain;
 
 import java.util.Arrays;
 
+
 public class DateLogistics {
 	private String date;
 	private Slot[] slots;
-
 	public DateLogistics() {
 
 	}

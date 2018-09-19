@@ -2,14 +2,15 @@ package com.stackroute.cvrp.domain;
 
 import java.util.Arrays;
 
+
 public class Slot {
-	public String slotId;
-	public String slotDuration;
-	public String slotStartTime;
-	public String slotEndTime;
-	public String slotNoOfVehicles;
+	private String slotId;
+	private String slotDuration;
+	private String slotStartTime;
+	private String slotEndTime;
+	private String slotNoOfVehicles;
 	private String slotCost;
-	public Vehicle[] slotVehicle;
+	private Vehicle[] slotVehicle;
 
 	public String getSlotId() {
 		return slotId;
