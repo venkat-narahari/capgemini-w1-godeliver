@@ -64,7 +64,8 @@ preferencesSubmit(){
         this.error = "Fields are required";
       }
     );
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
+
 }
 
   genre = new FormControl();

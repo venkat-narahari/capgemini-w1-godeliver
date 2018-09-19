@@ -21,7 +21,7 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://13.127.190.125:9072/user-login/api/v1/login`,
+        `http://35.154.204.222:9072/user-login/api/v1/login`,
         { userEmail, userPassword },
 
         options
@@ -29,6 +29,8 @@ export class AuthenticationService {
       .pipe(
         map(user => {
           // login successful if there's a jwt token in the response
+
+          
 
           if (user) {
 
@@ -39,7 +41,6 @@ export class AuthenticationService {
             }
 
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-           setTimeout(()=> {
             localStorage.setItem(
               "currentUserToken",
               JSON.stringify(user.token)
@@ -48,7 +49,6 @@ export class AuthenticationService {
               "currentUserEmail",
               JSON.stringify(user.email)
             );
-           },2000);
           }
           console.log(userPassword);
           return user;

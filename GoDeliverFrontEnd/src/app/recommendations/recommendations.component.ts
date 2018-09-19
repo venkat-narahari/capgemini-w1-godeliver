@@ -49,9 +49,6 @@ export class RecommendationsComponent implements OnInit {
       this.top_rated = list;
     });
 
-    //getting toprated  books
-    this.bookService.getGenreList().subscribe(list => {
-      this.genres = list;
-    });
+  
   }
 }
