@@ -2,16 +2,22 @@ a{
     color: black !important;
     font-weight: 700;
     font-size: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     margin: 10px;
 }
 
 a:hover{
-    letter-spacing: -1px;
     color: rgb(196, 17, 17) !important;
     margin: 10px;
+    letter-spacing: 0.2px;
+    background-color: transparent !important;
 }
 
 nav{
   vertical-align: middle;
+}
+
+.logo-style{
+  background-color: rgb(196, 17, 17);
+  color: white;
 }

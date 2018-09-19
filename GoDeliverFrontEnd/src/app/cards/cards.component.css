@@ -16,7 +16,7 @@ a{
   font-family: 'Cinzel', serif;
   color:rgb(15, 15, 15);
   cursor: pointer;
-  
+
 }
 
 
@@ -50,7 +50,7 @@ a{
   vertical-align: super;
   cursor: pointer;
   outline: none;
- 
+
 }
 
 mat-card{
@@ -89,5 +89,3 @@ body {
   background: #eee;
   color: #aaa;
 }
-
-
