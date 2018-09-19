@@ -4,8 +4,9 @@ services:
 
 #angular
   GoDeliverFrontEnd:
-    image: rajawatshivam007/frontend
-    container_name: godfrontend
+    build: GoDeliverFrontEnd/
+    image: GoDeliverFrontEnd
+    container_name: GoDeliverFrontEnd
     network_mode: "host"
     hostname: localhost
     ports:
