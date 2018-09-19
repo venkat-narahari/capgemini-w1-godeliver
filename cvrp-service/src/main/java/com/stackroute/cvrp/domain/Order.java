@@ -1,5 +1,7 @@
 package com.stackroute.cvrp.domain;
 
+
+
 public class Order {
 
 	private String orderId;

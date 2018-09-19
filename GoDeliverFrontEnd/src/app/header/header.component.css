@@ -9,7 +9,7 @@ a{
 a:hover{
     color: rgb(196, 17, 17) !important;
     margin: 10px;
-    letter-spacing: 0.2px;
+    font-weight: 900;
     background-color: transparent !important;
 }
 
