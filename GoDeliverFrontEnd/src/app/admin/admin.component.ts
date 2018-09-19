@@ -17,7 +17,6 @@ export class AdminComponent implements OnInit {
   slotVehicle: any;
   slotOne: any;
   slotVehicleRoute: any;
-
   geo = {
     latitude: "",
     longitude: ""
@@ -31,7 +30,7 @@ export class AdminComponent implements OnInit {
   slotVehicleRouteLength:any;
   item = {
     slot:1,
-    vehicleId:1
+    vehicleId:1,
   }
   vol:any;
   volume=0; 
@@ -48,9 +47,10 @@ export class AdminComponent implements OnInit {
   onSubmit() {
     this.item.slot=this.timeslot;
     this.item.vehicleId=this.slot;
+    this.dateOfDelivery=this.dateOfDelivery;
     this.admin.getRoute(this.item).subscribe(data => {
       this.slotVehicleRoute = data;
-      this.slotVehicleRouteLength=data.length;     
+      this.slotVehicleRouteLength=data.length; 
     });
 
     this.admin.getTotalVolume(this.item).subscribe(data =>{
@@ -127,7 +127,10 @@ export class AdminComponent implements OnInit {
     console.log(e);
   }
 
-
+onDate(){
+  console.log(this.dateOfDelivery);
+  
+}
 
 
 
