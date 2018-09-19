@@ -115,6 +115,44 @@ services:
 #        condition: service_healthy
     restart: always
     healthcheck:
+      test: "exit 0"
+
+#payment microservice
+
+  payment-service:
+    build: payment-service/
+    image: payment-service
+    container_name: payment-service
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9079:9079
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#cvrp microservice
+
+  cvrp-service:
+    build: cvrp-service/
+    image: cvrp-service
+    container_name: cvrp-service
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9078:9078
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
       test: "exit 0" 
         
 

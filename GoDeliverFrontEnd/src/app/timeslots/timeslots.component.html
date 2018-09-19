@@ -1,91 +1,79 @@
 <h1 style="text-align: center">Available time slots</h1>
 <div class="container">
-    <div class="col-sm-8">
-        <mat-card style="border-radius: 8px;margin-top:10px">
-            <div class="row">
-                <div *ngFor="let slots of slotAvailability;let i=index,let j=index" style="padding-left:60px">
-                    <mat-card style="margin-top:0px;border-radius:8px; width:150px">
-                        <input type="radio" class="button" name="timeslots" [disabled]="!slots" (click)="radioselected()">
-                        <label style="padding-left:10px">{{timeslots[i]}}
-                        </label>
-                        <div *ngIf="!slots">
-                            <p style="color:Red;padding-left:10px"> Unavailable</p>
-                        </div>
-                        <div *ngIf="slots">
-                            <p style="color:green;padding-left:10px">Available</p>
-
-                        </div>
-                        <div *ngIf="isRadioSelect1()">
-                            
-                            <div *ngIf="slots">
-
-                                <div *ngIf="getMin()==slotCost[j]">
-                                    <p>free</p>
-                                </div>
-
-                                <div *ngIf="(getMin(j))!=slotCost[j]">
-                                    <p>₹{{(slotCost[j]-getMin())}}</p>
-                                </div>
+   <div class="col-sm-8">
+       <mat-card style="border-radius: 8px;margin-top:10px">
+           <div class="row">
+               <div *ngFor="let slots of slotAvailability;let i=index,let j=index" style="padding-left:60px">
+                   <mat-card style="margin-top:0px;border-radius:8px; width:150px">
+                       <input type="radio" class="button" name="timeslots" [disabled]="!slots" (click)="radioselected()">
+                       <label style="padding-left:10px">{{timeslots[i]}}
+                       </label>
+                       <div *ngIf="!slots">
+                           <p style="color:Red;padding-left:10px"> Unavailable</p>
+                       </div>
+                       <div *ngIf="slots">
+                           <p style="color:green;padding-left:10px">Available</p>
+                       </div>
+                       <div *ngIf="isRadioSelect1()">
+                        {{ slotCost[j]}}
+                           <div *ngIf="slots">
+                           <button style="background-color:deepskyblue;margin-top:20px;border-radius: 8px;margin-left:15px"
+                              >Confirm</button>
                             </div>
+                       </div>
+                   </mat-card>
+               </div>
 
-
-                            <div *ngIf="slots">
-                                <button style="background-color:deepskyblue;margin-top:20px;border-radius: 8px;margin-left:15px">Confirm</button>
-                            </div>
-                        </div>
-                    </mat-card>
-                </div>
-
-            </div>
-            <div style="padding-left: 50px">
-                <button style="border-radius:8px;margin-top:60px;height:40px;margin-top:45px;">
-                    <a class="link" (click)="billingRoute()">
-                        <p style="text-align: center;margin-top:5px"> Change Date?</p>
-                    </a>
-                </button>
-            </div>
-        </mat-card>
-    </div>
-    <div class="col-sm-4">
-        <mat-card style="height:320px;margin-top:10px;margin-left:20px;background-color: deepskyblue;border-radius:6px">
-            <mat-card-title>
-                <b>Order Details</b>
-            </mat-card-title>
-            <mat-card-content>
-                <div class="table-responsive">
-                    <thead>
-                        <tr>
-                            <td style="width: 400px">
-                                <h5>Total Items</h5>
-                            </td>
-                            <td>
-                                <h5>{{ totalQuantity()}}</h5>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 400px">
-                                <h5>Amount Payable</h5>
-                            </td>
-                            <td>
-                                <h5>{{ getSum()}}</h5>
-                            </td>
-                        </tr>
-                        <hr class="horizantal" style="color:rgb(3, 3, 29)">
-                        <tr>
-                            <td style="width: 400px">
-                                <h5>Delivery Charges</h5>
-                            </td>
-                            <td>
-                                <h5>Free</h5>
-                            </td>
-                        </tr>
-                    </thead>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <button class="btn btn-primary btn-block" style="margin-top:20px">
-        <a routerLink="/payment" style="color:white">Proceed To Payment</a>
-    </button>
-    <br>
-    <br>
+           </div>
+           <div style="padding-left: 50px">
+           <button style="border-radius:8px;margin-top:60px;height:40px;margin-top:45px;">
+               <a class="link" (click)="billingRoute()">
+                   <p style="text-align: center;margin-top:5px"> Change Date?</p>
+               </a>
+           </button>
+           </div>
+       </mat-card>
+   </div>
+   <div class="col-sm-4">
+       <mat-card class="order">
+           <mat-card-title>
+               <b>Order Details</b>
+           </mat-card-title>
+           <mat-card-content>
+               <div class="table-responsive">
+                   <thead>
+                       <tr>
+                           <td style="width: 400px">
+                               <h5>Total Items</h5>
+                           </td>
+                           <td>
+                               <h5>{{ totalQuantity()}}</h5>
+                           </td>
+                       </tr>
+                       <tr>
+                           <td style="width: 400px">
+                               <h5>Amount Payable</h5>
+                           </td>
+                           <td>
+                               <h5>{{ getSum()}}</h5>
+                           </td>
+                       </tr>
+                       <hr class="horizantal" style="color:rgb(3, 3, 29)">
+                       <tr>
+                           <td style="width: 400px">
+                               <h5>Delivery Charges</h5>
+                           </td>
+                           <td>
+                               <h5>Free</h5>
+                           </td>
+                       </tr>
+                   </thead>
+               </div>
+           </mat-card-content>
+       </mat-card>
+   </div>
+   <button class="btn btn-primary btn-block" style="margin-top:20px" >
+       <a routerLink="/payment" style="color:white">Proceed To Payment</a>
+   </button>
+   <br>
+   <br>
