@@ -43,13 +43,5 @@
         </agm-map>
       </div>
     </div>
-
-   
-    <div class="col-sm-6" style="background-color:lavender;">
-      <div *ngIf=doughnutChartData>
-        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-          [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
   </div>
 </div>
