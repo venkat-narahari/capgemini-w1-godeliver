@@ -1,3 +1,7 @@
+.component-body{
+  height: 100vh;
+}
+
 .monospaced {
   font-family: "Ubuntu Mono", monospaced;
 }
