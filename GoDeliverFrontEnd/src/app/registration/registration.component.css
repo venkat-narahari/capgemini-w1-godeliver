@@ -5,15 +5,9 @@
   margin: 0 auto;
   height: 75vh;
   width: 100%;
-<<<<<<< HEAD
-  /* background-image : url("https://hippolms-storage.s3-accelerate.amazonaws.com/wiz/gifs/220514/3504.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJXRM4YAH2A46K76A%2F20180919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20180919T063515Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=367f7abb82a5a98b673ec67759676ad9dfea8aad9dc4e30c13fbd00aa6ed0821");  */
- background-size: contain;
- background-repeat: no-repeat
-=======
   /* background-image: url(../../assets/wall.gif); */
   background-size: contain;
   background-repeat: no-repeat;
->>>>>>> c2d9b23e2f5382b29a9618949f728fa9b1ae3cec
 }
 
 
