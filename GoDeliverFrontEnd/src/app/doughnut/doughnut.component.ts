@@ -43,6 +43,11 @@ export class DoughnutComponent implements OnInit {
       this.slotVehicleRouteLength = data.length;
     });
 
+    this.admin.getAllVolume(this.item).subscribe(data => {
+      this.slotVehicleRoute = data;
+      this.slotVehicleRouteLength = data.length;
+    });
+
     this.admin.getTotalVolume(this.item).subscribe(data => {
       this.vol = data;
     });

@@ -32,5 +32,8 @@ export class AdminService {
     return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle']));
    }
 
+   getAllVolume(item) {
+     return this.getDate(item).pipe(map(body => body['slots']));
+   }
 
 }
