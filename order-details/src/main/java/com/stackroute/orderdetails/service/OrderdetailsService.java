@@ -12,5 +12,7 @@ public interface OrderdetailsService {
 	public List<Orderdetails> getAll() throws NoDetailsFoundException;
 
 	public Orderdetails getByEmailId(String emailId) ;
+	
+	public Orderdetails getByOrderId(String orderId);
 
 }

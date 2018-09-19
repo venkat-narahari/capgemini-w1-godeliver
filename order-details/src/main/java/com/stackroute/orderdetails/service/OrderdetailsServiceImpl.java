@@ -69,5 +69,17 @@ public class OrderdetailsServiceImpl implements OrderdetailsService {
 
 	}
 
+	@Override
+	public Orderdetails getByOrderId(String orderId) {
+		
+		if (orderdetailsRepository.getByOrderId(orderId) != null) {
+			Orderdetails getorderdetails = orderdetailsRepository.getByOrderId(orderId);
+			return getorderdetails;
+		} else {
+			return null;
+		}
+
+	}
+
 	
 }
