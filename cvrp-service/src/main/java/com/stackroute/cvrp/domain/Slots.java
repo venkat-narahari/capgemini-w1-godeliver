@@ -6,7 +6,6 @@ public class Slots {
 
 	private boolean[] slotAvailability;
 	private String[] slotCost;
-
 	public Slots() {
 
 	}
