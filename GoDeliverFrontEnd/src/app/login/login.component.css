@@ -1,5 +1,7 @@
 /*css for login page*/
-
+.component-body{
+  height: 100%;
+}
 
 .container-fluid {
   text-align: center;
