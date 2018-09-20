@@ -2,30 +2,38 @@
 
 <!-- div class to display Recomended books to the user after login-->
 <div *ngIf="recommended_books">
-  <h2>Recommended Books</h2>
+  <div class="container">
+    <h2>Recommended Books</h2>
+    <div class="row mb-3">
+      <div class="col-sm-3 mb-3" *ngFor="let book of recommended_books; let i = index">
+        <div *ngIf='i<4'>
+          <app-cards [book]=book></app-cards>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Top Selling</h2>
+  <!-- div class to display top selling books in home page-->
   <div class="row mb-3">
-    <div class="col-sm-3 mb-3" *ngFor="let book of recommended_books; let i = index">
+    <div class="col-sm-3" *ngFor="let book of top_selling; let i =index">
       <div *ngIf='i<4'>
         <app-cards [book]=book></app-cards>
       </div>
     </div>
   </div>
 </div>
-<h2>Top Selling</h2>
-<!-- div class to display top selling books in home page-->
-<div class="row mb-3">
-  <div class="col-sm-3" *ngFor="let book of top_selling; let i =index">
-    <div *ngIf='i<4'>
-      <app-cards [book]=book></app-cards>
-    </div>
-  </div>
-</div>
-<h2>Top Rated</h2>
-<!-- div class to display  top rated books in home page-->
-<div class="row mb-3">
-  <div class="col-sm-3" *ngFor="let book of top_rated; let i = index">
-    <div *ngIf='i < 4'>
-      <app-cards [book]=book></app-cards>
+
+<div class="container">
+  <h2>Top Rated</h2>
+  <!-- div class to display  top rated books in home page-->
+  <div class="row mb-3">
+    <div class="col-sm-3" *ngFor="let book of top_rated; let i = index">
+      <div *ngIf='i < 4'>
+        <app-cards [book]=book></app-cards>
+      </div>
     </div>
   </div>
 </div>

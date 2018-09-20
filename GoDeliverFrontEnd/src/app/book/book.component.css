@@ -1,5 +1,6 @@
 .component-body{
-  height: 100vh;
+  height: 100%;
+  margin: 2%;
 }
 
 .monospaced {
@@ -21,4 +22,28 @@
 .buybutton{
     background-color: #fb641b;
     color:#fff;
+}
+
+li{
+  margin: 5px;
+}
+a{
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+}
+li:hover{
+  color: rgb(196,17,17,0.5);
+}
+
+ul.nav{
+  background-color: blue;
+  border-radius: 2px;
+}
+
+.book-title{
+  font-size: 5vh;
+}
+.product-price{
+  font-size: 3vh; 
 }

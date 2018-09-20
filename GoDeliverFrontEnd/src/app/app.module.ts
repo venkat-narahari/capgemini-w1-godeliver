@@ -25,6 +25,7 @@ import { ErrorInterceptor } from "./interceptors/error.interceptor";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 import { MaterialModule } from "./material";
 import { MatStepperModule } from "@angular/material/stepper";
+import { OrderService } from "./order.service";
 import {
   MatButtonModule,
   MatCheckboxModule,
@@ -64,6 +65,9 @@ import { TopsellingComponent } from './topselling/topselling.component';
 import { TopratedComponent } from './toprated/toprated.component';
 import { DoughnutComponent } from './doughnut/doughnut.component';
 import { BarchartComponent } from './barchart/barchart.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +98,8 @@ import { BarchartComponent } from './barchart/barchart.component';
     TopsellingComponent,
     TopratedComponent,
     DoughnutComponent,
-    BarchartComponent
+    BarchartComponent,
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,6 +113,7 @@ import { BarchartComponent } from './barchart/barchart.component';
     ReactiveFormsModule,
     MaterialModule,
     MatButtonModule,
+    MatGridListModule,
     MatCheckboxModule,
     MatIconModule,
     MatListModule,
@@ -117,12 +123,14 @@ import { BarchartComponent } from './barchart/barchart.component';
     FlexLayoutModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     MatExpansionModule,
     AngularFireModule.initializeApp(environment.firebase, "godeliverfrontend"),
     AngularFirestoreModule,
     NgxPaginationModule,
     MatStepperModule,
     HttpModule,
+    MatSnackBarModule,
     AgmCoreModule.forRoot({
       // @agm/core
       apiKey: 'hidden'
@@ -135,10 +143,11 @@ import { BarchartComponent } from './barchart/barchart.component';
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    UserDetailsService,
+    UserDetailsService, OrderService,
     AuthGuard, AdminService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SnackbarComponent]
 })
 export class AppModule {
   HttpModule;

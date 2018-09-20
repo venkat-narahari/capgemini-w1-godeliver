@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { BookService } from "../book.service";
 import { FirebaseService } from "../firebase.service";
 import { Cart } from "../firebase.service";
+import {MatSnackBar} from "@angular/material";
+import { SnackbarComponent } from "../snackbar/snackbar.component";
 
 @Component({
   selector: "app-cards",
@@ -49,7 +51,8 @@ export class CardsComponent implements OnInit {
   wishlistLength:any;
   constructor(
     private bookService: BookService,
-    private firebase: FirebaseService
+    private firebase: FirebaseService,
+    public snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -96,6 +99,7 @@ export class CardsComponent implements OnInit {
     this.item.volume = parseInt(book.volume);
     this.item.totalPrice = parseInt(book.cost);
     this.item.totalVolume = parseInt(book.volume);
+    this.openSnackBar();
     for (let i = 0; i < this.cartsLength; i++) {
       if (this.item.bookISBN_10 === this.cart[i].bookISBN_10) {
         bool = false;
@@ -104,6 +108,13 @@ export class CardsComponent implements OnInit {
     if (bool) {
       this.firebase.addItem(this.item);
     }
+
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      duration: 2000,
+    });
   }
 
   addToWishlist(book) {
@@ -140,5 +151,5 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  
+
 }

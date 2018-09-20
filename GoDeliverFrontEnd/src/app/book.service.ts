@@ -8,15 +8,15 @@ import { Observable } from "rxjs";
 })
 export class BookService {
 
-  private recommended_url = "http://35.154.204.222:9072/recommendation/api/v1/preferences/?userMail=";
-  private getTopSelling_url = "http://35.154.204.222:9072/book/api/v1/books";
- //private getTopSelling_url = "http://localhost:8888/api/v1/books"; 
- private getGenre_url = "http://35.154.204.222:9072/recommendation/api/v1/genre";
-  private getBookById_url = "http://35.154.204.222:9072/book/api/v1/book/";
-  private getBookByName_url = "http://35.154.204.222:9072/book/api/v1";
-  private getTopRated_url = "http://35.154.204.222:9072/recommendation/api/v1/rating";
-  private WishlistRecommendation_url ="http://35.154.204.222:9072/recommendation/api/v1/save";
-  private getAllBooks_url = "http://35.154.204.222:9072/api/v1/books";
+  private recommended_url = "http://13.126.239.33:9088/recommendation/api/v1/preferences/?userMail=";
+  private getTopSelling_url = "http://13.126.239.33:9088/book/api/v1/books";
+ //private getTopSelling_url = "http://localhost:8888/api/v1/books";
+  private getGenre_url = "http://13.126.239.33:9088/recommendation/api/v1/genre";
+  private getBookById_url = "http://13.126.239.33:9088/book/api/v1/book/";
+  private getBookByName_url = "http://13.126.239.33:9088/book/api/v1";
+  private getTopRated_url = "http://13.126.239.33:9088/recommendation/api/v1/rating";
+  private WishlistRecommendation_url ="http://13.126.239.33:9088/recommendation/api/v1/save";
+  private getAllBooks_url = "http://13.126.239.33:9088/book/api/v1/books";
 
 
   constructor(private http: HttpClient) { }
@@ -24,7 +24,7 @@ export class BookService {
   getAllBooks() : Observable<Books[]> {
     return this.http.get<Books[]>(this.getAllBooks_url)
   }
- 
+
   getBookByName(book) {
     return this.http.get(this.getBookByName_url + "/" + book);
   }
