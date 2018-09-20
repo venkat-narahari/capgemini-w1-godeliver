@@ -208,7 +208,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 9072:9072
+      - 9088:9088
     depends_on:
       config-service:
         condition: service_healthy
