@@ -11,8 +11,8 @@ import { FirebaseService, Cart } from "../firebase.service";
 export class BookComponent implements OnInit {
   //To store book details for wishlist
   book: any;
-  cart:any;
-  cartsLength:any;
+  cart: any;
+  cartsLength: any;
   item: Cart = {
     bookISBN_10: "",
     title: "",
@@ -45,7 +45,7 @@ export class BookComponent implements OnInit {
     });
     if (localStorage.getItem("currentUserEmail") != null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
-    };
+    }
     this.firebase.getCart().subscribe(cart => {
       this.cart = cart;
       this.cartsLength = cart.length;
@@ -71,8 +71,13 @@ export class BookComponent implements OnInit {
     if (bool) {
       this.firebase.addItem(this.item);
     }
+    setTimeout(() => {
+      this.routeToBilling();
+    },2000);
+  }
 
-    this.route.navigate(['/billing']);
+  routeToBilling() {
+    this.route.navigate(["/billing"]);
     location.reload();
   }
 }
