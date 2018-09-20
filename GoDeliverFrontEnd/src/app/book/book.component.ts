@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BookService } from "../book.service";
-import { Books } from "../book-details";
+import { FirebaseService, Cart } from "../firebase.service";
 
 @Component({
   selector: "app-book",
@@ -11,28 +11,68 @@ import { Books } from "../book-details";
 export class BookComponent implements OnInit {
   //To store book details for wishlist
   book: any;
-
+  cart:any;
+  cartsLength:any;
+  item: Cart = {
+    bookISBN_10: "",
+    title: "",
+    cost: 1,
+    poster: "",
+    genre: "",
+    quantity: 1,
+    volume: 1,
+    totalVolume: 1
+  };
   //To store currentUser email for wishlist button
   curUser: any;
 
   constructor(
     private router: ActivatedRoute,
-    private bookService: BookService
-  ) { }
+    private bookService: BookService,
+    private firebase: FirebaseService,
+    private route: Router
+  ) {}
 
   // bookdetails=new Books("","","","","","","","","","","","","");
 
   ngOnInit() {
     this.router.params.subscribe(params => {
-      const id = params['bookISBN'];
+      const id = params["bookISBN"];
       this.bookService.getBook(id).subscribe(list => {
-        this.book = list
+        this.book = list;
         //  console.log(list);
       });
     });
     if (localStorage.getItem("currentUserEmail") != null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
-    }
+    };
+    this.firebase.getCart().subscribe(cart => {
+      this.cart = cart;
+      this.cartsLength = cart.length;
+    });
   }
 
+  billing() {
+    let bool = true;
+    this.item.title = this.book.title;
+    this.item.poster = this.book.poster;
+    this.item.bookISBN_10 = this.book.bookISBN_10;
+    this.item.cost = parseInt(this.book.cost);
+    this.item.genre = this.book.genre;
+    this.item.quantity = 1;
+    this.item.volume = parseInt(this.book.volume);
+    this.item.totalPrice = parseInt(this.book.cost);
+    this.item.totalVolume = parseInt(this.book.volume);
+    for (let i = 0; i < this.cartsLength; i++) {
+      if (this.item.bookISBN_10 === this.cart[i].bookISBN_10) {
+        bool = false;
+      }
+    }
+    if (bool) {
+      this.firebase.addItem(this.item);
+    }
+
+    this.route.navigate(['/billing']);
+    location.reload();
+  }
 }
