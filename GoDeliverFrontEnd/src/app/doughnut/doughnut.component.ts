@@ -24,8 +24,16 @@ export class DoughnutComponent implements OnInit {
   vol: any;
   volume = 0;
   data: any;
+  totalVolumeSlot:any;
   orderLength = [];
+  
+  timeSlotOne=0;
+  timeSlotTwo=1;
+  timeSlotThree=2;
 
+  vehicleOne=0;
+  vehicleTwo=1;
+  vehicleThree=2;
 
   public doughnutChartLabels:string[] = ['Filled', 'Empty'];
   public doughnutChartData:number[];
@@ -44,7 +52,7 @@ export class DoughnutComponent implements OnInit {
     });
 
     this.admin.getAllVolume(this.item).subscribe(data => {
-      this.slotVehicleRoute = data;
+      this.totalVolumeSlot = data;
       this.slotVehicleRouteLength = data.length;
     });
 
@@ -65,6 +73,8 @@ export class DoughnutComponent implements OnInit {
     setTimeout(() => {
       this.totalVolume();
     }, 2000);
+
+
   }
 
   totalVolume() {
@@ -73,6 +83,7 @@ export class DoughnutComponent implements OnInit {
     this.doughnutChartData = [this.volume, 5670000 - this.volume];
     // this.distance=this.vol.vehicleCoveredDistance;
   }
+
 
   timePrint(item) {
     this.timeslot = item;
