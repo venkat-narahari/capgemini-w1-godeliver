@@ -1,36 +1,88 @@
+<html>
 
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
   <div class="container" id="Box">
 
     <div>
       <img src="../../assets/success.png" style="width: 21%;height: 21%;">
     </div>
+    <div class="alert alert-success">
+      <h2 id="success"><strong>Thank You!!!Your payment was successful.</strong></h2>
+    </div>
     <div class="p-3 mb-5 rounded successful">
-      <div>
-        <h2 id="success"><strong>Thank You!!!Your payment was successful.</strong></h2>
-      </div>
-
       <div id="orders">
         <div>
-          <h3 class="title"><strong> Your Details </strong></h3>
+          <h3 class="title"><strong> Order Details </strong></h3>
         </div>
         <div class="row" style="font-size: 20px;">
+
           <div class="col-md-6">
-            <div><strong>Name :</strong></div>
-            <div><strong>Will be delivered to : </strong></div>
-            <div><strong>Email ID :</strong></div>
-            <div><strong>Order Quantity :</strong></div>
-            <div><strong>Order Date :</strong></div>
-            <div><strong>Orders:</strong></div>
+
+            <div>
+              <h4><strong>Name :</strong></h4>
+            </div>
           </div>
           <div class="col-md-6">
             <div>{{orderDetails.orderConsumerName}}</div>
+          </div>
+        </div>
+        <div class="row" style="font-size: 20px;">
+          <div class="col-md-6">
+            <div>
+              <h4><strong>Will be delivered to : </strong></h4>
+            </div>
+          </div>
+          <div class="col-md-6">
             <div>{{orderDetails.orderConsumerAddress}}</div>
+          </div>
+        </div>
+        <div class="row" style="font-size: 20px;">
+          <div class="col-md-6">
+            <div>
+              <h4><strong>Email ID :</strong></h4>
+            </div>
+          </div>
+          <div class="col-md-6">
             <div>{{orderDetails.emailId}}</div>
+          </div>
+        </div>
+        <div class="row" style="font-size: 20px;">
+          <div class="col-md-6">
+            <div>
+              <h4><strong>Order Quantity :</strong></h4>
+            </div>
+          </div>
+          <div class="col-md-6">
             <div>{{orderDetails.orderQuantity}}</div>
+          </div>
+        </div>
+        <div class="row" style="font-size: 20px;">
+          <div class="col-md-6">
+            <div>
+              <h4><strong>Order Date :</strong></h4>
+            </div>
+          </div>
+          <div class="col-md-6">
             <div>{{orderDetails.orderDate}}</div>
+          </div>
+        </div>
+        <div class="row" style="font-size: 20px;">
+          <div class="col-md-6">
+            <div>
+              <h4><strong>Orders:</strong></h4>
+            </div>
+          </div>
+          <div class="col-md-6">
             <div class="orders" *ngFor="let sl of orderDetails.books; let i=index">
               <div>
-                <h3><strong>Order {{i+1}} :</strong></h3>
+                <h4><strong>Order {{i+1}} :</strong></h4>
               </div>
               <div><strong>Order Id : </strong>{{sl.bookISBN_10}}</div>
               <div><strong>Order Title :</strong> {{sl.title}}</div>
@@ -39,9 +91,11 @@
           </div>
         </div>
       </div>
+      <br>
+      <button class="btn btn-lg btn-brand btn-block"><a href="#">Back to Homepage</a></button>
     </div>
-
-    <br>
-    <button class="btn btn-lg btn-brand btn-block"><a href="#">Back to Homepage</a></button>
   </div>
 
+</body>
+
+</html>

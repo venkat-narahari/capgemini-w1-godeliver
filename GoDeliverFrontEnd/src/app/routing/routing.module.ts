@@ -1,4 +1,4 @@
-import { TimeslotsComponent } from "./../timeslots/timeslots.component";
+import { TimeslotsComponent } from './../timeslots /timeslots.component';
 import { BillingComponent } from "./../billing/billing.component";
 import { LoginComponent } from "./../login/login.component";
 import { HomeComponent } from "./../home/home.component";
