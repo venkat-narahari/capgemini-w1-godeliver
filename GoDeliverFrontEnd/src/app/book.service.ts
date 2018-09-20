@@ -16,7 +16,7 @@ export class BookService {
   private getBookByName_url = "http://13.126.239.33:9088/book/api/v1";
   private getTopRated_url = "http://13.126.239.33:9088/recommendation/api/v1/rating";
   private WishlistRecommendation_url ="http://13.126.239.33:9088/recommendation/api/v1/save";
-  private getAllBooks_url = "http://13.126.239.33:9088/api/v1/books";
+  private getAllBooks_url = "http://13.126.239.33:9088/book/api/v1/books";
 
 
   constructor(private http: HttpClient) { }

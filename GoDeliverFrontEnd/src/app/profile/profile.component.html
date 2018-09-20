@@ -16,7 +16,7 @@
                     {{userdata.userEmail}}</li>
                 <li *ngFor="let ad of addre; let i=index" class="list-group-item text-right"><span class="pull-left"><strong
                             class="">Phone Number</strong></span>
-                    <div *ngIf=i<1> {{ad.phone}}</div>
+                    <div *ngIf='i<1'> {{ad.phone}}</div>
                 </li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Preferences</strong></span>
                     {{userdata.userPreferences}}
@@ -45,18 +45,12 @@
         </div>
         <!--/col-3-->
         <div class="col-sm-9" contenteditable="false">
-            <div class="panel panel-default">
-                <div class="panel-heading capitalize">{{userdata.userName}}'s Bio</div>
-                <div class="panel-body"> Hello! My name is {{userdata.userName}}, I am a fullstack developer.
-
-                </div>
-            </div>
             <div class="panel panel-default target">
-                <div class="panel-heading" contenteditable="false">Products I Own</div>
+                <div class="panel-heading" contenteditable="false"><b>Products I Own</b></div>
                 <div class="panel-body">
                     <div class="row mb-3">
-                        <div class="col-sm-3" *ngFor="let book of top_selling; let i =index">
-                            <div *ngIf='i<4'>
+                        <div class="col-sm-4" *ngFor="let book of top_selling; let i =index">
+                            <div *ngIf='i>29'>
                                 <app-cards [book]=book></app-cards>
                             </div>
                         </div>
