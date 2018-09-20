@@ -99,7 +99,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     TopratedComponent,
     DoughnutComponent,
     BarchartComponent,
-    SnackbarComponent
+    SnackbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,6 +130,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     NgxPaginationModule,
     MatStepperModule,
     HttpModule,
+    MatSnackBarModule,
     AgmCoreModule.forRoot({
       // @agm/core
       apiKey: 'hidden'
@@ -145,7 +146,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     UserDetailsService, OrderService,
     AuthGuard, AdminService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SnackbarComponent]
 })
 export class AppModule {
   HttpModule;
