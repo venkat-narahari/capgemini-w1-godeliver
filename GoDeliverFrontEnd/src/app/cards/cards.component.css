@@ -83,3 +83,15 @@ body {
 .fa.fa-heart-o{
   border-color: red;
 }
+
+mat-button{
+  background-color: none;
+}
+mat-button:hover{
+  background-color: none;
+}
+mat-button:focus{
+  background-color: none;
+  outline: none;
+  border: none;
+}
