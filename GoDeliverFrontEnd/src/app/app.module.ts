@@ -64,6 +64,7 @@ import { TopsellingComponent } from './topselling/topselling.component';
 import { TopratedComponent } from './toprated/toprated.component';
 import { DoughnutComponent } from './doughnut/doughnut.component';
 import { BarchartComponent } from './barchart/barchart.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,6 +109,7 @@ import { BarchartComponent } from './barchart/barchart.component';
     ReactiveFormsModule,
     MaterialModule,
     MatButtonModule,
+    MatGridListModule,
     MatCheckboxModule,
     MatIconModule,
     MatListModule,
