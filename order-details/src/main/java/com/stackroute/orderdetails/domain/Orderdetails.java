@@ -1,5 +1,7 @@
 package com.stackroute.orderdetails.domain;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,21 +16,18 @@ public class Orderdetails {
 	private String orderConsumerNumber;
 	private String orderVolume;
 	private String orderDate;
-	private String availableSlots;
-	private String selectedSlots;
 	private String orderQuantity;
-	private String price;
 	private Location orderLocation;
+	private List<Book> books;
 
 	public Orderdetails() {
 
 	}
 
 	public Orderdetails(String emailId, String orderId, String orderConsumerName, String orderConsumerAddress,
-			String orderConsumerNumber, String orderVolume, String orderDate, String availableSlots,
-			String selectedSlots, String orderQuantity, String price, Location orderLocation) {
-//		super();
-//		this._id = _id;
+			String orderConsumerNumber, String orderVolume, String orderDate, String orderQuantity,
+			Location orderLocation, List<Book> books) {
+		super();
 		this.emailId = emailId;
 		this.orderId = orderId;
 		this.orderConsumerName = orderConsumerName;
@@ -36,20 +35,10 @@ public class Orderdetails {
 		this.orderConsumerNumber = orderConsumerNumber;
 		this.orderVolume = orderVolume;
 		this.orderDate = orderDate;
-		this.availableSlots = availableSlots;
-		this.selectedSlots = selectedSlots;
 		this.orderQuantity = orderQuantity;
-		this.price = price;
+	
 		this.orderLocation = orderLocation;
-	}
-
-	@Override
-	public String toString() {
-		return "Orderdetails [ emailId=" + emailId + ", orderId=" + orderId + ", orderConsumerName=" + orderConsumerName
-				+ ", orderConsumerAddress=" + orderConsumerAddress + ", orderConsumerNumber=" + orderConsumerNumber
-				+ ", orderVolume=" + orderVolume + ", orderDate=" + orderDate + ", availableSlots=" + availableSlots
-				+ ", selectedSlots=" + selectedSlots + ", orderQuantity=" + orderQuantity + ", price=" + price
-				+ ", orderLocation=" + orderLocation + "]";
+		this.books = books;
 	}
 
 	public String getEmailId() {
@@ -108,22 +97,6 @@ public class Orderdetails {
 		this.orderDate = orderDate;
 	}
 
-	public String getAvailableSlots() {
-		return availableSlots;
-	}
-
-	public void setAvailableSlots(String availableSlots) {
-		this.availableSlots = availableSlots;
-	}
-
-	public String getSelectedSlots() {
-		return selectedSlots;
-	}
-
-	public void setSelectedSlots(String selectedSlots) {
-		this.selectedSlots = selectedSlots;
-	}
-
 	public String getOrderQuantity() {
 		return orderQuantity;
 	}
@@ -132,14 +105,7 @@ public class Orderdetails {
 		this.orderQuantity = orderQuantity;
 	}
 
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
+	
 	public Location getOrderLocation() {
 		return orderLocation;
 	}
@@ -147,4 +113,14 @@ public class Orderdetails {
 	public void setOrderLocation(Location orderLocation) {
 		this.orderLocation = orderLocation;
 	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+	
 }
