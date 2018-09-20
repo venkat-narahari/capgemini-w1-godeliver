@@ -11,7 +11,7 @@ export class CartComponent implements OnInit {
   carts: Cart[] = [];
   interval: any;
   itemToEdit: any;
-  
+
   constructor(
     private firebase: FirebaseService,
     private route: ActivatedRoute,
@@ -22,21 +22,21 @@ export class CartComponent implements OnInit {
     this.firebase.getCart().subscribe(data => {
       this.carts = data;
     });
-  
   }
 
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
-  
   }
 
   incrementQuantity(event, item: Cart) {
     item.quantity += 1;
-    item.totalPrice = item.quantity * item.cost;
-    item.totalVolume = item.quantity * item.volume;
     if (item.quantity > 5) {
       item.quantity = 5;
+      item.totalPrice = item.quantity * item.cost;
+      item.totalVolume = item.quantity * item.volume;
     }
+    item.totalPrice = item.quantity * item.cost;
+    item.totalVolume = item.quantity * item.volume;
     this.firebase.updateItem(item);
   }
 
