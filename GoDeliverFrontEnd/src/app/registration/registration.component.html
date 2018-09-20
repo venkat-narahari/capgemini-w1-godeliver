@@ -1,70 +1,66 @@
 <!-- User registration HTML page-->
-<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-<script src="node_modules/systemjs/dist/system.js"></script>
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <!-- form class for displaying the Registration page for user  uSing angularmaterial-->
-      <mat-card>
-        <mat-horizontal-stepper [linear]="isLinear" #stepper>
-          <mat-step [stepControl]="userForm">
-            <form [formGroup]="userForm" (ngSubmit)="registerSubmit()" #myForm="ngForm">
-              <mat-form-field class="example-full-width">
-                <input matInput class="ip" placeholder="Full Name" formControlName="userName" name="userName">
-              </mat-form-field>
-              <br>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              </mat-form-field>
-              <br>
-              <mat-form-field class="password" class="example-full-width">
-                <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword"
-                  required />
-                <mat-error *ngIf="email.invalid">{{getErrorMessage2()}}</mat-error>
-              </mat-form-field>
-              <br>
-              <mat-form-field class="example-full-width">
-                <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB"
-                  required>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage3()}}</mat-error>
-              </mat-form-field>
-              <br>
-              <button type="submit" [disabled]="!myForm.form.valid" class="button" mat-button matStepperNext>
+<div class="component-body">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- form class for displaying the Registration page for user  uSing angularmaterial-->
+        <mat-card>
+          <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="userForm">
+              <form [formGroup]="userForm" (ngSubmit)="registerSubmit()" #myForm="ngForm">
+                <mat-form-field class="example-full-width">
+                  <input matInput class="ip" placeholder="Full Name" formControlName="userName" name="userName">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="password" class="example-full-width">
+                  <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword" required />
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage2()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                  <mat-error *ngIf="email.invalid">{{getErrorMessage3()}}</mat-error>
+                </mat-form-field>
+                <br>
+                <button type="submit" [disabled]="!myForm.form.valid" class="button" mat-button matStepperNext>
                 <span class="button-word">Next</span>
               </button>
-            </form>
-          </mat-step>
+              </form>
+            </mat-step>
 
 
-          <mat-step [stepControl]="userForm">
-            <form [formGroup]="userForm" (ngSubmit)="preferencesSubmit()">
-              <div class="container-fluid container-card">
-                <div class="row justify-content-center">
-                  <div *ngFor="let genre of genreList" class="step2">
-                    <div class="col-md-2">
-                      <mat-card id="{{genre.card}}" class="option-cards" (click)="onclick(genre.id,genre.click,genre.name)">
-                        <img mat-card-image src="{{genre.img}}" alt="movie genre">
-                        <mat-card-title class="option">{{genre.name}}</mat-card-title>
-                      </mat-card>
+            <mat-step [stepControl]="userForm">
+              <form [formGroup]="userForm" (ngSubmit)="preferencesSubmit()">
+                <div class="container-fluid container-card">
+                  <div class="row justify-content-center">
+                    <div *ngFor="let genre of genreList" class="step2">
+                      <div class="col-sm-3">
+                        <mat-card id="{{genre.card}}" class="option-cards" (click)="onclick(genre.id,genre.click,genre.name)">
+                          <img mat-card-image src="{{genre.img}}" alt="movie genre">
+                          <mat-card-title class="option">{{genre.name}}</mat-card-title>
+                        </mat-card>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="reg">
-                <button class="button" mat-raised-button>
+                <div class="reg">
+                  <button class="button" mat-button>
                   <span class="button-word">Register</span>
                 </button>
-              </div>
-            </form>
-          </mat-step>
-        </mat-horizontal-stepper>
-      </mat-card>
+                </div>
+              </form>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </mat-card>
 
+      </div>
     </div>
   </div>
 </div>

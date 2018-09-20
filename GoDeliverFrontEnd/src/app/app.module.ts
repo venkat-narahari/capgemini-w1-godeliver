@@ -63,6 +63,8 @@ import { AdminService } from './admin.service';
 import { ChartsModule } from 'ng2-charts';
 import { TopsellingComponent } from './topselling/topselling.component';
 import { TopratedComponent } from './toprated/toprated.component';
+import { DoughnutComponent } from './doughnut/doughnut.component';
+import { BarchartComponent } from './barchart/barchart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +93,9 @@ import { TopratedComponent } from './toprated/toprated.component';
     DeliveryCardComponent,
     PaymentComponent,
     TopsellingComponent,
-    TopratedComponent
+    TopratedComponent,
+    DoughnutComponent,
+    BarchartComponent
   ],
   imports: [
     BrowserModule,

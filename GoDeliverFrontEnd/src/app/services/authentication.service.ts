@@ -21,7 +21,7 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://35.154.204.222:9072/user-login/api/v1/login`,
+        `http://13.126.239.33:9088/user-login/api/v1/login`,
         { userEmail, userPassword },
 
         options
@@ -30,7 +30,7 @@ export class AuthenticationService {
         map(user => {
           // login successful if there's a jwt token in the response
 
-          
+
 
           if (user) {
 

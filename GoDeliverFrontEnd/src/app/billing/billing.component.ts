@@ -21,7 +21,7 @@ export class BillingComponent implements OnInit {
   orders: any;
 
   email = new FormControl("", [Validators.required, Validators.email]);
-
+  bool = true;
   add: Address = {
     address: "",
     email: "",
@@ -56,7 +56,6 @@ export class BillingComponent implements OnInit {
   ) {}
   movies: any;
   getLatLng(address) {
-
     this.searchService.getLatLng(address).subscribe(data => {
       this.movies = data["latLng"];
     });
@@ -71,8 +70,9 @@ export class BillingComponent implements OnInit {
       userAddress: ["", [Validators.required]],
       userAddType: ["", [Validators.required]]
     });
-    this.firebase.getAddress().subscribe(carts => {
-      this.addressList = carts;
+    this.firebase.getAddress().subscribe(data => {
+      this.addressList = data;
+      console.log(data);
     });
     this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
@@ -105,6 +105,16 @@ export class BillingComponent implements OnInit {
     return volumeTotal;
   }
   onSubmit() {
+    for (let i = 0; i < this.addressList.length; i++) {
+      if (
+        this.addressList[i].name === this.firstname &&
+        this.addressList[i].address === this.address
+      ) {
+        console.log("already there");
+        this.bool = false;
+      }
+    }
+    setTimeout(() => {}, 3000);
     console.log(this.address);
     this.add.name = this.firstname;
     this.add.phone = this.phoneNumb;
@@ -113,22 +123,23 @@ export class BillingComponent implements OnInit {
     this.add.email = this.usermail;
     this.searchService.getLatLng(this.address).subscribe(data => {
       setTimeout(() => {
-      this.add.addLat = data["lat"];
+        this.add.addLat = data["lat"];
         console.log(this.add.addLat);
         this.add.addLng = data["lng"];
       }, 1000);
-  
     });
     setTimeout(() => {
       this.addAddress();
-  }, 5000);
+    }, 5000);
   }
 
   addAddress() {
     console.log(this.add);
-    this.firebase.addAddress(this.add);
+    if (this.bool) {
+      this.firebase.addAddress(this.add);
+    }
   }
- 
+
   getdetails() {
     this.firebase.addAddress(this.add);
   }

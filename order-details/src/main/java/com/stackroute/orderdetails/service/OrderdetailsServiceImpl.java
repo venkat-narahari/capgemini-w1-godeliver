@@ -18,6 +18,8 @@ public class OrderdetailsServiceImpl implements OrderdetailsService {
 	@SuppressWarnings("static-access")
 	String topic = kafkaConfig.getTopic();
 
+	// kafka template
+
 	@Autowired
 	private KafkaTemplate<String, Orderdetails> kafkaTemplate;
 
@@ -69,5 +71,18 @@ public class OrderdetailsServiceImpl implements OrderdetailsService {
 
 	}
 
-	
+	// method to get get the details based on order id
+
+	@Override
+	public Orderdetails getByOrderId(String orderId) {
+
+		if (orderdetailsRepository.getByOrderId(orderId) != null) {
+			Orderdetails getorderdetails = orderdetailsRepository.getByOrderId(orderId);
+			return getorderdetails;
+		} else {
+			return null;
+		}
+
+	}
+
 }

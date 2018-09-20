@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { AdminService } from "../admin.service";
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: "app-admin",
-  templateUrl: "./admin.component.html",
-  styleUrls: ["./admin.component.css"]
+  selector: 'app-barchart',
+  templateUrl: './barchart.component.html',
+  styleUrls: ['./barchart.component.css']
 })
-export class AdminComponent implements OnInit {
+export class BarchartComponent implements OnInit {
   dateOfDelivery: any;
   slt: any;
   stopd: any;

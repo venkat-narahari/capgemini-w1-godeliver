@@ -24,6 +24,8 @@ import { AdminComponent } from "../admin/admin.component";
 import { PaymentComponent } from "../payment/payment.component";
 import { TopratedComponent } from "../toprated/toprated.component";
 import { TopsellingComponent } from "../topselling/topselling.component";
+import { DoughnutComponent } from "../doughnut/doughnut.component";
+import { BarchartComponent } from "../barchart/barchart.component";
 
 
 const appRoutes: Routes = [
@@ -52,9 +54,15 @@ const appRoutes: Routes = [
   { path:"payment", component: PaymentComponent},
   { path:"toprated", component: TopratedComponent},
   { path:"topselling", component: TopsellingComponent},
+<<<<<<< HEAD
   { path: "order/:orderid", component: OrdersComponent }
 
 ];  
+=======
+  { path:"doughnut", component: DoughnutComponent},
+  { path:"bar", component: BarchartComponent}
+];
+>>>>>>> 06a7bdd3b26b028b566ad5fac546056d1ed2d60d
 
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(appRoutes)],

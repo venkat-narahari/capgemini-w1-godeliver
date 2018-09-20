@@ -30,18 +30,10 @@
     </div>
   </div>
 </form>
-<br>
-<br>
-<br>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-6" style="background-color:lavender;">
-      <div *ngIf=origin>
-        <agm-map [latitude]="lat" [longitude]="lng">
-          <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
-          </agm-direction>
-        </agm-map>
-      </div>
-    </div>
+
+<div class="col-sm-6" style="background-color:lavender;">
+  <div *ngIf=doughnutChartData>
+    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
   </div>
 </div>
