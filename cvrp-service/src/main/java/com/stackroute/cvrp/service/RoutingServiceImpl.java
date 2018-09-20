@@ -113,12 +113,13 @@ public class RoutingServiceImpl implements RoutingService {
 					System.out.println("order is "+orderId[b]);
 				}
 				locationList.add(newOrderLocation);
-				distanceMatrix = cvrpServiceImpl.getDistanceMatrix(locationList);
+				
+				CvrpServiceImpl cvrp = new CvrpServiceImpl(ordersList.size(), vehicles.length, vehicleCap);
+				cvrp.getRoute(route);
+				distanceMatrix = cvrp.getDistanceMatrix(locationList);
 				for (int j = 1; j < ordersList.size(); j++) {
 					ordersList.get(j).setRouted(false);
 				}
-				CvrpServiceImpl cvrp = new CvrpServiceImpl(ordersList.size(), vehicles.length, vehicleCap);
-				cvrp.getRoute(route);
 				cvrp.greedySolution(ordersList, distanceMatrix);
 				cvrp.greedySolution(ordersList, distanceMatrix);
 

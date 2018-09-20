@@ -34,6 +34,7 @@ public class CvrpServiceImpl implements CvrpService {
 	private Order[] orders;
 	private List<Order> orderList;
 	private Vehicle[] vehicleWithoutDepot;
+	private double[][] travelDuration;
 
 	public CvrpServiceImpl() {
 
@@ -47,6 +48,7 @@ public class CvrpServiceImpl implements CvrpService {
 		this.noOfVehicles = vehNum;
 		this.noOfOrders = orderNum;
 		this.distance = 0;
+		this.travelDuration=new double[orderNum+1][orderNum+1];
 		vehicles = new Vehicle[noOfVehicles];
 		vehiclesForBestSolution = new Vehicle[noOfVehicles];
 		vehicleWithoutDepot=new Vehicle[noOfVehicles];
@@ -70,6 +72,7 @@ public class CvrpServiceImpl implements CvrpService {
 		String url2 = "travelMode=driving&key=AhT3nVgSlv14w5u2GLYkCrCJm1VWDkBeEGHpG4JFNb13vgktN7OIJEr-5KZZrZah";
 		String inline = "";
 		double[][] distanceMatrix = new double[locationList.size()][locationList.size()];
+		double[][] duration= new double[locationList.size()][locationList.size()];
 		while (!(locationList.isEmpty())) {
 			if (count < 1) {
 				for (int i = 0; i < locationList.size(); i++) {
@@ -116,17 +119,31 @@ public class CvrpServiceImpl implements CvrpService {
 						int str_data2 = ((Long) jsonobj_2.get("originIndex")).intValue();
 						try {
 							Double str_data4 = (Double) jsonobj_2.get("travelDistance");
+							Double str_data5 = (Double) jsonobj_2.get("travelDuration");
+							System.out.println("travel duration is "+str_data5);
 							if (str_data1 != str_data2) {
 								distanceMatrix[str_data1][str_data2] = str_data4.doubleValue();
 								distanceMatrix[str_data2][str_data1] = str_data4.doubleValue();
+								duration[str_data1][str_data2]=str_data5.doubleValue();
+								duration[str_data2][str_data1]=str_data5.doubleValue();
 							} else {
 								distanceMatrix[str_data1][str_data1] = 0;
+								duration[str_data1][str_data2]=0;
 							}
 						} catch (Exception e) {
 
 						}
 					}
 					conn.disconnect();
+//					for(int i=0;i<duration.length;i++) {
+//						for(int j=0;j<duration.length;j++)
+//							System.out.println("i="+i+" "+"j="+j+" "+ duration[i][j]);
+//					}
+					this.travelDuration=duration;
+//					for(int i=0;i<this.travelDuration.length;i++) {
+//						for(int j=0;j<this.travelDuration.length;j++)
+//							System.out.println("travel dur i="+i+" "+"j="+j+" "+ travelDuration[i][j]);
+//					}
 					return distanceMatrix;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -134,6 +151,8 @@ public class CvrpServiceImpl implements CvrpService {
 			}
 
 		}
+		//this.travelDuration=duration;
+		
 		return distanceMatrix;
 	}
 
@@ -146,6 +165,10 @@ public class CvrpServiceImpl implements CvrpService {
 	}
 
 	public void greedySolution(List<Order> order, double[][] distanceMatrix) {
+//		for(int i=0;i<this.travelDuration.length;i++) {
+//			for(int j=0;j<this.travelDuration.length;j++)
+//				System.out.println("in greedy i="+i+" "+"j="+j+" "+ travelDuration[i][j]);
+//		}
 		orders = order.toArray(new Order[order.size()]);
 
 		double candCost, endCost;
@@ -395,8 +418,14 @@ public class CvrpServiceImpl implements CvrpService {
 
 	public Vehicle[] solutionPrint(String Solution_Label)// Print Solution In console
 	{
-
+//		for(int i=0;i<this.travelDuration.length;i++) {
+//			for(int j=0;j<this.travelDuration.length;j++)
+//				System.out.println("i="+i+" "+"j="+j+" "+ travelDuration[i][j]);
+//		}
 		int vehicleFilledCapacity = 0;
+		double duration=0;
+		int orderIdA,orderIdB;
+		int a;
 
 		for (int j = 0; j < this.noOfVehicles; j++) {
 
@@ -410,7 +439,7 @@ public class CvrpServiceImpl implements CvrpService {
 				orderList.remove(0);
 				Order[] orders= orderList.toArray(new Order[orderList.size()]);
 				for(int i=0;i<orders.length;i++) {
-					System.out.println("orders "+orders[i]);
+					//System.out.println("orders "+orders[i]);
 					this.vehicleWithoutDepot[j].addOrder(orders[i]);
 
 				}
@@ -421,8 +450,18 @@ public class CvrpServiceImpl implements CvrpService {
 				for (int k = 0; k < RoutSize; k++) {
 					vehicleFilledCapacity += Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderVolume());
 					this.vehicles[j].setVehicleLoadedCapacity(String.valueOf(vehicleFilledCapacity));
+					orderIdA=Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderId());
+					if((k==0)||(k==RoutSize-1)) {
+						duration+=this.travelDuration[0][orderIdA];
+					}
+					else {
+						orderIdB=Integer.parseInt(this.vehicles[j].getVehicleRoute()[k+1].getOrderId());
+						duration+=this.travelDuration[orderIdA][orderIdB];
+						
+					}
 
 				}
+				this.vehicleWithoutDepot[j].setVehicleRouteDuration(String.valueOf(duration));
 
 			}
 		}
