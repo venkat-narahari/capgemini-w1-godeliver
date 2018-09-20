@@ -34,7 +34,7 @@ public class CvrpController {
 	@RequestMapping(value = "/slots", method = RequestMethod.POST)
 	public ResponseEntity<?> giveSlots(@RequestBody Route route) {
 
-		// System.out.println("controller-->"+route);
+		 System.out.println("controller-->"+route);
 		cvrpService.getRoute(route);
 		System.out.println("");
 		// cvrpService.getJson(route);
