@@ -3,7 +3,7 @@
         <div *ngIf=wishlist>
             <h2 class="mt-5">Wishlist</h2>
             <div class="row mb-3">
-                <div class="col-sm-3" *ngFor="let book of wishlist | paginate: { itemsPerPage: 4, currentPage: p }">
+                <div class="col-sm-3" *ngFor="let book of wishlist | paginate: { itemsPerPage: 8, currentPage: p }">
                     <div class="component-body">
                         <mat-card class="book-card mt-3 mb-3 text-center">
                             <img mat-card-image src="{{ book.poster }}" style="height:30vh; width:auto; background-size: cover;"
@@ -27,7 +27,6 @@
                         </mat-card>
                     </div>
                 </div>
-
             </div>
             <div class="text-center">
                 <pagination-controls (pageChange)="p =$event"></pagination-controls>
