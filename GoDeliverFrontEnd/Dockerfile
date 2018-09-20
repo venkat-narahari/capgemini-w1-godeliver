@@ -2,7 +2,7 @@ FROM node:latest
 RUN mkdir -p /GoDeliver
 WORKDIR /GoDeliver
 COPY package.json /GoDeliver/
-RUN npm install
+RUN npm install --force
 RUN npm cache verify
 COPY . /GoDeliver
 EXPOSE 4200/tcp
