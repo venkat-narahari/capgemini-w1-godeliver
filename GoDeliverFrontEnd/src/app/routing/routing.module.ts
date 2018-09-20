@@ -51,9 +51,10 @@ const appRoutes: Routes = [
   { path: "admin", component: AdminComponent },
   { path:"payment", component: PaymentComponent},
   { path:"toprated", component: TopratedComponent},
-  { path:"topselling", component: TopsellingComponent}
+  { path:"topselling", component: TopsellingComponent},
+  { path: "order/:orderid", component: OrdersComponent }
 
-];
+];  
 
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(appRoutes)],
