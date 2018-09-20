@@ -3,36 +3,26 @@
   <mat-card class="book-card mt-3 mb-3 text-center">
     <img mat-card-image src="{{ book.poster }}" style="height:30vh; width:auto; background-size: cover;" alt="Photo of a {{book.title}}" routerLink="book/{{ book.bookISBN_10 }}">
     <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
-        <mat-card-title class="title">
-          <h6 class="title">{{ (book.title.length>20)? (book.title | slice:0:20)+'..':(book.title) }}</h6>
-        </mat-card-title>
-        <mat-card-subtitle class="col-md-6">{{book.genre}}</mat-card-subtitle>
-        <mat-card-subtitle class="col-md-6">₹ {{book.cost}}</mat-card-subtitle>
+      <mat-card-title class="title">
+        <h6 class="title">{{ (book.title.length>20)? (book.title | slice:0:18)+'..':(book.title) }}</h6>
+      </mat-card-title>
+          <mat-card-subtitle>{{book.genre}}<div fxFlex></div> ₹ {{book.cost}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-actions class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <button (click)="addToCart(book)" class="btn btn-danger">
-          <span class="fa fa-shopping-cart fa-lg"></span> Quick Add
-        </button>
+      <button (click)="addToCart(book)" class="btn btn-danger">
+        <span class="fa fa-shopping-cart fa-lg"></span> Quick Add
+      </button>
+      <div fxFlex></div>
+      <div *ngIf=email>
+        <div *ngIf=like>
+          <mat-icon class="example-icon">
+            <a (click)="addToWishlist(book)"><i class="fa fa-heart fa-md"></i></a>
+          </mat-icon>
         </div>
-        <div class="col-sm-6">
-          <div *ngIf=email>
-            <div *ngIf=like>
-              <div class="fav">
-                <mat-icon class="example-icon">
-                  <a (click)="addToWishlist(book)"><i class="fa fa-heart fa-md"></i></a>
-                </mat-icon>
-              </div>
-            </div>
-            <div *ngIf=!like>
-              <div class="fav">
-                <mat-icon class="example-icon">
-                  <a (click)="addToWishlist(book)"><i class="fa fa-heart-o fa-md"></i></a>
-                </mat-icon>
-              </div>
-            </div>
-          </div>
+        <div *ngIf=!like>
+          <mat-icon class="example-icon">
+            <a (click)="addToWishlist(book)"><i class="fa fa-heart-o fa-md"></i></a>
+          </mat-icon>
         </div>
       </div>
     </mat-card-actions>

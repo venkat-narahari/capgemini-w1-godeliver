@@ -1,37 +1,35 @@
-<div class="container">
-    <div *ngIf="wishlist">
-        <h2>Wishlist</h2>
-        <div class="col-sm-3" *ngFor="let book of wishlist; let i = index">
-            <div *ngIf='i<100'>
-                <!-- cards to display books -->
-                <mat-card class="book-card mt-3 mb-3">
-                    <img mat-card-image src="{{ book.poster }}" style="height: 225px; background-size: cover;" alt="Photo of a {{book.title}}"
-                        routerLink="book/{{ book.bookISBN_10 }}">
-                    <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
-                        <mat-card-title class="title">
-                            <h5 class="title">{{ (book.title.length>20)? (book.title | slice:0:20)+'..':(book.title) }}</h5>
-                        </mat-card-title>
-                        <mat-card-subtitle>{{book.genre}}</mat-card-subtitle>
-                        <mat-card-subtitle>₹ {{book.cost}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-actions>
-                        <button (click)="addToCart(book)" class="_button _butbg _svgicon">
-                            <svg class="_3oJBMI" width="16" height="16" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
-                                <path class="" d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86"
-                                    fill="#fff"></path>
-
-                            </svg>
-                            Quick Add</button>
-                        <span class="spacer"></span>
-                        <div *ngIf=email>
-                            <div class="fav">
+<div class="component-body">
+    <div class="container">
+        <div *ngIf=wishlist>
+            <h2 class="mt-5">Wishlist</h2>
+            <div class="row mb-3">
+                <div class="col-sm-3" *ngFor="let book of wishlist | paginate: { itemsPerPage: 8, currentPage: p }">
+                    <div class="component-body">
+                        <mat-card class="book-card mt-3 mb-3 text-center">
+                            <img mat-card-image src="{{ book.poster }}" style="height:30vh; width:auto; background-size: cover;"
+                                alt="Photo of a {{book.title}}" routerLink="book/{{ book.bookISBN_10 }}">
+                            <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
+                                <mat-card-title class="title">
+                                    <h6 class="title">{{ (book.title.length>20)? (book.title |
+                                        slice:0:18)+'..':(book.title) }}</h6>
+                                </mat-card-title>
+                                <mat-card-subtitle>{{book.genre}}<div fxFlex></div> ₹ {{book.cost}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-actions class="container">
+                                <button (click)="addToCart(book)" class="btn btn-danger">
+                                    <span class="fa fa-shopping-cart fa-lg"></span> Quick Add
+                                </button>
+                                <div fxFlex></div>
                                 <mat-icon class="example-icon">
-                                    <a (click)="removeFromWishlist($event, book)"><img src="../../assets/red.png"> </a>
+                                    <a (click)="removeFromWishlist($event, book)"><i class="fa fa-heart fa-md"></i></a>
                                 </mat-icon>
-                            </div>
-                        </div>
-                    </mat-card-actions>
-                </mat-card>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <pagination-controls (pageChange)="p =$event"></pagination-controls>
             </div>
         </div>
     </div>

@@ -16,7 +16,14 @@ a{
   font-family: 'Cinzel', serif;
   color:rgb(15, 15, 15);
   cursor: pointer;
+}
 
+.component-body{
+  box-shadow: 0 8px 8px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.20);
+}
+
+.component-body:hover{
+  box-shadow: 0 8px 8px rgba(0,0,0,0.20), 0 10px 10px rgba(0,0,0,0.20);
 }
 
 
@@ -36,7 +43,7 @@ a{
 }
 
 mat-card{
-  padding-bottom: 25%
+
 }
 mat-card-subtitle{
   font-family: 'Lora', cursive;
@@ -79,4 +86,16 @@ body {
 
 .fa.fa-heart-o{
   border-color: red;
+}
+
+mat-button{
+  background-color: none;
+}
+mat-button:hover{
+  background-color: none;
+}
+mat-button:focus{
+  background-color: none;
+  outline: none;
+  border: none;
 }
