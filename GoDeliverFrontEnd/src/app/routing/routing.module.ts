@@ -59,6 +59,7 @@ const appRoutes: Routes = [
   { path:"bar", component: BarchartComponent}
 ];
 
+
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(appRoutes)],
   exports: [CommonModule, RouterModule],

@@ -66,6 +66,8 @@ import { TopratedComponent } from './toprated/toprated.component';
 import { DoughnutComponent } from './doughnut/doughnut.component';
 import { BarchartComponent } from './barchart/barchart.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,7 +98,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     TopsellingComponent,
     TopratedComponent,
     DoughnutComponent,
-    BarchartComponent
+    BarchartComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -120,6 +123,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     FlexLayoutModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     MatExpansionModule,
     AngularFireModule.initializeApp(environment.firebase, "godeliverfrontend"),
     AngularFirestoreModule,

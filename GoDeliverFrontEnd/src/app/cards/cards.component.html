@@ -13,14 +13,12 @@
         <span class="fa fa-shopping-cart fa-lg"></span> Quick Add
       </button>
       <div fxFlex></div>
-      <button type="button" name="button" mat-button>
       <div *ngIf=email>
         <div *ngIf=like>
           <mat-icon class="example-icon">
             <a (click)="addToWishlist(book)"><i class="fa fa-heart fa-md"></i></a>
           </mat-icon>
         </div>
-      </div>
       <div *ngIf=!like>
         <div class="fav">
           <mat-icon class="example-icon">
@@ -28,7 +26,7 @@
           </mat-icon>
         </div>
       </div>
-      </button>
+    </div>
     </mat-card-actions>
   </mat-card>
 </div>
