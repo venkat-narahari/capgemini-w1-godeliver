@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit {
   admin:any;
   adminName:any;
   cartLength:any;
+  check = "hi";
+  books_notAvailable:boolean=false;
+  books_result: any;
 
   constructor(private bookService: BookService,
               private router:Router,
@@ -38,7 +41,7 @@ export class HeaderComponent implements OnInit {
     }
 
     this.firebase.getCart().subscribe(data => {this.cartLength=data.length});
-    
+
   }
 
   //logout function to remove the user details from local storage
@@ -57,5 +60,20 @@ export class HeaderComponent implements OnInit {
   cartRoute() {
     this.router.navigate(['/cart']);
     location.reload();
+  }
+
+  searchBooks() {
+    console.log(this.search);
+    this.check = "";
+    this.bookService.getBookByName(this.search).subscribe(data => {
+      if(data!=null){
+      this.books_result = data;
+      console.log(this.books_result);
+      }
+      else
+      {
+        this.books_notAvailable=true;
+      }
+    });
   }
 }

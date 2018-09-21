@@ -68,6 +68,7 @@ import { BarchartComponent } from './barchart/barchart.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,6 +101,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     DoughnutComponent,
     BarchartComponent,
     SnackbarComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

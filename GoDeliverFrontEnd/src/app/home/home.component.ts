@@ -16,13 +16,13 @@ export class HomeComponent implements OnInit {
   books_notAvailable:boolean=false;
   books_result: any;
   check = "hi";
- 
+
 
   constructor(private bookService: BookService, private route: Router) {
     this.location = route.url;
   }
   ngOnInit() {
-   
+
   }
 
   // get search results of movies
