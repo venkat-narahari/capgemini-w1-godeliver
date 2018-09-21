@@ -11,7 +11,7 @@ const httpOptions = {
 })
 export class LogisticService {
 
- private slot_url="http://172.23.239.124:8086/api/v1/slots";
+ private slot_url="http://35.154.246.37:9088/logistics/api/v1/slots";
  private vehicles_url="http://172.23.239.100:8080/logistics/api/v1/"
   constructor(private http: HttpClient) { }
   slots : object[];
