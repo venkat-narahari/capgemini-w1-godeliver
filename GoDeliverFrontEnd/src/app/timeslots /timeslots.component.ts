@@ -80,7 +80,7 @@ export class TimeslotsComponent implements OnInit {
     this.array2 = this.slotCost.map(Number);
     this.minValue = Math.min.apply(null, this.array2.filter(Boolean));
     console.log(this.minValue);
-
+    localStorage.removeItem("orderDetails");
     this.addtoTotalPrice();
   }
   addtoTotalPrice() {
