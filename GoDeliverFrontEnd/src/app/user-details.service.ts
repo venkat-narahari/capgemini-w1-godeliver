@@ -12,11 +12,12 @@ export class UserDetailsService {
   private getUserDetails_url ="http://35.154.246.37:9088/userprofile/api/v1/user?userEmail=";
   private deleteUserDetails_url = "http://35.154.246.37:9088/userprofile/api/v1/user?userEmail=";
   //Backend saveuser url
-  private post_url = "http://35.154.246.37:9072/userprofile/api/v1/user";
+  private post_url = "http://35.154.246.37:9088/userprofile/api/v1/user";
 
   addUser(user: UserDetails): Observable<UserDetails> {
 
     // To store the details through microservice into the database
+    console.log(user);
     return this.http.post<UserDetails>(this.post_url, user);
   }
 
