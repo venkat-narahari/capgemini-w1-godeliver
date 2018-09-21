@@ -28,7 +28,9 @@ export class TimeslotsComponent implements OnInit {
       slotCosts: null
     }
   ];
+  newOrder:any;
   array2: any;
+  time:any;
   minValue: any;
   slotFinalPrice: any;
   finalPriceA: any;
@@ -56,7 +58,7 @@ export class TimeslotsComponent implements OnInit {
     });
 
     this.orderdetails = JSON.parse(localStorage.getItem("orderDetails"));
-    this.logisticService.orderDetails(this.orderdetails).subscribe(data => {
+    this.logisticService.getAvailableSlots(this.orderdetails).subscribe(data => {
       this.dat = data;
     });
     console.log(this.costarray);
@@ -75,12 +77,14 @@ export class TimeslotsComponent implements OnInit {
   }
 
   det() {
+    console.log(this.dat);
+    
     this.slotAvailability = this.dat.slotAvailability;
     this.slotCost = this.dat.slotCost;
     this.array2 = this.slotCost.map(Number);
     this.minValue = Math.min.apply(null, this.array2.filter(Boolean));
     console.log(this.minValue);
-    localStorage.removeItem("orderDetails");
+   // localStorage.removeItem("orderDetails");
     this.addtoTotalPrice();
   }
   addtoTotalPrice() {
@@ -112,12 +116,26 @@ export class TimeslotsComponent implements OnInit {
       this.slotsFinal[i].slotAvailability = this.slotAvailability[i];
     }
   }
-  radioselected(slots) {
+  radioselected(slots,i) {
     this.isRadioSelected = true;
+    this.time=i;
     this.slotFinalPrice = slots.slotCosts;
     this.finalPriceA = this.slotFinalPrice + this.getSum();
+
+    this.logisticService.getOrder().subscribe(data=> {
+      this.newOrder=data;  
+    })
+    setTimeout(()=>{
+      this.new();
+    },7000);
+
   }
 
+  new() {
+
+    this.newOrder.newOrder.selectedSlot=this.time;
+    console.log(this.newOrder);
+  }
   isRadioSelect1() {
     return this.isRadioSelected;
   }
