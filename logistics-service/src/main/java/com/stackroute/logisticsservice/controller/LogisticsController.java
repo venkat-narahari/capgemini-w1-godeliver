@@ -69,7 +69,7 @@ public class LogisticsController {
 				Vehicle v[] =sl[0].getSlotVehicle();
 				System.out.println(v[0].getVehicleCapacity());
 				System.out.println("abc");
-				final String uri = "http://localhost:8084/api/v1/cvrp/slots";
+				final String uri = "http://10.20.1.206:9078/api/v1/cvrp/slots";
 				orderedRoute = restTemplate.postForObject(uri, newOrderRoute, Route.class);
 			}
 			catch(Exception exception) {
