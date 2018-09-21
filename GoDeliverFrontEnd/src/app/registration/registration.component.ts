@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
   password=new FormControl('', [Validators.required]);
   //model to store data and send to backend
   model: any = {};
-  prefList: Array<string> = []; 
+  prefList: Array<string> = [];
   userForm: FormGroup;
 
 
@@ -40,11 +40,11 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
-      userEmail: ["", [Validators.required]],
+      userEmail: ["", [Validators.required, Validators.email]],
       userPassword: ["", [Validators.required]],
       userName: ["", [Validators.required]],
       userDOB: ["", [Validators.required]],
-     
+
     });
   }
 
@@ -54,7 +54,7 @@ registerSubmit() {
     this.user.userEmail = this.userEmail.value;
     this.user.userDob = this.userDOB.value;
     this.user.userPassword = this.userPassword.value;
-    
+
   }
 preferencesSubmit(){
   this.user.userPreferences = this.prefList;
@@ -79,12 +79,12 @@ preferencesSubmit(){
     {id:7,name:"Horror", card:"card7", click:"card7", img:"https://image.ibb.co/iPbicz/thenunnnn.jpg"},
     {id:8,name:"Comic", card:"card8", click:"card8", img:"https://preview.ibb.co/fGjpZe/d3255.jpg"}
   ];
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
 
 
   //console.log(toppingList[0]);
@@ -115,7 +115,7 @@ preferencesSubmit(){
   }
   get userPreferences() {
     return this.prefList;
-   
+
   }
 
   get userDOB() {
@@ -127,28 +127,28 @@ preferencesSubmit(){
 
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
+    return this.userEmail.hasError('required') ? 'You must enter a value' :
+        this.userEmail.hasError('email') ? 'Not a valid email' :
             '';
   }
   getErrorMessage2() {
     return this.password.hasError('required') ? 'This field is required' :
-      
+
             '';
   }
   getErrorMessage3() {
     return this.userDOB.hasError('required') ? 'You must choose a date ' :
-      
+
             '';
   }
   // // getErrorMessage4() {
   // //   return this.userPreferences.hasError('required') ? 'You must choose a genre ' :
-      
+
   // //           '';
   // }
   onclick(id,card,genres){
-    
-  
+
+
     if(document.getElementById(card).style.opacity == "0.3"){
       document.getElementById(card).style.opacity= "1";
       this.prefList.pop();
