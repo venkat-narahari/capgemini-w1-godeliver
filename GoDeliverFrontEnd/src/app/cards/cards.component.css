@@ -24,7 +24,10 @@ a{
 
 .component-body:hover{
   box-shadow: 0 8px 8px rgba(0,0,0,0.20), 0 10px 10px rgba(0,0,0,0.20);
+  opacity: 0.8;
+  border-bottom: 5px solid rgba(196,17,17,0.8);
 }
+
 
 
 /* mouse over link */
@@ -43,8 +46,11 @@ a{
 }
 
 mat-card{
+}
+mat-card{
 
 }
+
 mat-card-subtitle{
   font-family: 'Lora', cursive;
   font-weight: 500;

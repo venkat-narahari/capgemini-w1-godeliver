@@ -2,6 +2,21 @@ agm-map {
     height: 100vh;
 }
 
-.container-fluid{
-    margin: 20px;
+.container-body{
+    margin: 2%;
+    height: 100%;
+}
+
+.card{
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.row{
+  margin: 2px;
+}
+
+.col-md-3{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 2px;
+  border-radius: 5px;
 }
