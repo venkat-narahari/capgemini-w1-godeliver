@@ -6,6 +6,7 @@
     background-image: url('../../assets/books.ico');
     background-size: cover;
   }
-  h2{
-    font-family: 'Metamorphous', cursive;
+
+  h4{
+    font-weight: 900;
   }

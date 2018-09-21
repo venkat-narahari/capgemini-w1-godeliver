@@ -1,4 +1,4 @@
-import { TimeslotsComponent } from "./timeslots/timeslots.component";
+import { TimeslotsComponent } from './timeslots /timeslots.component';
 import { HttpModule } from "@angular/http";
 import { BillingComponent } from "./billing/billing.component";
 import { NgModule } from "@angular/core";

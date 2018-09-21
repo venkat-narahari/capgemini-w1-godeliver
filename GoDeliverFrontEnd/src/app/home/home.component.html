@@ -1,24 +1,7 @@
 <!-- Home paage-->
 
-
-<!--Searchbar for books-->
 <div class="component-body">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-8 mb-2 mt-1">
-        <form>
-          <div class="container">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search your favourite books here" name="search" [(ngModel)]="search">
-              <span class="input-group-btn">
-            <button class="btn-block btn-danger rounded-0 form-control" (click)="searchBooks()"><i class="fa fa-search fa-fw"></i></button>
-          </span>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+
   <!--Div class to display the search result using bookservice-->
   <div class="container">
     <div *ngIf=books_result>
@@ -31,6 +14,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div *ngIf=books_notAvailable>
+      <h2>Book not found</h2>
     </div>
   </div>
   <!-- Home page Carousel display -->
@@ -50,43 +36,49 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <a routerLink="/topselling">
-          <img src="assets/images.jpg" alt="Los Angeles" style="width:100%; height:35%;max-height: 400px">
-          <div class="carousel-caption">
-            <h3>Top Selling</h3>
-            <p>Best sellers of all time!</p>
-          </div>
-        </a>
+            <img src="assets/1.png" alt="Los Angeles" style="width:100%; height:55%;max-height: 400px">
+          </a>
         </div>
         <div class="carousel-item">
           <a routerLink="/toprated">
-          <img src="assets/img.jpg" alt="Chicago" style="width:100%; height: 35%; max-height: 400px">
-          <div class="carousel-caption">
-            <h3>Top Rated Book</h3>
-            <p>Best rated books loved by all!</p>
-          </div>
-        </a>
+            <img src="assets/2.jpg" alt="Chicago" style="width:100%; height: 55%; max-height: 400px">
+          </a>
         </div>
         <div class="carousel-item">
           <a routerLink="/allbooks">
-          <img src="assets/img1.png" alt="New York" style="width:100%;height: 35%; max-height: 400px">
-          <div class="carousel-caption">
-            <h3>All books</h3>
-            <p>Have a look to all the books at once!</p>
-          </div>
-        </a>
+            <img src="assets/3.jpg" alt="New York" style="width:100%;height: 55%; max-height: 400px">
+          </a>
         </div>
       </div>
 
       <!-- Left and right controls -->
       <a class="carousel-control-prev" href="#demo" data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
+        <span class="carousel-control-prev-icon"></span>
+      </a>
       <a class="carousel-control-next" href="#demo" data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
+        <span class="carousel-control-next-icon"></span>
+      </a>
 
     </div>
 
+  </div>
+  <div class="container">
+    <!--Searchbar for books-->
+    <div class="row justify-content-center">
+      <div class="col-sm-8 mb-2 mt-1">
+        <form>
+          <div class="container">
+            <div class="input-group">
+              <input type="text" class="form-control" autocomplete="off" placeholder="Search your favourite books here" name="search"
+                [(ngModel)]="search">
+              <span class="input-group-btn">
+                <button class="btn-block btn-danger rounded-0 form-control" (click)="searchBooks()"><i class="fa fa-search fa-fw"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
   <!-- routing to recommendations-->
   <div class="container">
@@ -94,3 +86,4 @@
   </div>
 
 </div>
+ 

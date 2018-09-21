@@ -57,11 +57,13 @@ export class DeliveryCardComponent implements OnInit {
     console.log(addLng);
     this.order.orderDate = this.date.toString();
     console.log(this.order.orderDate);
-    this.logistic.orderDetails(this.order);
+    localStorage.setItem("orderDetails", JSON.stringify(this.order));
+    console.log(this.order);
+    
     setTimeout(() => {
       this.router.navigate(["/timeslots"]);
       location.reload();
-    }, 10000);
+    }, 2000);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);

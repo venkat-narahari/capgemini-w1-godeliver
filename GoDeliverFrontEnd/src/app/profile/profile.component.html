@@ -9,16 +9,16 @@
         <div class="col-sm-3">
             <!--left col-->
             <ul class="list-group">
-                <li class="list-group-item text-muted" contenteditable="false">Profile</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">DOB</strong></span>
+                <li class="list-group-item text-muted" contenteditable="false"><strong style="color:black;">Profile</strong></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Date of Birth</strong></span><br>
                     {{(userdata.userDob.length>10)? (userdata.userDob | slice:0:10):(userdata.userDob)}}</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email ID</strong></span>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email ID</strong></span><br>
                     {{userdata.userEmail}}</li>
                 <li *ngFor="let ad of addre; let i=index" class="list-group-item text-right"><span class="pull-left"><strong
-                            class="">Phone Number</strong></span>
+                            class="">Phone Number</strong></span><br>
                     <div *ngIf='i<1'> {{ad.phone}}</div>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Preferences</strong></span>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Preferences</strong></span><br>
                     {{userdata.userPreferences}}
                 </li>
             </ul>
@@ -37,8 +37,7 @@
                     {{wishlistLength}}</li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/setting">Settings</a></strong></span>
                 </li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/deleteaccount">Delete
-                                Account</a></strong></span>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/deleteaccount">DeleteAccount</a></strong></span>
                 </li>
             </ul>
 

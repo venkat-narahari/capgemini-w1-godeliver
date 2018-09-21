@@ -1,5 +1,6 @@
+<div class="component-body">
 <mat-card class="delivery">
-  <mat-card-title>   
+  <mat-card-title>
     <input type="radio" class="big" name="addresses" (click)="radioselected(address)" [value]="address">
     <label class="name" style="padding-left: 3px;"> {{address.name}}
     </label>
@@ -27,3 +28,4 @@
       (click)="deleteAddress($event, address)">Delete<i class="fa fa-trash pl-4"></i></button>
     </div>
 </mat-card>
+</div>

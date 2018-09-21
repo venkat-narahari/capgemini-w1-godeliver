@@ -1,18 +1,23 @@
 package com.stackroute.cvrp.service;
 
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.stackroute.cvrp.domain.Location;
 import com.stackroute.cvrp.domain.Order;
@@ -35,6 +40,7 @@ public class CvrpServiceImpl implements CvrpService {
 	private List<Order> orderList;
 	private Vehicle[] vehicleWithoutDepot;
 	private double[][] travelDuration;
+//	private RestTemplate rest;
 
 	public CvrpServiceImpl() {
 
@@ -48,21 +54,28 @@ public class CvrpServiceImpl implements CvrpService {
 		this.noOfVehicles = vehNum;
 		this.noOfOrders = orderNum;
 		this.distance = 0;
-		this.travelDuration=new double[orderNum+1][orderNum+1];
+		this.travelDuration = new double[orderNum + 1][orderNum + 1];
 		vehicles = new Vehicle[noOfVehicles];
 		vehiclesForBestSolution = new Vehicle[noOfVehicles];
-		vehicleWithoutDepot=new Vehicle[noOfVehicles];
+		vehicleWithoutDepot = new Vehicle[noOfVehicles];
 		pastSolutions = new ArrayList<>();
 		for (int i = 0; i < noOfVehicles; i++) {
 			vehicles[i] = new Vehicle(i + 1, vehCap);
 			vehiclesForBestSolution[i] = new Vehicle(i + 1, vehCap);
-			vehicleWithoutDepot[i]=new Vehicle(i + 1, vehCap);
+			vehicleWithoutDepot[i] = new Vehicle(i + 1, vehCap);
 		}
 	}
 
+	/*
+	 * method for getting distance and location matrix using location list from
+	 * routing service (non-Javadoc)
+	 * 
+	 * @see
+	 * com.stackroute.cvrp.service.CvrpService#getDistanceMatrix(java.util.List)
+	 */
 	@Override
 	public double[][] getDistanceMatrix(List<Location> locationList) {
-
+//		rest=new RestTemplate();
 		String url1 = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?";
 		String origins = "origins=";
 		String origin = "";
@@ -72,7 +85,7 @@ public class CvrpServiceImpl implements CvrpService {
 		String url2 = "travelMode=driving&key=AhT3nVgSlv14w5u2GLYkCrCJm1VWDkBeEGHpG4JFNb13vgktN7OIJEr-5KZZrZah";
 		String inline = "";
 		double[][] distanceMatrix = new double[locationList.size()][locationList.size()];
-		double[][] duration= new double[locationList.size()][locationList.size()];
+		double[][] duration = new double[locationList.size()][locationList.size()];
 		while (!(locationList.isEmpty())) {
 			if (count < 1) {
 				for (int i = 0; i < locationList.size(); i++) {
@@ -85,15 +98,32 @@ public class CvrpServiceImpl implements CvrpService {
 				}
 				origin = origins.substring(0, origins.length() - 1);
 				destination = destinations.substring(0, destinations.length() - 1);
-				String url = url1 + origin + "&" + destination + "&" + url2;
+				String url = url1+origin+"&"+destination+"&"+url2;
+				System.out.println("link is " + url);
+				url=url.replaceAll("\\s","");
+				
+//				URL url_call=new URL(url);
+//				Route route=rest.getForObject(url_call, responseType)
+//				sysout
 
 				try {
 					count++;
 					URL url3 = new URL(url);
-					HttpURLConnection conn = (HttpURLConnection) url3.openConnection();
+					System.out.println("url3 is " + url3);
+					HttpsURLConnection conn = (HttpsURLConnection) url3.openConnection();
+//					
 					conn.setRequestMethod("GET");
+			
+				
+//					conn.setDoOutput(true);
+					//conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5");
+			        //conn.setRequestProperty("Content-Length", String.valueOf(content.length()));
+//			        conn.setRequestProperty("Content-Type", "application/json");
+			        //conn.setRequestProperty("Accept", "*/*");
 					conn.connect();
+//					InputStream inputStream = conn.getInputStream();
 					int responsecode = conn.getResponseCode();
+					System.out.println("responsecode is " + responsecode);
 					if (responsecode != 200)
 						throw new IllegalLocationMatrixException("HttpResponseCode: " + responsecode);
 					else {
@@ -101,7 +131,6 @@ public class CvrpServiceImpl implements CvrpService {
 						while (sc.hasNext()) {
 							inline += sc.nextLine();
 						}
-
 						sc.close();
 					}
 
@@ -120,30 +149,23 @@ public class CvrpServiceImpl implements CvrpService {
 						try {
 							Double str_data4 = (Double) jsonobj_2.get("travelDistance");
 							Double str_data5 = (Double) jsonobj_2.get("travelDuration");
-							System.out.println("travel duration is "+str_data5);
+							System.out.println("travel duration is " + str_data5);
 							if (str_data1 != str_data2) {
 								distanceMatrix[str_data1][str_data2] = str_data4.doubleValue();
 								distanceMatrix[str_data2][str_data1] = str_data4.doubleValue();
-								duration[str_data1][str_data2]=str_data5.doubleValue();
-								duration[str_data2][str_data1]=str_data5.doubleValue();
+								duration[str_data1][str_data2] = str_data5.doubleValue();
+								duration[str_data2][str_data1] = str_data5.doubleValue();
 							} else {
 								distanceMatrix[str_data1][str_data1] = 0;
-								duration[str_data1][str_data2]=0;
+								duration[str_data1][str_data2] = 0;
 							}
 						} catch (Exception e) {
 
 						}
 					}
 					conn.disconnect();
-//					for(int i=0;i<duration.length;i++) {
-//						for(int j=0;j<duration.length;j++)
-//							System.out.println("i="+i+" "+"j="+j+" "+ duration[i][j]);
-//					}
-					this.travelDuration=duration;
-//					for(int i=0;i<this.travelDuration.length;i++) {
-//						for(int j=0;j<this.travelDuration.length;j++)
-//							System.out.println("travel dur i="+i+" "+"j="+j+" "+ travelDuration[i][j]);
-//					}
+					this.travelDuration = duration;
+
 					return distanceMatrix;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -151,8 +173,7 @@ public class CvrpServiceImpl implements CvrpService {
 			}
 
 		}
-		//this.travelDuration=duration;
-		
+
 		return distanceMatrix;
 	}
 
@@ -163,12 +184,12 @@ public class CvrpServiceImpl implements CvrpService {
 		}
 		return false;
 	}
+	/*
+	 * method to generate conventional vehicle route for the particular slot
+	 * 
+	 */
 
 	public void greedySolution(List<Order> order, double[][] distanceMatrix) {
-//		for(int i=0;i<this.travelDuration.length;i++) {
-//			for(int j=0;j<this.travelDuration.length;j++)
-//				System.out.println("in greedy i="+i+" "+"j="+j+" "+ travelDuration[i][j]);
-//		}
 		orders = order.toArray(new Order[order.size()]);
 
 		double candCost, endCost;
@@ -221,6 +242,12 @@ public class CvrpServiceImpl implements CvrpService {
 		this.distance += endCost;
 	}
 
+	/*
+	 * 
+	 * method to implement tabu search to generate vehicle route after 100
+	 * 
+	 * iterations
+	 */
 	public double tabuSearch(int TABU_Horizon, double[][] distanceMatrix) {
 		List<Order> routeFrom;
 		List<Order> routeTo;
@@ -408,23 +435,23 @@ public class CvrpServiceImpl implements CvrpService {
 				int RoutSize = Arrays.asList(vehicles[j].getVehicleRoute()).size();
 				for (int k = 0; k < RoutSize; k++) {
 					Order orderObj = Arrays.asList(vehicles[j].getVehicleRoute()).get(k);
-					Arrays.asList(vehiclesForBestSolution[j].getVehicleRoute()).add(orderObj);
+					new ArrayList(Arrays.asList(vehiclesForBestSolution[j].getVehicleRoute())).add(orderObj);
 				}
 			}
 
 		}
 
 	}
+	/*
+	 * method to return updated vehicle with route to routing service
+	 * 
+	 */
 
 	public Vehicle[] solutionPrint(String Solution_Label)// Print Solution In console
 	{
-//		for(int i=0;i<this.travelDuration.length;i++) {
-//			for(int j=0;j<this.travelDuration.length;j++)
-//				System.out.println("i="+i+" "+"j="+j+" "+ travelDuration[i][j]);
-//		}
 		int vehicleFilledCapacity = 0;
-		double duration=0;
-		int orderIdA,orderIdB;
+		double duration = 0;
+		int orderIdA, orderIdB;
 		int a;
 
 		for (int j = 0; j < this.noOfVehicles; j++) {
@@ -433,31 +460,29 @@ public class CvrpServiceImpl implements CvrpService {
 
 				// get order capacity of each order in each vehicle and add all orders capacity
 				// and set to vehiclefilledcapacity
-				orderList=new ArrayList<Order>(Arrays.asList(this.vehicles[j].getVehicleRoute()));
-				orderList.remove(orderList.size()-1);
-				orderList.remove(orderList.size()-1);
+				orderList = new ArrayList<Order>(Arrays.asList(this.vehicles[j].getVehicleRoute()));
+				orderList.remove(orderList.size() - 1);
+				orderList.remove(orderList.size() - 1);
 				orderList.remove(0);
-				Order[] orders= orderList.toArray(new Order[orderList.size()]);
-				for(int i=0;i<orders.length;i++) {
-					//System.out.println("orders "+orders[i]);
+				Order[] orders = orderList.toArray(new Order[orderList.size()]);
+				for (int i = 0; i < orders.length; i++) {
+					// System.out.println("orders "+orders[i]);
 					this.vehicleWithoutDepot[j].addOrder(orders[i]);
 
 				}
-				System.out.println("vehicle route "+this.vehicleWithoutDepot[j].toString());
-				//this.vehicleWithoutDepot[j].setVehicleRoute(orders);
+				System.out.println("vehicle route " + this.vehicleWithoutDepot[j].toString());
 
 				int RoutSize = this.vehicles[j].getVehicleRoute().length;
 				for (int k = 0; k < RoutSize; k++) {
 					vehicleFilledCapacity += Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderVolume());
 					this.vehicles[j].setVehicleLoadedCapacity(String.valueOf(vehicleFilledCapacity));
-					orderIdA=Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderId());
-					if((k==0)||(k==RoutSize-1)) {
-						duration+=this.travelDuration[0][orderIdA];
-					}
-					else {
-						orderIdB=Integer.parseInt(this.vehicles[j].getVehicleRoute()[k+1].getOrderId());
-						duration+=this.travelDuration[orderIdA][orderIdB];
-						
+					orderIdA = Integer.parseInt(this.vehicles[j].getVehicleRoute()[k].getOrderId());
+					if ((k == 0) || (k == RoutSize - 1)) {
+						duration += this.travelDuration[0][orderIdA];
+					} else {
+						orderIdB = Integer.parseInt(this.vehicles[j].getVehicleRoute()[k + 1].getOrderId());
+						duration += this.travelDuration[orderIdA][orderIdB];
+
 					}
 
 				}

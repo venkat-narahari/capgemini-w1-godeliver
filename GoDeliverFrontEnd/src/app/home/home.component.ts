@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   genre: any;
   location: any;
   search: any;
+  books_notAvailable:boolean=false;
   books_result: any;
   check = "hi";
  
@@ -29,7 +30,13 @@ export class HomeComponent implements OnInit {
     console.log(this.search);
     this.check = "";
     this.bookService.getBookByName(this.search).subscribe(data => {
+      if(data!=null){
       this.books_result = data;
+      }
+      else
+      {
+        this.books_notAvailable=true;
+      }
     });
   }
 

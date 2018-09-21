@@ -1,11 +1,10 @@
+<div class="component-body">
 <div class="container-fluid">
+<div class="row">
   <div class="col-sm-6">
     <div *ngIf="addressList">
-      <h2 style="margin-left:10px">Delivery Details</h2>
       <div style="margin-left:20px;margin-right:10px" *ngFor="let address of addressList">
-
         <app-delivery-card [address]="address"></app-delivery-card>
-
       </div>
     </div>
     <br>
@@ -54,7 +53,7 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
-  <div class="col-sm-5">
+  <div class="col-sm-6">
     <mat-card>
       <mat-card-title>
         <b>Order Details</b>
@@ -92,4 +91,6 @@
       </mat-card-content>
     </mat-card>
   </div>
+</div>
+</div>
 </div>
