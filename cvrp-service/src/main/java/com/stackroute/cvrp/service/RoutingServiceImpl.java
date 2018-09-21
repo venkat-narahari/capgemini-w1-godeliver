@@ -83,7 +83,7 @@ public class RoutingServiceImpl implements RoutingService {
 				ordersList.add(depoOrder);
 				vehicles = slots[i].getSlotVehicle();
 				for (int j = 0; j < vehicles.length; j++) {
-					orders = vehicles[i].getVehicleRoute();
+					orders = vehicles[j].getVehicleRoute();
 					vehicleCap = Integer.parseInt(vehicles[i].getVehicleCapacity());
 					if (orders != null) {
 						if (orders.length != 0) {
@@ -109,6 +109,9 @@ public class RoutingServiceImpl implements RoutingService {
 					orderId[a]=ordersList.get(a).getOrderId();
 					ordersList.get(a).setOrderId(String.valueOf(a));
 				}
+				System.out.println("orderlist is "+ordersList.toString());
+
+				
 				for(int b=0;b<orderId.length;b++) {
 					System.out.println("order is "+orderId[b]);
 				}
@@ -116,6 +119,7 @@ public class RoutingServiceImpl implements RoutingService {
 				
 				CvrpServiceImpl cvrp = new CvrpServiceImpl(ordersList.size(), vehicles.length, vehicleCap);
 				cvrp.getRoute(route);
+				System.out.println("location list is "+locationList.toString());
 				distanceMatrix = cvrp.getDistanceMatrix(locationList);
 				for (int j = 1; j < ordersList.size(); j++) {
 					ordersList.get(j).setRouted(false);

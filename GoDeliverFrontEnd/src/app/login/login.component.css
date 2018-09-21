@@ -1,7 +1,6 @@
 /*css for login page*/
 .component-body{
   height: 100%;
-  margin: 2%;
 }
 
 .container-fluid {
@@ -9,10 +8,24 @@
   margin: 0 auto;
   height: 75vh;
   width: 100%;
-  /* background-image: url(../../assets/wall.gif); */
-  background-size: contain;
-  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 1;
+  top:30%;
 }
+.landing-background{
+  width: 100vw;
+  position: relative;
+  z-index: 0;
+}
+
+@media only screen and (min-width: 320px) {
+    .landing-background {
+      height: 100vh;
+      position: relative;
+      z-index: 0;
+    }
+}
+
 .mat-form-field{
   font-size: 12px
 }
