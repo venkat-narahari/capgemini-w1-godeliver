@@ -74,9 +74,7 @@ export class PaymentComponent implements OnInit {
               this.deleteCart();
             }, 6000);
             this.msg = "Your Transaction is success";
-            this.logisticService.setSlot(this.slotDetails).subscribe(data => {
-              console.log(data);
-            });
+            this.logisticService.setSlot(this.slotDetails);
           }
 
           if (token == null) {

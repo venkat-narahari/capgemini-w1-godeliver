@@ -66,7 +66,7 @@ export class TimeslotsComponent implements OnInit {
     console.log(this.costarray);
     setTimeout(() => {
       this.det();
-    }, 8000);
+    }, 9000);
 
     setTimeout(() => {
       for (let i = 0; i < 3; i++) {
@@ -75,7 +75,7 @@ export class TimeslotsComponent implements OnInit {
         }
       }
       this.final();
-    }, 8000);
+    }, 10000);
   }
 
   det() {
