@@ -6,9 +6,9 @@
        <mat-card style="border-radius: 8px;margin-top:10px">
            <div class="row">
                <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px;">
-                   <mat-card style="margin-top:0px;border-radius:8px; width:200px;">
-                       <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability" (click)="radioselected(slots, i)">
-                       <label style="padding-left:10px">{{timeslots[i]}}
+                   <mat-card style="border-radius:8px; width:150px;">
+                       <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability"  (click)="radioselected(slots, i)">
+                       <label style="margin-left:5px" >{{timeslots[i]}}
                        </label>
                        <div *ngIf="!slots.slotAvailability">
                            <p style="color:Red;padding-left:10px"> Unavailable</p>
