@@ -13,8 +13,11 @@ export class AdminComponent implements OnInit {
   dateOfDelivery : string ="Thu Sep 20 2018 00:00:00 GMT+0530 (India Standard Time)"
   data : any;
   slotCapacity= [0,0,0];
+  vehicleVolume: number;
   vehicleTime: number[][]=[[0,0,0],[0,0,0],[0,0,0]];
   orderNumber: number[][]=[[0,0,0],[0,0,0],[0,0,0]];
+  public vehicleData: any[][]=[[{},{}],[{},{}],[{},{}]];
+  public vehicleCapacity: number[]=[0,0];
   public slots= [];
 
   //Pie Chart properties
@@ -26,12 +29,19 @@ export class AdminComponent implements OnInit {
   public barChartType: string = "bar";
   public barChartLegend: boolean = true;
 
-  public vehicleData: any[][]=[[{},{}],[{},{}],[{},{}]];
+  //Doughnut Chart properties
+  public doughnutChartLabels: string[] = ["Filled", "Empty"];
+  public doughnutChartType: string = "doughnut";
 
-
-  slotLabel2="Empty";
-  slotLabel3="Vehicle Covered Distance";
-  slotLabel4="No. Of Orders Placed";
+  //Map properties
+  public lat: string;
+  public lng: string;
+  public origin: any;
+  public stops = [];
+  public destination: any;
+  slotVehicleRouteLength: any;
+  slotVehicleRoute: any;
+  vehiclesRoute: any;
 
 
   constructor(private http: HttpClient, private admin: AdminService) {}
@@ -68,11 +78,29 @@ export class AdminComponent implements OnInit {
   onVehicle(slot,vehicle){
     this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
+      this.vehicleVolume=parseInt(this.data[slot].slotVehicle[vehicle].vehicleLoadedCapacity);
+      this.vehicleCapacity=[this.vehicleVolume, 5670000-this.vehicleVolume];
+      console.log(this.vehicleCapacity);
+
+      this.vehiclesRoute=this.data[slot].slotVehicle[vehicle].vehicleRoute;
+
+      this.origin = { lat: 12.9266122, lng: 77.6934768 };
+      this.destination = { lat: 12.9266115, lng: 77.6934758 };
+      for (let i = 0; i < this.vehiclesRoute.length; i++) {
+        this.stops[i] = {
+          location: {
+            lat: parseFloat(this.vehiclesRoute[i].orderLocation.orderLatitude),
+            lng: parseFloat(this.vehiclesRoute[i].orderLocation.orderLongitude)
+          },
+          stopover: true
+        };
+      }
+      this.stops.join();
     });
-    for(let i = 0; i < this.data.length; i++){
-      
-    }
   }
 
+  routes() {
+
+  }
 
 }
