@@ -18,7 +18,8 @@ export class DeliveryCardComponent implements OnInit {
   date: any;
   carts: Cart[];
   totalLength: any;
-  order = new Order("", "", "", "", "", "", "", "");
+  email:any;
+  order = new Order("", "", "", "", "", "", "", "","");
 
   constructor(
     private fb: FirebaseService,
@@ -31,6 +32,12 @@ export class DeliveryCardComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+
+    if(localStorage.getItem("uid")!=null) {
+      this.email=JSON.parse(localStorage.getItem("uid"));
+    }
+    else
+    this.email=JSON.parse(localStorage.getItem("currentUserEmail"));
     // JSON.parse(localStorage.getItem()
   }
   radioselected(address) {
@@ -45,6 +52,7 @@ export class DeliveryCardComponent implements OnInit {
     this.order.orderId = uuid().replace(/-/g, "");
     console.log(this.order.orderId);
     this.order.orderConsumerName = name;
+    this.order.emailId=this.email;
     console.log(this.order.orderConsumerName);
     this.order.orderConsumerAddress = address + ", " + city;
     console.log(this.order.orderConsumerAddress);

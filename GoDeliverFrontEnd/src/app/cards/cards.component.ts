@@ -99,15 +99,17 @@ export class CardsComponent implements OnInit {
     this.item.volume = parseInt(book.volume);
     this.item.totalPrice = parseInt(book.cost);
     this.item.totalVolume = parseInt(book.volume);
-    this.openSnackBar();
     for (let i = 0; i < this.cartsLength; i++) {
       if (this.item.bookISBN_10 === this.cart[i].bookISBN_10) {
         bool = false;
       }
     }
+    
     if (bool) {
       this.firebase.addItem(this.item);
     }
+    this.openSnackBar();
+    
 
   }
 
