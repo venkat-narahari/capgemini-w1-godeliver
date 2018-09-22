@@ -74,7 +74,9 @@ export class PaymentComponent implements OnInit {
               this.deleteCart();
             }, 6000);
             this.msg = "Your Transaction is success";
-            this.logisticService.setSlot(this.slotDetails);
+            this.logisticService.setSlot(this.slotDetails).subscribe(data => {
+              console.log(data);
+            });
           }
 
           if (token == null) {
@@ -86,13 +88,13 @@ export class PaymentComponent implements OnInit {
         }
       }
     );
-    this.logisticService.setSlot(this.slotDetails).subscribe(data => {
-      console.log(data);
-    });
+    // this.logisticService.setSlot(this.slotDetails).subscribe(data => {
+    //   console.log(data);
+    // });
 
-    this.logisticService.setOrderDetails(this.slotDetails).subscribe(data => {
-      console.log(data);
-    })
+    // this.logisticService.setOrderDetails(this.slotDetails).subscribe(data => {
+    //   console.log(data);
+    // })
   }
 
   refundCreditCard() {
