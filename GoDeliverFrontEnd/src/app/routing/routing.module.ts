@@ -5,7 +5,7 @@ import { HomeComponent } from "./../home/home.component";
 
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterModule, Routes, PreloadAllModules } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { RegistrationComponent } from "../registration/registration.component";
 import { WishlistComponent } from "../wishlist/wishlist.component";
 import { OrdersComponent } from "../orders/orders.component";
@@ -57,7 +57,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot((appRoutes), {preloadingStrategy: PreloadAllModules})],
+  imports: [CommonModule, RouterModule.forRoot(appRoutes)],
   exports: [CommonModule, RouterModule],
   declarations: []
 })
