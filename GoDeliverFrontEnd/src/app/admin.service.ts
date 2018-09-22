@@ -33,5 +33,4 @@ export class AdminService {
     return this.getDate(selectedDate).pipe(map(body => body['slots']));
    }
 
-
 }
