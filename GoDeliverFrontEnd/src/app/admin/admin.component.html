@@ -86,9 +86,9 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="row">
+                <div class="row align-items-center">
                   <div class="col-md-4 p-2">
-                    <p class="text-xl-left">Vehicle {{vehicleSelected}}</p>
+                    <p class="text-xl-left">Vehicle {{vehicleSelected+1}}</p>
                     <div *ngIf="vehicleCapacity">
                       <canvas baseChart [data]="vehicleCapacity" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
                     </div>
