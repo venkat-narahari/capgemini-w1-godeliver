@@ -40,7 +40,7 @@ public class CvrpServiceImpl implements CvrpService {
 	private List<Order> orderList;
 	private Vehicle[] vehicleWithoutDepot;
 	private double[][] travelDuration;
-//	private RestTemplate rest;
+	// private RestTemplate rest;
 
 	public CvrpServiceImpl() {
 
@@ -75,7 +75,7 @@ public class CvrpServiceImpl implements CvrpService {
 	 */
 	@Override
 	public double[][] getDistanceMatrix(List<Location> locationList) {
-//		rest=new RestTemplate();
+		// rest=new RestTemplate();
 		String url1 = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?";
 		String origins = "origins=";
 		String origin = "";
@@ -98,32 +98,20 @@ public class CvrpServiceImpl implements CvrpService {
 				}
 				origin = origins.substring(0, origins.length() - 1);
 				destination = destinations.substring(0, destinations.length() - 1);
-				String url = url1+origin+"&"+destination+"&"+url2;
-				System.out.println("link is " + url);
-				url=url.replaceAll("\\s","");
-				
-//				URL url_call=new URL(url);
-//				Route route=rest.getForObject(url_call, responseType)
-//				sysout
+				String url = url1 + origin + "&" + destination + "&" + url2;
+				url = url.replaceAll("\\s", "");
+
+				// URL url_call=new URL(url);
+				// Route route=rest.getForObject(url_call, responseType)
+				// sysout
 
 				try {
 					count++;
 					URL url3 = new URL(url);
-					System.out.println("url3 is " + url3);
 					HttpsURLConnection conn = (HttpsURLConnection) url3.openConnection();
-//					
 					conn.setRequestMethod("GET");
-			
-				
-//					conn.setDoOutput(true);
-					//conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5");
-			        //conn.setRequestProperty("Content-Length", String.valueOf(content.length()));
-//			        conn.setRequestProperty("Content-Type", "application/json");
-			        //conn.setRequestProperty("Accept", "*/*");
 					conn.connect();
-//					InputStream inputStream = conn.getInputStream();
 					int responsecode = conn.getResponseCode();
-					System.out.println("responsecode is " + responsecode);
 					if (responsecode != 200)
 						throw new IllegalLocationMatrixException("HttpResponseCode: " + responsecode);
 					else {
@@ -149,7 +137,6 @@ public class CvrpServiceImpl implements CvrpService {
 						try {
 							Double str_data4 = (Double) jsonobj_2.get("travelDistance");
 							Double str_data5 = (Double) jsonobj_2.get("travelDuration");
-							System.out.println("travel duration is " + str_data5);
 							if (str_data1 != str_data2) {
 								distanceMatrix[str_data1][str_data2] = str_data4.doubleValue();
 								distanceMatrix[str_data2][str_data1] = str_data4.doubleValue();
@@ -466,11 +453,9 @@ public class CvrpServiceImpl implements CvrpService {
 				orderList.remove(0);
 				Order[] orders = orderList.toArray(new Order[orderList.size()]);
 				for (int i = 0; i < orders.length; i++) {
-					// System.out.println("orders "+orders[i]);
 					this.vehicleWithoutDepot[j].addOrder(orders[i]);
 
 				}
-				System.out.println("vehicle route " + this.vehicleWithoutDepot[j].toString());
 
 				int RoutSize = this.vehicles[j].getVehicleRoute().length;
 				for (int k = 0; k < RoutSize; k++) {
