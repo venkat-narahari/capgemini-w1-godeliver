@@ -141,6 +141,7 @@ export class TimeslotsComponent implements OnInit {
   }
 
   paymentRoute() {
+    localStorage.setItem("newOrder", JSON.stringify(this.newOrder));
     this.router.navigate(["/payment"]);
     location.reload();
   }

@@ -21,7 +21,7 @@ export class AuthenticationService {
     };
     return this.http
       .post<Login>(
-        `http://35.154.246.37:9088/user-login/api/v1/login`,
+        `http://13.232.234.139:9088/user-login/api/v1/login`,
         { userEmail, userPassword },
 
         options

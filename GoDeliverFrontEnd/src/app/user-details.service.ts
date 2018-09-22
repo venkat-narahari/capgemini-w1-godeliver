@@ -9,8 +9,8 @@ export class UserDetailsService {
   //Making http client obj to perform http operations
   constructor(public http: HttpClient) { }
 
-  private getUserDetails_url ="http://35.154.246.37:9088/userprofile/api/v1/user?userEmail=";
-  private deleteUserDetails_url = "http://35.154.246.37:9088/userprofile/api/v1/user?userEmail=";
+  private getUserDetails_url ="http://13.232.234.139:9088/userprofile/api/v1/user?userEmail=";
+  private deleteUserDetails_url = "http://13.232.234.139:9088/userprofile/api/v1/user?userEmail=";
   //Backend saveuser url
   private post_url = "http://35.154.246.37:9088/userprofile/api/v1/user";
 
