@@ -2,6 +2,7 @@ import { FirebaseService, Cart } from "./../firebase.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LogisticService } from "../logistics.service";
+import { NgLocalization } from "@angular/common";
 
 //when user navigates to this component
 @Component({
@@ -147,5 +148,10 @@ export class TimeslotsComponent implements OnInit {
     }, 3000);
     this.router.navigate(["/payment"]);
     location.reload();
+  }
+  billingRoute()
+  {
+this.router.navigate(["/billing"]);
+location.reload();
   }
 }
