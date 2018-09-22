@@ -4,7 +4,7 @@
 .order{
     margin-top:10px;
     margin-bottom: 20px;
-    height:320px;
+    height:250px;
     margin-left:20px;
     background-color: deepskyblue;
     border-radius:6px
@@ -12,3 +12,12 @@
 .component-body{
     height: 100%;
 }
+.protect{
+    height:auto;
+    margin-left:20px;
+    background-color: deepskyblue;
+    border-radius:6px
+}
+h2{
+    font-family: 'Metamorphous', cursive;
+  }
