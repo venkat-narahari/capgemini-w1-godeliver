@@ -40,7 +40,6 @@ export class AdminComponent implements OnInit {
 
   onDate(dateOfDelivery){
 
-
     this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       for(let i = 0; i < this.data.length; i++){
@@ -64,7 +63,16 @@ export class AdminComponent implements OnInit {
 
       }
     });
-
   }
+
+  onVehicle(slot,vehicle){
+    this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
+      this.data=data;
+    });
+    for(let i = 0; i < this.data.length; i++){
+      
+    }
+  }
+
 
 }
