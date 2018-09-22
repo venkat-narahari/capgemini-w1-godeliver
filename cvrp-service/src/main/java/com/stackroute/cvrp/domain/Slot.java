@@ -36,19 +36,19 @@ public class Slot {
 		this.slotStartTime = slotStartTime;
 	}
 
-	public String getSlotEndTIme() {
+	public String getSlotEndTime() {
 		return slotEndTime;
 	}
 
-	public void setSlotEndTIme(String slotEndTIme) {
+	public void setSlotEndTime(String slotEndTIme) {
 		this.slotEndTime = slotEndTIme;
 	}
 
-	public String getSlotNoOfVehicle() {
+	public String getSlotNoOfVehicles() {
 		return slotNoOfVehicles;
 	}
 
-	public void setSlotNoOfVehicle(String slotNoOfVehicle) {
+	public void setSlotNoOfVehicles(String slotNoOfVehicle) {
 		this.slotNoOfVehicles = slotNoOfVehicle;
 	}
 

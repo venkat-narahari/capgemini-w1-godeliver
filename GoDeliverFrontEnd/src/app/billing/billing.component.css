@@ -7,3 +7,10 @@
   width: 100%;
   padding-left: 30px;
 }
+.title{
+  color: white;
+}
+mat-card-title{
+  border-radius: 6px;
+  border-width: 12px;
+}

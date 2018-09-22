@@ -1,96 +1,115 @@
 <div class="component-body">
-<h1 style="text-align: center; margin-top: 20px">Select time slots</h1>
-<div class="container">
-    <div class="row">
-   <div class="col-sm-8">
-       <mat-card style="border-radius: 8px;margin-top:10px">
-           <div class="row">
-               <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px;">
-                   <mat-card style="border-radius:8px; width:150px;">
-                       <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability"  (click)="radioselected(slots, i)">
-                       <label style="margin-left:5px" >{{timeslots[i]}}
-                       </label>
-                       <div *ngIf="!slots.slotAvailability">
-                           <p style="color:Red;padding-left:10px"> Unavailable</p>
-                       </div>
-                       <div *ngIf="slots.slotAvailability">
-                           <p style="color:green;padding-left:10px">Available</p>
-                       </div>
-                       <div *ngIf="isRadioSelect1()">
-                           <div *ngIf="slots.slotAvailability">
-                               <div *ngIf="(slots.slotCosts==0)">
-                                   <p>free</p>
-                               </div>
-                               <div *ngIf="(slots.slotCosts!=0)">
-                                   <p>₹{{slots.slotCosts}}</p>
-                               </div>
-                           </div>
+    <h2 class="text-center m-4">Time slot</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <mat-card style="border-radius: 8px;margin-top:10px">
+                    <div class="row">
+                        <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px;">
+                            <mat-card style="border-radius:8px; width:150px;">
+                                <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability"
+                                    (click)="radioselected(slots, i)">
+                                <label style="margin-left:5px">{{timeslots[i]}}
+                                </label>
+                                <div *ngIf="!slots.slotAvailability">
+                                    <p style="color:Red;padding-left:10px"> Unavailable</p>
+                                </div>
+                                <div *ngIf="slots.slotAvailability">
+                                    <p style="color:green;padding-left:10px">Available</p>
+                                </div>
+                                <div *ngIf="isRadioSelect1()">
+                                    <div *ngIf="slots.slotAvailability">
+                                        <div *ngIf="(slots.slotCosts==0)">
+                                            <p>free</p>
+                                        </div>
+                                        <div *ngIf="(slots.slotCosts!=0)">
+                                            <p>₹{{slots.slotCosts | number:'1.1-2' }}</p>
+                                        </div>
+                                    </div>
 
-                       </div>
-                   </mat-card>
-                   
-               </div>
+                                </div>
+                            </mat-card>
 
-           </div>
-           <div style="padding-left: 50px">
-               <button style="border-radius:8px;margin-top:60px;height:40px;margin-top:45px;">
-                   <a class="link" (click)="billingRoute()">
-                       <p style="text-align: center;margin-top:5px"> Change Date?</p>
-                   </a>
-               </button>
-           </div>
-       </mat-card>
-   </div>
-<div class="col-sm-4">
-       <mat-card class="order">
-           <mat-card-title>
-               <b>Order Details</b>
-           </mat-card-title>
-           <mat-card-content>
-               <div class="table-responsive">
-                   <thead>
-                       <tr>
-                           <td style="width: 400px">
-                               <h5>Total Items</h5>
-                           </td>
-                           <td>
-                               <h5>{{ totalQuantity()}}</h5>
-                           </td>
-                       </tr>
-                       <tr>
-                           <td style="width: 400px">
-                               <h5>Amount Payable</h5>
-                           </td>
-                           <td>
-                               <h5>{{ getSum()}}</h5>
-                           </td>
-                       </tr>
-                       <hr class="horizantal" style="color:rgb(3, 3, 29)">
-                       <tr>
-                           <td style="width: 400px">
-                               <h5>Delivery Charges</h5>
-                           </td>
-                           <td>
-                               <h5>{{slotFinalPrice}}</h5>
-                           </td>
-                       </tr>
-                       <tr>
-                               <td style="width: 400px">
-                                   <h5>Total Charges</h5>
-                               </td>
-                               <td>
-                                   <h5>{{finalPriceA}}</h5>
-                               </td>
-                           </tr>
-                   </thead>
-               </div>
-           </mat-card-content>
-       </mat-card>
-   </div>
-   </div>
-   <button (click)="paymentRoute()" class="btn btn-primary btn-block" style="margin-top:20px">
-     Proceed To Payment
-   </button>
-   <br>
-   <br>
-   </div>
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <button class=" mt-5 p-2 btn-danger" style="border-radius:10px" routerLink="/billing">
+                            Change Date?
+                        </button>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col-sm-4">
+                <mat-card class="order">
+                    <mat-card-title>
+                        <b>Order Details</b>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div class="table-responsive">
+                            <thead>
+                                <tr>
+                                    <td style="width: 400px">
+                                        <h5>Total Items</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{ totalQuantity()}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 400px">
+                                        <h5>Amount Payable</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{ getSum()}}</h5>
+                                    </td>
+                                </tr>
+                                <hr class="horizantal" style="color:rgb(3, 3, 29)">
+                                <tr>
+                                    <td style="width: 400px">
+                                        <h5>Delivery Charges</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{slotFinalPrice | number :'1.1-2'}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 400px">
+                                        <h5>Total Charges</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{finalPriceA | number :'1.1-2'}}</h5>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-sm-8"></div>
+            <div class=" col-sm-4">
+                <mat-card class="protect">
+                    <mat-card-content>
+                        <div class="table-responsive">
+                            <thead>
+                                <tr>
+                                    <td style="width: 45px">
+                                        <img src="assets/protect.png">
+                                    </td>
+                                    <td>
+                                        Safe and Secure Payments. Easy Returns. 100% safety products
+                                    </td>
+                                </tr>
+                            </thead>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top:20px">
+            Proceed To Payment
+        </button>
+        <br>
+        <br>
+    </div>
