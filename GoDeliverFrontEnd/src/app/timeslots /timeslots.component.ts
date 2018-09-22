@@ -139,9 +139,12 @@ export class TimeslotsComponent implements OnInit {
   isRadioSelect1() {
     return this.isRadioSelected;
   }
-
   paymentRoute() {
-    this.router.navigate(["/payment"]);
-    location.reload();
+    localStorage.setItem("newOrder", JSON.stringify(this.newOrder));
+    console.log(this.newOrder)
+    setTimeout(() => {
+      this.router.navigate(["/payment"]);
+      location.reload();
+    },3000)
   }
 }
