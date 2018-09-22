@@ -98,6 +98,32 @@ public class BookController {
 		}
 		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.ACCEPTED);
 	}
+	
+//  Gets the list of books by matching search term with the book genre 
+
+	@RequestMapping(value = "/genre/{term}", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> getByGenre(@PathVariable("term") String searchTerm) throws BookNotFoundException {
+		List<Book> booklistalpha;
+		try {
+			booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
+		} catch (MongoConnectionException e) {
+			return new ResponseEntity<String>("Connection Failed", HttpStatus.GATEWAY_TIMEOUT);
+		}
+		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.ACCEPTED);
+	}
+	
+//  Gets the list of books by matching search term with the book author 
+
+	@RequestMapping(value = "/author/{term}", method = RequestMethod.GET, produces = { "application/json" })
+	public ResponseEntity<?> getByAuthor(@PathVariable("term") String searchTerm) throws BookNotFoundException {
+		List<Book> booklistalpha;
+		try {
+			booklistalpha = bookServiceImpl.findBookByRegexpTitle(searchTerm);
+		} catch (MongoConnectionException e) {
+			return new ResponseEntity<String>("Connection Failed", HttpStatus.GATEWAY_TIMEOUT);
+		}
+		return new ResponseEntity<List<Book>>(booklistalpha, HttpStatus.ACCEPTED);
+	}
 
 //	Gets the details of a book by id
 
