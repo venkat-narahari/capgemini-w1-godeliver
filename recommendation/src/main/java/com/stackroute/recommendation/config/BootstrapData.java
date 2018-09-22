@@ -59,19 +59,19 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book1.setLanguage("English");
 		bookRepository.save(book1);
 		
-		Genre genre1 = new Genre(book1.getGenre());
-		genreRepository.save(genre1);
-		
-		OfType ofType1 = new OfType(book1, genre1);
-		ofTypeRepository.save(ofType1);
-		
-		Author author1 = new Author(book1.getAuthor());
-		authorRepository.save(author1);
-		
-		WrittenBy writtenBy1 = new WrittenBy(book1, author1);
-		writtenByRepository.save(writtenBy1);
-		
-		
+//		Genre genre1 = new Genre(book1.getGenre());
+//		genreRepository.save(genre1);
+//		
+//		OfType ofType1 = new OfType(book1, genre1);
+//		ofTypeRepository.save(ofType1);
+//		
+//		Author author1 = new Author(book1.getAuthor());
+//		authorRepository.save(author1);
+//		
+//		WrittenBy writtenBy1 = new WrittenBy(book1, author1);
+//		writtenByRepository.save(writtenBy1);
+//		
+//		
 
 		BookListener book2 = new BookListener();
 		book2.setBookISBN_10("564438");
@@ -158,7 +158,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		ofTypeRepository.save(ofType4);
 		
 		Author author4 = new Author(book4.getAuthor());
-		authorRepository.save(author1);
+		authorRepository.save(author4);
 		
 		WrittenBy writtenBy4 = new WrittenBy(book4, author4);
 		writtenByRepository.save(writtenBy4);
