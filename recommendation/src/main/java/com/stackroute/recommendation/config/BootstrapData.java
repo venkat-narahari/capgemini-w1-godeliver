@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
-
 import com.stackroute.recommendation.domain.Author;
 import com.stackroute.recommendation.domain.BookListener;
 import com.stackroute.recommendation.domain.Genre;
@@ -45,7 +44,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book1.setTitle("The One from the Stars");
 		book1.setRating(9f);
 		book1.setPoster("https://images-na.ssl-images-amazon.com/images/I/51sn9qbfCbL._SX311_BO1,204,203,200_.jpg");
-		book1.setVolume("2000ccm");
+		book1.setVolume("200000ccm");
 		book1.setAuthor("Keshav Aneel");
 		book1.setPublisher("Kathari");
 		book1.setGenre("Romance");
@@ -79,7 +78,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book2.setTitle("ABCs of Horror: 26 Terrifying Tales to Keep You Awake at Night");
 		book2.setRating(4f);
 		book2.setPoster("https://images-eu.ssl-images-amazon.com/images/I/51cBe-VAiwL.jpg");
-		book2.setVolume("4200ccm");
+		book2.setVolume("420000ccm");
 		book2.setAuthor("Anmol Rawat ");
 		book2.setPublisher("Eswari");
 		book2.setGenre("Horror");
@@ -109,7 +108,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book3.setTitle("A Corner of a Foreign Field: The Indian History of a British Sport");
 		book3.setRating(9f);
 		book3.setPoster("https://images-na.ssl-images-amazon.com/images/I/51tWC3RE%2BEL._SX311_BO1,204,203,200_.jpg");
-		book3.setVolume("3200ccm");
+		book3.setVolume("320000ccm");
 		book3.setAuthor("Ramachandra Guha");
 		book3.setPublisher("Siddharth");
 		book3.setGenre("Sports");
@@ -140,7 +139,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book4.setTitle("Disney Princess Comics Treasury");
 		book4.setRating(8f);
 		book4.setPoster("https://images-na.ssl-images-amazon.com/images/I/51O44lS7lML._SX331_BO1,204,203,200_.jpg");
-		book4.setVolume("2000cm");
+		book4.setVolume("200000cm");
 		book4.setAuthor("Disney");
 		book4.setPublisher("Sai Sree");
 		book4.setGenre("Comic");
@@ -171,7 +170,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book5.setTitle("Kashi: Secret of the Black Temple (Harappa)");
 		book5.setRating(9f);
 		book5.setPoster("https://images-na.ssl-images-amazon.com/images/I/51lSaLI9YfL._SX328_BO1,204,203,200_.jpg");
-		book5.setVolume("2100ccm");
+		book5.setVolume("210000ccm");
 		book5.setAuthor("Vineet Bajpai");
 		book5.setPublisher("Ashutosh");
 		book5.setGenre("History");
@@ -204,7 +203,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book6.setTitle("Wings of Fire: An Autobiography of Abdul Kalam");
 		book6.setRating(9f);
 		book6.setPoster("https://images-na.ssl-images-amazon.com/images/I/51wbVQTpTgL._SX339_BO1,204,203,200_.jpg");
-		book6.setVolume("3600ccm");
+		book6.setVolume("360000ccm");
 		book6.setAuthor("Arun Tiwari and A. P. J. Abdul Kalam");
 		book6.setPublisher("Vishnu");
 		book6.setGenre("Biography");
@@ -235,7 +234,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book7.setTitle("The Religion of Man: Rabindranath Tagore");
 		book7.setRating(6f);
 		book7.setPoster("https://images-na.ssl-images-amazon.com/images/I/51zufCG6CjL._SX310_BO1,204,203,200_.jpg");
-		book7.setVolume("3600ccm");
+		book7.setVolume("360000ccm");
 		book7.setAuthor("Rabindranath Tagore");
 		book7.setPublisher("Sai");
 		book7.setGenre("Religion");
@@ -266,7 +265,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book8.setTitle("Harappa - Curse of the Blood River");
 		book8.setRating(6f);
 		book8.setPoster("https://images-na.ssl-images-amazon.com/images/I/51OV4KduW3L._SX321_BO1,204,203,200_.jpg");
-		book8.setVolume("4200ccm");
+		book8.setVolume("420000ccm");
 		book8.setAuthor("Vineet Bajpai");
 		book8.setPublisher("Sai Teja");
 		book8.setGenre("Thriller");

@@ -7,7 +7,6 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class BookService {
-
   private recommended_url = "http://13.232.234.139:9088/recommendation/api/v1/preferences/?userMail=";
   private getTopSelling_url = "http://13.232.234.139:9088/book/api/v1/books";
  //private getTopSelling_url = "http://localhost:8888/api/v1/books";

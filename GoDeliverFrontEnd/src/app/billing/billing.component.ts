@@ -1,7 +1,7 @@
 import { LogisticService } from "./../logistics.service";
 import { ActivatedRoute } from "@angular/router";
 import { FirebaseService, Address, Cart } from "./../firebase.service";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import {
   FormControl,
   FormGroup,
@@ -12,6 +12,7 @@ import {
   Validators
 } from "@angular/forms";
 import { SearchService } from "../search.service";
+import { EventEmitter } from "events";
 @Component({
   selector: "app-billing",
   templateUrl: "./billing.component.html",
@@ -19,7 +20,6 @@ import { SearchService } from "../search.service";
 })
 export class BillingComponent implements OnInit {
   orders: any;
-
   email = new FormControl("", [Validators.required, Validators.email]);
   bool = true;
   add: Address = {
@@ -52,7 +52,6 @@ export class BillingComponent implements OnInit {
     private route: ActivatedRoute,
     private searchService: SearchService,
     private formBuilder: FormBuilder,
-    private logistic: LogisticService
   ) {}
   movies: any;
   getLatLng(address) {
@@ -78,13 +77,21 @@ export class BillingComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+    setTimeout(() => {
+      this.totalQuant();
+    }, 6000)
+    setTimeout(() => {
+      this.getVolume();
+    }, 7000);
+   
   }
-  totalQuant() {
+totalQuant() {
     let totalQuantity = 0;
 
     for (let i = 0; i < this.totalLength; i++) {
       totalQuantity += this.carts[i].quantity;
     }
+    console.log(totalQuantity);
     return totalQuantity;
   }
 
@@ -102,7 +109,11 @@ export class BillingComponent implements OnInit {
     for (let i = 0; i < this.totalLength; i++) {
       volumeTotal += this.carts[i].totalVolume;
     }
+    console.log(volumeTotal)
+   localStorage.setItem("totalVolume",(volumeTotal.toString()));
+    
     return volumeTotal;
+   
   }
   onSubmit() {
     for (let i = 0; i < this.addressList.length; i++) {

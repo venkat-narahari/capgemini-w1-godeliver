@@ -1,3 +1,4 @@
+import { LogisticService } from './../logistics.service';
 import { Component, OnInit } from "@angular/core";
 import { FirebaseService, Cart } from "./../firebase.service";
 import { Http, Headers } from "@angular/http";
@@ -18,7 +19,9 @@ export class PaymentComponent implements OnInit {
   totalamountpayable: any;
   totalLength: any;
   carts: Cart[];
-  constructor(private http: Http, private firebase: FirebaseService,private spinner :NgxSpinnerService) {}
+  slotDetails: any;
+
+  constructor(private http: Http, private firebase: FirebaseService,private spinner :NgxSpinnerService,private logisticService: LogisticService) {}
   chargeCard(token: string) {
     const headers = new Headers({ token: token, amount: this.getSum() });
     this.http
@@ -73,6 +76,7 @@ export class PaymentComponent implements OnInit {
               this.deleteCart();
             }, 6000);
             this.msg = "Your Transaction is success";
+            this.logisticService.setSlot(this.slotDetails);
           }
 
           if (token == null) {
@@ -84,6 +88,13 @@ export class PaymentComponent implements OnInit {
         }
       }
     );
+    // this.logisticService.setSlot(this.slotDetails).subscribe(data => {
+    //   console.log(data);
+    // });
+
+    // this.logisticService.setOrderDetails(this.slotDetails).subscribe(data => {
+    //   console.log(data);
+    // })
   }
 
   refundCreditCard() {
@@ -115,5 +126,7 @@ export class PaymentComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+    this.slotDetails = JSON.parse(localStorage.getItem("newOrder"));
+    console.log(this.slotDetails);
   }
 }
