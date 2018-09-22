@@ -20,6 +20,7 @@ export class PaymentComponent implements OnInit {
   totalLength: any;
   carts: Cart[];
   slotDetails: any;
+  orderDetails:any;
 
   constructor(private http: Http, private firebase: FirebaseService,private spinner :NgxSpinnerService,private logisticService: LogisticService) {}
   chargeCard(token: string) {
@@ -77,6 +78,12 @@ export class PaymentComponent implements OnInit {
             }, 6000);
             this.msg = "Your Transaction is success";
             this.logisticService.setSlot(this.slotDetails);
+            this.logisticService.setOrderDetails(this.orderDetails).subscribe(data => {
+              console.log(data);
+            })
+            localStorage.removeItem("newOrder");
+            localStorage.removeItem("totalVolume")
+            localStorage.removeItem("orderDetails")
           }
 
           if (token == null) {
@@ -88,13 +95,6 @@ export class PaymentComponent implements OnInit {
         }
       }
     );
-    // this.logisticService.setSlot(this.slotDetails).subscribe(data => {
-    //   console.log(data);
-    // });
-
-    // this.logisticService.setOrderDetails(this.slotDetails).subscribe(data => {
-    //   console.log(data);
-    // })
   }
 
   refundCreditCard() {
@@ -126,6 +126,7 @@ export class PaymentComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+    this.orderDetails = JSON.parse(localStorage.getItem("orderDetails"));
     this.slotDetails = JSON.parse(localStorage.getItem("newOrder"));
     console.log(this.slotDetails);
   }
