@@ -1,5 +1,5 @@
 agm-map {
-    height: 100vh;
+  height:70vh;
 }
 
 .container-body{
@@ -32,4 +32,20 @@ canvas{
 
 .btn:focus {
   outline: none;
+}
+
+.modal-dialog {
+	max-width: 90% !important;
+	height: 100% !important;
+	opacity: 1;
+}
+
+.modal-content {
+	height: auto;
+	width: 100%;
+}
+
+.col-md-4{
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
