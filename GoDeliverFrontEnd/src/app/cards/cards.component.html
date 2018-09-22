@@ -1,10 +1,11 @@
 <!-- cards to display books -->
-<div class="component-body">
-  <mat-card class="book-card mt-3 mb-3 text-center">
+<div class="component-body mt-3 mb-3">
+  <div class="outlayer">
+  <mat-card class="book-card text-center">
     <img mat-card-image src="{{ book.poster }}" style="height:30vh; width:auto; background-size: cover;" alt="Photo of a {{book.title}}" routerLink="book/{{ book.bookISBN_10 }}">
     <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
       <mat-card-title class="title">
-        <h6 class="title">{{ (book.title.length>20)? (book.title | slice:0:18)+'..':(book.title) }}</h6>
+        <h6 class="title">{{ (book.title.length>20)? (book.title | slice:0:17)+'..':(book.title) }}</h6>
       </mat-card-title>
           <mat-card-subtitle>{{book.genre}}<div fxFlex></div> ₹ {{book.cost}}</mat-card-subtitle>
     </mat-card-header>
@@ -27,4 +28,5 @@
       </div>
     </mat-card-actions>
   </mat-card>
+  </div>
 </div>

@@ -13,6 +13,7 @@
           "vehicleId": "1",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "3240000",
+          "vehicleRouteDuration": "130",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "60",
           "vehicleRoute": [
@@ -66,6 +67,7 @@
           "vehicleId": "2",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "4260000",
+          "vehicleRouteDuration": "150",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "50",
           "vehicleRoute": [
@@ -141,6 +143,7 @@
           "vehicleId": "3",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "3260000",
+          "vehicleRouteDuration": "90",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "48",
           "vehicleRoute": [
@@ -215,6 +218,7 @@
           "vehicleId": "1",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "4500000",
+          "vehicleRouteDuration": "145",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "57",
           "vehicleRoute": [
@@ -290,6 +294,7 @@
           "vehicleId": "2",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "2810000",
+          "vehicleRouteDuration": "125",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "47",
           "vehicleRoute": [
@@ -354,6 +359,7 @@
           "vehicleId": "3",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "1220000",
+          "vehicleRouteDuration": "85",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "57",
           "vehicleRoute": [
@@ -450,6 +456,7 @@
           "vehicleId": "1",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "3240000",
+          "vehicleRouteDuration": "100",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "65",
           "vehicleRoute": [
@@ -503,6 +510,7 @@
           "vehicleId": "2",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "4260000",
+          "vehicleRouteDuration": "115",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "46",
           "vehicleRoute": [
@@ -600,6 +608,7 @@
           "vehicleId": "3",
           "vehicleCapacity": "5670000",
           "vehicleLoadedCapacity": "5060000",
+          "vehicleRouteDuration": "75",
           "vehicleRouteDurationLimit": "180",
           "vehicleCoveredDistance": "55",
           "vehicleRoute": [

@@ -12,28 +12,26 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  getDate(item) {
+  getDate(selectedDate) {
   return this.http.get("../../assets/location.json");
 }
 
-  getRoute(item) {
-   return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[item.vehicleId])).pipe(map(body => body['vehicleRoute']));
+  getRoute(selectedDate) {
+   return this.getDate(selectedDate).pipe(map(body => body['slots'])).pipe(map(body => body[selectedDate.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[selectedDate.vehicleId])).pipe(map(body => body['vehicleRoute']));
   }
 
-  getTotalVolume(item) {
-    return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[item.vehicleId]));
+  getTotalVolume(selectedDate) {
+    return this.getDate(selectedDate).pipe(map(body => body['slots'])).pipe(map(body => body[selectedDate.slot])).pipe(map(body => body['slotVehicle'])).pipe(map(body => body[selectedDate.vehicleId]));
    }
 
-   getTotalDistance(item) {
-    return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle']));
+   getSlotVehicle(selectedDate) {
+    return this.getDate(selectedDate).pipe(map(body => body['slots'])).pipe(map(body => body[selectedDate.slot])).pipe(map(body => body['slotVehicle']));
    }
 
-   getSlotData(item) {
-    return this.getDate(item).pipe(map(body => body['slots'])).pipe(map(body => body[item.slot])).pipe(map(body => body['slotVehicle']));
+   getSlotData(selectedDate) {
+    this.date = 'http://172.23.239.100:8080/logistics/api/v1/date?date='+selectedDate;
+    return this.getDate(selectedDate).pipe(map(body => body['slots']));
    }
 
-   getAllVolume(item) {
-     return this.getDate(item).pipe(map(body => body['slots']));
-   }
 
 }
