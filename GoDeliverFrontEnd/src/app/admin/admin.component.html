@@ -77,23 +77,31 @@
       </div>
       <!-- Modal for vehicle analytics -->
       <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
-
             <!-- Modal Header -->
             <div class="modal-header">
               <h4 class="modal-title">Vehicle Analytics</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-
             <!-- Modal body -->
             <div class="modal-body">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-8"></div>
+                <div class="row align-items-center">
+                  <div class="col-md-4 p-2">
+                    <p class="text-xl-left">Vehicle {{vehicleSelected+1}}</p>
+                    <div *ngIf="vehicleCapacity">
+                      <canvas baseChart [data]="vehicleCapacity" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div *ngIf=origin>
+                      <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
+                        </agm-direction>
+                      </agm-map>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
 
             <!-- Modal footer -->
@@ -106,8 +114,5 @@
       </div>
 
     </div>
-
-
-
   </div>
 </div>
