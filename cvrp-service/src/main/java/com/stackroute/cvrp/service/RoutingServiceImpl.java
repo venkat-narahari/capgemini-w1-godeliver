@@ -147,6 +147,17 @@ public class RoutingServiceImpl implements RoutingService {
 
 		route.getNewOrder().setAvailableSlots(slotsAvailabilty);
 		route.getDateLogistics().setSlots(slots);
+		for(int i=0;i<route.getDateLogistics().getSlots().length;i++) {
+			route.getDateLogistics().getSlots()[i].setSlotNoOfVehicles("3");
+
+			if(i==0)
+				route.getDateLogistics().getSlots()[i].setSlotEndTime("1200");
+			else if(i==1)
+				route.getDateLogistics().getSlots()[i].setSlotEndTime("1600");
+			else
+				route.getDateLogistics().getSlots()[i].setSlotEndTime("2000");
+			
+		}
 
 		return route;
 
