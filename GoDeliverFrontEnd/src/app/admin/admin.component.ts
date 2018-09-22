@@ -43,6 +43,9 @@ export class AdminComponent implements OnInit {
   slotVehicleRoute: any;
   vehiclesRoute: any;
 
+  slotSelected: any;
+  vehicleSelected: any;
+
 
   constructor(private http: HttpClient, private admin: AdminService) {}
 
@@ -76,6 +79,8 @@ export class AdminComponent implements OnInit {
   }
 
   onVehicle(slot,vehicle){
+    this.slotSelected=slot;
+    this.vehicleSelected=vehicle;
     this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       this.vehicleVolume=parseInt(this.data[slot].slotVehicle[vehicle].vehicleLoadedCapacity);
