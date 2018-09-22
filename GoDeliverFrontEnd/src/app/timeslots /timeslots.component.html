@@ -7,6 +7,7 @@
            <div class="row">
                <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px;">
                    <mat-card style="border-radius:8px; width:150px;">
+                    
                        <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability"  (click)="radioselected(slots, i)">
                        <label style="margin-left:5px" >{{timeslots[i]}}
                        </label>
