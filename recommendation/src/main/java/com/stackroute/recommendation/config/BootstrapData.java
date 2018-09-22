@@ -28,10 +28,11 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 	private WrittenByRepository writtenByRepository;
 
 	@Autowired
-	public BootstrapData(BookRepository bookRepository, UserRepository userRepository, GenreRepository genreRepository,AuthorRepository authorRepository,WrittenByRepository writtenByRepository) {
+	public BootstrapData(BookRepository bookRepository, UserRepository userRepository, GenreRepository genreRepository,OfTypeRepository ofTypeRepository,AuthorRepository authorRepository,WrittenByRepository writtenByRepository) {
 		this.bookRepository = bookRepository;
 		this.userRepository=userRepository;
 		this.genreRepository=genreRepository;
+		this.ofTypeRepository=ofTypeRepository;
 		this.authorRepository=authorRepository;
 		this.writtenByRepository=writtenByRepository;
 	}
@@ -158,7 +159,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		ofTypeRepository.save(ofType4);
 		
 		Author author4 = new Author(book4.getAuthor());
-		authorRepository.save(author1);
+		authorRepository.save(author4);
 		
 		WrittenBy writtenBy4 = new WrittenBy(book4, author4);
 		writtenByRepository.save(writtenBy4);
