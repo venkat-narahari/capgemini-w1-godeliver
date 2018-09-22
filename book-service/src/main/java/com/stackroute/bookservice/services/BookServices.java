@@ -16,5 +16,10 @@ public interface BookServices {
 	public List<Book> findBookByRegexpTitle(String searchTerm) throws MongoConnectionException;
 	
 	public Book findBookById(String bookId) throws MongoConnectionException;
+	
+	public List<Book> findBookByRegexpGenre(String searchTerm) throws MongoConnectionException;
+	
+	public List<Book> findBookByRegexpAuthor(String searchTerm) throws MongoConnectionException;
+	
 
 }

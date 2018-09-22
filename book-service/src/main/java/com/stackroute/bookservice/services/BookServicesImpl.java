@@ -82,6 +82,24 @@ public class BookServicesImpl implements BookServices {
 		List<Book> list = bookRepository.findBookByRegexpTitle(searchTerm);
 		return list;
 	}
+	
+	/**
+	 * Returns list of books by matching the search term with genre
+	 **/
+	@Override
+	public List<Book> findBookByRegexpGenre(String searchTerm) throws MongoConnectionException {
+		List<Book> list = bookRepository.findBookByRegexpTitle(searchTerm);
+		return list;
+	}
+	
+	/**
+	 * Returns list of books by matching the search term with author
+	 **/
+	@Override
+	public List<Book> findBookByRegexpAuthor(String searchTerm) throws MongoConnectionException {
+		List<Book> list = bookRepository.findBookByRegexpTitle(searchTerm);
+		return list;
+	}
 
 	/**
 	 * Returns a book by id

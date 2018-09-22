@@ -52,19 +52,6 @@ public class RoutingServiceImpl implements RoutingService {
 		this.cvrpServiceImpl = cvrpServiceImpl1;
 	}
 
-	public void convertToJson(Object obj) {
-
-		ObjectMapper mapperObj = new ObjectMapper();
-		try {
-			// get Employee object as a json string
-			String jsonStr = mapperObj.writeValueAsString(obj);
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	public Route getNewOrderedRoute(Route route) {
 		this.routeObj = route;
@@ -101,25 +88,17 @@ public class RoutingServiceImpl implements RoutingService {
 				}
 				newOrderLocation = newOrder.getOrderLocation();
 				ordersList.add(newOrder);
-				System.out.println("orderlist is "+ordersList.toString());
 				String[] orderId = new String[ordersList.size()];
 				for(int a=0;a<ordersList.size();a++) {
-					System.out.println("slot is "+ordersList.get(a).getOrderId());
-					//orderId=new String[orders.length];
 					orderId[a]=ordersList.get(a).getOrderId();
 					ordersList.get(a).setOrderId(String.valueOf(a));
 				}
-				System.out.println("orderlist is "+ordersList.toString());
 
 				
-				for(int b=0;b<orderId.length;b++) {
-					System.out.println("order is "+orderId[b]);
-				}
 				locationList.add(newOrderLocation);
 				
 				CvrpServiceImpl cvrp = new CvrpServiceImpl(ordersList.size(), vehicles.length, vehicleCap);
 				cvrp.getRoute(route);
-				System.out.println("location list is "+locationList.toString());
 				distanceMatrix = cvrp.getDistanceMatrix(locationList);
 				for (int j = 1; j < ordersList.size(); j++) {
 					ordersList.get(j).setRouted(false);

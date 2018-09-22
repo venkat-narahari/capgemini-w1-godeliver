@@ -8,6 +8,7 @@ export class Order {
         public orderVolume:string,
         public orderConsumerPhone:string,
         public orderDate :string,
+        public emailId:string
     ) {
 
     }

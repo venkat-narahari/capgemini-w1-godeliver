@@ -34,16 +34,10 @@ public class CvrpController {
 	@RequestMapping(value = "/slots", method = RequestMethod.POST)
 	public ResponseEntity<?> giveSlots(@RequestBody Route route) {
 
-		 System.out.println("controller-->"+route);
 		cvrpService.getRoute(route);
-		System.out.println("");
-		// cvrpService.getJson(route);
+
 		dl = route.getDateLogistics();
 		sl = dl.getSlots();
-		// System.out.println(sl[1].toString());
-		// System.out.println(sl[2].toString());
-		Vehicle v[] = sl[0].getSlotVehicle();
-		// System.out.println("vehicle capacity "+v[0].getVehicleCapacity());
 
 		newRoute = routingService.getNewOrderedRoute(route);
 		return new ResponseEntity<Route>(newRoute, HttpStatus.OK);
