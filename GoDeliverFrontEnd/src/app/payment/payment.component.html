@@ -1,3 +1,4 @@
+<div class="component-body">
 <ngx-spinner
   bdColor="rgba(51,51,51,0.8)"
   size="default"
@@ -45,8 +46,7 @@
           <!-- </label> -->
         </div>
         <!-- <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button> -->
-        <button type="submit" [disabled]="!myForm.form.valid" appNoDblClick (click)="chargeCreditCard()" (click)="openSpinner()" style="border-radius:8px;height:40px">Submit</button>
-        <button (click)="refundCreditCard()" style="border-radius:8px;margin-left:20px;height:40px">Refund</button><br><br>
+        <button type="submit" [disabled]="!myForm.form.valid" appNoDblClick (click)="chargeCreditCard()" (click)="openSpinner()" class="btn btn-danger">Submit</button>
         <div *ngIf="(!msg)">
           <p style="color:red">{{msg1}}</p>
         </div>
@@ -57,4 +57,5 @@
       </form>
     </mat-card>
   </div>
+</div>
 </div>

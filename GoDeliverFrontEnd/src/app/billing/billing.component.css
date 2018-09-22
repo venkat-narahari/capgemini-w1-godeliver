@@ -11,6 +11,5 @@
   color: white;
 }
 mat-card-title{
-  border-radius: 6px;
-  border-width: 12px;
+  border-radius: 2px;
 }
