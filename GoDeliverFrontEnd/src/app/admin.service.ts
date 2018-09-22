@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
@@ -8,12 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class AdminService {
 
   data:any;
-  date = 'http://172.23.239.100:8080/logistics/api/v1/date?date='
+  date = 'http://13.232.234.139:9088/logistics/api/v1/date?date=';
 
   constructor(private http:HttpClient) { }
 
-  getDate(selectedDate) {
-  return this.http.get("../../assets/location.json");
+  getDate(_selectedDate) {
+    // return this.http.get(this.date+selectedDate);
+   return this.http.get("../../assets/location.json");
 }
 
   getRoute(selectedDate) {
@@ -29,7 +29,6 @@ export class AdminService {
    }
 
    getSlotData(selectedDate) {
-    this.date = 'http://172.23.239.100:8080/logistics/api/v1/date?date='+selectedDate;
     return this.getDate(selectedDate).pipe(map(body => body['slots']));
    }
 

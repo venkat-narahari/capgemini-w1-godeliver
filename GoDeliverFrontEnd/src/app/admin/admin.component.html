@@ -2,18 +2,18 @@
   <div class="container text-center">
     <form>
       <mat-form-field class="example-full-width">
-        <input matInput (click)="onDate(dateOfDelivery)" [matDatepicker]="picker" [(ngModel)]="dateOfDelivery" name="dateOfDelivery" required placeholder="Choose a date" style="margin-right:10px">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfDelivery" name="dateOfDelivery" required placeholder="Analytics by date" style="margin-right:10px">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>
       </mat-form-field>
-      <!-- <button class="btn btn-danger rounded" (click)="onDate()">Get Data</button> -->
+      <button class="btn btn-danger rounded" (click)="onDate(dateOfDelivery)"><i class="fa fa-search"></i></button>
     </form>
   </div>
   <div class="conatiner-fluid">
-    <div style="margin-left:10%;font-size:8vh;">
-      <p class="text-xl-left font-weight-bold">Slot Details</p>
+    <div style="margin-left:12%;font-size: 30px;">
+      <p class="text-xl-left font-weight-bold">Slot Analytics</p>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center timings-row">
       <div class="col-md-3 justify-content-center timings">
         <div class="container-fluid">
           <p class="text-xl-center font-weight-bold">09:00-12:00</p>

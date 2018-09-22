@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
       // this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
     }
 
-    
+
 
     ngOnInit() {
       this.userForm = this.formBuilder.group({
         userEmail: [
           '',
-          [Validators.required]
+          [Validators.required, Validators.email]
         ],
         userPassword: ['', [Validators.required]]
       });
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           data => {
               this.router.navigate(['/admin']);
               location.reload();
-          
+
           }
         );
           }else{
@@ -52,17 +52,17 @@ export class LoginComponent implements OnInit {
           data => {
               this.router.navigate(['']);
               location.reload();
-          
+
             }
-            
+
           // error => {
-          //     this.error = 'Username or password is required'; 
+          //     this.error = 'Username or password is required';
           // },
         );
 
           }
     }
-    
+
 //method which gets the useremail and returns to login validation form
     get userEmail() {
       return this.userForm.get('userEmail');
@@ -72,15 +72,14 @@ export class LoginComponent implements OnInit {
       return this.userForm.get('userPassword');
     }
     getErrorMessage() {
-      return this.email.hasError('required') ? 'You must enter a value' :
-          this.email.hasError('email') ? 'Not a valid email' :
+      return this.userEmail.hasError('required') ? 'You must enter a value' :
+          this.userEmail.hasError('email') ? 'Not a valid email' :
               '';
     }
     getErrorMessage2() {
       return this.password.hasError('required') ? 'You must enter a value' :
-        
+
               '';
     }
-    
-}
 
+}

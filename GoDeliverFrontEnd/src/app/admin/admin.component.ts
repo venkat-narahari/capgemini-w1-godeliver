@@ -1,4 +1,3 @@
-import { Slot } from "./../Model/Slot";
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AdminService } from "../admin.service";
@@ -10,7 +9,7 @@ import { AdminService } from "../admin.service";
 })
 export class AdminComponent implements OnInit {
 
-  dateOfDelivery : string ="Thu Sep 20 2018 00:00:00 GMT+0530 (India Standard Time)"
+  dateOfDelivery : string;
   data : any;
   slotCapacity= [0,0,0];
   vehicleVolume: number;
@@ -49,7 +48,10 @@ export class AdminComponent implements OnInit {
 
   constructor(private http: HttpClient, private admin: AdminService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dateOfDelivery="Wed Sep 26 2018 00:00:00 GMT+0530 (India Standard Time)";
+    this.onDate(this.dateOfDelivery);
+  }
 
   onDate(dateOfDelivery){
 

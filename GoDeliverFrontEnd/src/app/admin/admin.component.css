@@ -3,7 +3,7 @@ agm-map {
 }
 
 .container-body{
-    margin: 2%;
+    margin: 5% 2% 2% 2%;
     height: 100%;
 }
 
@@ -23,6 +23,8 @@ canvas{
 
 .timings{
   box-shadow: none;
+  padding: 0px !important;
+  margin: 0px !important;
 }
 
 .buttons{
