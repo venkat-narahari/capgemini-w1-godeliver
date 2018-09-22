@@ -25,7 +25,7 @@ export class PaymentComponent implements OnInit {
   chargeCard(token: string) {
     const headers = new Headers({ token: token, amount: this.getSum() });
     this.http
-      .post("http://localhost:9088/payment/charge", {}, { headers: headers })
+      .post("http://13.232.234.139:9088/payment/charge", {}, { headers: headers })
       .subscribe(resp => {
         console.log(resp);
       });
@@ -33,7 +33,7 @@ export class PaymentComponent implements OnInit {
 
   refundCard() {
     this.http
-      .post("http://localhost:9088/payment/refund", {})
+      .post("http://13.232.234.139:9088/payment/refund", {})
       .subscribe(res => {
         console.log(res);
       });
