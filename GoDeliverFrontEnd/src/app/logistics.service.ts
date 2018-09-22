@@ -1,3 +1,5 @@
+import { Route } from './Model/Route';
+import { Observable } from 'rxjs';
 import { Order } from "./order-details";
 import {
   HttpClient,
@@ -7,18 +9,20 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
-import { log } from "util";
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" })
-};
+;
+
+const headers = new HttpHeaders({
+  'Content-Type': 'application/json'
+});
 
 @Injectable({
   providedIn: "root"
 })
 export class LogisticService {
   data: any;
-  private slot_url = "http://35.154.246.37:9088/logistics/api/v1/slots";
-  private vehicles_url = "http://172.23.239.100:8080/logistics/api/v1/";
+  private logistic_url = "http://13.232.234.139:9088/logistics/api/v1/slots";
+  private slot_url = "http://13.232.234.139:9088/logistics/api/v1/slot";
+  private order_url = "http://13.232.234.139:9088/order/api/v1/detail"
   constructor(private http: HttpClient) {}
   slots: object[];
   getOrderDetails(order) {
@@ -31,7 +35,7 @@ export class LogisticService {
       .set("orderLongitude", order.orderLongitude)
       .set("orderVolume", order.orderVolume)
       .set("orderDate", order.orderDate);
-    this.data = this.http.get<Order[]>(this.slot_url, { params: params });
+    this.data = this.http.get<Order[]>(this.logistic_url, { params: params });
     return this.data;
   }
 
@@ -44,5 +48,10 @@ export class LogisticService {
   getOrder() {
     return this.data;
   }
-
+ setSlot(newOrder){
+   return this.http.post(this.slot_url,JSON.stringify(newOrder), {headers});
+ }
+ setOrderDetails(newOrder) {
+    return this.http.post(this.order_url,JSON.stringify(newOrder),{headers})
+ }
 }

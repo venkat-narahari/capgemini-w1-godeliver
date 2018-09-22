@@ -9,3 +9,6 @@
     background-color: deepskyblue;
     border-radius:6px
 }
+.component-body{
+    height: 100%;
+}

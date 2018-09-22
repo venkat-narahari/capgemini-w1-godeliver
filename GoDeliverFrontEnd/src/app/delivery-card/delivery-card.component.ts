@@ -2,7 +2,7 @@ import { Router } from "@angular/router";
 import { LogisticService } from "./../logistics.service";
 import { FirebaseService, Cart } from "./../firebase.service";
 import { Order } from "./../order-details";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import { v4 as uuid } from "uuid";
 
 @Component({
@@ -31,6 +31,7 @@ export class DeliveryCardComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+    // JSON.parse(localStorage.getItem()
   }
   radioselected(address) {
     this.isRadioSelected = true;
@@ -49,7 +50,7 @@ export class DeliveryCardComponent implements OnInit {
     console.log(this.order.orderConsumerAddress);
     this.order.orderConsumerPhone = phone;
     console.log(this.order.orderConsumerName);
-    this.order.orderVolume = this.getVolume().toString();
+    this.order.orderVolume = localStorage.getItem('totalVolume');
     console.log(this.order.orderVolume);
     this.order.orderLatitude = addLat;
     console.log(addLat);
@@ -63,17 +64,26 @@ export class DeliveryCardComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(["/timeslots"]);
       location.reload();
-    }, 2000);
+    }, 9000);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);
   }
-  getVolume() {
-    let volumeTotal = 0;
-    for (let i = 0; i < this.totalLength; i++) {
-      volumeTotal += this.carts[i].totalVolume;
-    }
-    console.log(volumeTotal);
-    return volumeTotal;
-  }
+  // totalQuant() {
+  //   let totalQuantity = 0;
+
+  //   for (let i = 0; i < this.totalLength; i++) {
+  //     totalQuantity += this.carts[i].quantity;
+  //   }
+  //   console.log(totalQuantity);
+  //   return totalQuantity;
+  // }
+  // getVolume() {
+  //   let volumeTotal = 0;
+  //   for (let i = 0; i < this.totalLength; i++) {
+  //     volumeTotal += this.carts[i].totalVolume;
+  //   }
+  //   console.log(volumeTotal);
+  //   return volumeTotal;
+  // }
 }
