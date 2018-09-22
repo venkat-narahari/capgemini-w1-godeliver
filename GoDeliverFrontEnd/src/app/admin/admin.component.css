@@ -2,6 +2,10 @@ agm-map {
   height:70vh;
 }
 
+.col-md-3.title-a{
+  box-shadow: none;
+}
+
 .container-body{
     margin: 5% 2% 2% 2%;
     height: 100%;
@@ -50,4 +54,8 @@ canvas{
 .col-md-4{
   background-color: white;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.btn-danger{
+  background-color: rgb(196,17,17) !important;
 }

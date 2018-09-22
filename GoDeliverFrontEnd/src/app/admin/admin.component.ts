@@ -45,11 +45,24 @@ export class AdminComponent implements OnInit {
   slotSelected: any;
   vehicleSelected: any;
 
+  slotsCost=[,,];
+  incurredCost= [,,];
+  generatedAmount= [0,0,0];
+  slotOrders=[0,0,0];
+  profit=[0,0,0];
+
+  //Polar Area Chart properties
+  public polarAreaChartLabels:string[] = ['09:00-12:00', '13:00-16:00', '17:00-20:00'];
+  public polarAreaChartType:string = 'polarArea';
+  public polarAreaLegend:boolean = true;
+  public profitCurve:number[];
+
+
 
   constructor(private http: HttpClient, private admin: AdminService) {}
 
   ngOnInit() {
-    this.dateOfDelivery="Wed Sep 26 2018 00:00:00 GMT+0530 (India Standard Time)";
+    this.dateOfDelivery="Thu Sep 20 2018 00:00:00 GMT+0530 (India Standard Time)";
     this.onDate(this.dateOfDelivery);
   }
 
@@ -58,24 +71,21 @@ export class AdminComponent implements OnInit {
     this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       for(let i = 0; i < this.data.length; i++){
-        console.log(i);
+        this.slotCapacity[i]=0;
         for(let j=0; j<this.data[i].slotVehicle.length; j++){
           this.slotCapacity[i] =this.slotCapacity[i] + parseInt(this.data[i].slotVehicle[j].vehicleLoadedCapacity);
           this.vehicleTime[i][j] = parseInt(this.data[i].slotVehicle[j].vehicleRouteDuration);
           this.orderNumber[i][j] = parseInt(this.data[0].slotVehicle[j].vehicleRoute.length);
         }
+        this.slotsCost[i] = parseInt(this.data[i].slotCost);
       }
 
       for(let i=0; i<this.data.length; i++){
-        console.log(i);
           this.slots[i]=[this.slotCapacity[i],17010000 - this.slotCapacity[i]];
             this.vehicleData[i]=[
               { data: this.vehicleTime[i], label: "Vehicle Route Duration" },
               { data: this.orderNumber[i], label: "Orders In The Route" }
             ];
-            console.log(this.vehicleTime);
-          console.log(this.vehicleData);
-
       }
     });
   }
@@ -87,7 +97,6 @@ export class AdminComponent implements OnInit {
       this.data=data;
       this.vehicleVolume=parseInt(this.data[slot].slotVehicle[vehicle].vehicleLoadedCapacity);
       this.vehicleCapacity=[this.vehicleVolume, 5670000-this.vehicleVolume];
-      console.log(this.vehicleCapacity);
 
       this.vehiclesRoute=this.data[slot].slotVehicle[vehicle].vehicleRoute;
 
@@ -106,8 +115,29 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  routes() {
-
+  getProfitLoss(dateOfDelivery){
+    this.orderNumber=[[0,0,0],[0,0,0],[0,0,0]];
+    this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
+      this.data=data;
+      for(let i = 0; i < this.data.length; i++){
+        this.slotCapacity[i]=0;
+        for(let j=0; j<this.data[i].slotVehicle.length; j++){
+          this.orderNumber[i][j] = parseInt(this.data[0].slotVehicle[j].vehicleRoute.length);
+        }
+        this.slotsCost[i] = parseInt(this.data[i].slotCost);
+      }
+      for(let i=0; i < this.data.length;i++){
+        for(let j=0;j<this.data.length; j++){
+          this.slotOrders[i]=this.slotOrders[i]+this.orderNumber[i][j];
+        }
+      }
+      for(let i=0; i<3;i++){
+        this.incurredCost[i]=this.slotsCost[i];
+        this.generatedAmount[i]=this.slotOrders[i]*20;
+        this.profit[i]=this.generatedAmount[i]-this.incurredCost[i];
+      }
+      this.profitCurve=this.profit;
+    });
   }
 
 }
