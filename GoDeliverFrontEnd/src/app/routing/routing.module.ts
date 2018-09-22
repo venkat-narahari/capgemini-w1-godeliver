@@ -24,7 +24,6 @@ import { AdminComponent } from "../admin/admin.component";
 import { PaymentComponent } from "../payment/payment.component";
 import { TopratedComponent } from "../toprated/toprated.component";
 import { TopsellingComponent } from "../topselling/topselling.component";
-import { BarchartComponent } from "../barchart/barchart.component";
 
 
 const appRoutes: Routes = [
@@ -54,7 +53,6 @@ const appRoutes: Routes = [
   { path:"toprated", component: TopratedComponent},
   { path:"topselling", component: TopsellingComponent},
   { path: "order/:orderid", component: OrdersComponent },
-  { path:"bar", component: BarchartComponent}
 ];
 
 
