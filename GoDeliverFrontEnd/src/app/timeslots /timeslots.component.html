@@ -1,11 +1,13 @@
-<h1 style="text-align: center">Available time slots</h1>
+<div class="component-body">
+<h1 style="text-align: center; margin-top: 20px">Select time slots</h1>
 <div class="container">
+    <div class="row">
    <div class="col-sm-8">
        <mat-card style="border-radius: 8px;margin-top:10px">
            <div class="row">
-               <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px">
-                   <mat-card style="margin-top:0px;border-radius:8px; width:200px">
-                       <input type="radio" class="button" name="timeslots" [disabled]="!slots.slotAvailability" (click)="radioselected(slots, i)">
+               <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px;">
+                   <mat-card style="margin-top:0px;border-radius:8px; width:200px;">
+                       <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability" (click)="radioselected(slots, i)">
                        <label style="padding-left:10px">{{timeslots[i]}}
                        </label>
                        <div *ngIf="!slots.slotAvailability">
@@ -15,7 +17,6 @@
                            <p style="color:green;padding-left:10px">Available</p>
                        </div>
                        <div *ngIf="isRadioSelect1()">
-                           <!-- {{ slotCost[j]}} -->
                            <div *ngIf="slots.slotAvailability">
                                <div *ngIf="(slots.slotCosts==0)">
                                    <p>free</p>
@@ -86,8 +87,10 @@
            </mat-card-content>
        </mat-card>
    </div>
+   </div>
    <button (click)="paymentRoute()" class="btn btn-primary btn-block" style="margin-top:20px">
      Proceed To Payment
    </button>
    <br>
    <br>
+   </div>
