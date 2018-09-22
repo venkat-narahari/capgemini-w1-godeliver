@@ -103,7 +103,7 @@ public class LogisticsController {
 			} catch (MongoConnectionException connectionException) {
 				return new ResponseEntity<String>("Error: Connection Issue", HttpStatus.GATEWAY_TIMEOUT);
 			}
-			if (!slotConfirmed) {
+			if (slotConfirmed) {
 				return new ResponseEntity<String>("Slot Confirmed", HttpStatus.ACCEPTED);
 			} else {
 				throw new SlotsNotAvailableException("Error: Slots not available");

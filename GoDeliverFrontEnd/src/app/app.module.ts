@@ -67,6 +67,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SearchComponent } from './search/search.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,6 +128,7 @@ import { SearchComponent } from './search/search.component';
     AngularFirestoreModule,
     NgxPaginationModule,
     MatStepperModule,
+    NgxSpinnerModule,
     HttpModule,
     MatSnackBarModule,
     AgmCoreModule.forRoot({

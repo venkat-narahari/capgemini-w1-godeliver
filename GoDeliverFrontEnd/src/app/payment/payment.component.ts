@@ -1,6 +1,8 @@
+import { LogisticService } from './../logistics.service';
 import { Component, OnInit } from "@angular/core";
 import { FirebaseService, Cart } from "./../firebase.service";
 import { Http, Headers } from "@angular/http";
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",
@@ -17,11 +19,13 @@ export class PaymentComponent implements OnInit {
   totalamountpayable: any;
   totalLength: any;
   carts: Cart[];
-  constructor(private http: Http, private firebase: FirebaseService) {}
+  slotDetails: any;
+
+  constructor(private http: Http, private firebase: FirebaseService,private spinner :NgxSpinnerService,private logisticService: LogisticService) {}
   chargeCard(token: string) {
     const headers = new Headers({ token: token, amount: this.getSum() });
     this.http
-      .post("http://localhost:8080/payment/charge", {}, { headers: headers })
+      .post("http://localhost:9088/payment/charge", {}, { headers: headers })
       .subscribe(resp => {
         console.log(resp);
       });
@@ -29,7 +33,7 @@ export class PaymentComponent implements OnInit {
 
   refundCard() {
     this.http
-      .post("http://localhost:8080/payment/refund", {})
+      .post("http://localhost:9088/payment/refund", {})
       .subscribe(res => {
         console.log(res);
       });
@@ -72,6 +76,7 @@ export class PaymentComponent implements OnInit {
               this.deleteCart();
             }, 6000);
             this.msg = "Your Transaction is success";
+            this.logisticService.setSlot(this.slotDetails);
           }
 
           if (token == null) {
@@ -79,10 +84,17 @@ export class PaymentComponent implements OnInit {
           }
         } else {
           console.log(response.error.message);
-          this.msg = "Payment Failure! Please Enter valid Credentials ";
+          this.msg1= "Payment Failure! Please Enter valid Credentials ";
         }
       }
     );
+    // this.logisticService.setSlot(this.slotDetails).subscribe(data => {
+    //   console.log(data);
+    // });
+
+    // this.logisticService.setOrderDetails(this.slotDetails).subscribe(data => {
+    //   console.log(data);
+    // })
   }
 
   refundCreditCard() {
@@ -99,11 +111,22 @@ export class PaymentComponent implements OnInit {
       this.firebase.deleteCart();
     }
   }
+  openSpinner(){
+    this.spinner.show();
+ 
+    setTimeout(() => {
+        /** spinner ends after 5 seconds */
+        this.spinner.hide();
+    }, 5000);
+  }
+  
 
   ngOnInit() {
     this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
     });
+    this.slotDetails = JSON.parse(localStorage.getItem("newOrder"));
+    console.log(this.slotDetails);
   }
 }

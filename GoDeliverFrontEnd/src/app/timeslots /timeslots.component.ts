@@ -28,9 +28,9 @@ export class TimeslotsComponent implements OnInit {
       slotCosts: null
     }
   ];
-  newOrder:any;
+  newOrder: any;
   array2: any;
-  time:any;
+  time: any;
   minValue: any;
   slotFinalPrice: any;
   finalPriceA: any;
@@ -58,13 +58,15 @@ export class TimeslotsComponent implements OnInit {
     });
 
     this.orderdetails = JSON.parse(localStorage.getItem("orderDetails"));
-    this.logisticService.getAvailableSlots(this.orderdetails).subscribe(data => {
-      this.dat = data;
-    });
+    this.logisticService
+      .getAvailableSlots(this.orderdetails)
+      .subscribe(data => {
+        this.dat = data;
+      });
     console.log(this.costarray);
     setTimeout(() => {
       this.det();
-    }, 8000);
+    }, 9000);
 
     setTimeout(() => {
       for (let i = 0; i < 3; i++) {
@@ -73,18 +75,18 @@ export class TimeslotsComponent implements OnInit {
         }
       }
       this.final();
-    }, 8000);
+    }, 10000);
   }
 
   det() {
     console.log(this.dat);
-    
+
     this.slotAvailability = this.dat.slotAvailability;
     this.slotCost = this.dat.slotCost;
     this.array2 = this.slotCost.map(Number);
     this.minValue = Math.min.apply(null, this.array2.filter(Boolean));
     console.log(this.minValue);
-   // localStorage.removeItem("orderDetails");
+    // localStorage.removeItem("orderDetails");
     this.addtoTotalPrice();
   }
   addtoTotalPrice() {
@@ -116,31 +118,34 @@ export class TimeslotsComponent implements OnInit {
       this.slotsFinal[i].slotAvailability = this.slotAvailability[i];
     }
   }
-  radioselected(slots,i) {
+  radioselected(slots, i) {
     this.isRadioSelected = true;
-    this.time=i;
+    this.time = i;
     this.slotFinalPrice = slots.slotCosts;
     this.finalPriceA = this.slotFinalPrice + this.getSum();
 
-    this.logisticService.getOrder().subscribe(data=> {
-      this.newOrder=data;  
-    })
-    setTimeout(()=>{
+    this.logisticService.getOrder().subscribe(data => {
+      this.newOrder = data;
+    });
+    setTimeout(() => {
       this.new();
-    },7000);
-
+    }, 7000);
   }
 
   new() {
-
-    this.newOrder.newOrder.selectedSlot=this.time;
+    this.newOrder.newOrder.selectedSlot = this.time;
     console.log(this.newOrder);
   }
   isRadioSelect1() {
     return this.isRadioSelected;
   }
-
   paymentRoute() {
+    localStorage.setItem("newOrder", JSON.stringify(this.newOrder));
+    console.log(this.newOrder);
+    setTimeout(() => {
+      this.router.navigate(["/payment"]);
+      location.reload();
+    }, 3000);
     this.router.navigate(["/payment"]);
     location.reload();
   }
