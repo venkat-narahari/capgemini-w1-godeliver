@@ -108,7 +108,7 @@
             </div>
 
         </div>
-        <button class="btn btn-primary btn-block" style="margin-top:20px">
+        <button [disabled]="!timeslots" (click)="paymentRoute()" class="btn btn-primary btn-block" style="margin-top:20px">
             Proceed To Payment
         </button>
         <br>

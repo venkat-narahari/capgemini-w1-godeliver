@@ -3,9 +3,9 @@
 <div class="row">
   <div class="col-sm-6">
     <mat-card style="margin-bottom: 10px;">
-    <mat-card-title class="title" style="padding-left: 15px; background-color:rgb(216, 76, 76); font-size=15px">Delivery Address</mat-card-title>
+    <mat-card-title class="title" style="padding-left: 15px; background-color:rgb(216, 76, 76); font-size: 22px;">Delivery Address</mat-card-title>
     <div *ngIf="addressList">
-      <div style="margin-left:20px;margin-right:10px" *ngFor="let address of addressList">
+      <div style="margin-left: 20px; margin-right:10px;" *ngFor="let address of addressList">
         <app-delivery-card [address]="address"></app-delivery-card>
       </div>
     </div>

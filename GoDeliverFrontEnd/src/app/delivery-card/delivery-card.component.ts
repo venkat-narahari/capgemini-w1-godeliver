@@ -72,26 +72,9 @@ export class DeliveryCardComponent implements OnInit {
     setTimeout(() => {
       this.router.navigate(["/timeslots"]);
       location.reload();
-    }, 9000);
+    }, 8000);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);
   }
-  // totalQuant() {
-  //   let totalQuantity = 0;
-
-  //   for (let i = 0; i < this.totalLength; i++) {
-  //     totalQuantity += this.carts[i].quantity;
-  //   }
-  //   console.log(totalQuantity);
-  //   return totalQuantity;
-  // }
-  // getVolume() {
-  //   let volumeTotal = 0;
-  //   for (let i = 0; i < this.totalLength; i++) {
-  //     volumeTotal += this.carts[i].totalVolume;
-  //   }
-  //   console.log(volumeTotal);
-  //   return volumeTotal;
-  // }
 }
