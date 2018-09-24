@@ -14,34 +14,37 @@ export class HeaderComponent implements OnInit {
   curuser: any;
   search: string = "shivam";
   title: any;
-  admin:any;
-  adminName:any;
-  cartLength:any;
+  admin: any;
+  adminName: any;
+  cartLength: any;
   check = "hi";
-  books_notAvailable:boolean=false;
+  books_notAvailable: boolean = false;
   books_result: any;
 
-  constructor(private bookService: BookService,
-              private router:Router,
-              private firebase:FirebaseService
-    ) { }
+  constructor(
+    private bookService: BookService,
+    private firebase: FirebaseService
+  ) {
+  
+  }
 
   ngOnInit() {
-    if(JSON.parse(localStorage.getItem('currentUserEmail'))=="admin@gmail.com") {
-      this.admin=true;
-      this.adminName= JSON.parse(localStorage.getItem("currentUserEmail"));
-      this.curUser=null;
-    }
-    else if (localStorage.getItem("currentUserEmail") !== null) {
+    if (
+      JSON.parse(localStorage.getItem("currentUserEmail")) == "admin@gmail.com"
+    ) {
+      this.admin = true;
+      this.adminName = JSON.parse(localStorage.getItem("currentUserEmail"));
+      this.curUser = null;
+    } else if (localStorage.getItem("currentUserEmail") !== null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
       console.log(this.curUser);
       this.noUser = "";
     } else {
       this.noUser = "NoUser";
     }
-
-    this.firebase.getCart().subscribe(data => {this.cartLength=data.length});
-
+    this.firebase.getCart().subscribe(data => {
+      this.cartLength = data.length;
+    });
   }
 
   //logout function to remove the user details from local storage
@@ -52,27 +55,15 @@ export class HeaderComponent implements OnInit {
     this.noUser = "NoUser";
   }
 
-  wishlistRoute() {
-    this.router.navigate(['/wishlist']);
-    location.reload();
-  }
-
-  cartRoute() {
-    this.router.navigate(['/cart']);
-    location.reload();
-  }
-
   searchBooks() {
     console.log(this.search);
     this.check = "";
     this.bookService.getBookByName(this.search).subscribe(data => {
-      if(data!=null){
-      this.books_result = data;
-      console.log(this.books_result);
-      }
-      else
-      {
-        this.books_notAvailable=true;
+      if (data != null) {
+        this.books_result = data;
+        console.log(this.books_result);
+      } else {
+        this.books_notAvailable = true;
       }
     });
   }

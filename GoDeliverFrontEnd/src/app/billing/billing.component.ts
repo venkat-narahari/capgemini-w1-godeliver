@@ -51,14 +51,18 @@ export class BillingComponent implements OnInit {
     private firebase: FirebaseService,
     private route: ActivatedRoute,
     private searchService: SearchService,
-    private formBuilder: FormBuilder,
-  ) {}
-  movies: any;
-  getLatLng(address) {
-    this.searchService.getLatLng(address).subscribe(data => {
-      this.movies = data["latLng"];
+    private formBuilder: FormBuilder
+  ) {
+    this.firebase.getAddress().subscribe(data => {
+      this.addressList = data;
+      console.log(data);
+    });
+    this.firebase.getCart().subscribe(carts => {
+      this.carts = carts;
+      this.totalLength = carts.length;
     });
   }
+  movies: any;
 
   ngOnInit() {
     this.userForm = this.formBuilder.group({
@@ -69,23 +73,22 @@ export class BillingComponent implements OnInit {
       userAddress: ["", [Validators.required]],
       userAddType: ["", [Validators.required]]
     });
-    this.firebase.getAddress().subscribe(data => {
-      this.addressList = data;
-      console.log(data);
-    });
-    this.firebase.getCart().subscribe(carts => {
-      this.carts = carts;
-      this.totalLength = carts.length;
-    });
+
     setTimeout(() => {
       this.totalQuant();
-    }, 6000)
+    }, 6000);
     setTimeout(() => {
       this.getVolume();
     }, 7000);
-   
   }
-totalQuant() {
+
+  getLatLng(address) {
+    this.searchService.getLatLng(address).subscribe(data => {
+      this.movies = data["latLng"];
+    });
+  }
+
+  totalQuant() {
     let totalQuantity = 0;
 
     for (let i = 0; i < this.totalLength; i++) {
@@ -109,11 +112,10 @@ totalQuant() {
     for (let i = 0; i < this.totalLength; i++) {
       volumeTotal += this.carts[i].totalVolume;
     }
-    console.log(volumeTotal)
-   localStorage.setItem("totalVolume",(volumeTotal.toString()));
-    
+    console.log(volumeTotal);
+    localStorage.setItem("totalVolume", volumeTotal.toString());
+
     return volumeTotal;
-   
   }
   onSubmit() {
     for (let i = 0; i < this.addressList.length; i++) {

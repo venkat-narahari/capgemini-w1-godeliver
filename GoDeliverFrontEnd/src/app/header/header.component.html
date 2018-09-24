@@ -49,10 +49,10 @@
           </div>
         </li>
         <li *ngIf=curUser class="nav-item">
-          <a class="nav-link " (click)="wishlistRoute()">Wishlist</a>
+          <a class="nav-link " routerLink="/wishlist">Wishlist</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="cartRoute()" style="cursor:pointer">
+          <a class="nav-link" routerLink="/cart" style="cursor:pointer">
             <i class="fa fa fa-shopping-cart fa-lg">
               <span class="badge">{{cartLength}}</span>
             </i> Cart</a>

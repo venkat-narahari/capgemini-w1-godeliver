@@ -24,30 +24,42 @@ import { AdminComponent } from "../admin/admin.component";
 import { PaymentComponent } from "../payment/payment.component";
 import { TopratedComponent } from "../toprated/toprated.component";
 import { TopsellingComponent } from "../topselling/topselling.component";
+import { FirebaseService } from '../firebase.service';
+import { LogisticService } from '../logistics.service';
 
 
 const appRoutes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: HomeComponent, resolve: {
+    cres: FirebaseService
+  } },
   { path: "login", component: LoginComponent, canActivate: [LoginGuard] },
   {
     path: "register",
     component: RegistrationComponent,
     canActivate: [LoginGuard]
   },
-  { path: "wishlist", component: WishlistComponent, canActivate: [AuthGuard] },
+  { path: "wishlist", component: WishlistComponent, canActivate: [AuthGuard], resolve: {
+    cres: FirebaseService
+   }},
   { path: "orders", component: OrdersComponent, canActivate: [AuthGuard] },
   { path: "profile", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "about", component: AboutusComponent },
   { path: "return", component: ReturnpolicyComponent },
   { path: "servicepage", component: ServicepageComponent },
-  { path: "cart", component: CartComponent },
+  { path: "cart", component: CartComponent, resolve: {
+    cres: FirebaseService
+  } },
   { path: "book/:bookISBN", component: BookComponent },
   { path: "book", component: BookComponent },
-  { path: "billing", component: BillingComponent },
+  { path: "billing", component: BillingComponent, resolve: {
+    cres: FirebaseService
+  } },
   { path: "allbooks", component: AllComponent },
   { path: "deleteaccount", component: DeleteaccountComponent },
   { path: "settings", component: SettingsComponent },
-  { path: "timeslots", component: TimeslotsComponent },
+  { path: "timeslots", component: TimeslotsComponent, resolve: {
+    cres: FirebaseService
+  } },
   { path: "admin", component: AdminComponent },
   { path:"payment", component: PaymentComponent},
   { path:"toprated", component: TopratedComponent},

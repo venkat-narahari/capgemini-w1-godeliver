@@ -6,10 +6,11 @@ import {
 } from "angularfire2/firestore";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { Resolve } from "@angular/router";
 @Injectable({
   providedIn: "root"
 })
-export class FirebaseService {
+export class FirebaseService implements Resolve<any> {
   cart: AngularFirestoreCollection<Cart>;
   carts: Observable<Cart[]>;
   cartDoc: AngularFirestoreDocument<Cart>;
@@ -25,13 +26,14 @@ export class FirebaseService {
   query: AngularFirestoreCollection<Cart>;
   queries: Observable<Cart[]>;
 
-
   profile: AngularFirestoreCollection<Profile>;
   profiles: Observable<Profile[]>;
   profileDoc: AngularFirestoreDocument<Profile>;
 
   idName: any;
-  constructor(public fs: AngularFirestore) {
+  constructor(public fs: AngularFirestore) {}
+
+  resolve() {
     if (JSON.parse(localStorage.getItem("uid")) != null) {
       this.idName = JSON.parse(localStorage.getItem("uid"));
       console.log(this.idName);
@@ -98,9 +100,7 @@ export class FirebaseService {
         })
       )
     );
-
   }
-
   getCart() {
     return this.carts;
   }
@@ -226,25 +226,25 @@ export class FirebaseService {
       .then(res => console.log("committed batches."))
       .catch(err => console.error("error committing batches.", err));
 
-      const pathes = "users/" + this.idName + "/wishlist";
+    const pathes = "users/" + this.idName + "/wishlist";
 
-      //query snapshot
-      const qery: firebase.firestore.QuerySnapshot = await this.fs
-        .collection(paths)
-        .ref.get();
-  
-      const btches = this.fs.firestore.batch();
-  
-      //looping through docs in the collection to delete docs as a bulk operation
-      qery.forEach(doc => {
-        console.log("deleting....", doc.id);
-        btches.delete(doc.ref);
-      });
-      // finally commit
-      btches
-        .commit()
-        .then(res => console.log("committed batches."))
-        .catch(err => console.error("error committing batches.", err));  
+    //query snapshot
+    const qery: firebase.firestore.QuerySnapshot = await this.fs
+      .collection(paths)
+      .ref.get();
+
+    const btches = this.fs.firestore.batch();
+
+    //looping through docs in the collection to delete docs as a bulk operation
+    qery.forEach(doc => {
+      console.log("deleting....", doc.id);
+      btches.delete(doc.ref);
+    });
+    // finally commit
+    btches
+      .commit()
+      .then(res => console.log("committed batches."))
+      .catch(err => console.error("error committing batches.", err));
   }
 }
 
@@ -283,7 +283,7 @@ export interface Query {
   name: string;
   email: string;
   query: string;
-  id?:string;
+  id?: string;
 }
 
 export interface Wishlist {

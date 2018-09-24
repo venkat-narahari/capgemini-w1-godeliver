@@ -16,13 +16,14 @@ export class CartComponent implements OnInit {
     private firebase: FirebaseService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
-
-  ngOnInit() {
+  ) {
     this.firebase.getCart().subscribe(data => {
       this.carts = data;
     });
+
   }
+
+  ngOnInit() {}
 
   deleteItem(event, item) {
     this.firebase.deleteItem(item);
@@ -67,8 +68,5 @@ export class CartComponent implements OnInit {
     return totalQuantity;
   }
 
-  billingRoute() {
-    this.router.navigate(["/billing"]);
-    location.reload();
-  }
+
 }

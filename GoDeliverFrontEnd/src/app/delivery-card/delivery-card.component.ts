@@ -18,8 +18,8 @@ export class DeliveryCardComponent implements OnInit {
   date: any;
   carts: Cart[];
   totalLength: any;
-  email:any;
-  order = new Order("", "", "", "", "", "", "", "","");
+  email: any;
+  order = new Order("", "", "", "", "", "", "", "", "");
 
   constructor(
     private fb: FirebaseService,
@@ -33,11 +33,9 @@ export class DeliveryCardComponent implements OnInit {
       this.totalLength = carts.length;
     });
 
-    if(localStorage.getItem("uid")!=null) {
-      this.email=JSON.parse(localStorage.getItem("uid"));
-    }
-    else
-    this.email=JSON.parse(localStorage.getItem("currentUserEmail"));
+    if (localStorage.getItem("uid") != null) {
+      this.email = JSON.parse(localStorage.getItem("uid"));
+    } else this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     // JSON.parse(localStorage.getItem()
   }
   radioselected(address) {
@@ -47,32 +45,21 @@ export class DeliveryCardComponent implements OnInit {
   isRadioSelect() {
     return this.isRadioSelected;
   }
-  orderDetails(address, phone, name, city, addLat, addLng, orderDate) {
-    console.log(address, phone, name, addLat);
+  orderDetails(address, phone, name, city, addLat, addLng) {
     this.order.orderId = uuid().replace(/-/g, "");
-    console.log(this.order.orderId);
     this.order.orderConsumerName = name;
-    this.order.emailId=this.email;
-    console.log(this.order.orderConsumerName);
+    this.order.emailId = this.email;
     this.order.orderConsumerAddress = address + ", " + city;
-    console.log(this.order.orderConsumerAddress);
     this.order.orderConsumerPhone = phone;
-    console.log(this.order.orderConsumerName);
-    this.order.orderVolume = localStorage.getItem('totalVolume');
-    console.log(this.order.orderVolume);
+    this.order.orderVolume = localStorage.getItem("totalVolume");
     this.order.orderLatitude = addLat;
-    console.log(addLat);
     this.order.orderLongitude = addLng;
-    console.log(addLng);
     this.order.orderDate = this.date.toString();
-    console.log(this.order.orderDate);
     localStorage.setItem("orderDetails", JSON.stringify(this.order));
-    console.log(this.order);
-    
+
     setTimeout(() => {
       this.router.navigate(["/timeslots"]);
-      location.reload();
-    }, 8000);
+    }, 2000);
   }
   deleteAddress(event, item) {
     this.fb.deleteAdd(item);

@@ -11,28 +11,27 @@ import { Books } from "../book-details";
 })
 export class WishlistComponent implements OnInit {
   wishlist: Cart[];
-  email:any;
+  email: any;
   item: Cart = {
-    bookISBN_10: '',
-    title: '',
-    cost:1,
-    poster: '',
-    genre: '',
-    quantity:1
-   };
+    bookISBN_10: "",
+    title: "",
+    cost: 1,
+    poster: "",
+    genre: "",
+    quantity: 1
+  };
 
   constructor(
     private firebase: FirebaseService,
     private router: ActivatedRoute,
     private bookService: BookService
-  ) {}
-  ngOnInit() {
-    
-    this.email=JSON.parse(localStorage.getItem('currentUserEmail'));
+  ) {
+    this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     this.firebase.getWishlist().subscribe(carts => {
       this.wishlist = carts;
     });
   }
+  ngOnInit() {}
 
   addToCart(book) {
     this.item.title = book.title;
@@ -40,13 +39,12 @@ export class WishlistComponent implements OnInit {
     this.item.bookISBN_10 = book.bookISBN_10;
     this.item.cost = parseInt(book.cost);
     this.item.genre = book.genre;
-    this.item.quantity=1;
-    this.item.totalPrice=parseInt(book.cost);
+    this.item.quantity = 1;
+    this.item.totalPrice = parseInt(book.cost);
     this.firebase.addItem(this.item);
   }
 
   removeFromWishlist(event, book) {
     this.firebase.removeFromWishlist(book);
   }
-
 }

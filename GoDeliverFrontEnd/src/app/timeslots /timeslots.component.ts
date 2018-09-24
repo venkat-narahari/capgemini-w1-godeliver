@@ -2,8 +2,7 @@ import { FirebaseService, Cart } from "./../firebase.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { LogisticService } from "../logistics.service";
-import { NgLocalization } from "@angular/common";
-
+import { NgxSpinnerService } from "ngx-spinner";
 //when user navigates to this component
 @Component({
   selector: "app-timeslots",
@@ -47,12 +46,10 @@ export class TimeslotsComponent implements OnInit {
     private firebase: FirebaseService,
     route: ActivatedRoute,
     private logisticService: LogisticService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {
     //Do Something
-  }
-
-  ngOnInit() {
     this.firebase.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
@@ -64,10 +61,19 @@ export class TimeslotsComponent implements OnInit {
       .subscribe(data => {
         this.dat = data;
       });
+  }
+
+  ngOnInit() {
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 10000);
     console.log(this.costarray);
     setTimeout(() => {
       this.det();
-    }, 9000);
+    }, 8000);
 
     setTimeout(() => {
       for (let i = 0; i < 3; i++) {
@@ -144,14 +150,6 @@ export class TimeslotsComponent implements OnInit {
     console.log(this.newOrder);
     setTimeout(() => {
       this.router.navigate(["/payment"]);
-      location.reload();
-    }, 3000);
-    this.router.navigate(["/payment"]);
-    location.reload();
-  }
-  billingRoute()
-  {
-this.router.navigate(["/billing"]);
-location.reload();
+    }, 2000);
   }
 }
