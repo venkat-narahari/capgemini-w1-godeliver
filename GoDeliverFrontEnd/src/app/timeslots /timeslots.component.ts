@@ -81,7 +81,7 @@ export class TimeslotsComponent implements OnInit {
         }
       }
       this.final();
-    }, 9000);
+    }, 10000);
   }
 
   det() {
@@ -141,14 +141,12 @@ export class TimeslotsComponent implements OnInit {
 
   new() {
     this.newOrder.newOrder.selectedSlot = this.time;
-    console.log(this.newOrder);
-  }
+     }
   isRadioSelect1() {
     return this.isRadioSelected;
   }
   paymentRoute() {
     localStorage.setItem("newOrder", JSON.stringify(this.newOrder));
-    console.log(this.newOrder);
     setTimeout(() => {
       this.router.navigate(["/payment"]);
     }, 1000);

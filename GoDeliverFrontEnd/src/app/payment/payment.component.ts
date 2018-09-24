@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FirebaseService, Cart } from "./../firebase.service";
 import { Http, Headers } from "@angular/http";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",
@@ -21,11 +22,12 @@ export class PaymentComponent implements OnInit {
   carts: Cart[];
   slotDetails: any;
   orderDetails: any;
-
+  orderId:any;
   constructor(
     private http: Http,
     private firebaseService: FirebaseService,
     private spinner: NgxSpinnerService,
+    private router:Router,
     private logisticService: LogisticService
   ) {}
   chargeCard(token: string) {
@@ -36,17 +38,13 @@ export class PaymentComponent implements OnInit {
         {},
         { headers: headers }
       )
-      .subscribe(resp => {
-        console.log(resp);
-      });
+      .subscribe(resp => {});
   }
 
   refundCard() {
     this.http
       .post("http://13.232.234.139:9088/payment/refund", {})
-      .subscribe(res => {
-        console.log(res);
-      });
+      .subscribe(res => {});
   }
   totalQuant() {
     let totalQuantity = 0;
@@ -79,29 +77,24 @@ export class PaymentComponent implements OnInit {
           const token = response.id;
           if (token != null) {
             this.chargeCard(token);
-            console.log(token);
             localStorage.setItem("currentUserPayment", JSON.stringify(token));
 
             setTimeout(() => {
-              this.deleteCart();
+              this.deleteCredentials();
             }, 6000);
             this.msg = "Your Transaction is success";
             this.logisticService.setSlot(this.slotDetails);
             this.logisticService
               .setOrderDetails(this.orderDetails)
-              .subscribe(data => {
-                console.log(data);
-              });
-            localStorage.removeItem("newOrder");
-            localStorage.removeItem("totalVolume");
-            localStorage.removeItem("orderDetails");
+              .subscribe(data => {});
           }
-
+          this.orderId=this.orderDetails.orderId;
+          console.log(this.orderId);
+          
           if (token == null) {
             this.msg = "Payment failure! Plase Check Your Internet Connection";
           }
         } else {
-          console.log(response.error.message);
           this.msg1 = "Payment Failure! Please Enter valid Credentials ";
         }
       }
@@ -111,15 +104,20 @@ export class PaymentComponent implements OnInit {
   refundCreditCard() {
     this.refundCard();
   }
-  deleteCart() {
+  deleteCredentials() {
     if (localStorage.getItem("currentUserPayment")) {
       if (localStorage.getItem("uid") != null) {
         localStorage.removeItem("uid");
         localStorage.removeItem("currentUserPayment");
+        localStorage.removeItem("newOrder");
+        localStorage.removeItem("totalVolume");
+        this.router.navigate(['/order/'+this.orderId]);
       } else {
         localStorage.removeItem("currentUserPayment");
+        localStorage.removeItem("newOrder");
+        localStorage.removeItem("totalVolume");
+        this.router.navigate(['/order/'+this.orderId]);
       }
-      this.firebaseService.deleteCart();
     }
   }
   openSpinner() {
@@ -138,6 +136,5 @@ export class PaymentComponent implements OnInit {
     });
     this.orderDetails = JSON.parse(localStorage.getItem("orderDetails"));
     this.slotDetails = JSON.parse(localStorage.getItem("newOrder"));
-    console.log(this.slotDetails);
   }
 }

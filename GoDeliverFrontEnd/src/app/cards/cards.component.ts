@@ -143,7 +143,6 @@ export class CardsComponent implements OnInit {
       this.bookService
         .itemToWishlistRecommendation(this.wish)
         .subscribe(data => {
-          console.log("done");
         });
     }
 

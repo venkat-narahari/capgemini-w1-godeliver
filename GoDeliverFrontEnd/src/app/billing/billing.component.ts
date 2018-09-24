@@ -54,7 +54,6 @@ export class BillingComponent implements OnInit {
   ) {
     this.firebaseService.getAddress().subscribe(data => {
       this.addressList = data;
-      console.log(data);
     });
     this.firebaseService.getCart().subscribe(carts => {
       this.carts = carts;
@@ -93,7 +92,6 @@ export class BillingComponent implements OnInit {
     for (let i = 0; i < this.totalLength; i++) {
       totalQuantity += this.carts[i].quantity;
     }
-    console.log(totalQuantity);
     return totalQuantity;
   }
 
