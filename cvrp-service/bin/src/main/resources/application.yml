@@ -1,0 +1,5 @@
+server:
+  port: 9078
+spring:
+  application:
+    name: cvrp-ms

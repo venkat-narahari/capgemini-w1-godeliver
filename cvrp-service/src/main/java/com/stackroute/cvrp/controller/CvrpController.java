@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stackroute.cvrp.domain.DateLogistics;
 import com.stackroute.cvrp.domain.Route;
-import com.stackroute.cvrp.domain.Slot;
-import com.stackroute.cvrp.domain.Vehicle;
 import com.stackroute.cvrp.service.CvrpService;
 import com.stackroute.cvrp.service.RoutingService;
 
@@ -22,8 +19,6 @@ public class CvrpController {
 	private RoutingService routingService;
 	private CvrpService cvrpService;
 	private Route newRoute;
-	private DateLogistics dl;
-	private Slot[] sl;
 
 	@Autowired
 	public CvrpController(RoutingService routingService, CvrpService cvrpService) {
@@ -35,9 +30,6 @@ public class CvrpController {
 	public ResponseEntity<?> giveSlots(@RequestBody Route route) {
 
 		cvrpService.getRoute(route);
-
-		dl = route.getDateLogistics();
-		sl = dl.getSlots();
 
 		newRoute = routingService.getNewOrderedRoute(route);
 		return new ResponseEntity<Route>(newRoute, HttpStatus.OK);
