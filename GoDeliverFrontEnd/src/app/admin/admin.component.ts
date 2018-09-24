@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient, private admin: AdminService) {}
+  constructor(private http: HttpClient, private adminService: AdminService) {}
 
   ngOnInit() {
     this.dateOfDelivery="Thu Sep 20 2018 00:00:00 GMT+0530 (India Standard Time)";
@@ -68,7 +68,7 @@ export class AdminComponent implements OnInit {
 
   onDate(dateOfDelivery){
 
-    this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
+    this.adminService.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       for(let i = 0; i < this.data.length; i++){
         this.slotCapacity[i]=0;
@@ -93,7 +93,7 @@ export class AdminComponent implements OnInit {
   onVehicle(slot,vehicle){
     this.slotSelected=slot;
     this.vehicleSelected=vehicle;
-    this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
+    this.adminService.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       this.vehicleVolume=parseInt(this.data[slot].slotVehicle[vehicle].vehicleLoadedCapacity);
       this.vehicleCapacity=[this.vehicleVolume, 5670000-this.vehicleVolume];
@@ -117,7 +117,7 @@ export class AdminComponent implements OnInit {
 
   getProfitLoss(dateOfDelivery){
     this.orderNumber=[[0,0,0],[0,0,0],[0,0,0]];
-    this.admin.getSlotData(this.dateOfDelivery).subscribe(data => {
+    this.adminService.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       for(let i = 0; i < this.data.length; i++){
         this.slotCapacity[i]=0;

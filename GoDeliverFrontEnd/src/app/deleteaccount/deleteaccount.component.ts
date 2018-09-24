@@ -10,13 +10,13 @@ import { UserDetailsService } from '../user-details.service';
 export class DeleteaccountComponent implements OnInit {
 
   email:any;
-  constructor(private firebase:FirebaseService, private userProfile:UserDetailsService) { }
+  constructor(private firebaseService:FirebaseService, private userProfile:UserDetailsService) { }
 
   ngOnInit() {
   }
 
   deleteAccount() {
-    this.firebase.deleteUnregUser();
+    this.firebaseService.deleteUnregUser();
     this.email=JSON.parse(localStorage.getItem("currentUserEmail"));
     this.userProfile.deleteUser(this.email);
 

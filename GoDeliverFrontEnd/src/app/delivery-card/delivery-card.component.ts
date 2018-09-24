@@ -22,13 +22,13 @@ export class DeliveryCardComponent implements OnInit {
   order = new Order("", "", "", "", "", "", "", "", "");
 
   constructor(
-    private fb: FirebaseService,
+    private firebaseService: FirebaseService,
     private logistic: LogisticService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.fb.getCart().subscribe(carts => {
+    this.firebaseService.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
     });
@@ -62,6 +62,6 @@ export class DeliveryCardComponent implements OnInit {
     }, 2000);
   }
   deleteAddress(event, item) {
-    this.fb.deleteAdd(item);
+    this.firebaseService.deleteAdd(item);
   }
 }

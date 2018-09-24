@@ -26,6 +26,7 @@ import { TopratedComponent } from "../toprated/toprated.component";
 import { TopsellingComponent } from "../topselling/topselling.component";
 import { FirebaseService } from '../firebase.service';
 import { LogisticService } from '../logistics.service';
+import { HeaderComponent } from '../header/header.component';
 
 
 const appRoutes: Routes = [
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
   { path:"payment", component: PaymentComponent},
   { path:"toprated", component: TopratedComponent},
   { path:"topselling", component: TopsellingComponent},
-  { path: "order/:orderid", component: OrdersComponent },
+  { path: "order/:orderid", component: OrdersComponent }
+
 ];
 
 

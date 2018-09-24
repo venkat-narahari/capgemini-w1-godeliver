@@ -12,7 +12,7 @@ export class UserDetailsService {
   private getUserDetails_url ="http://13.233.38.65:9088/userprofile/api/v1/user?userEmail=";
   private deleteUserDetails_url = "http://13.233.38.65:9088/userprofile/api/v1/user?userEmail=";
   //Backend saveuser url
-  private post_url = "http://13.232.234.139:9088/userprofile/api/v1/user";
+  private post_url = "http://13.233.38.65:9088/userprofile/api/v1/user";
 
   addUser(user: UserDetails): Observable<UserDetails> {
 
