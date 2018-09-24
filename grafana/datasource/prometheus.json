@@ -1,0 +1,7 @@
+{  
+    "name":"Prometheus",
+    "type":"prometheus",
+    "url":"http://10.20.1.129:9090",
+    "access":"direct",
+    "basicAuth":false
+}  
