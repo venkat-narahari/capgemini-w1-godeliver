@@ -13,11 +13,11 @@ export class CartComponent implements OnInit {
   itemToEdit: any;
 
   constructor(
-    private firebase: FirebaseService,
+    private firebaseService: FirebaseService,
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.firebase.getCart().subscribe(data => {
+    this.firebaseService.getCart().subscribe(data => {
       this.carts = data;
     });
 
@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
   ngOnInit() {}
 
   deleteItem(event, item) {
-    this.firebase.deleteItem(item);
+    this.firebaseService.deleteItem(item);
   }
 
   incrementQuantity(event, item: Cart) {
@@ -38,7 +38,7 @@ export class CartComponent implements OnInit {
     }
     item.totalPrice = item.quantity * item.cost;
     item.totalVolume = item.quantity * item.volume;
-    this.firebase.updateItem(item);
+    this.firebaseService.updateItem(item);
   }
 
   decrementQuantity(event, item: Cart) {
@@ -46,7 +46,7 @@ export class CartComponent implements OnInit {
       item.quantity -= 1;
       item.totalPrice = item.quantity * item.cost;
       item.totalVolume = item.quantity * item.volume;
-      this.firebase.updateItem(item);
+      this.firebaseService.updateItem(item);
     }
   }
 

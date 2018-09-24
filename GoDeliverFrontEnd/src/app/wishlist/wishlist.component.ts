@@ -22,12 +22,12 @@ export class WishlistComponent implements OnInit {
   };
 
   constructor(
-    private firebase: FirebaseService,
+    private firebaseService: FirebaseService,
     private router: ActivatedRoute,
     private bookService: BookService
   ) {
     this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
-    this.firebase.getWishlist().subscribe(carts => {
+    this.firebaseService.getWishlist().subscribe(carts => {
       this.wishlist = carts;
     });
   }
@@ -41,10 +41,10 @@ export class WishlistComponent implements OnInit {
     this.item.genre = book.genre;
     this.item.quantity = 1;
     this.item.totalPrice = parseInt(book.cost);
-    this.firebase.addItem(this.item);
+    this.firebaseService.addItem(this.item);
   }
 
   removeFromWishlist(event, book) {
-    this.firebase.removeFromWishlist(book);
+    this.firebaseService.removeFromWishlist(book);
   }
 }

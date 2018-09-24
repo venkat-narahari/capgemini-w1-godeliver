@@ -1,8 +1,8 @@
-import { LogisticService } from './../logistics.service';
+import { LogisticService } from "./../logistics.service";
 import { Component, OnInit } from "@angular/core";
 import { FirebaseService, Cart } from "./../firebase.service";
 import { Http, Headers } from "@angular/http";
-import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",
@@ -20,13 +20,22 @@ export class PaymentComponent implements OnInit {
   totalLength: any;
   carts: Cart[];
   slotDetails: any;
-  orderDetails:any;
+  orderDetails: any;
 
-  constructor(private http: Http, private firebase: FirebaseService,private spinner :NgxSpinnerService,private logisticService: LogisticService) {}
+  constructor(
+    private http: Http,
+    private firebaseService: FirebaseService,
+    private spinner: NgxSpinnerService,
+    private logisticService: LogisticService
+  ) {}
   chargeCard(token: string) {
     const headers = new Headers({ token: token, amount: this.getSum() });
     this.http
-      .post("http://13.232.234.139:9088/payment/charge", {}, { headers: headers })
+      .post(
+        "http://13.232.234.139:9088/payment/charge",
+        {},
+        { headers: headers }
+      )
       .subscribe(resp => {
         console.log(resp);
       });
@@ -78,12 +87,14 @@ export class PaymentComponent implements OnInit {
             }, 6000);
             this.msg = "Your Transaction is success";
             this.logisticService.setSlot(this.slotDetails);
-            this.logisticService.setOrderDetails(this.orderDetails).subscribe(data => {
-              console.log(data);
-            })
+            this.logisticService
+              .setOrderDetails(this.orderDetails)
+              .subscribe(data => {
+                console.log(data);
+              });
             localStorage.removeItem("newOrder");
-            localStorage.removeItem("totalVolume")
-            localStorage.removeItem("orderDetails")
+            localStorage.removeItem("totalVolume");
+            localStorage.removeItem("orderDetails");
           }
 
           if (token == null) {
@@ -91,7 +102,7 @@ export class PaymentComponent implements OnInit {
           }
         } else {
           console.log(response.error.message);
-          this.msg1= "Payment Failure! Please Enter valid Credentials ";
+          this.msg1 = "Payment Failure! Please Enter valid Credentials ";
         }
       }
     );
@@ -108,21 +119,20 @@ export class PaymentComponent implements OnInit {
       } else {
         localStorage.removeItem("currentUserPayment");
       }
-      this.firebase.deleteCart();
+      this.firebaseService.deleteCart();
     }
   }
-  openSpinner(){
+  openSpinner() {
     this.spinner.show();
- 
+
     setTimeout(() => {
-        /** spinner ends after 5 seconds */
-        this.spinner.hide();
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
     }, 5000);
   }
-  
 
   ngOnInit() {
-    this.firebase.getCart().subscribe(carts => {
+    this.firebaseService.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
     });

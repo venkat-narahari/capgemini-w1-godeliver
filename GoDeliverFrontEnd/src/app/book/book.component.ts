@@ -29,7 +29,7 @@ export class BookComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private bookService: BookService,
-    private firebase: FirebaseService,
+    private firebaseService: FirebaseService,
     private route: Router
   ) {}
 
@@ -46,7 +46,7 @@ export class BookComponent implements OnInit {
     if (localStorage.getItem("currentUserEmail") != null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
-    this.firebase.getCart().subscribe(cart => {
+    this.firebaseService.getCart().subscribe(cart => {
       this.cart = cart;
       this.cartsLength = cart.length;
     });
@@ -69,7 +69,7 @@ export class BookComponent implements OnInit {
       }
     }
     if (bool) {
-      this.firebase.addItem(this.item);
+      this.firebaseService.addItem(this.item);
     }
     setTimeout(() => {
       this.routeToBilling();

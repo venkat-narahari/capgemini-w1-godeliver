@@ -36,10 +36,8 @@ export class FirebaseService implements Resolve<any> {
   resolve() {
     if (JSON.parse(localStorage.getItem("uid")) != null) {
       this.idName = JSON.parse(localStorage.getItem("uid"));
-      console.log(this.idName);
     } else {
       this.idName = JSON.parse(localStorage.getItem("currentUserEmail"));
-      console.log(this.idName);
     }
     this.cart = this.fs.collection("users/" + this.idName + "/cart");
     // this.carts=this.fs.collection('cart').valueChanges();

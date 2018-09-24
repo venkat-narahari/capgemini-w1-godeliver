@@ -8,10 +8,10 @@ import { FirebaseService } from '../firebase.service';
 })
 export class SettingsComponent implements OnInit {
   add:any;
-  constructor(private firebase:FirebaseService) { }
+  constructor(private firebaseService:FirebaseService) { }
 
   ngOnInit() {
-    this.firebase.getAddress().subscribe(data => {
+    this.firebaseService.getAddress().subscribe(data => {
       this.add=data;
     })
   }

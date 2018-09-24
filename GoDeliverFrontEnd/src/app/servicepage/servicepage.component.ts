@@ -24,7 +24,7 @@ export class ServicepageComponent implements OnInit {
   redirectUrl: string;
   error = '';
   constructor(private formBuilder: FormBuilder,
-    private firebase:FirebaseService,
+    private firebaseService:FirebaseService,
     private router: Router) {
       // this.redirectUrl = this.activatedRoute.snapshot.queryParams['redirectTo'];
     }
@@ -47,7 +47,7 @@ export class ServicepageComponent implements OnInit {
       this.model.name = this.userName.value;
       this.model.query = this.userQuery.value;
       console.log(this.userName.value);
-      this.firebase.addQuery(this.model);
+      this.firebaseService.addQuery(this.model);
       
     }
     
