@@ -62,12 +62,11 @@ export class AdminComponent implements OnInit {
   constructor(private http: HttpClient, private adminService: AdminService) {}
 
   ngOnInit() {
-    this.dateOfDelivery="Thu Sep 20 2018 00:00:00 GMT+0530 (India Standard Time)";
+    this.dateOfDelivery="Wed Sep 26 2018 00:00:00 GMT+0530 (India Standard Time)";
     this.onDate(this.dateOfDelivery);
   }
 
   onDate(dateOfDelivery){
-
     this.adminService.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       for(let i = 0; i < this.data.length; i++){

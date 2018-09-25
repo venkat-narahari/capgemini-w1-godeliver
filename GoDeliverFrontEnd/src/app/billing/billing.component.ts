@@ -104,6 +104,17 @@ export class BillingComponent implements OnInit {
     return sum;
   }
 
+  total() {
+    let total=this.getSum()+this.tax();
+    return total;
+  }
+  tax() {
+    let vat = 0;
+    vat=this.getSum()*0.05;
+    return vat;
+  }
+
+
   getVolume() {
     let volumeTotal = 0;
     for (let i = 0; i < this.totalLength; i++) {

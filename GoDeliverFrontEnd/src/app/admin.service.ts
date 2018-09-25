@@ -7,13 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class AdminService {
 
   data:any;
-  date = 'http://10.20.1.206:9088/logistics/api/v1/date?date=';
+  date = 'http://13.232.107.34:9088/logistics/api/v1/date?date=';
 
   constructor(private http:HttpClient) { }
 
   getDate(selectedDate) {
-    return this.http.get(this.date+selectedDate);
-   //return this.http.get("../../assets/location.json");
+    //return this.http.get(this.date+selectedDate);
+   return this.http.get("../../assets/location.json");
 }
 
   // getRoute(selectedDate) {
@@ -25,10 +25,12 @@ export class AdminService {
   //  }
 
    getSlotVehicle(selectedDate) {
+    //return this.getDate(selectedDate).pipe(map(body => body['slots'])).pipe(map(body => body[selectedDate.slot])).pipe(map(body => body['slotVehicle']));
     return this.getDate(selectedDate).pipe(map(body => body[selectedDate])).pipe(map(body => body['slots'])).pipe(map(body => body[selectedDate.slot])).pipe(map(body => body['slotVehicle']));
    }
 
    getSlotData(selectedDate) {
+     //return this.getDate(selectedDate).pipe(map(body => body['slots']));
     return this.getDate(selectedDate).pipe(map(body => body[selectedDate])).pipe(map(body => body['slots']));
    }
 

@@ -39,5 +39,8 @@ export class OrdersComponent implements OnInit {
     localStorage.removeItem("orderDetails");
     this.firebaseService.deleteCart();
     this.route.navigate([""]);
+    if(localStorage.getItem("uid")!=null) {
+      localStorage.removeItem("uid");
+    }
   }
 }

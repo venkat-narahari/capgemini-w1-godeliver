@@ -1,10 +1,12 @@
 FROM java:8-jre
 
+MAINTAINER teja "tejakathari007@gmail.com"
+
 RUN mkdir /src
 
 WORKDIR /src
 
-ADD target/configuration-service-1.0.0.jar /src/configuration-service-1.0.0.jar
+COPY target/configuration-service-1.0.0.jar /src/configuration-service-1.0.0.jar
 
 EXPOSE 9071
 

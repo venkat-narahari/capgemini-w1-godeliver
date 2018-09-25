@@ -14,7 +14,7 @@
           </div>
           <div class="container">
             <div class="row m-3">
-              <button class="btn btn-lg btn-brand btn-block btn-warning">
+              <button class="btn btn-lg btn-brand btn-block btn-warning" (click)="addToCart(book)">
                 <i class="fa fa-shopping-cart"></i> Add to Cart
               </button>
             </div>
@@ -27,7 +27,7 @@
 
           <div class="container">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
               <li role="presentation" class="desc active">
                 <a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a>
               </li>
@@ -61,9 +61,6 @@
           </div>
         </div>
       </div>
-
-
-
 
       <!-- end row -->
 

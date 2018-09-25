@@ -9,21 +9,21 @@
             <mat-step [stepControl]="userForm">
               <form [formGroup]="userForm" (ngSubmit)="registerSubmit()" #myForm="ngForm">
                 <mat-form-field class="example-full-width">
-                  <input matInput class="ip" placeholder="Full Name" formControlName="userName" name="userName">
+                  <input matInput class="ip" placeholder="Full Name" autocomplete="off" formControlName="userName" name="userName">
                 </mat-form-field>
                 <br>
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Email" formControlName="userEmail" name="userEmail" required>
+                  <input matInput placeholder="Email" formControlName="userEmail" autocomplete="off" name="userEmail" required>
                   <mat-error *ngIf="userEmail.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field class="password" class="example-full-width">
-                  <input matInput placeholder="Password" type="password" formControlName="userPassword" name="userPassword" required />
+                  <input matInput placeholder="Password, enter atleast 8 characters" type="password" formControlName="userPassword" name="userPassword" required minlength="8" />
                   <mat-error *ngIf="email.invalid">{{getErrorMessage2()}}</mat-error>
                 </mat-form-field>
                 <br>
                 <mat-form-field class="example-full-width">
-                  <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName="userDOB" name="userDOB" required>
+                  <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" autocomplete="off" formControlName="userDOB" name="userDOB" required>
                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-datepicker #picker></mat-datepicker>
                   <mat-error *ngIf="email.invalid">{{getErrorMessage3()}}</mat-error>
