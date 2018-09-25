@@ -51,8 +51,8 @@
         <form>
           <div class="container">
             <div class="input-group">
-              <input type="text" class="form-control" autocomplete="off" placeholder="Search your favourite books here" name="search"
-                [(ngModel)]="search">
+              <input type="text" class="form-control" autocomplete="off" placeholder="Search your favourite books here"
+                name="search" [(ngModel)]="search">
               <span class="input-group-btn">
                 <button class="btn-block btn-danger rounded-0 form-control" (click)="searchBooks()"><i class="fa fa-search fa-fw"></i></button>
               </span>
@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-<!--Div class to display the search result using bookservice-->
+  <!--Div class to display the search result using bookservice-->
   <div class="container">
     <div *ngIf=books_result>
       <h2>Search Result</h2>
@@ -75,13 +75,9 @@
         </div>
       </div>
     </div>
-    <div *ngIf=books_notAvailable>
-      <h2>Book not found</h2>
-    </div>
   </div>
-  <!-- routing to recommendations-->
-  <div class="container">
-    <app-recommendations></app-recommendations>
-  </div>
-
+</div>
+<!-- routing to recommendations-->
+<div class="container">
+  <app-recommendations></app-recommendations>
 </div>
