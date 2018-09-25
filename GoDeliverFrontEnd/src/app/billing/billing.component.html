@@ -68,7 +68,7 @@
                     <h5>Total Items </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:6px"> {{totalQuant()}}</h5>
+                    <h5 style="margin-left:30px"> {{totalQuant()}}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -76,7 +76,7 @@
                     <h5>Product Cost </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:3px">₹ {{getSum()}}</h5>
+                    <h5 style="margin-left:30px">₹ {{getSum() |  number:'1.1-2'}}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -84,7 +84,7 @@
                     <h5>Tax </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:3px">₹ {{tax()}}</h5>
+                    <h5 style="margin-left:30px">₹ {{tax() |  number:'1.1-2'}}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -92,7 +92,7 @@
                     <h5>Amount Payable </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:3px">₹ {{total()}}</h5>
+                    <h5 style="margin-left:30px">₹ {{total() | number:'1.1-2'}}</h5>
                   </td>
                 </tr>
                 <hr>

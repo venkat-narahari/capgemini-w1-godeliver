@@ -53,7 +53,7 @@
                         <div class="table-responsive">
                             <thead>
                                 <tr>
-                                    <td style="width: 400px">
+                                    <td style="width: 200px">
                                         <h5>Total Items</h5>
                                     </td>
                                     <td>
@@ -61,35 +61,43 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 400px">
+                                    <td style="width: 200px">
                                         <h5>Amount Payable</h5>
                                     </td>
                                     <td>
-                                        <h5>{{ getSum()}}</h5>
+                                        <h5>₹ {{ getSum()}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 200px">
+                                        <h5>Tax </h5>
+                                    </td>
+                                    <td>
+                                        <h5>₹ {{ getTax() | number :'1.1-2'}}</h5>
                                     </td>
                                 </tr>
                                 <hr class="horizantal" style="color:rgb(3, 3, 29)">
                                 <tr>
-                                    <td style="width: 400px">
+                                    <td style="width: 200px">
                                         <h5>Delivery Charges</h5>
                                     </td>
                                     <td>
-                                        <h5>{{slotFinalPrice | number :'1.1-2'}}</h5>
+                                        <h5>₹ {{ slotFinalPrice | number :'1.1-2'}}</h5>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="width: 400px">
+                                    <td style="width: 200px">
                                         <h5>Total Charges</h5>
                                     </td>
                                     <td>
-                                        <h5>{{finalPriceA | number :'1.1-2'}}</h5>
+                                        <h5> ₹ {{ finalPriceA | number :'1.1-2'}}</h5>
                                     </td>
                                 </tr>
                             </thead>
                         </div>
                     </mat-card-content>
                 </mat-card>
-                <mat-card class="protect">
+                <mat-card class="protect mt-1">
                     <mat-card-content>
                         <div class="table-responsive">
                             <thead>
@@ -103,17 +111,13 @@
                                 </tr>
                             </thead>
                         </div>
-                        <button [disabled]="!timeslots" (click)="paymentRoute()" class="btn btn-primary btn-block" style="margin-top:20px">
-                              Proceed To Payment
+                        <button [disabled]="!timeslots" (click)="paymentRoute()" class="btn btn-primary btn-block"
+                            style="margin-top:20px">
+                            Proceed To Payment
                         </button>
                     </mat-card-content>
                 </mat-card>
             </div>
-            <div class="col-sm-8"></div>
-            <div class=" col-sm-4">
-            </div>
 
         </div>
-        <br>
-        <br>
     </div>
