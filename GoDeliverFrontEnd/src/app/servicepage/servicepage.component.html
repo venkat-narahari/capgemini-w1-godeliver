@@ -8,17 +8,17 @@
           <mat-card>
 
             <mat-form-field class="example-full-width" style="margin-top:18px">
-              <input matInput type="text" placeholder="Name" [formControl]="userName" name="userName" required
+              <input matInput type="text" placeholder="Name" autocomplete="off" [formControl]="userName" name="userName" required
                 minlength="8">
             </mat-form-field><br>
 
             <mat-form-field>
-              <input matInput placeholder="Enter your email" [formControl]="userEmail" name="userEmail" required>
+              <input matInput placeholder="Enter your email" autocomplete="off" [formControl]="userEmail" name="userEmail" required>
 
             </mat-form-field>
             <br>
             <mat-form-field class="example-full-width" style="margin-top:18px">
-              <input matInput type="area" placeholder="Query" [formControl]="userQuery" name="userQuery" required
+              <input matInput type="area" placeholder="Query" autocomplete="off" [formControl]="userQuery" name="userQuery" required
                 minlength="5s">
             </mat-form-field>
 <br>
