@@ -1,10 +1,11 @@
 FROM java:8-jre
+MAINTAINER teja "tejakathari007@gmail.com"
 
 RUN mkdir /src
 
 WORKDIR /src
 
-ADD target/eureka-server-1.0.0.jar /src/eureka-server-1.0.0.jar
+COPY target/eureka-server-1.0.0.jar /src/eureka-server-1.0.0.jar
 
 EXPOSE 9070
 
