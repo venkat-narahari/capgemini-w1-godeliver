@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private router:Router
   ) {}
 
   ngOnInit() {
@@ -68,4 +69,5 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+  
 }

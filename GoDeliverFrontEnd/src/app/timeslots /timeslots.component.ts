@@ -114,6 +114,12 @@ export class TimeslotsComponent implements OnInit {
     return sum;
   }
 
+  getTax() {
+    let vat=0;
+    vat=this.getSum()*0.05;
+    return vat
+  }
+
   final() {
     for (let i = 0; i < 3; i++) {
       this.slotsFinal[i].slotCosts = this.costarray[i];
@@ -124,7 +130,7 @@ export class TimeslotsComponent implements OnInit {
     this.isRadioSelected = true;
     this.time = i;
     this.slotFinalPrice = slots.slotCosts;
-    this.finalPriceA = this.slotFinalPrice + this.getSum();
+    this.finalPriceA = this.slotFinalPrice + this.getSum()+this.getTax();
 
     this.logisticService.getOrder().subscribe(data=> {
       this.newOrder=data;
