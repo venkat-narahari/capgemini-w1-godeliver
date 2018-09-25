@@ -84,7 +84,6 @@ export class CardsComponent implements OnInit {
   }
 
   heaImage() {
-    //this.heartImage = "../../assets/white.png";
     for (let i = 0; i < this.booksLength; i++) {
       if (this.book.title == this.books[i].title) {
         this.like = true;

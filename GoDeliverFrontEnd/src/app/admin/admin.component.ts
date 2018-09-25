@@ -67,7 +67,6 @@ export class AdminComponent implements OnInit {
   }
 
   onDate(dateOfDelivery){
-    console.log(dateOfDelivery);
     this.adminService.getSlotData(this.dateOfDelivery).subscribe(data => {
       this.data=data;
       for(let i = 0; i < this.data.length; i++){

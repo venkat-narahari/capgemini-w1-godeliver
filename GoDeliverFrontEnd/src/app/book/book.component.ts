@@ -48,7 +48,6 @@ export class BookComponent implements OnInit {
       const id = params["bookISBN"];
       this.bookService.getBook(id).subscribe(list => {
         this.book = list;
-        //  console.log(list);
       });
     });
     if (localStorage.getItem("currentUserEmail") != null) {
