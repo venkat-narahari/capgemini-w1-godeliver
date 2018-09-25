@@ -31,7 +31,19 @@ export class FirebaseService implements Resolve<any> {
   profileDoc: AngularFirestoreDocument<Profile>;
 
   idName: any;
-  constructor(public fs: AngularFirestore) {}
+  constructor(public fs: AngularFirestore) {
+    this.query = this.fs.collection("query");
+
+    this.queries = this.query.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(a => {
+          const data = a.payload.doc.data() as Query;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
+  }
 
   resolve() {
     if (JSON.parse(localStorage.getItem("uid")) != null) {
@@ -87,17 +99,7 @@ export class FirebaseService implements Resolve<any> {
       )
     );
 
-    this.query = this.fs.collection("query");
-
-    this.queries = this.query.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(a => {
-          const data = a.payload.doc.data() as Query;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        })
-      )
-    );
+   
   }
   getCart() {
     return this.carts;
@@ -108,6 +110,7 @@ export class FirebaseService implements Resolve<any> {
   }
 
   addQuery(queries: Query) {
+    console.log(queries);
     this.query.add(queries);
   }
 
