@@ -51,7 +51,7 @@ export class CardsComponent implements OnInit {
   wishlistLength: any;
   constructor(
     private bookService: BookService,
-    private firebase: FirebaseService,
+    private firebaseService: FirebaseService,
     public snackBar: MatSnackBar
   ) {
    
@@ -65,17 +65,17 @@ export class CardsComponent implements OnInit {
 
     setTimeout(() => {
       this.heaImage();
-      this.firebase.getWishlist().subscribe(wishlist => {
+      this.firebaseService.getWishlist().subscribe(wishlist => {
         this.wishlist = wishlist;
         this.wishlistLength = wishlist.length;
       });
   
-      this.firebase.getCart().subscribe(cart => {
+      this.firebaseService.getCart().subscribe(cart => {
         this.cart = cart;
         this.cartsLength = cart.length;
       });
   
-      this.firebase.getWishlist().subscribe(data => {
+      this.firebaseService.getWishlist().subscribe(data => {
         this.books = data;
         this.booksLength = data.length;
       });
@@ -109,7 +109,7 @@ export class CardsComponent implements OnInit {
       }
     }
     if (bool) {
-      this.firebase.addItem(this.item);
+      this.firebaseService.addItem(this.item);
     }
 
     setTimeout(() => {
@@ -137,11 +137,11 @@ export class CardsComponent implements OnInit {
     for (let i = 0; i < this.wishlistLength; i++) {
       if (this.wish.bookISBN_10 === this.wishlist[i].bookISBN_10) {
         bool = false;
-        this.firebase.removeFromWishlist(this.wishlist[i]);
+        this.firebaseService.removeFromWishlist(this.wishlist[i]);
       }
     }
     if (bool) {
-      this.firebase.addItemToWishlist(this.wish);
+      this.firebaseService.addItemToWishlist(this.wish);
       this.bookService
         .itemToWishlistRecommendation(this.wish)
         .subscribe(data => {
