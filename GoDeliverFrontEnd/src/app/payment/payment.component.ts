@@ -107,7 +107,6 @@ export class PaymentComponent implements OnInit {
   deleteCredentials() {
     if (localStorage.getItem("currentUserPayment")) {
       if (localStorage.getItem("uid") != null) {
-        localStorage.removeItem("uid");
         localStorage.removeItem("currentUserPayment");
         localStorage.removeItem("newOrder");
         localStorage.removeItem("totalVolume");
