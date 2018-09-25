@@ -133,7 +133,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatSnackBarModule,
     AgmCoreModule.forRoot({
       // @agm/core
-      apiKey: 'hidden'
+      apiKey: 'AIzaSyDe2QqXrbtaORvL-I0WHpiI72HxtfTz5Zo'
     }),
     AgmDirectionModule, // agm-direction,
     ChartsModule
