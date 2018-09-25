@@ -51,7 +51,6 @@ import { FirebaseService } from "./firebase.service";
 import { AllComponent } from "./all/all.component";
 import { NgxPaginationModule } from "ngx-pagination";
 import { AdminComponent } from "./admin/admin.component";
-import { GrafanaComponent } from "./grafana/grafana.component";
 import { AuthGuard } from "./auth.guard";
 import { SettingsComponent } from "./settings/settings.component";
 import { DeleteaccountComponent } from "./deleteaccount/deleteaccount.component";
@@ -89,7 +88,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BillingComponent,
     AllComponent,
     AdminComponent,
-    GrafanaComponent,
     SettingsComponent,
     TimeslotsComponent,
     DeleteaccountComponent,
