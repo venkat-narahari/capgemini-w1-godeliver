@@ -43,14 +43,14 @@ export class TimeslotsComponent implements OnInit {
   totalLength: any;
   dat: any;
   constructor(
-    private firebase: FirebaseService,
+    private firebaseService: FirebaseService,
     route: ActivatedRoute,
     private logisticService: LogisticService,
     private router: Router,
     private spinner: NgxSpinnerService
   ) {
     //Do Something
-    this.firebase.getCart().subscribe(carts => {
+    this.firebaseService.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
     });
@@ -70,10 +70,9 @@ export class TimeslotsComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 10000);
-    console.log(this.costarray);
     setTimeout(() => {
       this.det();
-    }, 8000);
+    }, 9000);
 
     setTimeout(() => {
       for (let i = 0; i < 3; i++) {
@@ -86,13 +85,10 @@ export class TimeslotsComponent implements OnInit {
   }
 
   det() {
-    console.log(this.dat);
-
     this.slotAvailability = this.dat.slotAvailability;
     this.slotCost = this.dat.slotCost;
     this.array2 = this.slotCost.map(Number);
     this.minValue = Math.min.apply(null, this.array2.filter(Boolean));
-    console.log(this.minValue);
     this.addtoTotalPrice();
   }
   addtoTotalPrice() {
@@ -130,26 +126,29 @@ export class TimeslotsComponent implements OnInit {
     this.slotFinalPrice = slots.slotCosts;
     this.finalPriceA = this.slotFinalPrice + this.getSum();
 
-    this.logisticService.getOrder().subscribe(data => {
-      this.newOrder = data;
+    this.logisticService.getOrder().subscribe(data=> {
+      this.newOrder=data;
     });
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 8000);
     setTimeout(() => {
       this.new();
-    }, 7000);
+    }, 8000);
   }
 
   new() {
     this.newOrder.newOrder.selectedSlot = this.time;
-    console.log(this.newOrder);
-  }
+     }
   isRadioSelect1() {
     return this.isRadioSelected;
   }
   paymentRoute() {
     localStorage.setItem("newOrder", JSON.stringify(this.newOrder));
-    console.log(this.newOrder);
     setTimeout(() => {
       this.router.navigate(["/payment"]);
-    }, 2000);
+    }, 1000);
   }
 }

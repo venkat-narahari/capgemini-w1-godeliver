@@ -14,12 +14,10 @@ export class AppComponent implements OnInit{
 ngOnInit() {
   if (localStorage.getItem("currentUserEmail") == null) {
     if (localStorage.getItem("uid") != null) {
-      console.log("already there");
     } else {
       this.uniqueId = uuid().replace(/-/g, "");
       let key = "uid";
       localStorage.setItem(key, JSON.stringify(this.uniqueId));
-      console.log(this.uniqueId);
     }
   }
 }

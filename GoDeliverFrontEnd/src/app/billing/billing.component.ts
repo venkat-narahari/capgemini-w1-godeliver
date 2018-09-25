@@ -48,16 +48,14 @@ export class BillingComponent implements OnInit {
   submitted = false;
   totalLength: any;
   constructor(
-    private firebase: FirebaseService,
-    private route: ActivatedRoute,
+    private firebaseService: FirebaseService,
     private searchService: SearchService,
     private formBuilder: FormBuilder
   ) {
-    this.firebase.getAddress().subscribe(data => {
+    this.firebaseService.getAddress().subscribe(data => {
       this.addressList = data;
-      console.log(data);
     });
-    this.firebase.getCart().subscribe(carts => {
+    this.firebaseService.getCart().subscribe(carts => {
       this.carts = carts;
       this.totalLength = carts.length;
     });
@@ -94,7 +92,6 @@ export class BillingComponent implements OnInit {
     for (let i = 0; i < this.totalLength; i++) {
       totalQuantity += this.carts[i].quantity;
     }
-    console.log(totalQuantity);
     return totalQuantity;
   }
 
@@ -112,7 +109,6 @@ export class BillingComponent implements OnInit {
     for (let i = 0; i < this.totalLength; i++) {
       volumeTotal += this.carts[i].totalVolume;
     }
-    console.log(volumeTotal);
     localStorage.setItem("totalVolume", volumeTotal.toString());
 
     return volumeTotal;
@@ -123,12 +119,11 @@ export class BillingComponent implements OnInit {
         this.addressList[i].name === this.firstname &&
         this.addressList[i].address === this.address
       ) {
-        console.log("already there");
+     
         this.bool = false;
       }
     }
     setTimeout(() => {}, 3000);
-    console.log(this.address);
     this.add.name = this.firstname;
     this.add.phone = this.phoneNumb;
     this.add.address = this.address;
@@ -137,7 +132,6 @@ export class BillingComponent implements OnInit {
     this.searchService.getLatLng(this.address).subscribe(data => {
       setTimeout(() => {
         this.add.addLat = data["lat"];
-        console.log(this.add.addLat);
         this.add.addLng = data["lng"];
       }, 1000);
     });
@@ -147,14 +141,13 @@ export class BillingComponent implements OnInit {
   }
 
   addAddress() {
-    console.log(this.add);
-    if (this.bool) {
-      this.firebase.addAddress(this.add);
+     if (this.bool) {
+      this.firebaseService.addAddress(this.add);
     }
   }
 
   getdetails() {
-    this.firebase.addAddress(this.add);
+    this.firebaseService.addAddress(this.add);
   }
   get userName() {
     return this.userForm.get("userName");

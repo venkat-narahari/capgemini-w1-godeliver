@@ -23,10 +23,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private firebase: FirebaseService
-  ) {
-  
-  }
+    private firebaseService: FirebaseService
+  ) {}
 
   ngOnInit() {
     if (
@@ -37,12 +35,17 @@ export class HeaderComponent implements OnInit {
       this.curUser = null;
     } else if (localStorage.getItem("currentUserEmail") !== null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
-      console.log(this.curUser);
       this.noUser = "";
     } else {
       this.noUser = "NoUser";
     }
-    this.firebase.getCart().subscribe(data => {
+    setTimeout(()=> {
+      this.firebaseCart();
+    },2000)
+   
+  }
+  firebaseCart() {
+    this.firebaseService.getCart().subscribe(data => {
       this.cartLength = data.length;
     });
   }
@@ -56,12 +59,10 @@ export class HeaderComponent implements OnInit {
   }
 
   searchBooks() {
-    console.log(this.search);
     this.check = "";
     this.bookService.getBookByName(this.search).subscribe(data => {
       if (data != null) {
         this.books_result = data;
-        console.log(this.books_result);
       } else {
         this.books_notAvailable = true;
       }

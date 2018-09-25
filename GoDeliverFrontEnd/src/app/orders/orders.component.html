@@ -14,33 +14,37 @@
         </div>
         <div class="col-md-6 text-center">
           <div class="row m-auto" style="font-size: 20px;">
-              <h6><strong>Name :</strong> {{orderDetails.orderConsumerName}}</h6>
+            <h6><strong>Order Id: </strong> {{orderDetails.orderId}}</h6>
           </div>
           <div class="row m-auto" style="font-size: 20px;">
-              <h6><strong>Address: </strong> {{orderDetails.orderConsumerAddress}}</h6>
+            <h6><strong>Name :</strong> {{orderDetails.orderConsumerName}}</h6>
           </div>
           <div class="row m-auto" style="font-size: 20px;">
-              <h6><strong>Email ID :</strong> {{orderDetails.emailId}}</h6>
+            <h6><strong>Address: </strong> {{orderDetails.orderConsumerAddress}}</h6>
           </div>
           <div class="row m-auto" style="font-size: 20px;">
-              <h6><strong>Order Quantity :</strong> {{orderDetails.orderQuantity}}</h6>
+            <h6><strong>Email ID :</strong> {{orderDetails.emailId}}</h6>
           </div>
           <div class="row m-auto" style="font-size: 20px;">
-              <h6><strong>Order Date :</strong> {{orderDetails.orderDate}}</h6>
+            <h6><strong>Delivery Date :</strong> {{(orderDetails.orderDate.length>10)? (orderDetails.orderDate |
+              slice:0:10):(orderDetails.orderDate)}}</h6>
           </div>
         </div>
       </div>
-      <div class="ml-2 mt-4 mb-4"><h4><strong>Orders</strong></h4></div>
-      <div class="row">
-            <div class="col-md-4" *ngFor="let sl of orderDetails.books; let i=index">
-                <div><strong>Book {{i+1}} :</strong></div>
-                <div><strong>Book Id : </strong>{{sl.bookISBN_10}}</div>
-                <div><strong>Book Title :</strong> {{sl.title}}</div>
-                <div><strong>Book Cost : {{sl.cost}}</strong></div>
-            </div>
+      <div class="ml-2 mt-4 mb-4">
+        <h4><strong>Orders</strong></h4>
       </div>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let sl of carts; let i=index">
+          <div><strong>Book {{i+1}} :</strong></div>
+          <div><strong>Book Id : </strong>{{sl.bookISBN_10}}</div>
+          <div><strong>Book Title :</strong> {{sl.title}}</div>
+          <div><strong>Book Cost : {{sl.cost}}</strong></div>
+        </div>
+      </div>
+
       <div class="row mt-3">
-        <button class="btn btn-lg btn-brand btn-block"><a href="#">Back to Homepage</a></button>
+        <button class="btn btn-lg btn-brand btn-block" (click)="deleteCart()">Back to Homepage</button>
       </div>
     </div>
   </div>

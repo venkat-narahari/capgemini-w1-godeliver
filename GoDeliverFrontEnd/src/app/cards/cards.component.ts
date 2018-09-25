@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { BookService } from "../book.service";
 import { FirebaseService } from "../firebase.service";
 import { Cart } from "../firebase.service";
-import {MatSnackBar} from "@angular/material";
+import { MatSnackBar } from "@angular/material";
 import { SnackbarComponent } from "../snackbar/snackbar.component";
 
 @Component({
@@ -27,7 +27,7 @@ export class CardsComponent implements OnInit {
     totalVolume: 1
   };
   deleteList: any;
-  like: boolean=false;
+  like: boolean = false;
   wish: Wishlist = {
     bookISBN_10: "",
     title: "",
@@ -48,42 +48,46 @@ export class CardsComponent implements OnInit {
   wishlist: any;
   cart: any;
   cartsLength: any;
-  wishlistLength:any;
+  wishlistLength: any;
   constructor(
     private bookService: BookService,
     private firebase: FirebaseService,
     public snackBar: MatSnackBar
-  ) {}
+  ) {
+   
+  }
 
   ngOnInit() {
-    this.firebase.getWishlist().subscribe(data => {
-      this.books = data;
-      this.booksLength = data.length;
-    });
-    setTimeout(() => {
-      this.heaImage();
-    }, 2000);
-
+  
     if (localStorage.getItem("currentUserEmail") != null) {
       this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
 
-    this.firebase.getWishlist().subscribe(wishlist => {
-      this.wishlist = wishlist;
-      this.wishlistLength = wishlist.length;
-    });
+    setTimeout(() => {
+      this.heaImage();
+      this.firebase.getWishlist().subscribe(wishlist => {
+        this.wishlist = wishlist;
+        this.wishlistLength = wishlist.length;
+      });
+  
+      this.firebase.getCart().subscribe(cart => {
+        this.cart = cart;
+        this.cartsLength = cart.length;
+      });
+  
+      this.firebase.getWishlist().subscribe(data => {
+        this.books = data;
+        this.booksLength = data.length;
+      });
+    }, 2000);
 
-    this.firebase.getCart().subscribe(cart => {
-      this.cart = cart;
-      this.cartsLength = cart.length;
-    });
   }
 
   heaImage() {
     //this.heartImage = "../../assets/white.png";
     for (let i = 0; i < this.booksLength; i++) {
       if (this.book.title == this.books[i].title) {
-        this.like=true;
+        this.like = true;
       }
     }
   }
@@ -100,22 +104,22 @@ export class CardsComponent implements OnInit {
     this.item.totalPrice = parseInt(book.cost);
     this.item.totalVolume = parseInt(book.volume);
     for (let i = 0; i < this.cartsLength; i++) {
-      if (this.item.bookISBN_10 === this.cart[i].bookISBN_10) {
+      if (this.item.bookISBN_10 == this.cart[i].bookISBN_10) {
         bool = false;
       }
     }
-    
     if (bool) {
       this.firebase.addItem(this.item);
     }
-    this.openSnackBar();
-    
 
+    setTimeout(() => {
+      this.openSnackBar();
+    }, 500);
   }
 
   openSnackBar() {
     this.snackBar.openFromComponent(SnackbarComponent, {
-      duration: 2000,
+      duration: 2000
     });
   }
 
@@ -141,17 +145,13 @@ export class CardsComponent implements OnInit {
       this.bookService
         .itemToWishlistRecommendation(this.wish)
         .subscribe(data => {
-          console.log("done");
         });
     }
 
-    if(this.like==false) {
-      this.like=true;
-    }
-    else if(this.like==true){
-      this.like=false;
+    if (this.like == false) {
+      this.like = true;
+    } else if (this.like == true) {
+      this.like = false;
     }
   }
-
-
 }

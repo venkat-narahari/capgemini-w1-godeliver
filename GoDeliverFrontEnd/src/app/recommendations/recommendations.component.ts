@@ -45,10 +45,7 @@ export class RecommendationsComponent implements OnInit {
     });
     //getting toprated  books
     this.bookService.getTopRated().subscribe(list => {
-      console.log("topselling data is 111 ", list);
       this.top_rated = list;
     });
-
-  
   }
 }

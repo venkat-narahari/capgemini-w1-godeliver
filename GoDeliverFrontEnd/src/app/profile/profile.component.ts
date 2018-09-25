@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
   userEmail: any;
   top_selling:any;
   constructor(
-    private firebase: FirebaseService,
+    private firebaseService: FirebaseService,
     private userDetails: UserDetailsService,
     private bookService:BookService
   ) {}
@@ -26,19 +26,19 @@ export class ProfileComponent implements OnInit {
     this.userEmail = JSON.parse(localStorage.getItem("currentUserEmail"));
     console.log(this.userEmail);
 
-    this.firebase.getAddress().subscribe(address => {
+    this.firebaseService.getAddress().subscribe(address => {
       this.addre = address;
     });
 
-    this.firebase.getCart().subscribe(carts => {
+    this.firebaseService.getCart().subscribe(carts => {
       this.cartLength = carts.length;
     });
 
-    this.firebase.getUserProfile().subscribe(profile => {
+    this.firebaseService.getUserProfile().subscribe(profile => {
       this.profile = profile;
     });
 
-    this.firebase.getWishlist().subscribe(wishlist => {
+    this.firebaseService.getWishlist().subscribe(wishlist => {
       this.wishlistLength = wishlist.length;
     });
 
