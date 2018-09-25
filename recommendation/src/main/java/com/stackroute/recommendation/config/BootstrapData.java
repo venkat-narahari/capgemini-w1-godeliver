@@ -260,36 +260,6 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		
 		
 		
-		BookListener book8 = new BookListener();
-		book8.setBookISBN_10("764535");
-		book8.setTitle("Harappa - Curse of the Blood River");
-		book8.setRating(6f);
-		book8.setPoster("https://images-na.ssl-images-amazon.com/images/I/51OV4KduW3L._SX321_BO1,204,203,200_.jpg");
-		book8.setVolume("420000ccm");
-		book8.setAuthor("Vineet Bajpai");
-		book8.setPublisher("Sai Teja");
-		book8.setGenre("Thriller");
-		book8.setCost("150.00");
-		book8.setPublishedYear("2015");
-		book8.setPages("211 pages");
-		book8.setDescription(
-				"2017, Delhi – Vidyut’s dying ancestor summons him to Banaras. The old Brahmin chieftain of the Dev-Raakshasa Matth, or the God-Demon Clan, bears a chilling secret. Their bloodline carries an ancient curse that will plague mankind - towards its own violent extinction. \n"
-						+ "\n"
-						+ "1700 BCE, Harappa – Harappa is a magnificent city on the banks of the mighty Saraswati river. The darkness of treachery, taantric exorcism and bloodshed unleashes itself on the last devta, paving the way for his devastating revenge…and the horrifying truth behind the fall of the glorious civilisation.");
-		book8.setLanguage("English");
-		bookRepository.save(book8);
-		
-		Genre genre8 = new Genre(book8.getGenre());
-		genreRepository.save(genre8);
-		
-		OfType ofType8 = new OfType(book8, genre8);
-		ofTypeRepository.save(ofType8);
-		
-		Author author8 = new Author(book8.getAuthor());
-		authorRepository.save(author8);
-		
-		WrittenBy writtenBy8 = new WrittenBy(book8, author8);
-		writtenByRepository.save(writtenBy8);
 		
 		
 		BookListener book9 = new BookListener();
@@ -932,39 +902,8 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		WrittenBy writtenBy31= new WrittenBy(book31, author31);
 		writtenByRepository.save(writtenBy31);
 		
-		BookListener book32 = new BookListener();
-		book32.setBookISBN_10("45969");
-		book32.setTitle("DK Reads: Marvel the Avengers Battle Against Ultron");
-		book32.setRating(5f);
-		book32.setPoster("https://images-na.ssl-images-amazon.com/images/I/516kjODRu1L._SX328_BO1,204,203,200_.jpg");
-		book32.setVolume("400000ccm");
-		book32.setAuthor("Matt Forbeck");
-		book32.setPublisher("Madhu Sree");
-		book32.setGenre("Comic");
-		book32.setCost("247.00");
-		book32.setPublishedYear("2014");
-		book32.setPages("234 pages");
-		book32.setDescription(
-				"Marvel The Avengers Battle Against Ultron assembles your favourite Marvel Avengers into one action-packed book. Some Super Villians are just too powerful for one Super Hero alone - and this is where The Avengers come in! Learn all about Thor, Captain America, Iron Man, Black Widow and many more Marvel Avengers and how they have been using their powers to protect Earth for many years. Diaries, cartoons and posters help you explore the Avengers world, from their powers and abilities to the part they play in Earth's mightiest Super Hero team.");
-		book32.setLanguage("English");
-		bookRepository.save(book32);
-		
-		Genre genre32 = new Genre(book32.getGenre());
-		genreRepository.save(genre32);
-		
-		OfType ofType32 = new OfType(book32, genre32);
-		ofTypeRepository.save(ofType32);
-		
-		Author author32 = new Author(book32.getAuthor());
-		authorRepository.save(author32);
-		
-		WrittenBy writtenBy32= new WrittenBy(book32, author32);
-		writtenByRepository.save(writtenBy32);
-
-		
 		
 
-		
 		
 		String[] userPreferences=new String[] {"comic","adventure","action"};
 		User user=new User();
