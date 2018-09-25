@@ -20,9 +20,9 @@ const headers = new HttpHeaders({
 })
 export class LogisticService {
   data: any;
-  private logistic_url = "http://13.233.38.65:9088/logistics/api/v1/slots";
-  private slot_url = "http://13.233.38.65:9088/logistics/api/v1/slot";
-  private order_url = "http://13.233.38.65:9088/order/api/v1/detail"
+  private logistic_url = "http://10.20.1.206:9088/logistics/api/v1/slots";
+  private slot_url = "http://10.20.1.206:9088/logistics/api/v1/slot";
+  private order_url = "http://10.20.1.206:9088/order/api/v1/detail"
   constructor(private http: HttpClient) {}
   slots: object[];
   getOrderDetails(order) {
