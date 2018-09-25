@@ -1,9 +1,8 @@
 <div class="component-body">
 <div class="container-fluid">
-<div class="row">
-  <div class="col-sm-6">
+<div class="row mb-5">
+  <div class="col-sm-8">
     <mat-card style="margin-bottom: 10px;">
-    <mat-card-title class="title" style="padding-left: 15px; background-color:rgb(216, 76, 76); font-size: 22px;">Delivery Address</mat-card-title>
     <div *ngIf="addressList">
       <div style="margin-left: 20px; margin-right:10px;" *ngFor="let address of addressList">
         <app-delivery-card [address]="address"></app-delivery-card>
@@ -56,8 +55,8 @@
     </mat-accordion>
     </mat-card>
   </div>
-  <div class="col-sm-6">
-    <mat-card class="billing-card;" style="background-color:#E0E0E0">
+  <div class="col-sm-4">
+    <mat-card class="billing-card;" style="background-color:#EEEEEE">
       <mat-card-title>
         <b>Order Details</b>
       </mat-card-title>
@@ -65,25 +64,41 @@
         <div class="table-responsive">
           <thead>
             <tr>
-              <td style="width: 450px">
-                <h5>Total Items</h5>
+              <td>
+                <h5>Total Items </h5>
               </td>
               <td>
-                <h5>{{totalQuant()}}</h5>
+                <h5 style="margin-left:6px"> {{totalQuant()}}</h5>
               </td>
             </tr>
             <tr>
-              <td style="width: 450px">
-                <h5>Amount Payable</h5>
+              <td>
+                <h5>Amount Payable </h5>
               </td>
               <td>
-                <h5>₹ {{getSum()}}</h5>
+                <h5 style="margin-left:3px">₹ {{getSum()}}</h5>
               </td>
             </tr>
             <hr>
           </thead>
         </div>
       </mat-card-content>
+    </mat-card>
+    <mat-card class="protect">
+        <mat-card-content>
+            <div class="table-responsive">
+                <thead>
+                    <tr>
+                        <td style="width: 45px">
+                            <img src="assets/protect.png">
+                        </td>
+                        <td>
+                            Safe and Secure Payments. Easy Returns. 100% safety products
+                        </td>
+                    </tr>
+                </thead>
+            </div>
+        </mat-card-content>
     </mat-card>
   </div>
 </div>

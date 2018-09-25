@@ -103,18 +103,17 @@
                                 </tr>
                             </thead>
                         </div>
+                        <button [disabled]="!timeslots" (click)="paymentRoute()" class="btn btn-primary btn-block" style="margin-top:20px">
+                              Proceed To Payment
+                        </button>
                     </mat-card-content>
                 </mat-card>
             </div>
             <div class="col-sm-8"></div>
             <div class=" col-sm-4">
-
             </div>
 
         </div>
-        <button [disabled]="!timeslots" (click)="paymentRoute()" class="btn btn-primary btn-block" style="margin-top:20px">
-            Proceed To Payment
-        </button>
         <br>
         <br>
     </div>
