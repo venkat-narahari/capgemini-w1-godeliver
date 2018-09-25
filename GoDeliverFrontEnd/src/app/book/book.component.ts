@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BookService } from "../book.service";
 import { FirebaseService, Cart } from "../firebase.service";
+import { MatSnackBar } from "@angular/material";
 
 @Component({
   selector: "app-book",
@@ -30,8 +31,14 @@ export class BookComponent implements OnInit {
     private router: ActivatedRoute,
     private bookService: BookService,
     private firebaseService: FirebaseService,
-    private route: Router
-  ) {}
+    private route: Router,
+    public snackBar: MatSnackBar
+  ) {
+    this.firebaseService.getCart().subscribe(cart => {
+      this.cart = cart;
+      this.cartsLength = cart.length;
+    });
+  }
 
   // bookdetails=new Books("","","","","","","","","","","","","");
 
@@ -46,10 +53,7 @@ export class BookComponent implements OnInit {
     if (localStorage.getItem("currentUserEmail") != null) {
       this.curUser = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
-    this.firebaseService.getCart().subscribe(cart => {
-      this.cart = cart;
-      this.cartsLength = cart.length;
-    });
+    
   }
 
   billing() {
@@ -73,11 +77,13 @@ export class BookComponent implements OnInit {
     }
     setTimeout(() => {
       this.routeToBilling();
-    },2000);
+    },1000);
   }
 
   routeToBilling() {
     this.route.navigate(["/billing"]);
-    location.reload();
   }
+
+
+ 
 }
