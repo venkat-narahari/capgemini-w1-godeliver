@@ -54,31 +54,33 @@ export class CardsComponent implements OnInit {
     private firebase: FirebaseService,
     public snackBar: MatSnackBar
   ) {
-    this.firebase.getWishlist().subscribe(wishlist => {
-      this.wishlist = wishlist;
-      this.wishlistLength = wishlist.length;
-    });
-
-    this.firebase.getCart().subscribe(cart => {
-      this.cart = cart;
-      this.cartsLength = cart.length;
-    });
+   
   }
 
   ngOnInit() {
-    this.firebase.getWishlist().subscribe(data => {
-      this.books = data;
-      this.booksLength = data.length;
-    });
-    setTimeout(() => {
-      this.heaImage();
-    }, 2000);
-
+  
     if (localStorage.getItem("currentUserEmail") != null) {
       this.email = JSON.parse(localStorage.getItem("currentUserEmail"));
     }
 
-    
+    setTimeout(() => {
+      this.heaImage();
+      this.firebase.getWishlist().subscribe(wishlist => {
+        this.wishlist = wishlist;
+        this.wishlistLength = wishlist.length;
+      });
+  
+      this.firebase.getCart().subscribe(cart => {
+        this.cart = cart;
+        this.cartsLength = cart.length;
+      });
+  
+      this.firebase.getWishlist().subscribe(data => {
+        this.books = data;
+        this.booksLength = data.length;
+      });
+    }, 2000);
+
   }
 
   heaImage() {

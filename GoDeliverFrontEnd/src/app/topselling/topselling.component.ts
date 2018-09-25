@@ -8,12 +8,14 @@ import { BookService } from "../book.service";
 export class TopsellingComponent implements OnInit {
 
   books:any;
-  constructor(private bookService:BookService) { }
-
-  ngOnInit() {
+  constructor(private bookService:BookService) { 
     this.bookService.getTopSellingList().subscribe(data => {
       this.books=data;
     })
+  }
+
+  ngOnInit() {
+  
   }
 
 }
