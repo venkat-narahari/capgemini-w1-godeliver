@@ -477,63 +477,6 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		writtenByRepository.save(writtenBy16);
 
 		
-		BookListener book17 = new BookListener();
-		book17.setBookISBN_10("89665");
-		book17.setTitle("The Amityville Horror");
-		book17.setRating(9f);
-		book17.setPoster("https://images-na.ssl-images-amazon.com/images/I/51JGWSQoIWL._SX303_BO1,204,203,200_.jpg");
-		book17.setVolume("333000ccm");
-		book17.setAuthor("Jay Anson");
-		book17.setPublisher("Sai Teja");
-		book17.setGenre("Horror");
-		book17.setCost("471.00");
-		book17.setPublishedYear("2013");
-		book17.setPages("356 pages");
-		book17.setDescription(
-				"Provides a chilling account account of the four weeks of terror experienced by an Amityville, Long Island, family after moving into a house in which a particularly gruesome mass murder had once been committed. Reissue.");
-		book17.setLanguage("English");
-		bookRepository.save(book17);
-		
-		Genre genre17 = new Genre(book17.getGenre());
-		genreRepository.save(genre6);
-		
-		OfType ofType17 = new OfType(book17, genre17);
-		ofTypeRepository.save(ofType17);
-		
-		Author author17 = new Author(book17.getAuthor());
-		authorRepository.save(author17);
-		
-		WrittenBy writtenBy17= new WrittenBy(book17, author17);
-		writtenByRepository.save(writtenBy17);
-		
-		BookListener book18 = new BookListener();
-		book18.setBookISBN_10("965439");
-		book18.setTitle("The Black Book of Horror: Bk. 1");
-		book18.setRating(7f);
-		book18.setPoster("https://images-na.ssl-images-amazon.com/images/I/51O6XZ8YnyL._SX311_BO1,204,203,200_.jpg");
-		book18.setVolume("352000ccm");
-		book18.setAuthor("Charles Black");
-		book18.setPublisher("Sumanth");
-		book18.setGenre("Horror");
-		book18.setCost("1179.00");
-		book18.setPublishedYear("2014");
-		book18.setPages("321 pages");
-		book18.setDescription(
-			"The Black Book of Horror contains 18 excursions into the realms of terror. Ranging from the supernatural to the macabre, the stories selected for this anthology feature black magic, the dead, monstrous beasts, and things from beyond. There are tales that witness madness, and the evil that man does. Contents: CROWS - Frank Nicholas REGINA vs. ZOSKIA - Mark Samuels THE OLDER MAN - Gary Fry POWER - Steve Goodwin CORDS - Roger B. Pile THE SOUND OF MUZAK - Sean Parker SHAPED LIKE A SNAKE - D. F. Lewis ONLY IN YOUR DREAMS - David A. Sutton THE WOLF AT JESSIE'S DOOR - Paul Finch SIZE MATTERS - John L. Probert SPARE RIB: A ROMANCE - John Kenneth Dunham FAMILY FISHING - Gary McMahon SUBTLE INVASION - David Conyers A PIE WITH THICK GRAVY - D. F. Lewis LOCK-IN - David A. Riley LAST CHRISTMAS (I GAVE YOU MY LIFE) - Franklin Marsh \"SHALT THOU KNOW MY NAME?\" - Daniel McGachey TO SUMMON A FLESH EATING DEMON - Charles Black");
-		book18.setLanguage("English");
-		bookRepository.save(book18);
-		
-		Genre genre18 = new Genre(book18.getGenre());
-		genreRepository.save(genre18);
-		
-		OfType ofType18 = new OfType(book18, genre18);
-		ofTypeRepository.save(ofType18);
-		
-		Author author18 = new Author(book18.getAuthor());
-		authorRepository.save(author18);
-		
-		WrittenBy writtenBy18= new WrittenBy(book18, author18);
-		writtenByRepository.save(writtenBy18);
 		
 		
 		BookListener book19 = new BookListener();
@@ -564,36 +507,6 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		
 		WrittenBy writtenBy19= new WrittenBy(book19, author19);
 		writtenByRepository.save(writtenBy19);
-		
-		
-		BookListener book20 = new BookListener();
-		book20.setBookISBN_10("6544332");
-		book20.setTitle("Barefoot to Boots: The Many Lives of Indian Football");
-		book20.setRating(5f);
-		book20.setPoster("https://images-na.ssl-images-amazon.com/images/I/51kbZjIpmFL._SX310_BO1,204,203,200_.jpg");
-		book20.setVolume("400000ccm");
-		book20.setAuthor("Novy Kapadia");
-		book20.setPublisher("Venkat");
-		book20.setGenre("Sports");
-		book20.setCost("191.00");
-		book20.setPublishedYear("2017");
-		book20.setPages("321pages");
-		book20.setDescription("A thrilling account of the incredible journey of Indian football\n" + "\n"
-				+ "Few football-crazy fans today may be aware that India was once called the 'Brazil of Asia'. Or that the competition between East Bengal and Mohun Bagan is ranked among the top fifty club rivalries in the world. Brilliant players, world-class coaches and passionate fans-including political leaders and film celebrities-once combined to make India a football-worshipping nation. A major source of sports entertainment in India, football ");
-		book20.setLanguage("English");
-		bookRepository.save(book20);
-		
-		Genre genre20 = new Genre(book20.getGenre());
-		genreRepository.save(genre20);
-		
-		OfType ofType20= new OfType(book20, genre20);
-		ofTypeRepository.save(ofType20);
-		
-		Author author20 = new Author(book20.getAuthor());
-		authorRepository.save(author20);
-		
-		WrittenBy writtenBy20= new WrittenBy(book20, author20);
-		writtenByRepository.save(writtenBy20);
 		
 		
 		
@@ -839,37 +752,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		WrittenBy writtenBy29= new WrittenBy(book29, author29);
 		writtenByRepository.save(writtenBy29);
 		
-		BookListener book30 = new BookListener();
-		book30.setBookISBN_10("978665");
-		book30.setTitle("Rafa: My Story");
-		book30.setRating(6f);
-		book30.setPoster("https://images-na.ssl-images-amazon.com/images/I/51io57Ii5kL._SX316_BO1,204,203,200_.jpg");
-		book30.setVolume("380000ccm");
-		book30.setAuthor("Rafael Nadal and John Carlin");
-		book30.setPublisher("Haritha");
-		book30.setGenre("Sports");
-		book30.setCost("459.00");
-		book30.setPublishedYear("2018");
-		book30.setPages("356 pages");
-		book30.setDescription(
-				"Rafa: My Story written by Rafael Nadal and John Carlin is an astonishing account through the eyes of the elite tennis player. This autobiography, serves up a smashing report of his life - on and off the court. It provides revealing insights about a supreme athlete known for his reticence and modesty.\n"
-						+ "\n"
-						+ "Born in Mallorca, a tiny island off the coast of Spain, is where he returns to rejuvenate his mind and body after gruelling tennis seasons the");
-		book30.setLanguage("English");
-		bookRepository.save(book30);
 		
-		Genre genre30 = new Genre(book30.getGenre());
-		genreRepository.save(genre30);
-		
-		OfType ofType30 = new OfType(book30, genre30);
-		ofTypeRepository.save(ofType30);
-		
-		Author author30 = new Author(book30.getAuthor());
-		authorRepository.save(author30);
-		
-		WrittenBy writtenBy30= new WrittenBy(book30, author30);
-		writtenByRepository.save(writtenBy30);
-
 		
 		BookListener book31 = new BookListener();
 		book31.setBookISBN_10("986086");
