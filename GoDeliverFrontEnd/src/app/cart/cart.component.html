@@ -16,7 +16,7 @@
           <tbody>
             <tr *ngFor="let item of carts; let i = index">
               <td data-label="Product Name">
-                <h4>{{item.title}}</h4>
+                <a routerLink="../book/{{ item.bookISBN_10 }}"><h4>{{item.title}}</h4></a>
               </td>
               <td data-label="Product Price">
                 <h4>Rs {{item.cost}}</h4>
