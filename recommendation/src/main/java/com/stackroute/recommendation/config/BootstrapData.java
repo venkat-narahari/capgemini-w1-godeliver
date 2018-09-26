@@ -446,21 +446,19 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		writtenByRepository.save(writtenBy15);
 		
 		BookListener book16= new BookListener();
-		book16.setBookISBN_10("744437");
-		book16.setTitle("Twice the Chill: Two SHORT Horror Stories");
-		book16.setRating(5f);
-		book16.setPoster("https://images-eu.ssl-images-amazon.com/images/I/516KRbgw55L.jpg");
-		book16.setVolume("352000ccm");
-		book16.setAuthor("Rachel A Olson");
-		book16.setPublisher("Shirisha");
+		book16.setBookISBN_10("89665");
+		book16.setTitle("The Amityville Horror");
+		book16.setRating(9f);
+		book16.setPoster("https://images-na.ssl-images-amazon.com/images/I/51JGWSQoIWL._SX303_BO1,204,203,200_.jpg");
+		book16.setVolume("333000ccm");
+		book16.setAuthor("Jay Anson");
+		book16.setPublisher("Sai Teja");
 		book16.setGenre("Horror");
-		book16.setCost("77.00");
-		book16.setPublishedYear("2012");
-		book16.setPages("15 pages");
+		book16.setCost("471.00");
+		book16.setPublishedYear("2013");
+		book16.setPages("356 pages");
 		book16.setDescription(
-				"Sometimes it's hard to believe there really are creatures that go bump in the night. Bey had spent his entire life running through the woods and never once saw anything to convince him there were creatures worth fearing. When his littler sister, Chensei, whines about the trip home at night, Bey only mocks her. Until she disappears beyond the treeline.\n"
-						+ "\n" + "I, PONTIANAK\n" + "\n"
-						+ "Everyone hates and fears monsters, except for when you’re the monster. I never asked for it, and honestly I can’t say I’ve really enjoyed it. But I am what I am, and I can’t change it. Hell, I can’t even control it. My name used to be Anastasia, and I am a Pontianak.");
+				"Provides a chilling account account of the four weeks of terror experienced by an Amityville, Long Island, family after moving into a house in which a particularly gruesome mass murder had once been committed. Reissue.");
 		book16.setLanguage("English");
 		bookRepository.save(book16);
 		
