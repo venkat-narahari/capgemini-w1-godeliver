@@ -1,0 +1,44 @@
+<div class="component-body">
+    <div *ngIf="wishlist.length!=0;else empty">
+        <div class="container">
+            <div *ngIf=wishlist>
+                <h2 class="mt-5">Wishlist</h2>
+                <div class="row mb-3">
+                    <div class="col-sm-3" *ngFor="let book of wishlist | paginate: { itemsPerPage: 8, currentPage: p }">
+                        <div class="component-body">
+                            <mat-card class="book-card mt-3 mb-3 text-center">
+                                <img mat-card-image src="{{ book.poster }}" style="height:30vh; width:auto; background-size: cover;"
+                                    alt="Photo of a {{book.title}}" routerLink="book/{{ book.bookISBN_10 }}">
+                                <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
+                                    <mat-card-title class="title">
+                                        <h6 class="title">{{ (book.title.length>20)? (book.title |
+                                            slice:0:18)+'..':(book.title) }}</h6>
+                                    </mat-card-title>
+                                    <mat-card-subtitle>{{book.genre}}<div fxFlex></div> ₹ {{book.cost}}</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-actions class="container">
+                                    <button (click)="addToCart(book)" class="btn btn-danger">
+                                        <span class="fa fa-shopping-cart fa-lg"></span> Quick Add
+                                    </button>
+                                    <div fxFlex></div>
+                                    <mat-icon class="example-icon">
+                                        <a (click)="removeFromWishlist($event, book)"><i class="fa fa-heart fa-md"></i></a>
+                                    </mat-icon>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <pagination-controls (pageChange)="p =$event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #empty>
+        <div class="text-center">
+            <h1 class="italics mt-5">Your wishlist is empty</h1>
+        </div>
+        <img src="assets/cartempty.svg" class="img-responsive" />
+    </ng-template>
+</div>

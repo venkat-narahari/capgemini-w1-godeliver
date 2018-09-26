@@ -1,0 +1,83 @@
+<!-- Home paage-->
+
+<div class="component-body">
+  <!-- Home page Carousel display -->
+  <!--carousel image1-->
+  <div *ngIf=check>
+
+    <div id="demo" class="carousel slide mt-2 mb-2" data-ride="carousel">
+
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <a routerLink="/topselling">
+            <img src="assets/1.png" alt="Los Angeles" style="width:100%; height:55%;max-height: 400px">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a routerLink="/toprated">
+            <img src="assets/2.jpg" alt="Chicago" style="width:100%; height: 55%; max-height: 400px">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a routerLink="/allbooks">
+            <img src="assets/3.jpg" alt="New York" style="width:100%;height: 55%; max-height: 400px">
+          </a>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+
+    </div>
+
+  </div>
+  <div class="container">
+    <!--Searchbar for books-->
+    <div class="row justify-content-center">
+      <div class="col-sm-8 mb-2 mt-1">
+        <form>
+          <div class="container">
+            <div class="input-group">
+              <input type="text" class="form-control" autocomplete="off" placeholder="Search your favourite books here"
+                name="search" [(ngModel)]="search">
+              <span class="input-group-btn">
+                <button class="btn-block btn-danger rounded-0 form-control" (click)="searchBooks()"><i class="fa fa-search fa-fw"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Div class to display the search result using bookservice-->
+  <div class="container">
+    <div *ngIf=books_result>
+      <h2>Search Result</h2>
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let book of books_result; let i = index">
+          <br>
+          <div *ngIf='i < 4'>
+            <app-cards [book]=book></app-cards>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- routing to recommendations-->
+<div class="container">
+  <app-recommendations></app-recommendations>
+</div>

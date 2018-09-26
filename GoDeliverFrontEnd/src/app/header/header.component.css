@@ -1,0 +1,30 @@
+a{
+    color: black !important;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    margin: 10px;
+}
+
+a:hover{
+    color: rgb(196, 17, 17) !important;
+    margin: 10px;
+    font-weight: 900;
+    background-color: transparent !important;
+}
+
+.logo-style{
+  background-color: rgb(196, 17, 17);
+  color: white;
+}
+
+.badge{
+  margin-left: 3px;
+  font-size: 12px;
+  color: white;
+  background-color: red;
+}
+
+nav{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

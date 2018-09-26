@@ -1,0 +1,25 @@
+.component-body{
+  height: 100%;
+  margin: 2%;
+}
+
+.fa-close{
+  color: red;
+}
+
+.fa-close:hover{
+  color: white;
+}
+
+.btn.btn-xs.btn-default{
+  border-radius: 50%;
+}
+
+.btn.btn-xs.btn-default:hover{
+  border-radius: 50%;
+  background-color: red;
+}
+a{
+  color: black !important;
+  text-decoration: none;
+}

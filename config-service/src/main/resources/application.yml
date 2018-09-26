@@ -1,0 +1,24 @@
+server:
+  port: "9071"
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tejakathari007/go-deliver
+          force-pull: 'true'
+
+eureka:
+  client:
+    register-with-eureka: "true"
+    fetch-registry: "true"
+    service-url:
+      defaultZone: http://10.20.1.206:9070/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

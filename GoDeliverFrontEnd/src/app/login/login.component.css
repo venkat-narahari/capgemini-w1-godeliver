@@ -1,0 +1,82 @@
+/*css for login page*/
+.component-body{
+  height: 100%;
+}
+
+.container-fluid {
+  text-align: center;
+  margin: 0 auto;
+  height: 75vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top:30%;
+}
+.landing-background{
+  width:100%;
+  position: relative;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 320px) {
+  .container-fluid {
+    text-align: center;
+    margin: 0 auto;
+    height: 75vh;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+
+    .landing-background {
+      opacity: 0.7;
+      max-width: 100%;
+      position: relative;
+      z-index: 0;
+    }
+}
+
+.mat-form-field{
+  font-size: 12px
+}
+
+.example-form {
+  position: relative;
+  min-width: 100px;
+  max-width: 400px;
+  height: auto;
+  text-align: center;
+}
+
+.loginButton {
+  margin: 2% 0% 5% 0%;
+  background-color: rgb(196, 17, 17);
+  color: white;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.loginButton:hover {
+  margin: 2% 0% 5% 0%;
+  background-color: rgb(196, 17, 17,0.6);
+  color: white;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+
+
+
+.register {
+  position: relative;
+  color: blue;
+}
+mat-form-field {
+  width: 100%;
+}
+mat-card {
+  text-align: center;
+  top: 30%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}

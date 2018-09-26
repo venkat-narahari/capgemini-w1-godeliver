@@ -1,0 +1,17 @@
+.button{
+    background-color:orange;
+}
+.order{
+    height:320px;
+    margin-left:20px;
+    background-color: E0E0E0;
+}
+.component-body{
+    height: 100%;
+    margin-top: 2%;
+}
+.protect{
+    height:auto;
+    margin-left:20px;
+    background-color: E0E0E0;
+}

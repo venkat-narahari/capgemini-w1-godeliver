@@ -1,0 +1,61 @@
+agm-map {
+  height:70vh;
+}
+
+.col-md-3.title-a{
+  box-shadow: none;
+}
+
+.container-body{
+    margin: 5% 2% 2% 2%;
+    height: 100%;
+}
+
+.row{
+  margin: 2px;
+}
+
+.col-md-3{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 1%;
+  border-radius: 5px;
+}
+
+canvas{
+  width: 100%;
+}
+
+.timings{
+  box-shadow: none;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.buttons{
+  margin: 1%;
+  box-shadow: none;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.modal-dialog {
+	max-width: 90% !important;
+	height: 100% !important;
+	opacity: 1;
+}
+
+.modal-content {
+	height: auto;
+	width: 100%;
+}
+
+.col-md-4{
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.btn-danger{
+  background-color: rgb(196,17,17) !important;
+}

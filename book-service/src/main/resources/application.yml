@@ -1,0 +1,7 @@
+
+spring:
+  application:
+    name: book-ms
+server:
+  port: 9077
+      

@@ -1,13 +1,15 @@
-FROM java:8
+FROM java:8-jre
+
+MAINTAINER teja "tejakathari007@gmail.com"
 
 RUN mkdir /src
 
 WORKDIR /src
 
-ADD target/configuration-service-1.0.0.jar /src/centralizedconfig.jar
+COPY target/configuration-service-1.0.0.jar /src/configuration-service-1.0.0.jar
 
-EXPOSE 8891
+EXPOSE 9071
 
-RUN sh -c 'touch /src/centralizedconfig.jar'
+RUN sh -c 'touch /src/configuration-service-1.0.0.jar'
 
-ENTRYPOINT ["java", "-jar","/src/centralizedconfig.jar"]
+ENTRYPOINT ["java", "-jar","/src/configuration-service-1.0.0.jar"]

@@ -1,0 +1,45 @@
+.component-body{
+  height: 100%;
+  margin: 2%;
+}
+
+.monospaced {
+  font-family: "Ubuntu Mono", monospaced;
+}
+.add-to-cart .btn-qty {
+  width: 52px;
+  height: 46px;
+}
+.add-to-cart .btn {
+  border-radius: 0;
+}
+.image img {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.buybutton{
+    background-color: #fb641b;
+    color:#fff;
+}
+
+.desc{
+  margin: 0% 9% 0% 9%;
+}
+
+.desc a{
+  color: white;
+  text-decoration: none;
+}
+
+ul.nav.nav-tabs{
+  background-color: rgb(196,17,17);
+}
+
+.book-title{
+  font-size: 5vh;
+}
+.product-price{
+  font-size: 3vh;
+}

@@ -1,0 +1,32 @@
+<!-- cards to display books -->
+<div class="component-body mt-3 mb-3">
+  <div class="outlayer">
+  <mat-card class="book-card text-center">
+    <img mat-card-image src="{{ book.poster }}" style="height:30vh; width:auto; background-size: cover;" alt="Photo of a {{book.title}}" routerLink="book/{{ book.bookISBN_10 }}">
+    <mat-card-header routerLink="book/{{ book.bookISBN_10 }}">
+      <mat-card-title class="title">
+        <h6 class="title">{{ (book.title.length>20)? (book.title | slice:0:17)+'..':(book.title) }}</h6>
+      </mat-card-title>
+          <mat-card-subtitle>{{book.genre}}<div fxFlex></div> ₹ {{book.cost}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions class="container">
+      <button (click)="addToCart(book)" class="btn btn-danger">
+        <span class="fa fa-shopping-cart fa-lg"></span> Quick Add
+      </button>
+      <div fxFlex></div>
+      <div *ngIf=email>
+        <div *ngIf=like>
+          <mat-icon class="example-icon">
+            <a (click)="addToWishlist(book)"><i class="fa fa-heart fa-md"></i></a>
+          </mat-icon>
+        </div>
+        <div *ngIf=!like>
+          <mat-icon class="example-icon">
+            <a (click)="addToWishlist(book)"><i class="fa fa-heart-o fa-md"></i></a>
+          </mat-icon>
+        </div>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+</div>

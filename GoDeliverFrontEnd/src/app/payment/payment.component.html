@@ -1,0 +1,61 @@
+<div class="component-body">
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="default"
+  color="#fff"
+  type="ball-circus"></ngx-spinner>
+<div class="container" style="padding-top:65px">
+  <div class="row mb-4 ml-1" style="align-self:center">
+
+    <mat-card style="margin:auto">
+      <!-- <form #myForm="ngForm" (ngSubmit)="onSubmit()"> -->
+      <h2 style="margin-left:20px">Card Details</h2>
+      <form #myForm="ngForm">
+        <div class="form-row">
+          <!-- <label> -->
+          <!-- <span>Card Number</span> -->
+          <mat-form-field style="width:80%;margin-left:10px">
+            <input matInput type="number" [(ngModel)]="cardNumber" autocomplete="off" name="card-number" type="text" size="20" placeholder="Cardnumber  (Eg: XXXX XXXX XXXX XXXX)"
+              data-stripe="number" maxlength="16" minlength="16" required>
+          </mat-form-field>
+          <!-- </label> -->
+        </div>
+        <div class="form-row">
+          <!-- <label> -->
+          <!-- <span>Expiration (MM/YY)</span> -->
+          <mat-form-field style="margin-left:10px">
+            <input type="number" matInput [(ngModel)]="expiryMonth" name="expiry-month" autocomplete="off" type="text" placeholder="Expiry month (MM)"
+              size="2" data-stripe="exp_month" min="1" max="12" maxlength="2" required>
+            <!-- <div *ngIf="f.month.errors.required">Password is required</div> -->
+          </mat-form-field>
+          <!-- </label> -->
+          <!-- <span> /</span> -->
+          <p class="slash" style="margin-top:20px; margin-left:10px">/</p>
+          <mat-form-field style="margin-left:10px">
+            <input matInput [(ngModel)]="expiryYear" name="expiry-year" type="text" autocomplete="off" placeholder="YY" size="2"
+              data-stripe="exp_year" required>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <!-- <label> -->
+          <!-- <span>CVC</s pan> -->
+          <mat-form-field style="margin-left:10px">
+            <input type="number" matInput [(ngModel)]="cvc" name="cvc" type="password" size="4" autocomplete="off" placeholder="CVC"
+              data-stripe="cvc" maxlength="3" required>
+          </mat-form-field>
+          <!-- </label> -->
+        </div>
+        <!-- <button type="submit" [disabled]="!myForm.form.valid" class="btn btn-primary">Submit</button> -->
+        <button type="submit" [disabled]="!myForm.form.valid" appNoDblClick (click)="chargeCreditCard()" (click)="openSpinner()" class="btn btn-danger">Submit</button>
+        <div *ngIf="(!msg)">
+          <p style="color:red">{{msg1}}</p>
+        </div>
+        <div *ngIf="(msg)">
+        <p style="color:green">{{msg}}</p>
+      </div>
+<p> {{sum}}</p>
+      </form>
+    </mat-card>
+  </div>
+</div>
+</div>

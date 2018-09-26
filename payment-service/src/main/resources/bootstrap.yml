@@ -1,0 +1,10 @@
+server:
+  port: "9079"
+spring:
+  application:
+    name: payment-service
+  cloud:
+    config:
+      uri: http://10.20.1.206:9071
+
+

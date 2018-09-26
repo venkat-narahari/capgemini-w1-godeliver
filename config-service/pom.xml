@@ -9,7 +9,7 @@
 
 	<parent>
 		<groupId>com.stackroute</groupId>
-		<artifactId>boeing-w1-test</artifactId>
+		<artifactId>capgemini-w1-godeliver-test</artifactId>
 		<version>1.0.0</version>
 		<!-- <relativePath/> lookup parent from repository -->
 	</parent>
@@ -19,7 +19,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies>
+<dependencies>
 	<!-- centralised config related dependency -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -29,6 +29,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- Micormeter core dependecy -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+		</dependency>
+		<!-- Micrometer Prometheus registry -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -64,11 +74,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<!--old working one -->
-	<!-- <dependencyManagement> <dependencies> <dependency> <groupId>org.springframework.cloud</groupId> 
-		<artifactId>spring-cloud-dependencies</artifactId> <version>Finchley.M9</version> 
-		<type>pom</type> <scope>import</scope> </dependency> </dependencies> </dependencyManagement> -->
-
+	
 	<build>
 		<plugins>
 			<plugin>

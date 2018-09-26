@@ -1,0 +1,18 @@
+server:
+  port: "9076"
+spring:
+  application:
+    name: order-ms
+  cloud:
+    config:
+      uri: http://10.20.1.206:9071
+
+
+
+#spring.data.mongodb.database=orderdetails
+#spring.data.mongodb.host=localhost
+#spring.data.mongodb.port=27017
+#spring.data.mongodb.uri=mongodb://localhost/orderdetails
+#spring.data.mongodb.username=
+#spring.data.mongodb.password=root123
+#server.port=8081

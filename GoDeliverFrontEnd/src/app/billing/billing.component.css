@@ -1,0 +1,15 @@
+.component-body{
+  height: 100%;
+  margin-top: 5%;
+}
+.billing-card{
+  margin-bottom: 30px;
+  width: 100%;
+  padding-left: 30px;
+}
+.title{
+  color: white;
+}
+mat-card-title{
+  border-radius: 2px;
+}

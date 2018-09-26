@@ -1,0 +1,12 @@
+.book-card {
+    max-width: 340px;
+  }
+
+  .book-header-image {
+    background-image: url('../../assets/books.ico');
+    background-size: cover;
+  }
+
+  h4{
+    font-weight: 900;
+  }

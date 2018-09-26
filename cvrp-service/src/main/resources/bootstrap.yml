@@ -1,0 +1,9 @@
+server:
+  port: "9078"
+
+spring:
+  application:
+    name: cvrp-ms
+  cloud:
+    config:
+      uri: http://10.20.1.206:9071

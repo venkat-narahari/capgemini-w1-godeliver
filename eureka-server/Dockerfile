@@ -1,13 +1,14 @@
-FROM java:8
+FROM java:8-jre
+MAINTAINER teja "tejakathari007@gmail.com"
 
 RUN mkdir /src
 
 WORKDIR /src
 
-ADD target/eureka-server-1.0.0.jar /src/eureka.jar
+COPY target/eureka-server-1.0.0.jar /src/eureka-server-1.0.0.jar
 
-EXPOSE 9090
+EXPOSE 9070
 
-RUN sh -c 'touch /src/eureka.jar'
+RUN sh -c 'touch /src/eureka-server-1.0.0.jar'
 
-ENTRYPOINT ["java","-jar","/src/eureka.jar"]
+ENTRYPOINT ["java","-jar","/src/eureka-server-1.0.0.jar"]

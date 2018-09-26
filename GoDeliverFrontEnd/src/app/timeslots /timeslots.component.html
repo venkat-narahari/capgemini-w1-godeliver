@@ -1,0 +1,123 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="default" color="#fff" type="ball-circus">
+    <p style="font-size: 20px; color: white">Please Wait...</p>
+</ngx-spinner>
+
+<div class="component-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <mat-card style="border-radius: 8px;margin-top:10px">
+                    <div class="row">
+                        <h2 class="text-center m-4">Select your time slot for delivery!</h2>
+                        <div *ngFor="let slots of slotsFinal;let i=index" style="padding-left:60px;">
+                            <mat-card style="border-radius:8px; width:150px;">
+                                <input type="radio" class="radio-button" name="timeslots" [disabled]="!slots.slotAvailability"
+                                    (click)="radioselected(slots, i)">
+                                <label style="margin-left:5px">{{timeslots[i]}}
+                                </label>
+                                <div *ngIf="!slots.slotAvailability">
+                                    <p style="color:Red;padding-left:10px"> Unavailable</p>
+                                </div>
+                                <div *ngIf="slots.slotAvailability">
+                                    <p style="color:green;padding-left:10px">Available</p>
+                                </div>
+                                <div *ngIf="isRadioSelect1()">
+                                    <div *ngIf="slots.slotAvailability">
+                                        <div *ngIf="(slots.slotCosts==0)">
+                                            <p>free</p>
+                                        </div>
+                                        <div *ngIf="(slots.slotCosts!=0)">
+                                            <p>₹{{slots.slotCosts | number:'1.1-2' }}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </mat-card>
+
+                        </div>
+
+                    </div>
+                    <div class="text-center">
+                        <button class=" mt-5 p-2 btn btn-danger" routerLink="/billing">
+                            Change Date?
+                        </button>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="col-sm-4">
+                <mat-card class="order">
+                    <mat-card-title>
+                        <b>Order Details</b>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div class="table-responsive">
+                            <thead>
+                                <tr>
+                                    <td style="width: 140px">
+                                        <h5>Total Items</h5>
+                                    </td>
+                                    <td>
+                                        <h5>{{ totalQuantity()}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px">
+                                        <h5>Amount Payable</h5>
+                                    </td>
+                                    <td>
+                                        <h5>₹ {{ getSum()}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px">
+                                        <h5>Tax </h5>
+                                    </td>
+                                    <td>
+                                        <h5>₹ {{ getTax() | number :'1.1-2'}}</h5>
+                                    </td>
+                                </tr>
+                                <hr class="horizantal" style="color:rgb(3, 3, 29)">
+                                <tr>
+                                    <td style="width: 140px">
+                                        <h5>Delivery Charges</h5>
+                                    </td>
+                                    <td>
+                                        <h5>₹ {{ slotFinalPrice | number :'1.1-2'}}</h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 140px">
+                                        <h5>Total Charges</h5>
+                                    </td>
+                                    <td>
+                                        <h5> ₹ {{ finalPriceA | number :'1.1-2'}}</h5>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="protect mt-4">
+                    <mat-card-content>
+                        <div class="table-responsive">
+                            <thead>
+                                <tr>
+                                    <td style="width: 45px">
+                                        <img src="assets/protect.png">
+                                    </td>
+                                    <td>
+                                        Safe and Secure Payments. Easy Returns. 100% safety products
+                                    </td>
+                                </tr>
+                            </thead>
+                        </div>
+                        <button [disabled]="!timeslots" (click)="paymentRoute()" class="btn btn-primary btn-block"
+                            style="margin-top:20px">
+                            Proceed To Payment
+                        </button>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+        </div>
+    </div>

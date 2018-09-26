@@ -1,43 +1,347 @@
 version: '2.1'
 
 services:
-  eureka-server:
-    build: eureka-server/
-    depends_on:
-      config-service:
-        condition: service_healthy
-    restart: always
+
+#angular
+  godeliverfrontend:
+    build: GoDeliverFrontEnd/
+    image: godeliverfrontend
+    container_name: godeliverfrontend
     network_mode: "host"
-    image: demo-eureka-service
     hostname: localhost
     ports:
-      - 9090:9090
+      - 4200:4200   
+    restart: always
     healthcheck:
       test: "exit 0"
 
-  config-service:
-    build: config-service/
-    restart: always
+#orderdetails microservice
+
+  order-details:
+    build: order-details/
+    image: order-details
+    container_name: order-details
     network_mode: "host"
-    image: demo-config-service
     hostname: localhost
     ports:
-      - 8891:8891
+      - 9076:9076
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
     healthcheck:
       test: "exit 0"
+      
+#logistics microservice
+
+  logistics-service:
+    build: logistics-service/
+    image: logistics-service
+    container_name: logistics-service
+    network_mode: host
+    hostname: localhost
+    ports:
+      - 9080:9080
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+
+#userlogin microservice
+
+  user-login:
+    build: user-login/
+    image: user-auth
+    container_name: user-login
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9074:9074
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mysql-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#userprofile microservice
+        
+  user-profile:
+    build: user-profile/
+    image: user-profile
+    container_name: user-profile
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9073:9073
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+        
+#bookservice microservice
+        
+  book-service:
+    build: book-service/
+    image: book-service
+    container_name: book-service
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9077:9077
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+        
+#recommendation microservice
+        
+  recommendation:
+    build: recommendation/
+    image: recommendation
+    container_name: recommendation
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9075:9075
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      neo4j-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#payment microservice
+
+  payment-service:
+    build: payment-service/
+    image: payment-service
+    container_name: payment-service
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9079:9079
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#cvrp microservice
+
+  cvrp-service:
+    build: cvrp-service/
+    image: cvrp-service
+    container_name: cvrp-service
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9078:9078
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0" 
+        
+
+
+
+#eureka server
+
+  eureka-server:
+    build: eureka-server/
+    image: eureka-server
+    container_name: eureka-server
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9070:9070
+    restart: always
+    healthcheck:
+      test: "exit 0"
+    
+#config server
+    
+  config-service:
+    build: config-service/
+    image: config-server
+    container_name: config-server
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9071:9071
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#api gateway
 
   api-gateway:
     build: zuul-apigateway/
+    image: api-gateway
+    container_name: api-gateway
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9088:9088
     depends_on:
       config-service:
         condition: service_healthy
       eureka-server:
         condition: service_healthy
     restart: always
+    healthcheck:
+      test: "exit 0"
+
+
+#Mysql database  
+  
+  mysql-database:
+    image: mysql:5.5
+    container_name: mysql-database
+    network_mode: "host"  
+    hostname: localhost
+    ports: 
+      - 3306:3306   
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=go_d
+      - MYSQL_PASSWORD=root
+      - MYSQL_USER=root
+    volumes:
+      - /opt/data:/var/lib/mysql
+    healthcheck:
+      test: exit 0
+        
+#Mongo database        
+        
+  mongo-database:
+    image: mongo
+    container_name: mongo-database
     network_mode: "host"
-    image: demo-zuul-service
     hostname: localhost
     ports:
-      - 8092:8092
+      - 27017:27017
+    volumes:
+      - /usr/src/home:/data/db
+    healthcheck:
+      test: exit 0
+        
+#Neo4j database        
+
+  neo4j-database:
+    image: neo4j
+    container_name: neo4j-database
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 7474:7474
+      - 7687:7687
+    environment: 
+      - NEO4J_AUTH=neo4j/godeliver@12
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_dbms_shell_enabled=true
+    volumes:
+      - $HOME/neo4j/data:/data
+    healthcheck:
+      test: "exit 0"
+
+
+
+
+#prometheus
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    network_mode: "host" 
+    hostname: localhost
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#grafana
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 3000:3000
+    volumes:
+      - /var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+        
+#zookeeper
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 2181:2181
+    restart: always
+    healthcheck:
+      test: "exit 0"
+    
+#kafka
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9092:9092
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://10.20.1.129:9092
+      KAFKA_LISTENERS: PLAINTEXT://10.20.1.129:9092
+      KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1, order_details:1:1, userprofile-login:1:1"
+    restart: always
     healthcheck:
       test: "exit 0"

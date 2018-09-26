@@ -1,0 +1,31 @@
+<div class="component-body">
+<mat-card class="delivery">
+  <mat-card-title>
+    <input type="radio" class="big" name="addresses" (click)="radioselected(address)" [value]="address">
+    <label class="name" style="padding-left: 3px;"> {{address.name}}
+    </label>
+  </mat-card-title>
+  <mat-card-content class="content">
+    <div style="display:inline-block">
+      <p style="margin-left: 20px;">{{address.phone}}</p>
+      <p style="margin-left: 20px;">{{address.address}}</p>
+      <p style="margin-left: 20px;">{{address.email}}</p>
+    </div>
+  </mat-card-content>
+  <div *ngIf="isRadioSelect()">
+    <div>
+      <mat-form-field style="margin-left: 35px;" >
+          <input matInput [matDatepicker]="picker"[(ngModel)]="date" autocomplete="off"  placeholder="Delivery date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+     </div>
+    <button (click)="orderDetails(address.address, address.phone, address.name, address.city, address.addLat, address.addLng)" [disabled]="!date"  type="submit" class="btn btn-block-sm text-white"
+      style="background-color:#fb641b;width:130px;margin-left:30px; margin-bottom: 10px;">Deliver
+      Here
+    </button>
+    <button class="btn btn-block-sm" style="background-color:rgb(245, 236, 236);width:130px;margin-left:30px; margin-bottom: 10px;"
+      (click)="deleteAddress($event, address)">Delete<i class="fa fa-trash pl-4"></i></button>
+    </div>
+</mat-card>
+</div>

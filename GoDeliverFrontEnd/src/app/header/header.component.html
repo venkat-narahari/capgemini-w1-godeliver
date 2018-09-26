@@ -1,0 +1,63 @@
+<header>
+  <nav class="navbar navbar-expand-md bg-light m-0" id="nav">
+    <a class="navbar-brand" href="">
+      <img src="assets/books.ico" alt="logo" style="width:35px; display: inline-block;">
+      BooK<span class="logo-style">ShoP</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right border border-0" type="button" data-toggle="collapse" data-target="#navbar">
+        <span class="navbar-toggler-icon text-center">
+          <i class="fa fa-bars fa-lg"></i>
+        </span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbar">
+      <ul class="navbar-nav">
+        <li *ngIf=noUser class="nav-item">
+          <a class="nav-link" routerLink="/login" href="#">Login</a>
+        </li>
+
+        <li *ngIf=admin class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">{{ adminName }}</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/grafana">Grafana</a>
+            <a class="dropdown-item" routerLink="/prometheus">Prometheus</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </li>
+
+        
+
+        <li *ngIf=curUser class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              {{ curUser }}
+            </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/profile" href="#">User Profile</a>
+            <a class="dropdown-item" routerLink="/orders">Orders</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+            More
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="/about">About Us</a>
+            <a class="dropdown-item" routerLink="/return">Return Policy</a>
+            <a class="dropdown-item" routerLink="/servicepage">24x7 Customer Care</a>
+          </div>
+        </li>
+        <li *ngIf=curUser class="nav-item">
+          <a class="nav-link " routerLink="/wishlist">Wishlist</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" style="cursor:pointer">
+            <i class="fa fa fa-shopping-cart fa-lg">
+              <span class="badge">{{cartLength}}</span>
+            </i> Cart</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

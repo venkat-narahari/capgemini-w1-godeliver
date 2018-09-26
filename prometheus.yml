@@ -1,0 +1,94 @@
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+ 
+  - job_name: 'prometheus'
+    static_configs:
+    - targets: ['10.20.1.129:9090']
+
+
+  - job_name: 'eureka-server'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9070']
+
+
+  - job_name: 'config-server'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9071']
+
+
+  - job_name: 'apigateway'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9088']
+
+    
+  - job_name: 'user-profile'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9073'] 
+
+
+  - job_name: 'user-login'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9074']
+
+
+  - job_name: 'recommendation'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9075']
+
+    
+  - job_name: 'order-details'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9076']
+
+
+  - job_name: 'book-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9077']
+
+
+  - job_name: 'cvrp-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9078']
+
+
+  - job_name: 'payment-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9079']
+
+    
+  - job_name: 'logistics-service'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['10.20.1.206:9080']
+
+
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['10.20.1.129:3000']
+
+
+

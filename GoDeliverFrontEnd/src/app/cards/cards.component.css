@@ -1,0 +1,107 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.example-icon {
+  color: #b42929;
+}
+a{
+  cursor: pointer;
+}
+.fav {
+  padding-left:75%;
+  color:red;
+  cursor: pointer;
+}
+.title {
+  font-family: 'Cinzel', serif;
+  color:rgb(15, 15, 15);
+  cursor: pointer;
+}
+
+.component-body{
+  box-shadow: 0 8px 8px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.20);
+}
+
+.component-body:hover{
+  box-shadow: 0 8px 8px rgba(0,0,0,0.20), 0 10px 10px rgba(0,0,0,0.20);
+  opacity: 0.8;
+  border-bottom: 5px solid rgba(196,17,17,0.8);
+}
+
+
+
+/* mouse over link */
+.title:hover {
+  color:red;
+}
+
+._button {
+  display: inline-block;
+  font-weight: 500;
+  transition: box-shadow 0.2s ease;
+  vertical-align: super;
+  cursor: pointer;
+  outline: none;
+
+}
+
+mat-card{
+}
+mat-card{
+
+}
+
+mat-card-subtitle{
+  font-family: 'Lora', cursive;
+  font-weight: 500;
+  font-size: 15px;
+  text-transform: capitalize;
+  color:black;
+}
+
+
+
+body {
+  background: #F8E1C2;;
+  -webkit-font-smoothing: antialiased;
+  padding: 40px;
+  text-align: center;
+}
+
+.button {
+  border: none;
+  padding: 14px;
+  color: #fff;
+  margin: 0 10px;
+  background: #3D3240;
+  font-weight: 700;
+  border-radius: 4px;
+}
+.active {
+  background: #FF735C;;
+}
+.disabled {
+  background: #eee;
+  color: #aaa;
+}
+
+.fa.fa-heart{
+  color: red;
+  border-color: red;
+}
+
+.fa.fa-heart-o{
+  border-color: red;
+}
+
+mat-button{
+  background-color: none;
+}
+mat-button:hover{
+  background-color: none;
+}
+mat-button:focus{
+  background-color: none;
+  outline: none;
+  border: none;
+}

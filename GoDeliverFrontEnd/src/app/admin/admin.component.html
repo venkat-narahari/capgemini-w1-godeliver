@@ -1,0 +1,151 @@
+<div class="component-body">
+  <div class="container text-center mb-2">
+    <form>
+      <div class="row">
+        <div class="col-md-3 title-a">
+          <p class="text-xl-left mr-3 font-weight-bold" style="display:inline;font-size: 30px;">Slot Analytics</p>
+        </div>
+        <div class="col-md-8">
+          <mat-form-field class="example-full-width ">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="dateOfDelivery" name="dateOfDelivery" required placeholder="Analytics by date" style="margin-right:10px">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <button class="btn btn-danger rounded mr-3" (click)="onDate(dateOfDelivery)"><i class="fa fa-search"></i></button>
+          <button class="btn btn-danger rounded" data-toggle="modal" data-target="#modal2" (click)="getProfitLoss(dateOfDelivery)">Generate Slot Profits <i class="fa fa-area-chart"> </i></button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal fade" id="modal2">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Date: {{dateOfDelivery}}</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-8 p-2">
+              <p class="text-xl-left">Date-Slot Profits Generated(Charged Amount - Incurred Cost)</p>
+              <div *ngIf="profitCurve">
+                <canvas baseChart [data]="profitCurve" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="conatiner-fluid">
+    <div class="row justify-content-center timings-row">
+      <div class="col-md-3 justify-content-center timings">
+        <div class="container-fluid">
+          <p class="text-xl-center font-weight-bold">09:00-12:00</p>
+        </div>
+      </div>
+      <div class="col-md-3 justify-content-center timings">
+        <div class="container-fluid">
+          <p class="text-xl-center font-weight-bold">13:00-16:00</p>
+        </div>
+      </div>
+      <div class="col-md-3 justify-content-center timings">
+        <div class="container-fluid">
+          <p class="text-xl-center font-weight-bold">17:00-20:00</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-3" *ngFor="let slot of slots">
+        <div *ngIf="slot">
+          <canvas baseChart [data]="slot" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3" *ngFor="let vehiclesData of vehicleData">
+        <div *ngIf="vehiclesData">
+          <canvas baseChart [datasets]="vehiclesData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+            </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3 justify-content-center buttons">
+        <div class="container-fluid">
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(0,0)">Vehicle 1</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(0,1)">Vehicle 2</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(0,2)">Vehicle 3</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 justify-content-center  buttons">
+        <div class="container-fluid">
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(1,0)">Vehicle 1</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(1,1)">Vehicle 2</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(1,2)">Vehicle 3</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 justify-content-center buttons">
+        <div class="container-fluid">
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(2,0)">Vehicle 1</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(2,1)">Vehicle 2</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)="onVehicle(2,2)">Vehicle 3</button>
+          </div>
+        </div>
+      </div>
+      <!-- Modal for vehicle analytics -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Vehicle Analytics</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="row align-items-center">
+                <div class="col-md-4 p-2">
+                  <p class="text-xl-left">Vehicle {{vehicleSelected+1}}</p>
+                  <div *ngIf="vehicleCapacity">
+                    <canvas baseChart [data]="vehicleCapacity" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div *ngIf=origin>
+                    <agm-map [latitude]="lat" [longitude]="lng">
+                      <agm-direction [origin]="origin" [waypoints]="stops" [destination]="destination">
+                      </agm-direction>
+                    </agm-map>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

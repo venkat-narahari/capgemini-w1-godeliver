@@ -1,0 +1,115 @@
+.component-body{
+  height:100%;
+  background: url(https://media.giphy.com/media/4N93QVoz2gPkHshQ1D/giphy.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container-fluid {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-bottom: 2%
+}
+
+
+.container-fluid.container-card {
+  text-align: center;
+  margin: 0 auto;
+  height: auto;
+  width: 90%;
+  background: none;
+}
+
+.example-full-width {
+  width: 70%;
+}
+
+mat-card {
+  text-align: center;
+  top: 3%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+mat-card-title {
+  font-size: 17px;
+  font-weight: 900;
+}
+
+mat-step{
+  text-align: center;
+}
+
+.button-word {
+  color: white;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.button {
+  background-color: rgb(196, 17, 17);
+  color: white;
+  text-align: center;
+  font-size: 17px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 2%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  right: 0;
+}
+
+mat-button:hover{
+  background-color: rgb(196, 17, 17,0.6);
+}
+
+img {
+  width: 120px;
+  height: 80px;
+}
+
+.option-cards {
+  margin: 5%;
+  width: 120px;
+  height: 120px;
+}
+
+@media only screen and (max-width: 600px) {
+  img {
+    width: 60px;
+    height: 40px;
+  }
+
+  .option-cards {
+    margin: 5%;
+    width: 60px;
+    height: 60px;
+  }
+  mat-card-title {
+    font-size: 7px;
+    font-weight: 900;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="component-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 col-md-offset-3">
+
+        <!--form class for username and password  using Material-->
+        <form class="example-form  text-center" [formGroup]="userForm" #myForm="ngForm" (ngSubmit)="submit()" style="height:70%">
+          <mat-card>
+
+            <mat-form-field class="example-full-width" style="margin-top:18px">
+              <input matInput type="text" placeholder="Name" autocomplete="off" [formControl]="userName" name="userName"
+                required minlength="4">
+            </mat-form-field><br>
+
+            <mat-form-field>
+              <input matInput placeholder="Enter your email" autocomplete="off" [formControl]="userEmail" name="userEmail"
+                required>
+              <mat-error *ngIf="userEmail.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="example-full-width" style="margin-top:18px">
+              <input matInput type="area" placeholder="Query" autocomplete="off" [formControl]="userQuery" name="userQuery"
+                required>
+            </mat-form-field>
+            <br>
+
+            <button class="submit" [disabled]="!myForm.form.valid" mat-raised-button>Submit</button>
+            <br>
+          </mat-card>
+        </form>
+        <!--  end of form class-->
+      </div>
+    </div>
+  </div>
+</div>

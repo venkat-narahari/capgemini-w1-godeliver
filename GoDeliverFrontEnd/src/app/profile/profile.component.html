@@ -1,0 +1,66 @@
+<div class="container target">
+    <div class="row">
+        <div class="col-sm-10 capitalize">
+            <h1>{{userdata.userName }}</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+            <ul class="list-group">
+                <li class="list-group-item text-muted" contenteditable="false"><strong style="color:black;">Profile</strong></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Date of Birth</strong></span><br>
+                    {{(userdata.userDob.length>10)? (userdata.userDob | slice:0:10):(userdata.userDob)}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Email ID</strong></span><br>
+                    {{userdata.userEmail}}</li>
+                <li *ngFor="let ad of addre; let i=index" class="list-group-item text-right"><span class="pull-left"><strong
+                            class="">Phone Number</strong></span><br>
+                    <div *ngIf='i<1'> {{ad.phone}}</div>
+                </li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class="">Preferences</strong></span><br>
+                    {{userdata.userPreferences}}
+                </li>
+            </ul>
+
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i>
+
+                </li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/cart">My
+                                Cart</a></strong></span>
+                    {{ cartLength }}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/orders">My
+                                Orders</a></strong></span>
+                </li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/wishlist">Wishlist</a></strong></span>
+                    {{wishlistLength}}</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/setting">Settings</a></strong></span>
+                </li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong class=""><a routerLink="/deleteaccount">DeleteAccount</a></strong></span>
+                </li>
+            </ul>
+
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9" contenteditable="false">
+            <div class="panel panel-default target">
+                <div class="panel-heading" contenteditable="false"><b>Products I Own</b></div>
+                <div class="panel-body">
+                    <div class="row mb-3">
+                        <div class="col-sm-4" *ngFor="let book of top_selling; let i =index">
+                            <div *ngIf='i>29'>
+                                <app-cards [book]=book></app-cards>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="push"></div>
+</div>
+
+<script src="/plugins/bootstrap-select.min.js"></script>
+<script src="/codemirror/jquery.codemirror.js"></script>
+<script src="/beautifier.js"></script>
