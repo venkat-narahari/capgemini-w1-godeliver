@@ -265,7 +265,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		BookListener book9 = new BookListener();
 		book9.setBookISBN_10("123456");
 		book9.setTitle("The Rise of Sivagami : Book 1 of Baahubali - Before the Beginning ");
-		book9.setRating(7f);
+		book9.setRating(2f);
 		book9.setPoster("https://images-eu.ssl-images-amazon.com/images/I/518kK%2BoIdIL.jpg");
 		book9.setVolume("300000ccm");
 		book9.setAuthor("Anand Neelakantan");
@@ -296,7 +296,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		BookListener book10 = new BookListener();
 		book10.setBookISBN_10("987654");
 		book10.setTitle("The Girl in Room 105");
-		book10.setRating(5f);
+		book10.setRating(2f);
 		book10.setPoster("https://images-eu.ssl-images-amazon.com/images/I/413Ge3dy3qL.jpg");
 		book10.setVolume("300000ccm");
 		book10.setAuthor("Chetan Bhagat");
@@ -328,7 +328,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		BookListener book11 = new BookListener();
 		book11.setBookISBN_10("456378");
 		book11.setTitle("Thirteen Reasons Why (TV Tie-in)");
-		book11.setRating(9f);
+		book11.setRating(3f);
 		book11.setPoster("https://images-na.ssl-images-amazon.com/images/I/41YOGfaGsEL._SX324_BO1,204,203,200_.jpg");
 		book11.setVolume("400000ccm");
 		book11.setAuthor("Jay Asher");
@@ -358,7 +358,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		BookListener book12 = new BookListener();
 		book12.setBookISBN_10("438763");
 		book12.setTitle("Will You Still Love Me?");
-		book12.setRating(8f);
+		book12.setRating(3f);
 		book12.setPoster("https://images-na.ssl-images-amazon.com/images/I/51%2Bg-0Yqk2L._SX324_BO1,204,203,200_.jpg");
 		book12.setVolume("400000ccm");
 		book12.setAuthor("RAVINDER SINGH ");
