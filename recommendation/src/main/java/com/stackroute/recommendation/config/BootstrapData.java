@@ -786,8 +786,6 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		writtenByRepository.save(writtenBy31);
 		
 		
-
-		
 		String[] userPreferences=new String[] {"comic","adventure","action"};
 		User user=new User();
 		user.setUserName("stackroute");
