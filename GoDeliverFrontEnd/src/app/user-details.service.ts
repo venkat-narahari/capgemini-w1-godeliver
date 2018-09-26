@@ -17,7 +17,7 @@ export class UserDetailsService {
   addUser(user: UserDetails): Observable<UserDetails> {
 
     // To store the details through microservice into the database
-    console.log(user);
+   
     return this.http.post<UserDetails>(this.post_url, user);
   }
 
