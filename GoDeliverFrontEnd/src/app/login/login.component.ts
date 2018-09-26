@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
               '';
     }
     getErrorMessage2() {
-      return this.password.hasError('required') ? 'You must enter a value' :
+      return this.password.hasError('required') ? 'You must enter atleast 8 characters' :
 
               '';
     }

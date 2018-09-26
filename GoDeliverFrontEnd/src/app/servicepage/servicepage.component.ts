@@ -46,7 +46,6 @@ export class ServicepageComponent implements OnInit {
       this.model.email=this.userEmail.value; 
       this.model.name = this.userName.value;
       this.model.query = this.userQuery.value;
-      console.log(this.userName.value);
       this.firebaseService.addQuery(this.model);
       
     }
@@ -63,8 +62,8 @@ export class ServicepageComponent implements OnInit {
       return this.userForm.get('userQuery');
     }
     getErrorMessage() {
-      return this.email.hasError('required') ? 'You must enter a value' :
-          this.email.hasError('email') ? 'Not a valid email' :
+      return this.userEmail.hasError('required') ? 'You must enter a value' :
+          this.userEmail.hasError('userEmail') ? 'Not a valid email' :
               '';
     }
     

@@ -31,7 +31,19 @@ export class FirebaseService implements Resolve<any> {
   profileDoc: AngularFirestoreDocument<Profile>;
 
   idName: any;
-  constructor(public fs: AngularFirestore) {}
+  constructor(public fs: AngularFirestore) {
+    this.query = this.fs.collection("query");
+
+    this.queries = this.query.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(a => {
+          const data = a.payload.doc.data() as Query;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      )
+    );
+  }
 
   resolve() {
     if (JSON.parse(localStorage.getItem("uid")) != null) {
@@ -87,17 +99,7 @@ export class FirebaseService implements Resolve<any> {
       )
     );
 
-    this.query = this.fs.collection("query");
-
-    this.queries = this.query.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(a => {
-          const data = a.payload.doc.data() as Query;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        })
-      )
-    );
+   
   }
   getCart() {
     return this.carts;
@@ -108,6 +110,7 @@ export class FirebaseService implements Resolve<any> {
   }
 
   addQuery(queries: Query) {
+    console.log(queries);
     this.query.add(queries);
   }
 
@@ -194,7 +197,6 @@ export class FirebaseService implements Resolve<any> {
 
     //looping through docs in the collection to delete docs as a bulk operation
     qry.forEach(doc => {
-      console.log("deleting....", doc.id);
       batch.delete(doc.ref);
     });
     // finally commit
@@ -215,7 +217,6 @@ export class FirebaseService implements Resolve<any> {
 
     //looping through docs in the collection to delete docs as a bulk operation
     query.forEach(doc => {
-      console.log("deleting....", doc.id);
       batches.delete(doc.ref);
     });
     // finally commit
@@ -235,7 +236,6 @@ export class FirebaseService implements Resolve<any> {
 
     //looping through docs in the collection to delete docs as a bulk operation
     qery.forEach(doc => {
-      console.log("deleting....", doc.id);
       btches.delete(doc.ref);
     });
     // finally commit
