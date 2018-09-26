@@ -49,7 +49,7 @@ export class LogisticService {
     return this.data;
   }
  setSlot(newOrder){
-   return this.http.post(this.slot_url,JSON.stringify(newOrder), {headers});
+   return this.http.post(this.slot_url,newOrder);
  }
  setOrderDetails(newOrder) {
     return this.http.post(this.order_url,JSON.stringify(newOrder),{headers})

@@ -36,6 +36,7 @@ export class TimeslotsComponent implements OnInit {
   finalPriceA: any;
   public slotAvailability: any;
   public slotCost: any;
+  public sloT: number[]= [51.2, 0,29.7];
   public timeslots: string[] = ["9AM-12PM", "3PM-6PM", "6PM-9PM"];
   orderdetails: any;
   date: any;
@@ -146,7 +147,7 @@ export class TimeslotsComponent implements OnInit {
   }
 
   new() {
-    this.newOrder.newOrder.selectedSlot = this.time;
+    this.newOrder.newOrder.selectedSlot = this.time.toString();
      }
   isRadioSelect1() {
     return this.isRadioSelected;

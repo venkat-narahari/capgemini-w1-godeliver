@@ -94,10 +94,12 @@ export class PaymentComponent implements OnInit {
               this.deleteCredentials();
             }, 6000);
             this.msg = "Your Transaction is success";
-            this.logisticService.setSlot(this.slotDetails);
-            this.logisticService
-              .setOrderDetails(this.orderDetails)
-              .subscribe(data => {});
+//            this.logisticService.setSlot(this.slotDetails);
+           
+ //           this.logisticService
+              // .setOrderDetails(this.orderDetails)
+              // .subscribe(data => {});
+
           }
           this.orderId=this.orderDetails.orderId;
           
@@ -121,11 +123,13 @@ export class PaymentComponent implements OnInit {
         localStorage.removeItem("newOrder");
         localStorage.removeItem("totalVolume");
         this.router.navigate(['/order/'+this.orderId]);
+        console.clear();
       } else {
         localStorage.removeItem("currentUserPayment");
         localStorage.removeItem("newOrder");
         localStorage.removeItem("totalVolume");
         this.router.navigate(['/order/'+this.orderId]);
+        console.clear();
       }
     }
   }
@@ -143,7 +147,7 @@ export class PaymentComponent implements OnInit {
       this.carts = carts;
       this.totalLength = carts.length;
     });
-    this.orderDetails = JSON.parse(localStorage.getItem("orderDetails"));
+    this.orderDetails = JSON.stringify(localStorage.getItem("orderDetails"));
     this.slotDetails = JSON.parse(localStorage.getItem("newOrder"));
   }
 }
