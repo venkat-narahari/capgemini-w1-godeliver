@@ -31,7 +31,7 @@ export class PaymentComponent implements OnInit {
     private logisticService: LogisticService
   ) {}
   chargeCard(token: string) {
-    const headers = new Headers({ token: token, amount: this.getSum() });
+    const headers = new Headers({ token: token, amount: this.getTotal() });
     this.http
       .post(
         "http://13.126.207.114:9088/payment/charge",
@@ -64,6 +64,17 @@ export class PaymentComponent implements OnInit {
     return sum;
   }
 
+  getTax() {
+    let vat=0;
+    vat=this.getSum()*0.05;
+    return vat;
+  }
+
+  getTotal() {
+    let total=0
+    total= this.getSum()+this.getTax();
+    return total;
+  }
   chargeCreditCard() {
     (<any>window).Stripe.card.createToken(
       {
