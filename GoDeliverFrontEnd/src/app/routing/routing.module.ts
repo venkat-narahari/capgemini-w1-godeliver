@@ -27,6 +27,7 @@ import { TopsellingComponent } from "../topselling/topselling.component";
 import { FirebaseService } from "../firebase.service";
 import { LogisticService } from "../logistics.service";
 import { HeaderComponent } from "../header/header.component";
+import { AdminGuard } from "../admin.guard";
 
 const appRoutes: Routes = [
   {
@@ -81,7 +82,7 @@ const appRoutes: Routes = [
       cres: FirebaseService
     }
   },
-  { path: "admin", component: AdminComponent },
+  { path: "admin", component: AdminComponent, canActivate:[AdminGuard] },
   { path: "payment", component: PaymentComponent },
   { path: "toprated", component: TopratedComponent },
   { path: "topselling", component: TopsellingComponent },
