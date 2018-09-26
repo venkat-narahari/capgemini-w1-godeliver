@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class AdminService {
 
   data:any;
-  date = 'http://13.232.107.34:9088/logistics/api/v1/date?date=';
+  date = 'http://13.126.207.114:9088/logistics/api/v1/date?date=';
 
   constructor(private http:HttpClient) { }
 
