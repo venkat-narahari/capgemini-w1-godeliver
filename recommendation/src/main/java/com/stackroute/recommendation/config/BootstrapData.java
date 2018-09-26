@@ -449,7 +449,7 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		book16.setBookISBN_10("744437");
 		book16.setTitle("Twice the Chill: Two SHORT Horror Stories");
 		book16.setRating(5f);
-		book11.setPoster("https://images-eu.ssl-images-amazon.com/images/I/516KRbgw55L.jpg");
+		book16.setPoster("https://images-eu.ssl-images-amazon.com/images/I/516KRbgw55L.jpg");
 		book16.setVolume("352000ccm");
 		book16.setAuthor("Rachel A Olson");
 		book16.setPublisher("Shirisha");
@@ -785,8 +785,6 @@ public class BootstrapData implements ApplicationListener<ContextRefreshedEvent>
 		WrittenBy writtenBy31= new WrittenBy(book31, author31);
 		writtenByRepository.save(writtenBy31);
 		
-		
-
 		
 		String[] userPreferences=new String[] {"comic","adventure","action"};
 		User user=new User();
