@@ -203,25 +203,7 @@ public class BootStrapData implements ApplicationListener<ContextRefreshedEvent>
 		book10.setLanguage("English");
 		bookRepository.save(book10);
 
-		Book book11 = new Book();
-		book11.setBookISBN_10("744437");
-		book11.setTitle("Twice the Chill: Two SHORT Horror Stories");
-		book11.setRating(5f);
-		book11.setPoster("https://images-eu.ssl-images-amazon.com/images/I/516KRbgw55L.jpg");
-		book11.setVolume("352000ccm");
-		book11.setAuthor("Rachel A Olson");
-		book11.setPublisher("Shirisha");
-		book11.setGenre("Horror");
-		book11.setCost("77.00");
-		book11.setPublishedYear("2012");
-		book11.setPages("15 pages");
-		book11.setDescription(
-				"Sometimes it's hard to believe there really are creatures that go bump in the night. Bey had spent his entire life running through the woods and never once saw anything to convince him there were creatures worth fearing. When his littler sister, Chensei, whines about the trip home at night, Bey only mocks her. Until she disappears beyond the treeline.\n"
-						+ "\n" + "I, PONTIANAK\n" + "\n"
-						+ "Everyone hates and fears monsters, except for when you’re the monster. I never asked for it, and honestly I can’t say I’ve really enjoyed it. But I am what I am, and I can’t change it. Hell, I can’t even control it. My name used to be Anastasia, and I am a Pontianak.");
-		book11.setLanguage("English");
-		bookRepository.save(book11);
-
+		
 		Book book12 = new Book();
 		book12.setBookISBN_10("89665");
 		book12.setTitle("The Amityville Horror");
