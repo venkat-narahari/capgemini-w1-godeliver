@@ -23,11 +23,11 @@
                                 </div>
                                 <div *ngIf="isRadioSelect1()">
                                     <div *ngIf="slots.slotAvailability">
-                                        <div *ngIf="(slots.slotCosts==0)">
+                                        <div *ngIf="(sloT[i]==0)">
                                             <p>free</p>
                                         </div>
-                                        <div *ngIf="(slots.slotCosts!=0)">
-                                            <p>₹{{slots.slotCosts | number:'1.1-2' }}</p>
+                                        <div *ngIf="(sloT[i]!=0)">
+                                            <p>₹{{ sloT[i] }}</p>
                                         </div>
                                     </div>
 
