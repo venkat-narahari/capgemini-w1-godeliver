@@ -89,7 +89,6 @@ export class PaymentComponent implements OnInit {
               .subscribe(data => {});
           }
           this.orderId=this.orderDetails.orderId;
-          console.log(this.orderId);
           
           if (token == null) {
             this.msg = "Payment failure! Plase Check Your Internet Connection";
