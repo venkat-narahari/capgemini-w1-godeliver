@@ -19,26 +19,26 @@
               <form #myForm="ngForm" (ngSubmit)="onSubmit()">
 
                 <mat-form-field class="example-full-width" style="margin-left:20px">
-                  <input matInput placeholder="Full name" [(ngModel)]="firstname" name="firstname" required>
+                  <input matInput placeholder="Full name" autocomplete="off" [(ngModel)]="firstname" name="firstname" required>
                 </mat-form-field>
 
                 <mat-form-field style="margin-left:20px">
-                  <input matInput placeholder="Enter your phone number" [(ngModel)]="phoneNumb" name="phoneNumb"
+                  <input matInput placeholder="Enter your phone number" autocomplete="off" [(ngModel)]="phoneNumb" name="phoneNumb"
                     required pattern="[0-9]*" minlength="10" maxlength="10">
                   <mat-error *ngIf="userPhone.hasError('phone')&&!userPhone.hasError('required')">
                     Enter a valid phone number
                   </mat-error>
                 </mat-form-field>
                 <mat-form-field style="margin-left:20px">
-                  <input matInput placeholder="Enter email" [(ngModel)]="usermail" name="userEmail" required>
+                  <input matInput placeholder="Enter email" autocomplete="off" [(ngModel)]="usermail" name="userEmail" required>
                   <mat-error *ngIf="userEmail.hasError('email')&&!userEmail.hasError('required')">Enter a valid email</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" style="margin-left:20px">
-                  <input matInput placeholder="Enter your address" [(ngModel)]="address" name="address" required>
+                  <input matInput placeholder="Enter your address" autocomplete="off" [(ngModel)]="address" name="address" required>
                 </mat-form-field>
                 <mat-form-field style="margin-left:20px">
-                  <input matInput placeholder="Enter your city" [(ngModel)]="city" name="city" required>
+                  <input matInput placeholder="Enter your city" autocomplete="off" [(ngModel)]="city" name="city" required>
                 </mat-form-field>
                 <div class="text-center">
                   <!-- (click)="getMovie(title)"  -->
@@ -68,7 +68,7 @@
                     <h5>Total Items </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:30px"> {{totalQuant()}}</h5>
+                    <h5 style="margin-left:15px"> {{totalQuant()}}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -76,7 +76,7 @@
                     <h5>Product Cost </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:30px">₹ {{getSum() |  number:'1.1-2'}}</h5>
+                    <h5 style="margin-left:15px">₹ {{getSum() |  number:'1.1-2'}}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -84,7 +84,7 @@
                     <h5>Tax </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:30px">₹ {{tax() |  number:'1.1-2'}}</h5>
+                    <h5 style="margin-left:15px">₹ {{tax() |  number:'1.1-2'}}</h5>
                   </td>
                 </tr>
                 <tr>
@@ -92,7 +92,7 @@
                     <h5>Amount Payable </h5>
                   </td>
                   <td>
-                    <h5 style="margin-left:30px">₹ {{total() | number:'1.1-2'}}</h5>
+                    <h5 style="margin-left:15px">₹ {{total() | number:'1.1-2'}}</h5>
                   </td>
                 </tr>
                 <hr>

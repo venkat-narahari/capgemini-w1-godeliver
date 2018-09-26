@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
     const headers = new Headers({ token: token, amount: this.getSum() });
     this.http
       .post(
-        "http://13.127.41.74:9088/payment/charge",
+        "http://13.126.207.114:9088/payment/charge",
         {},
         { headers: headers }
       )
@@ -43,7 +43,7 @@ export class PaymentComponent implements OnInit {
 
   refundCard() {
     this.http
-      .post("http://13.127.41.74:9088/payment/refund", {})
+      .post("http://13.126.207.114:9088/payment/refund", {})
       .subscribe(res => {});
   }
   totalQuant() {
@@ -89,7 +89,6 @@ export class PaymentComponent implements OnInit {
               .subscribe(data => {});
           }
           this.orderId=this.orderDetails.orderId;
-          console.log(this.orderId);
           
           if (token == null) {
             this.msg = "Payment failure! Plase Check Your Internet Connection";
