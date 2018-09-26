@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
 
   // get search results of movies
   searchBooks() {
-    console.log(this.search);
     this.check = "";
     this.bookService.getBookByName(this.search).subscribe(data => {
       if(data!=null){
