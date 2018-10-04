@@ -111,7 +111,7 @@ public class UserProfileController {
 
 		String email = userDetails.getUserEmail();
 		String dateOfBirth = userDetails.getUserDob();
-		UserProfile user = userProfileServicesImpl.forgotPassword(email);
+		UserProfile user = userProfileServicesImpl.viewUser(email);
 
 		try {
 			if (user == null) {
@@ -130,11 +130,11 @@ public class UserProfileController {
 		} catch (DobNotMatchException e) {
 			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
 		}
-		String password = user.getUserPassword();
+		String password = userDeatils.getUserPassword();
 		UserProfile userProfile = new Userprofile();
 		userProfile.setUserEmail(email);
 		userProfile.setUserPassword(password);
-		return new ResponseEntity<>(token, HttpStatus.CREATED);
+		return new ResponseEntity<>(userProfile, HttpStatus.CREATED);
 
 
 	
