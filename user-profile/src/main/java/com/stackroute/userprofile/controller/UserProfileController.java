@@ -98,4 +98,44 @@ public class UserProfileController {
 
 	}
 	
+	@RequestMapping(value = "/user", method = RequestMethod.PUT, produces = "application/json")
+	public ResponseEntity<?> changePassword(@RequestBody UserProfile userDetails) throws ServletException {
+
+		try {
+			if (userDetails.getUserEmail() == null || userDetails.getUserDob() == null) {
+				throw new UserNameOrDobEmptyException("Please fill in useremail and date of birth");
+			}
+		} catch (UserNameOrDobEmptyException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
+		}
+
+		String email = userDetails.getUserEmail();
+		String dateOfBirth = userDetails.getUserDob();
+		UserProfile user = userProfileServicesImpl.forgotPassword(email);
+
+		try {
+			if (user == null) {
+				throw new UserNotExistsException("User email not found.");
+			}
+		} catch (UserNotExistsException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
+		}
+
+		String dob = user.getUserDob();
+
+		try {
+			if (!dateOfBirth.equals(dob)) {
+				throw new DobNotMatchException("Invalid login. Please check your name and date of birth.");
+			}
+		} catch (DobNotMatchException e) {
+			return new ResponseEntity<String>(e.toString(), HttpStatus.CONFLICT);
+		}
+		String password = user.getUserPassword();
+		UserProfile userProfile = new Userprofile();
+		userProfile.setUserEmail(email);
+		userProfile.setUserPassword(password);
+		return new ResponseEntity<>(token, HttpStatus.CREATED);
+
+
+	
 }
