@@ -1,0 +1,42 @@
+version: '2.1'
+services:
+
+#orderdetails microservice
+
+  order-details:
+    build: order-details/
+    image: order-details
+    container_name: order-details
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 8081:8081
+#    depends_on:
+#      eureka-server:
+#        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+      
+#logistics microservice
+
+  logistics-service:
+    build: logistics-service/
+    image: logistics-service
+    container_name: logistics-service
+    network_mode: host
+    hostname: localhost
+    ports:
+      - 8086:8086
+#    depends_on:
+#      eureka-server:
+#        condition: service_healthy
+#      mongo-database:
+#        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: "exit 0"
+        
+#cvrp microservice

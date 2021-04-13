@@ -1,0 +1,72 @@
+version: '2.1'
+services:
+
+#prometheus
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    network_mode: "host" 
+    hostname: localhost
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+#grafana
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 3000:3000
+    volumes:
+      - /var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: always
+    healthcheck:
+      test: "exit 0"
+        
+#zookeeper
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 2181:2181
+    restart: always
+    healthcheck:
+      test: "exit 0"
+    
+#kafka
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    network_mode: "host"
+    hostname: localhost
+    ports:
+      - 9092:9092
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_CREATE_TOPICS: "userprofile:1:1, book_details:1:1"
+    restart: always
+    healthcheck:
+      test: "exit 0"

@@ -1,0 +1,12 @@
+Average Delivery Cost = Rs.50
+
+Vehicle Container Size = 5670000cm^3(l*b*h=210cm*180cm*150cm)
+
+Cost per kilometer = Rs.5 (Mileage Cost + Service Cost)
+
+Additional Delivery Cost = Rs.5 * Number of kilometers
+
+Depot Address: Latitude: 12.9716° N,
+               Logitude: 77.5946° E
+
+Max Latitude of City(Bengaluru): 13°10'25.6"N 77°29'44.4"E
