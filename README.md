@@ -1,4 +1,7 @@
 ## [capgemini-w1-godeliver](https://github.com/venkat-narahari/capgemini-w1-godeliver)
+[![CircleCI](https://circleci.com/gh/stackroute/capgemini-w1-godeliver.svg?style=svg)](https://circleci.com/gh/stackroute/capgemini-w1-godeliver)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a00da8809a034f3fa8259cf2991e1fb2)](https://www.codacy.com/app/MeghnaW19/capgemini-w1-godeliver?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/capgemini-w1-godeliver&amp;utm_campaign=Badge_Grade)
 
 The Project is consists of Logistics and Ecommerce related microservices with technology stack that includes Spring, Angular, BootStrap, Java, HTML, CSS, JavaScript, TypeScript, MongoDB, MySQL, Neo4J, Kafka, Docker, AWS EC2, Jenkins.
 The primary motivation is to develop a logistics vehicle routing algorithm to distribute and deliver resources in the optimal manner. The mock Book Shop Ecommerce web application is created to present the business indicators of the logistics microservices.
@@ -21,10 +24,6 @@ The primary motivation is to develop a logistics vehicle routing algorithm to di
  
 
 ## CICD
-[![CircleCI](https://circleci.com/gh/stackroute/capgemini-w1-godeliver.svg?style=svg)](https://circleci.com/gh/stackroute/capgemini-w1-godeliver)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a00da8809a034f3fa8259cf2991e1fb2)](https://www.codacy.com/app/MeghnaW19/capgemini-w1-godeliver?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stackroute/capgemini-w1-godeliver&amp;utm_campaign=Badge_Grade)
-
 # Java Maven CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
